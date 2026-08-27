@@ -142,5 +142,81 @@ function mis360_ensure_blog_gallery_page(): void {
         }
         update_option('mis360_blog_gallery_page_created', 1);
     }
+
+    // Örnek Blog, Haber ve Galeri Yazılarını Veritabanına Ekle (İlk Kurulum)
+    if (!get_option('mis360_sample_posts_seeded_v1')) {
+        // Kategorileri Tanımla
+        $cat_haberler = wp_insert_term('Haberler & Duyurular', 'category', ['slug' => 'haberler']);
+        $cat_blog     = wp_insert_term('Lezzet Blogu', 'category', ['slug' => 'blog']);
+        $cat_galeri   = wp_insert_term('Fotoğraf Galerisi', 'category', ['slug' => 'galeri']);
+
+        $cat_haber_id = !is_wp_error($cat_haberler) ? $cat_haberler['term_id'] : get_cat_ID('Haberler & Duyurular');
+        $cat_blog_id  = !is_wp_error($cat_blog) ? $cat_blog['term_id'] : get_cat_ID('Lezzet Blogu');
+        $cat_galeri_id= !is_wp_error($cat_galeri) ? $cat_galeri['term_id'] : get_cat_ID('Fotoğraf Galerisi');
+
+        $sample_posts = [
+            [
+                'title'    => 'Sarıkaya\'da Bahar ve Yaz Sezonuna Özel Açık Hava Bahçe Bölümümüz Hizmete Açıldı',
+                'content'  => '2019 yılından bu yana Yozgat Sarıkaya\'da lezzet ve konforu bir arada sunan Beyzade Et & Balık Restaurant olarak, bahar ve yaz aylarının keyfini çıkarmanız için açık hava bahçe salonumuzu yeniledik.<br><br>Ferah masalarımız, çocuklar için özel mama sandalyesi imkanı, serinletici çevre düzenlemesi ve akşam serinliğinde ailenizle huzurla yemek yiyebileceğiniz özel alanlarımız hazır. Günlük taze balıklarımız ve meşe kömüründe pişen kebaplarımızla sizleri açık havada lezzet şölenine davet ediyoruz.<br><br>Masa rezervasyonu için 0535 830 93 07 numaralı hattımızdan veya doğrudan WhatsApp üzerinden bizimle iletişime geçebilirsiniz.',
+                'excerpt'  => 'Aileler ve çocuklar için özel olarak hazırlanan ferah açık hava bahçe salonumuz, konforlu masaları ve mama sandalyesi desteğiyle hizmetinizde.',
+                'cats'     => [$cat_haber_id],
+                'img'      => 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg',
+            ],
+            [
+                'title'    => 'Hakiki Meşe Kömüründe Kebap Pişirmenin Püf Noktaları ve Dinlendirilmiş Et Sanatı',
+                'content'  => 'İyi bir kebabın sırrı sadece ette değil, pişirme tekniğinde ve kullanılan kömürün kalitesinde gizlidir. Beyzade mutfağında sadece hakiki meşe kömürü ateşi kullanılır.<br><br>Közün ısısı eşit dağıtılır, alevli ateşten kaçınılarak etin kendi suyunu hapsetmesi sağlanır. Zırhla kıyılan yerli besi etlerimiz, özel baharat dengesiyle marine edildikten sonra şişe çekilir. Masanıza lokum kıvamında, dumanı üstünde gelen kebaplarımızın lezzet sırrı işte bu usta el emeğinde yatmaktadır.',
+                'excerpt'  => 'Zırhtan geçen etlerin meşe kömürü közünde lokum gibi pişirilmesinin püf noktalarını ve ustalarımızın özel terbiye sırlarını inceleyin.',
+                'cats'     => [$cat_blog_id],
+                'img'      => 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/adana.jpg',
+            ],
+            [
+                'title'    => 'Taş Fırınımızdan Yeni Çıkan Çıtır Kıymalı & Kuşbaşılı Pidelerimiz',
+                'content'  => 'Hakiki taş fırın ateşinde incecik açılan mayalı hamur, taze dana kıyması, domates, biber ve tereyağı ile harmanlanarak sofralarınıza geliyor. Beyzade\'nin taş fırın ustaları tarafından sipariş anında açılıp pişirilen pidelerimiz çıtır çıtır kenarları ve zengin iç harcıyla Sarıkaya\'nın en çok tercih edilen fırın lezzetlerinden biridir.',
+                'excerpt'  => 'Hakiki taş fırın ateşinde incecik açılan hamur ve zengin iç harçla sofralarınıza gelen çıtır pide lezzeti.',
+                'cats'     => [$cat_galeri_id],
+                'img'      => 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/pide.jpg',
+            ],
+            [
+                'title'    => 'Sabah 06:00\'da Başlayan Sıcak Çorba Servisimiz: Kelle Paça, Ayak Paça ve Mercimek',
+                'content'  => 'Sarıkaya\'da güne dinç ve sıcacık başlamak isteyenler için her sabah tam saat 06:00\'da çorba kazanlarımız kaynıyor. Kemik suyunda saatlerce ağır ağır demlenen kelle paça, terbiyeli ayak paça, süzme mercimek ve yayla çorbamız taze tandır ekmeği ve sarımsaklı sos eşliğinde servis edilmektedir.',
+                'excerpt'  => 'Güne dinç ve sıcacık başlamak isteyenler için her sabah tam saat 06:00\'da başlayan geleneksel sıcak çorba kazanlarımız kaynıyor.',
+                'cats'     => [$cat_haber_id],
+                'img'      => 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg',
+            ],
+            [
+                'title'    => 'Özel Toprak Güveçte Ağır Ateşte Pişen Kuzu Tandırın Hikayesi',
+                'content'  => 'Geleneksel lezzetlerin başında gelen kuzu tandır, Beyzade mutfağında özel toprak güveç kaplarında ve taş fırının dinlenmiş közünde tam 4 saat boyunca pişirilir. Lokum gibi kemiğinden ayrılan et, yanında tereyağlı pirinç pilavı ve közlenmiş biberlerle ziyafet masalarının baş tacı olur.',
+                'excerpt'  => 'Geleneksel toprak güveç kaplarında taş fırının dinlenmiş közünde 4 saat ağır ateşte lokum gibi pişen kuzu tandır.',
+                'cats'     => [$cat_blog_id],
+                'img'      => 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg',
+            ],
+            [
+                'title'    => 'Mevsimin En Taze Balıkları Beyzade Tezgahında: Çupra, Levrek ve Somon',
+                'content'  => 'Sarıkaya\'da taze deniz lezzeti arayan misafirlerimiz için günlük olarak temin ettiğimiz çupra, levrek ve somon çeşitlerimiz özel ızgara tekniğimizle nar gibi kızartılıyor. Taze yeşilliklerle bezenmiş Akdeniz salatası ve fırında helva eşliğinde hafif ve sağlıklı bir akşam yemeği sizleri bekliyor.',
+                'excerpt'  => 'Günlük temin edilen deniz çuprası, kaya levreği ve Karadeniz somonu ustalarımızın ızgarasında nar gibi pişiyor.',
+                'cats'     => [$cat_galeri_id],
+                'img'      => 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg',
+            ],
+        ];
+
+        foreach ($sample_posts as $sp) {
+            $existing_post = get_page_by_title($sp['title'], OBJECT, 'post');
+            if (!$existing_post) {
+                $inserted_id = wp_insert_post([
+                    'post_title'    => $sp['title'],
+                    'post_content'  => $sp['content'],
+                    'post_excerpt'  => $sp['excerpt'],
+                    'post_status'   => 'publish',
+                    'post_type'     => 'post',
+                    'post_category' => $sp['cats'],
+                ]);
+                if ($inserted_id && !empty($sp['img'])) {
+                    update_post_meta($inserted_id, '_mis360_external_thumb', esc_url_raw($sp['img']));
+                }
+            }
+        }
+
+        update_option('mis360_sample_posts_seeded_v1', 1);
+    }
 }
 add_action('init', 'mis360_ensure_blog_gallery_page');

@@ -23,7 +23,7 @@ $whatsapp    = '905358309307';
 ?>
 
 <!-- 1. Hero Section (Denfora 1:1 Architecture with Authentic Beyzade Ambience) -->
-<section class="hero" style="background: linear-gradient(rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.92)), url('https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg') center/cover no-repeat;">
+<section class="hero" style="background: linear-gradient(rgba(17, 24, 39, 0.55), rgba(17, 24, 39, 0.72)), url('https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/banner-4-BEYZADE.png') center/cover no-repeat;">
     <div class="hero-overlay"></div>
     <div class="container">
         <div class="hero-content">

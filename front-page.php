@@ -136,121 +136,76 @@ $whatsapp    = '905358309307';
     </div>
 </section>
 
-<!-- 4. "Neden Beyzade?" (Lezzet, Konfor ve Aile Atmosferi Bir Arada - Denfora 1:1 Architecture) -->
-<section class="section why-us-section" id="about" style="background: #ffffff;">
+<!-- 4. NEDEN BEYZADE? (Orijinal Doğal Restoran Mimarisi) -->
+<section class="chooseUs__area section" id="about">
     <div class="container">
         
-        <!-- Üst Başlık ve Tecrübe Sayacı -->
-        <div class="why-us-header">
-            <div class="why-us-header-left">
-                <span class="section-badge">NEDEN BEYZADE?</span>
-                <h2 class="section-title why-us-main-title">
-                    Lezzet, Konfor ve Aile Atmosferi Bir Arada
-                </h2>
-                <p class="section-subtitle why-us-main-subtitle">
-                    2019 yılından bu yana Yozgat Sarıkaya'da geleneksel Türk mutfağının en seçkin et, balık ve taş fırın lezzetlerini sıcak bir aile ortamında sunuyoruz.
-                </p>
+        <div class="chooseUs__header">
+            <div class="chooseUs__header-left">
+                <span class="chooseUs__subtitle">NEDEN BEYZADE?</span>
+                <h2 class="chooseUs__title">Lezzet, Konfor ve Aile Atmosferi Bir Arada</h2>
             </div>
-            <div class="why-us-experience-box">
-                <div class="experience-counter">
-                    <span class="experience-number">7+</span>
-                    <span class="experience-plus">Yıl</span>
-                </div>
-                <div class="experience-text">
-                    <strong>Lezzet & Güven Mirası</strong>
-                    <span>2019'dan Beri Sarıkaya'da</span>
+            <div class="chooseUs__header-right">
+                <div class="chooseUs__counter">
+                    <span class="chooseUs__counter-number">7+</span>
+                    <span class="chooseUs__counter-label">Yıllık Lezzet Deneyimi</span>
                 </div>
             </div>
         </div>
 
-        <!-- 2 Kolonlu İçerik ve Masa Görseli -->
-        <div class="why-us-grid">
+        <div class="chooseUs__row">
             
-            <!-- Sol Kolon: Restoran Masa ve Salon Görseli -->
-            <div class="why-us-image-wrapper">
-                <div class="why-us-image-card">
-                    <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg" alt="Beyzade Restaurant Masa ve Salon Düzeni" class="why-us-main-img" loading="lazy">
-                    <div class="why-us-image-overlay-badge">
-                        <div class="badge-icon">🍽️</div>
-                        <div class="badge-content">
-                            <strong>Ferah Aile Masaları & Bahçe</strong>
-                            <span>Mama Sandalyesi • Açık Hava Alanı</span>
-                        </div>
-                    </div>
+            <!-- Sol Kolon: Restoran Masa ve Aile Salonu Doğal Görseli -->
+            <div class="chooseUs__image-col">
+                <div class="chooseUs__image-wrap">
+                    <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg" alt="Beyzade Restaurant Masa ve Salon Düzeni" class="chooseUs__main-image" loading="lazy">
                 </div>
             </div>
 
-            <!-- Sağ Kolon: Hikaye ve 4 Öne Çıkan Nitelik -->
-            <div class="why-us-content">
-                <p class="why-us-lead-text">
-                    Beyzade Et & Balık Restaurant olarak; et, balık, kebap ve yöresel lezzetlerimizi misafirlerimizle buluşturuyoruz. Kaliteli malzemeler, hijyenik açık mutfak anlayışı ve güler yüzlü hizmetimizle ailelerin ve lezzet tutkunlarının Sarıkaya'daki vazgeçilmez buluşma noktasıyız.
+            <!-- Sağ Kolon: Restoran Açıklaması ve Beyzade Logolu Nitelikler -->
+            <div class="chooseUs__content-col">
+                
+                <p class="chooseUs__description">
+                    2019 yılından bu yana Yozgat Sarıkaya'da hizmet veren Beyzade Et & Balık Restaurant olarak; et, balık, kebap ve yöresel lezzetlerimizi misafirlerimizle buluşturuyoruz. Kaliteli malzemeler, hijyenik üretim anlayışı ve güler yüzlü hizmetimizle ailelerin ve lezzet tutkunlarının vazgeçilmez adresi olmaya devam ediyoruz. Sizleri de sıcak ve samimi ortamımızda ağırlamaktan mutluluk duyuyoruz.
                 </p>
 
-                <div class="why-us-features-grid">
+                <div class="chooseUs__features">
                     
-                    <div class="why-feature-item">
-                        <div class="why-feature-icon">
-                            <span>👨‍🍳</span>
+                    <div class="chooseUs__feature-item">
+                        <div class="chooseUs__feature-icon">
+                            <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzadelogo1-66.png" alt="Beyzade Logo">
                         </div>
-                        <div>
-                            <h4 class="why-feature-title">Özenli Hizmet Anlayışı</h4>
-                            <p class="why-feature-desc">
-                                Misafir memnuniyetini ön planda tutan profesyonel ekibimizle, sıcak ve kaliteli bir restoran deneyimi sunuyoruz.
-                            </p>
+                        <div class="chooseUs__feature-text">
+                            <h4>Özenli Hizmet Anlayışı</h4>
+                            <p>Misafir memnuniyetini ön planda tutan profesyonel ekibimizle, sıcak ve kaliteli bir restoran deneyimi sunuyoruz.</p>
                         </div>
                     </div>
 
-                    <div class="why-feature-item">
-                        <div class="why-feature-icon">
-                            <span>🥩</span>
+                    <div class="chooseUs__feature-item">
+                        <div class="chooseUs__feature-icon">
+                            <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzadelogo1-66.png" alt="Beyzade Logo">
                         </div>
-                        <div>
-                            <h4 class="why-feature-title">Zengin Menü Seçenekleri</h4>
-                            <p class="why-feature-desc">
-                                Meşe kömüründe kebaplar, taş fırın pideleri ve günlük taze balık çeşitleriyle her damak tadına hitap eden zengin sofralar.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="why-feature-item">
-                        <div class="why-feature-icon">
-                            <span>🌳</span>
-                        </div>
-                        <div>
-                            <h4 class="why-feature-title">Açık Hava Bahçe & Aile Salonu</h4>
-                            <p class="why-feature-desc">
-                                Yaz aylarında ferah bahçe bölümü, çocuklar için mama sandalyesi ve klimalı konforlu iç mekan salonu.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="why-feature-item">
-                        <div class="why-feature-icon">
-                            <span>⏰</span>
-                        </div>
-                        <div>
-                            <h4 class="why-feature-title">Sabah 06:00 – 23:45 Hizmet</h4>
-                            <p class="why-feature-desc">
-                                Güne sıcak mercimek ve kelle paça çorbalarıyla başlayıp, geceye kadar kesintisiz restoran servisi.
-                            </p>
+                        <div class="chooseUs__feature-text">
+                            <h4>Zengin Menü Seçenekleri</h4>
+                            <p>Et, balık, kebap ve özel lezzetlerden oluşan menümüz ile her damak tadına hitap eden unutulmaz sofralar hazırlıyoruz.</p>
                         </div>
                     </div>
 
                 </div>
 
-                <div class="why-us-actions">
+                <div class="chooseUs__actions">
                     <a href="#reservation" class="btn btn-primary btn-md">
-                        Masanızı Şimdiden Ayırtın →
+                        Masa Rezervasyonu Yap →
                     </a>
-                    <a href="https://wa.me/<?php echo esc_attr($whatsapp); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-md">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                        <span>WhatsApp Rezervasyon</span>
+                    <a href="tel:<?php echo esc_attr($clean_phone); ?>" class="btn btn-outline-dark btn-md">
+                        📞 <?php echo esc_html($phone); ?>
                     </a>
                 </div>
 
             </div>
 
         </div>
+
     </div>
 </section>
 

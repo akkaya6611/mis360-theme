@@ -116,12 +116,166 @@
   };
 
   /* ==========================================================================
+     4. Google Reviews Slider Manager
+     ========================================================================== */
+  const ReviewsSliderManager = {
+    track: document.getElementById('reviewsTrack'),
+    viewport: document.getElementById('reviewsViewport'),
+    prevBtn: document.getElementById('reviewsPrevBtn'),
+    nextBtn: document.getElementById('reviewsNextBtn'),
+    dotsContainer: document.getElementById('reviewsDots'),
+    currentIndex: 0,
+    autoPlayTimer: null,
+
+    init() {
+      if (!this.track || !this.viewport) return;
+
+      const cards = this.track.querySelectorAll('.review-card');
+      if (!cards.length) return;
+
+      this.updateSlider();
+
+      if (this.nextBtn) {
+        this.nextBtn.addEventListener('click', () => {
+          this.next();
+          this.resetAutoPlay();
+        });
+      }
+
+      if (this.prevBtn) {
+        this.prevBtn.addEventListener('click', () => {
+          this.prev();
+          this.resetAutoPlay();
+        });
+      }
+
+      // Dokunmatik / Kaydırma Desteği (Touch Swipe)
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      this.viewport.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        this.stopAutoPlay();
+      }, { passive: true });
+
+      this.viewport.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) {
+          this.next();
+        } else if (touchEndX - touchStartX > 50) {
+          this.prev();
+        }
+        this.startAutoPlay();
+      }, { passive: true });
+
+      // Fare üzerine geldiğinde durdur
+      this.viewport.addEventListener('mouseenter', () => this.stopAutoPlay());
+      this.viewport.addEventListener('mouseleave', () => this.startAutoPlay());
+
+      window.addEventListener('resize', () => {
+        this.updateSlider();
+      });
+
+      this.startAutoPlay();
+    },
+
+    getVisibleCards() {
+      const width = window.innerWidth;
+      if (width > 1024) return 3;
+      if (width > 640) return 2;
+      return 1;
+    },
+
+    getMaxIndex() {
+      const cards = this.track.querySelectorAll('.review-card');
+      const visible = this.getVisibleCards();
+      return Math.max(0, cards.length - visible);
+    },
+
+    updateSlider() {
+      const cards = this.track.querySelectorAll('.review-card');
+      if (!cards.length) return;
+
+      const maxIndex = this.getMaxIndex();
+      if (this.currentIndex > maxIndex) {
+        this.currentIndex = maxIndex;
+      }
+
+      const cardWidth = cards[0].offsetWidth;
+      const gap = 24; // var(--space-6) = 1.5rem = 24px
+      const moveDistance = (cardWidth + gap) * this.currentIndex;
+
+      this.track.style.transform = `translateX(-${moveDistance}px)`;
+
+      // Dots güncelle
+      this.renderDots(maxIndex);
+    },
+
+    renderDots(maxIndex) {
+      if (!this.dotsContainer) return;
+      this.dotsContainer.innerHTML = '';
+
+      for (let i = 0; i <= maxIndex; i++) {
+        const dot = document.createElement('button');
+        dot.className = `reviews-dot ${i === this.currentIndex ? 'active' : ''}`;
+        dot.setAttribute('aria-label', `Yorum ${i + 1}`);
+        dot.addEventListener('click', () => {
+          this.currentIndex = i;
+          this.updateSlider();
+          this.resetAutoPlay();
+        });
+        this.dotsContainer.appendChild(dot);
+      }
+    },
+
+    next() {
+      const maxIndex = this.getMaxIndex();
+      if (this.currentIndex >= maxIndex) {
+        this.currentIndex = 0;
+      } else {
+        this.currentIndex++;
+      }
+      this.updateSlider();
+    },
+
+    prev() {
+      const maxIndex = this.getMaxIndex();
+      if (this.currentIndex <= 0) {
+        this.currentIndex = maxIndex;
+      } else {
+        this.currentIndex--;
+      }
+      this.updateSlider();
+    },
+
+    startAutoPlay() {
+      this.stopAutoPlay();
+      this.autoPlayTimer = setInterval(() => {
+        this.next();
+      }, 5000);
+    },
+
+    stopAutoPlay() {
+      if (this.autoPlayTimer) {
+        clearInterval(this.autoPlayTimer);
+        this.autoPlayTimer = null;
+      }
+    },
+
+    resetAutoPlay() {
+      this.stopAutoPlay();
+      this.startAutoPlay();
+    }
+  };
+
+  /* ==========================================================================
      DOM Hazır Olduğunda Başlat
      ========================================================================== */
   document.addEventListener('DOMContentLoaded', () => {
     HeaderManager.init();
     LangSwitcherManager.init();
     MobileNavManager.init();
+    ReviewsSliderManager.init();
   });
 
 })();

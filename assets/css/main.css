@@ -3167,3 +3167,108 @@ select:focus {
     width: 100%;
   }
 }
+
+/* ==========================================================================
+   GEO (AI SEARCH) & FAQ SECTION STYLES
+   ========================================================================== */
+.geo-table-wrap {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+}
+
+.geo-summary-text {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #334155;
+  margin-bottom: 20px;
+}
+
+.geo-facts-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.geo-facts-table th,
+.geo-facts-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.geo-facts-table th {
+  color: #64748b;
+  font-weight: 700;
+  width: 38%;
+  background: rgba(241, 245, 249, 0.5);
+}
+
+.geo-facts-table td {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.geo-facts-table tr:last-child th,
+.geo-facts-table tr:last-child td {
+  border-bottom: none;
+}
+
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.faq-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px 20px;
+  transition: all 0.2s ease;
+}
+
+.faq-item[open] {
+  background: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 16px rgba(220, 38, 38, 0.06);
+}
+
+.faq-question {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0f172a;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question::after {
+  content: '+';
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-primary);
+  transition: transform 0.2s ease;
+}
+
+.faq-item[open] .faq-question::after {
+  content: '−';
+}
+
+.faq-answer {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #475569;
+}

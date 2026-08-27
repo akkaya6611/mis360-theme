@@ -80,11 +80,11 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
                     <div style="font-size: 13px; color: var(--color-gray-400); line-height: 1.8;">
                         <p style="margin-bottom: 8px;">
                             <strong style="color: var(--color-white);">Pazartesi – Pazar:</strong><br>
-                            10:00 – 23:45 (Aralıksız Açık)
+                            06:00 – 23:45 (Sabah Çorbasından Geceye)
                         </p>
                         <p style="margin-bottom: 8px;">
                             <strong style="color: var(--color-white);">Mutfak Hizmeti:</strong><br>
-                            Öğle Servisi, Akşam Yemeği & Paket Servis
+                            Sabah Çorbası, Öğle & Akşam Kebap-Balık & Paket Servis
                         </p>
                         <p style="color: var(--color-primary); font-size: 12px; font-weight: 700;">
                             ✓ Açık Hava Bahçe & Mama Sandalyesi Mevcut
@@ -155,7 +155,7 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
-                    <span>Her Gün 10:00 – 23:45 Açık</span>
+                    <span>Sabah 06:00 – 23:45 Açık</span>
                 </div>
             </div>
 

@@ -22,7 +22,10 @@ get_header();
             <h1 class="mis-page-title" style="font-size: var(--mis-text-2xl); font-weight: 800;">
                 <?php
                 /* translators: %s: search query. */
-                printf(esc_html__('Arama Sonuçları: %s', 'mis360'), '<span class="mis-gradient-text">' . get_search_query() . '</span>');
+                printf(
+                    wp_kses_post(__('Arama Sonuçları: %s', 'mis360')),
+                    '<span class="mis-gradient-text">' . esc_html(get_search_query()) . '</span>'
+                );
                 ?>
             </h1>
         </header>

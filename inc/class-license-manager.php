@@ -328,6 +328,13 @@ class MIS360_License_Manager {
             exit;
         }
 
+        if ('quick_dev_activate' === $action) {
+            $result = self::activate('MISMASTER360SERKANAKKAYA');
+            set_transient('mis360_license_notice', $result, 30);
+            wp_safe_redirect(admin_url('themes.php?page=mis360-license'));
+            exit;
+        }
+
         if ('deactivate' === $action) {
             $result = self::deactivate();
             set_transient('mis360_license_notice', $result, 30);
@@ -452,12 +459,44 @@ class MIS360_License_Manager {
                             </p>
                         </div>
 
-                        <button type="submit" class="button button-primary button-hero" style="font-size: 14px; height: 42px; line-height: 40px; padding: 0 24px; border-radius: 6px;">
-                            <?php esc_html_e('Lisansı Doğrula ve Etkinleştir →', 'mis360'); ?>
-                        </button>
+                        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+                            <button type="submit" class="button button-primary button-hero" style="font-size: 14px; height: 42px; line-height: 40px; padding: 0 24px; border-radius: 6px;">
+                                <?php esc_html_e('Lisansı Doğrula ve Etkinleştir →', 'mis360'); ?>
+                            </button>
+                        </div>
                     </form>
+
+                    <!-- Serkan AKKAYA Tek Tıkla Geliştirici Aktivasyonu -->
+                    <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid #f1f5f9;">
+                        <form method="post">
+                            <?php wp_nonce_field('mis360_license_nonce', 'mis360_license_nonce_field'); ?>
+                            <input type="hidden" name="mis360_license_action" value="quick_dev_activate">
+                            <button type="submit" class="button" style="background: #0f172a; color: #05f9ff; border: none; font-weight: 700; padding: 8px 18px; border-radius: 6px; cursor: pointer;">
+                                ⚡ <?php esc_html_e('Serkan AKKAYA Geliştirici Lisansını Tek Tıkla Aktif Et', 'mis360'); ?>
+                            </button>
+                        </form>
+                    </div>
                 <?php endif; ?>
 
+            </div>
+
+            <!-- Serkan AKKAYA Lisans Anahtarı Üretici (Müşteriler İçin) -->
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 24px;">
+                <h3 style="margin: 0 0 8px 0; font-size: 16px; color: #0f172a; font-weight: 800;">
+                    🔑 <?php esc_html_e('Müşterileriniz İçin Hazır Lisans Anahtarları (HMAC-SHA256)', 'mis360'); ?>
+                </h3>
+                <p style="color: #64748b; font-size: 13px; margin: 0 0 16px 0;">
+                    <?php esc_html_e('Aşağıdaki anahtarlar temasınızın gizli HMAC-SHA256 tuzu ile anında doğrulanır. Müşterilerinize doğrudan bu anahtarlardan birini verebilirsiniz:', 'mis360'); ?>
+                </p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
+                    <?php for ($i = 0; $i < 3; $i++) : $k = self::generate_license_key(); ?>
+                        <div style="background: #f8fafc; border: 1px dashed #cbd5e1; padding: 12px; border-radius: 8px; text-align: center;">
+                            <code style="font-size: 14px; font-weight: 800; color: #0f172a; user-select: all;"><?php echo esc_html($k); ?></code>
+                            <div style="font-size: 11px; color: #10b981; font-weight: 600; margin-top: 4px;">✓ Sınırsız / Ömür Boyu PRO</div>
+                        </div>
+                    <?php endfor; ?>
+                </div>
             </div>
 
             <!-- Geliştirici Bilgisi & İletişim -->

@@ -59,7 +59,7 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
                     </span>
                 </div>
                 <div class="top-bar-right">
-                    <span class="top-bar-rating">★ 4.3 (448 Doğrulanmış Google Yorumu)</span>
+                    <a href="#reviews" class="top-bar-rating" style="color: #f59e0b; font-weight: 700; text-decoration: none;">★ 4.3 (448 Doğrulanmış Google Yorumu)</a>
                     <span class="top-bar-sep">|</span>
                     <a href="tel:<?php echo esc_attr($clean_phone); ?>" class="top-bar-phone">
                         📞 <?php echo esc_html($phone); ?>

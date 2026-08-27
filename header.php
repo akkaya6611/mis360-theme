@@ -131,6 +131,9 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
                 <a href="#about" class="nav-link">
                     <?php esc_html_e('Hakkımızda', 'mis360'); ?>
                 </a>
+                <a href="<?php echo esc_url(home_url('/haberler-galeri/')); ?>" class="nav-link">
+                    <?php esc_html_e('Haberler & Galeri', 'mis360'); ?>
+                </a>
                 <a href="#reservation" class="nav-link">
                     <?php esc_html_e('Masa Rezervasyonu', 'mis360'); ?>
                 </a>
@@ -195,6 +198,7 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
                 </div>
 
                 <a href="#about" class="mobile-nav-link"><?php esc_html_e('Hakkımızda', 'mis360'); ?></a>
+                <a href="<?php echo esc_url(home_url('/haberler-galeri/')); ?>" class="mobile-nav-link"><?php esc_html_e('Haberler & Galeri', 'mis360'); ?></a>
                 <a href="#reservation" class="mobile-nav-link"><?php esc_html_e('Masa Rezervasyonu', 'mis360'); ?></a>
                 <a href="#contact" class="mobile-nav-link"><?php esc_html_e('İletişim & Konum', 'mis360'); ?></a>
 

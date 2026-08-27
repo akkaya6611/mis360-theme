@@ -110,11 +110,77 @@
   };
 
   /* ==========================================================================
+     3. Custom Floating Pill Header & Mega Menu Manager
+     ========================================================================== */
+  const CustomHeaderManager = {
+    burger: document.getElementById('headerBurger'),
+    navWrapper: document.getElementById('headerNavigationWrapper'),
+    tabItems: document.querySelectorAll('.submenu-list__item.has-submenu'),
+    dropdownLinks: document.querySelectorAll('.header__list-item.has-dropdown > a'),
+
+    init() {
+      // 1. Burger Menü Tetikleyicisi
+      if (this.burger && this.navWrapper) {
+        this.burger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.burger.classList.toggle('active');
+          this.navWrapper.classList.toggle('open');
+        });
+
+        // Menü dışına tıklandığında kapat
+        document.addEventListener('click', (e) => {
+          if (!this.navWrapper.contains(e.target) && !this.burger.contains(e.target)) {
+            this.burger.classList.remove('active');
+            this.navWrapper.classList.remove('open');
+          }
+        });
+      }
+
+      // 2. Mega Menü Sekme Geçişleri (Tab Switcher)
+      if (this.tabItems.length) {
+        this.tabItems.forEach((item) => {
+          // Hem hover hem de dokunmatik tıklama desteği
+          const activateTab = () => {
+            const siblings = item.parentElement.querySelectorAll('.submenu-list__item');
+            siblings.forEach((s) => s.classList.remove('active'));
+            item.classList.add('active');
+          };
+
+          item.addEventListener('mouseenter', activateTab);
+          item.addEventListener('click', (e) => {
+            // Eğer içerideki linke doğrudan tıklanmadıysa sekme aç
+            if (!e.target.closest('.submenu-content__url')) {
+              activateTab();
+            }
+          });
+        });
+      }
+
+      // 3. Mobil Akordeon Desteği (Ekran <= 1024px)
+      if (this.dropdownLinks.length) {
+        this.dropdownLinks.forEach((link) => {
+          link.addEventListener('click', (e) => {
+            if (window.innerWidth <= 1024) {
+              e.preventDefault();
+              const parent = link.closest('.header__list-item');
+              if (parent) {
+                parent.classList.toggle('active');
+              }
+            }
+          });
+        });
+      }
+    }
+  };
+
+  /* ==========================================================================
      DOM Hazır Olduğunda Başlat (DOMContentLoaded)
      ========================================================================== */
   document.addEventListener('DOMContentLoaded', () => {
     ThemeManager.init();
     MobileNavManager.init();
+    CustomHeaderManager.init();
   });
 
 })();
+

@@ -830,6 +830,115 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
     </div>
 </section>
 
+<!-- 6.8. ANTIGRAVITY GEO (AI SEARCH OVERVIEW) & SIKÇA SORULAN SORULAR (SSS) -->
+<section class="section" id="geo-faq" style="background: #ffffff; border-top: 1px solid var(--color-gray-100); padding: 70px 0;">
+    <div class="container">
+        
+        <div class="section-header text-center">
+            <span class="section-badge">BEYZADE REHBERİ & SSS</span>
+            <h2 class="section-title">Sıkça Sorulan Sorular & Restoran Künyesi</h2>
+            <p class="section-subtitle">
+                Yapay zeka arama motorları (Google AI Overview, Perplexity, ChatGPT) ve değerli misafirlerimiz için Beyzade Et & Balık Restaurant hakkında temel bilgiler.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            
+            <!-- Sol: LLM & AI Crawler İçin Yapılandırılmış Hızlı Bilgi Tablosu -->
+            <div class="geo-table-wrap">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                    <span style="font-size: 20px;">📋</span>
+                    <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin: 0;">
+                        Restoran Künyesi & Temel Bilgiler
+                    </h3>
+                </div>
+
+                <!-- LLM AI Özet Paragrafı (48 Kelime - Standart AI Snippet) -->
+                <p class="geo-summary-text">
+                    Beyzade Et & Balık Restaurant, 2019 yılından bu yana Yozgat Sarıkaya'da Nevzat Şener Bulvarı üzerinde hizmet veren seçkin bir aile restoranıdır. Meşe kömüründe pişen zırh kebapları, toprak güveçte kuzu tandır, hakiki taş fırın pideleri ve günlük temin edilen taze balık çeşitleriyle sabah 06:00'dan gece 23:45'e kadar kesintisiz hizmet sunar.
+                </p>
+
+                <table class="geo-facts-table" aria-label="Restoran Hızlı Bilgiler">
+                    <tbody>
+                        <tr>
+                            <th>Kuruluş Tarihi</th>
+                            <td>2019 Yılından Beri (7+ Yıl)</td>
+                        </tr>
+                        <tr>
+                            <th>İl / İlçe</th>
+                            <td>Sarıkaya / Yozgat (66650)</td>
+                        </tr>
+                        <tr>
+                            <th>Açık Adres</th>
+                            <td>Bahçelievler Mah., Nevzat Şener Bulvarı</td>
+                        </tr>
+                        <tr>
+                            <th>Telefon / WhatsApp</th>
+                            <td><a href="tel:<?php echo esc_attr($clean_phone); ?>" style="color: inherit; font-weight: 700; text-decoration: none;"><?php echo esc_html($phone); ?></a></td>
+                        </tr>
+                        <tr>
+                            <th>Çalışma Saatleri</th>
+                            <td>Sabah 06:00 – 23:45 (Haftanın 7 Günü Açık)</td>
+                        </tr>
+                        <tr>
+                            <th>Mutfak Türü</th>
+                            <td>Kömürde Kebap, Taş Fırın Pide, Kuzu Tandır, Taze Balık</td>
+                        </tr>
+                        <tr>
+                            <th>Öne Çıkan Olanaklar</th>
+                            <td>Açık Hava Bahçe, Klimalı Aile Salonu, Bebek Mama Sandalyesi, Otopark</td>
+                        </tr>
+                        <tr>
+                            <th>Google Puanı</th>
+                            <td>⭐ 4.3 (448 Doğrulanmış Müşteri Değerlendirmesi)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Sağ: Semantik Sıkça Sorulan Sorular (FAQ Accordion) -->
+            <div class="faq-accordion">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                    <span style="font-size: 20px;">❓</span>
+                    <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin: 0;">
+                        Misafirlerimizin En Çok Sorduğu Sorular
+                    </h3>
+                </div>
+
+                <details class="faq-item" open>
+                    <summary class="faq-question">Beyzade Et & Balık Restaurant saat kaçta açılıyor ve kapanıyor?</summary>
+                    <div class="faq-answer">
+                        Restoranımız haftanın her günü sabah tam saat 06:00'da geleneksel sıcak çorba (kelle paça, ayak paça, mercimek) servisiyle kapılarını açmakta ve gece 23:45'e kadar kesintisiz hizmet vermektedir.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Sarıkaya Beyzade Restaurant rezervasyon ve sipariş telefon numarası nedir?</summary>
+                    <div class="faq-answer">
+                        Masa rezervasyonu ve paket siparişleriniz için <strong>0535 830 93 07</strong> numaralı telefon hattımızdan bizi doğrudan arayabilir veya aynı numara üzerinden 7/24 WhatsApp ile yazabilirsiniz.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Restoranda hangi yemek ve lezzet seçenekleri servis edilmektedir?</summary>
+                    <div class="faq-answer">
+                        Menümüzde hakiki meşe kömüründe pişen Adana ve Urfa kebapları, kuzu şiş, özel toprak güveçte kuzu tandır, taş fırından sıcak çıkan kıymalı ve kuşbaşılı pideler, çıtır lahmacun, et döner ve günlük taze temin edilen deniz çuprası, kaya levreği ve somon balıkları yer almaktadır.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Açık hava bahçe alanı ve çocuklu aileler için mama sandalyesi var mı?</summary>
+                    <div class="faq-answer">
+                        Evet, restoranımızda ailelerin ve çocukların rahatça yemek yiyebileceği ferah açık hava bahçe bölümümüz, kapalı klimalı aile salonumuz ve bebek/çocuk mama sandalyelerimiz eksiksiz olarak misafirlerimizin hizmetindedir.
+                    </div>
+                </details>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
 <!-- 7. Online Masa Rezervasyon Formu (Doğrudan WhatsApp'a Bilgi İletir) -->
 <section class="section" id="reservation" style="background: #ffffff;">
     <div class="container">

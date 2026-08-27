@@ -1,186 +1,117 @@
 /**
- * MİS360 - Main Vanilla JavaScript (ES6+)
- * Zero jQuery, ultra-lightweight, accessible.
+ * MİS360 - Main JavaScript (Denfora 1:1 Architecture)
+ * Header Sticky Scroll, Language Switcher, Mobile Nav Drawer & Fast Interactions
  *
  * @package MİS360
- * @since 1.0.0
+ * @author  Serkan AKKAYA <https://misteknoloji360.com.tr/>
+ * @since   1.0.0
  */
 
 (function () {
   'use strict';
 
   /* ==========================================================================
-     1. Dark / Light Mode Manager (LocalStorage & System Sync)
+     1. Denfora Sticky Header Scroll Manager
      ========================================================================== */
-  const ThemeManager = {
-    storageKey: 'mis360-color-theme',
-    htmlRoot: document.documentElement,
-    toggleBtn: document.getElementById('mis-theme-toggle'),
+  const HeaderManager = {
+    header: document.getElementById('siteHeader'),
 
     init() {
-      // 1. Kaydedilmiş tercihi veya sistem tercihini yükle
-      const savedTheme = localStorage.getItem(this.storageKey);
-      if (savedTheme) {
-        this.setTheme(savedTheme, false);
-      } else {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        this.htmlRoot.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-      }
+      if (!this.header) return;
 
-      // 2. Buton tıklama dinleyicisi
-      if (this.toggleBtn) {
-        this.toggleBtn.addEventListener('click', () => this.toggle());
-      }
-
-      // 3. İşletim sistemi tercih değişikliklerini dinle
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem(this.storageKey)) {
-          this.htmlRoot.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+      const handleScroll = () => {
+        if (window.scrollY > 20) {
+          this.header.classList.add('scrolled');
+        } else {
+          this.header.classList.remove('scrolled');
         }
-      });
-    },
+      };
 
-    getCurrentTheme() {
-      return this.htmlRoot.getAttribute('data-theme') || 'light';
-    },
-
-    setTheme(theme, save = true) {
-      this.htmlRoot.setAttribute('data-theme', theme);
-      if (save) {
-        localStorage.setItem(this.storageKey, theme);
-      }
-    },
-
-    toggle() {
-      const current = this.getCurrentTheme();
-      const nextTheme = current === 'dark' ? 'light' : 'dark';
-      this.setTheme(nextTheme, true);
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll(); // Sayfa yüklendiğinde mevcut konumu kontrol et
     }
   };
 
   /* ==========================================================================
-     2. Mobile Off-Canvas Navigation Manager (Accessible & Touch-Friendly)
+     2. Denfora Language Switcher Dropdown Manager
      ========================================================================== */
-  const MobileNavManager = {
-    menuBtn: document.getElementById('mis-mobile-menu-toggle'),
-    closeBtn: document.getElementById('mis-mobile-close'),
-    drawer: document.getElementById('mis-mobile-drawer'),
-    backdrop: document.getElementById('mis-drawer-overlay'),
+  const LangSwitcherManager = {
+    container: document.getElementById('langSwitcher'),
 
     init() {
-      if (!this.menuBtn || !this.drawer) return;
+      if (!this.container) return;
 
-      this.menuBtn.addEventListener('click', () => this.open());
+      const toggleBtn = this.container.querySelector('.lang-switcher-toggle');
+      if (!toggleBtn) return;
+
+      toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = this.container.classList.toggle('open');
+        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Menü dışına tıklandığında kapat
+      document.addEventListener('click', (e) => {
+        if (!this.container.contains(e.target)) {
+          this.container.classList.remove('open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  };
+
+  /* ==========================================================================
+     3. Denfora Mobile Nav Drawer Manager
+     ========================================================================== */
+  const MobileNavManager = {
+    toggleBtn: document.getElementById('mobileMenuToggle'),
+    closeBtn: document.getElementById('mobileNavClose'),
+    overlay: document.getElementById('mobileNavOverlay'),
+    drawer: document.getElementById('mobileNav'),
+
+    init() {
+      if (!this.toggleBtn || !this.overlay) return;
+
+      this.toggleBtn.addEventListener('click', () => this.open());
+
       if (this.closeBtn) {
         this.closeBtn.addEventListener('click', () => this.close());
       }
-      if (this.backdrop) {
-        this.backdrop.addEventListener('click', () => this.close());
-      }
 
-      // Escape tuşu ile kapatma
+      this.overlay.addEventListener('click', (e) => {
+        if (e.target === this.overlay) {
+          this.close();
+        }
+      });
+
+      // Escape tuşuyla kapatma
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && this.drawer.classList.contains('is-active')) {
+        if (e.key === 'Escape' && this.overlay.classList.contains('open')) {
           this.close();
         }
       });
     },
 
     open() {
-      this.drawer.classList.add('is-active');
-      this.drawer.setAttribute('aria-hidden', 'false');
-      this.menuBtn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden'; // Arka plan kaydırmayı kilitle
-
-      // Kapatma butonuna odaklan (Accessibility Focus Trap)
-      if (this.closeBtn) {
-        this.closeBtn.focus();
-      }
+      this.overlay.classList.add('open');
+      this.toggleBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
     },
 
     close() {
-      this.drawer.classList.remove('is-active');
-      this.drawer.setAttribute('aria-hidden', 'true');
-      this.menuBtn.setAttribute('aria-expanded', 'false');
+      this.overlay.classList.remove('open');
+      this.toggleBtn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
-
-      // Tetikleyici butona geri odaklan
-      this.menuBtn.focus();
     }
   };
 
   /* ==========================================================================
-     3. Custom Floating Pill Header & Mega Menu Manager
-     ========================================================================== */
-  const CustomHeaderManager = {
-    burger: document.getElementById('headerBurger'),
-    navWrapper: document.getElementById('headerNavigationWrapper'),
-    tabItems: document.querySelectorAll('.submenu-list__item.has-submenu'),
-    dropdownLinks: document.querySelectorAll('.header__list-item.has-dropdown > a'),
-
-    init() {
-      // 1. Burger Menü Tetikleyicisi
-      if (this.burger && this.navWrapper) {
-        this.burger.addEventListener('click', (e) => {
-          e.stopPropagation();
-          this.burger.classList.toggle('active');
-          this.navWrapper.classList.toggle('open');
-        });
-
-        // Menü dışına tıklandığında kapat
-        document.addEventListener('click', (e) => {
-          if (!this.navWrapper.contains(e.target) && !this.burger.contains(e.target)) {
-            this.burger.classList.remove('active');
-            this.navWrapper.classList.remove('open');
-          }
-        });
-      }
-
-      // 2. Mega Menü Sekme Geçişleri (Tab Switcher)
-      if (this.tabItems.length) {
-        this.tabItems.forEach((item) => {
-          // Hem hover hem de dokunmatik tıklama desteği
-          const activateTab = () => {
-            const siblings = item.parentElement.querySelectorAll('.submenu-list__item');
-            siblings.forEach((s) => s.classList.remove('active'));
-            item.classList.add('active');
-          };
-
-          item.addEventListener('mouseenter', activateTab);
-          item.addEventListener('click', (e) => {
-            // Eğer içerideki linke doğrudan tıklanmadıysa sekme aç
-            if (!e.target.closest('.submenu-content__url')) {
-              activateTab();
-            }
-          });
-        });
-      }
-
-      // 3. Mobil Akordeon Desteği (Ekran <= 1024px)
-      if (this.dropdownLinks.length) {
-        this.dropdownLinks.forEach((link) => {
-          link.addEventListener('click', (e) => {
-            if (window.innerWidth <= 1024) {
-              e.preventDefault();
-              const parent = link.closest('.header__list-item');
-              if (parent) {
-                parent.classList.toggle('active');
-              }
-            }
-          });
-        });
-      }
-    }
-  };
-
-  /* ==========================================================================
-     DOM Hazır Olduğunda Başlat (DOMContentLoaded)
+     DOM Hazır Olduğunda Başlat
      ========================================================================== */
   document.addEventListener('DOMContentLoaded', () => {
-    ThemeManager.init();
+    HeaderManager.init();
+    LangSwitcherManager.init();
     MobileNavManager.init();
-    CustomHeaderManager.init();
   });
 
 })();
-

@@ -756,83 +756,70 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
             </p>
         </div>
 
+        <?php
+        $latest_posts = get_posts([
+            'numberposts' => 3,
+            'post_status' => 'publish',
+        ]);
+        if (!empty($latest_posts)) :
+        ?>
         <div class="gallery-grid" style="margin-bottom: 36px;">
-            <!-- 1. Kart: Haber -->
-            <article class="gallery-card">
-                <div class="gallery-card-thumb">
-                    <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg" alt="Açık Hava Bahçe Bölümü" loading="lazy">
-                    <span class="gallery-card-badge badge-haber">Haber & Duyuru</span>
-                </div>
-                <div class="gallery-card-body">
-                    <div class="gallery-card-meta">
-                        <span>📅 15 Mayıs 2026</span>
-                        <span class="sep">•</span>
-                        <span>👤 Mutfak Ekibi</span>
-                    </div>
-                    <h3 class="gallery-card-title">
-                        Sarıkaya'da Bahar ve Yaz Sezonuna Özel Açık Hava Bahçe Bölümümüz Yenilendi
-                    </h3>
-                    <p class="gallery-card-excerpt">
-                        Aileler ve çocuklar için özel olarak hazırlanan ferah açık hava bahçe salonumuz, konforlu masaları ve mama sandalyesi desteğiyle hizmetinizde.
-                    </p>
-                    <div class="gallery-card-footer">
-                        <a href="<?php echo esc_url(home_url('/haberler-galeri/')); ?>" class="gallery-link">
-                            Haberin Detayları →
-                        </a>
-                    </div>
-                </div>
-            </article>
+            <?php foreach ($latest_posts as $lp) :
+                $p_cats   = get_the_category($lp->ID);
+                $p_cat    = !empty($p_cats) ? $p_cats[0] : null;
+                $cat_slug = $p_cat ? $p_cat->slug : 'blog';
+                $cat_name = $p_cat ? $p_cat->name : 'Lezzet Rehberi';
 
-            <!-- 2. Kart: Blog -->
-            <article class="gallery-card">
-                <div class="gallery-card-thumb">
-                    <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/adana.jpg" alt="Meşe Kömüründe Kebap Sanatı" loading="lazy">
-                    <span class="gallery-card-badge badge-blog">Lezzet Rehberi</span>
-                </div>
-                <div class="gallery-card-body">
-                    <div class="gallery-card-meta">
-                        <span>📅 12 Mayıs 2026</span>
-                        <span class="sep">•</span>
-                        <span>👤 Selim Usta</span>
-                    </div>
-                    <h3 class="gallery-card-title">
-                        Hakiki Meşe Kömüründe Kebap Pişirmenin Püf Noktaları ve Et Dinlendirme
-                    </h3>
-                    <p class="gallery-card-excerpt">
-                        Zırhtan geçen etlerin meşe kömürü közünde lokum gibi pişirilmesinin püf noktalarını ve ustalarımızın özel terbiye sırlarını inceleyin.
-                    </p>
-                    <div class="gallery-card-footer">
-                        <a href="<?php echo esc_url(home_url('/haberler-galeri/')); ?>" class="gallery-link">
-                            Yazıyı Oku →
-                        </a>
-                    </div>
-                </div>
-            </article>
+                $b_class = 'badge-blog';
+                if (strpos($cat_slug, 'haber') !== false) {
+                    $b_class = 'badge-haber';
+                } elseif (strpos($cat_slug, 'galeri') !== false) {
+                    $b_class = 'badge-galeri';
+                }
 
-            <!-- 3. Kart: Galeri -->
+                $t_url = '';
+                if (has_post_thumbnail($lp->ID)) {
+                    $t_url = get_the_post_thumbnail_url($lp->ID, 'large');
+                } else {
+                    $meta_t = get_post_meta($lp->ID, '_mis360_external_thumb', true);
+                    if ($meta_t) {
+                        $t_url = $meta_t;
+                    } else {
+                        $t_url = (strpos($cat_slug, 'haber') !== false || strpos($cat_slug, 'galeri') !== false)
+                            ? 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg'
+                            : 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/adana.jpg';
+                    }
+                }
+            ?>
             <article class="gallery-card">
                 <div class="gallery-card-thumb">
-                    <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/pide.jpg" alt="Taş Fırın Pideleri" loading="lazy">
-                    <span class="gallery-card-badge badge-galeri">Fotoğraf Galerisi</span>
+                    <img src="<?php echo esc_url($t_url); ?>" alt="<?php echo esc_attr($lp->post_title); ?>" loading="lazy">
+                    <span class="gallery-card-badge <?php echo esc_attr($b_class); ?>"><?php echo esc_html($cat_name); ?></span>
                 </div>
                 <div class="gallery-card-body">
                     <div class="gallery-card-meta">
-                        <span>📸 Mutfaktan Kareler</span>
+                        <span>📅 <?php echo esc_html(get_the_date('j F Y', $lp->ID)); ?></span>
+                        <span class="sep">•</span>
+                        <span>👤 <?php echo esc_html(get_the_author_meta('display_name', $lp->post_author)); ?></span>
                     </div>
                     <h3 class="gallery-card-title">
-                        Taş Fırınımızdan Yeni Çıkan Çıtır Kıymalı & Kuşbaşılı Pidelerimiz
+                        <a href="<?php echo esc_url(get_permalink($lp->ID)); ?>" style="color: inherit; text-decoration: none;">
+                            <?php echo esc_html($lp->post_title); ?>
+                        </a>
                     </h3>
                     <p class="gallery-card-excerpt">
-                        Hakiki taş fırın ateşinde incecik açılan hamur ve zengin iç harçla sofralarınıza gelen lezzet şöleni.
+                        <?php echo esc_html(wp_trim_words($lp->post_excerpt ?: wp_strip_all_tags($lp->post_content), 18, '...')); ?>
                     </p>
                     <div class="gallery-card-footer">
-                        <a href="<?php echo esc_url(home_url('/haberler-galeri/')); ?>" class="gallery-link">
-                            Tüm Galeriyi Gör →
+                        <a href="<?php echo esc_url(get_permalink($lp->ID)); ?>" class="gallery-link">
+                            Yazıyı Oku & Detaylar →
                         </a>
                     </div>
                 </div>
             </article>
+            <?php endforeach; ?>
         </div>
+        <?php endif; ?>
 
         <div class="text-center">
             <a href="<?php echo esc_url(home_url('/haberler-galeri/')); ?>" class="btn btn-outline-dark btn-md">

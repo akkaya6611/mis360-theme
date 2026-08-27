@@ -64,7 +64,7 @@ $whatsapp    = '905465033132';
                 <div class="partner-logo">ÖZEL KUZU TANDIR & DESTİ KEBABI</div>
                 <div class="partner-logo">AÇIK HAVA BAHÇE BÖLÜMÜ</div>
                 <div class="partner-logo">MAMA SANDALYESİ & AİLE SALONU</div>
-                <div class="partner-logo">GECE 23:45'E KADAR KESİNTİSİZ HİZMET</div>
+                <div class="partner-logo">SABAH 06:00 AÇILIŞ • GECE 23:45 KESİNTİSİZ HİZMET</div>
                 <!-- Kesintisiz sonsuz döngü için tekrar -->
                 <div class="partner-logo">10+ YILLIK DENEYİM</div>
                 <div class="partner-logo">MEŞE KÖMÜRÜNDE KEBAPLAR</div>
@@ -73,7 +73,7 @@ $whatsapp    = '905465033132';
                 <div class="partner-logo">ÖZEL KUZU TANDIR & DESTİ KEBABI</div>
                 <div class="partner-logo">AÇIK HAVA BAHÇE BÖLÜMÜ</div>
                 <div class="partner-logo">MAMA SANDALYESİ & AİLE SALONU</div>
-                <div class="partner-logo">GECE 23:45'E KADAR KESİNTİSİZ HİZMET</div>
+                <div class="partner-logo">SABAH 06:00 AÇILIŞ • GECE 23:45 KESİNTİSİZ HİZMET</div>
             </div>
         </div>
     </div>
@@ -184,8 +184,8 @@ $whatsapp    = '905465033132';
                         <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
                 </div>
-                <h3 class="feature-card-title">Gece 23:45'e Kadar Açık</h3>
-                <p class="feature-card-description">Haftanın 7 günü 10:00 – 23:45 saatleri arasında kesintisiz restoran ve sıcak paket servis hizmeti.</p>
+                <h3 class="feature-card-title">Sabah 06:00'da Açılış</h3>
+                <p class="feature-card-description">Haftanın 7 günü sabah 06:00'dan gece 23:45'e kadar sıcak çorba, taş fırın lezzetleri ve kesintisiz restoran hizmeti.</p>
             </div>
 
         </div>
@@ -660,6 +660,8 @@ $whatsapp    = '905465033132';
                         <div class="reservation-date-row">
                             <input type="date" id="bzDate" required style="flex: 1; padding: 12px 10px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 13px; background: #ffffff;">
                             <select id="bzTime" style="width: 110px; padding: 12px 8px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 13px; background: #ffffff;">
+                                <option value="07:30">07:30 (Sabah)</option>
+                                <option value="09:00">09:00</option>
                                 <option value="12:30">12:30</option>
                                 <option value="14:00">14:00</option>
                                 <option value="18:00">18:00</option>

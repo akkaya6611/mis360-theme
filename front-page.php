@@ -617,6 +617,11 @@ $whatsapp    = '905465033132';
 </section>
 
 <!-- 6. Google Müşteri Yorumları & Değerlendirmeleri Slider (Denfora 1:1 Architecture) -->
+<!-- 6. Google Müşteri Yorumları & Değerlendirmeleri Slider (Canlı Otomatik Güncellenir) -->
+<?php
+$google_stats   = function_exists('mis360_get_google_stats') ? mis360_get_google_stats() : ['rating' => '4.3', 'total_reviews' => 448];
+$google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_google_reviews() : [];
+?>
 <section class="section reviews-section" id="reviews">
     <div class="container">
         
@@ -628,9 +633,9 @@ $whatsapp    = '905465033132';
                     <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
                     <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
                 </svg>
-                <span class="google-rating-number">4.3</span>
+                <span class="google-rating-number"><?php echo esc_html($google_stats['rating']); ?></span>
                 <span class="google-stars">★★★★★</span>
-                <span class="google-count-text">(448 Doğrulanmış Google Yorumu)</span>
+                <span class="google-count-text">(<?php echo esc_html($google_stats['total_reviews']); ?> Doğrulanmış Google Yorumu)</span>
             </div>
             <h2 class="section-title">Misafirlerimizin Deneyimleri</h2>
             <p class="section-subtitle">
@@ -643,15 +648,30 @@ $whatsapp    = '905465033132';
             <div class="reviews-viewport" id="reviewsViewport">
                 <div class="reviews-track" id="reviewsTrack">
                     
-                    <!-- Yorum 1 -->
+                    <?php foreach ($google_reviews as $rev) : 
+                        $initials = '';
+                        $parts = explode(' ', trim($rev['author_name']));
+                        foreach ($parts as $p) {
+                            if (!empty($p)) {
+                                $initials .= mb_substr($p, 0, 1, 'UTF-8');
+                            }
+                        }
+                        $initials = mb_substr($initials, 0, 2, 'UTF-8');
+                        $bg = !empty($rev['avatar_bg']) ? $rev['avatar_bg'] : '#e0e7ff';
+                        $color = !empty($rev['avatar_color']) ? $rev['avatar_color'] : '#4338ca';
+                        $star_count = min(5, max(1, (int) ($rev['rating'] ?? 5)));
+                        $stars_str = str_repeat('★', $star_count);
+                    ?>
                     <article class="review-card">
                         <div class="review-card-header">
                             <div class="review-user-info">
-                                <div class="review-avatar">MY</div>
+                                <div class="review-avatar" style="background: <?php echo esc_attr($bg); ?>; color: <?php echo esc_attr($color); ?>;">
+                                    <?php echo esc_html($initials); ?>
+                                </div>
                                 <div>
-                                    <h4 class="review-user-name">Murat Yılmaz</h4>
+                                    <h4 class="review-user-name"><?php echo esc_html($rev['author_name']); ?></h4>
                                     <span class="review-user-badge">
-                                        📍 Yerel Rehber • 48 yorum
+                                        📍 <?php echo esc_html($rev['badge'] ?? 'Doğrulanmış Ziyaretçi'); ?>
                                     </span>
                                 </div>
                             </div>
@@ -663,159 +683,15 @@ $whatsapp    = '905465033132';
                             </svg>
                         </div>
                         <div class="review-rating-row">
-                            <span class="review-stars">★★★★★</span>
-                            <span class="review-date">• 2 hafta önce</span>
+                            <span class="review-stars"><?php echo esc_html($stars_str); ?></span>
+                            <span class="review-date">• <?php echo esc_html($rev['time_text'] ?? 'Yeni'); ?></span>
                         </div>
                         <p class="review-text">
-                            "Sarıkaya'ya yolunuz düşerse mutlaka uğramanız gereken bir lezzet durağı. Meşe kömüründe pişen Adana kebap ve kuzu şiş lokum gibiydi. Sabah çorbası ve taş fırın pidesi harika. Güler yüzlü hizmet ve tertemiz aile ortamı için teşekkür ederiz."
+                            "<?php echo esc_html($rev['text']); ?>"
                         </p>
-                        <span class="review-tag">✓ Kömürde Kebap & Sabah Çorbası</span>
+                        <span class="review-tag"><?php echo esc_html($rev['tag'] ?? '✓ Doğrulanmış Ziyaretçi Deneyimi'); ?></span>
                     </article>
-
-                    <!-- Yorum 2 -->
-                    <article class="review-card">
-                        <div class="review-card-header">
-                            <div class="review-user-info">
-                                <div class="review-avatar" style="background: #e0e7ff; color: #4338ca;">AD</div>
-                                <div>
-                                    <h4 class="review-user-name">Ahmet Demir</h4>
-                                    <span class="review-user-badge">
-                                        📍 Doğrulanmış Ziyaretçi
-                                    </span>
-                                </div>
-                            </div>
-                            <svg class="review-google-logo" viewBox="0 0 24 24">
-                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-                            </svg>
-                        </div>
-                        <div class="review-rating-row">
-                            <span class="review-stars">★★★★★</span>
-                            <span class="review-date">• 1 ay önce</span>
-                        </div>
-                        <p class="review-text">
-                            "Yozgat - Kayseri güzergahında ailece her zaman mola verdiğimiz değişmez yerimiz. Açık hava bahçe bölümü çok ferah, çocuklar için mama sandalyesi olması büyük kolaylık. Güveçte kuzu tandır ve sıcak künefesi enfesti."
-                        </p>
-                        <span class="review-tag">✓ Kuzu Tandır & Sıcak Künefe</span>
-                    </article>
-
-                    <!-- Yorum 3 -->
-                    <article class="review-card">
-                        <div class="review-card-header">
-                            <div class="review-user-info">
-                                <div class="review-avatar" style="background: #fce7f3; color: #be185d;">AK</div>
-                                <div>
-                                    <h4 class="review-user-name">Ayşe Kaya</h4>
-                                    <span class="review-user-badge">
-                                        📍 Yerel Rehber • 24 yorum
-                                    </span>
-                                </div>
-                            </div>
-                            <svg class="review-google-logo" viewBox="0 0 24 24">
-                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-                            </svg>
-                        </div>
-                        <div class="review-rating-row">
-                            <span class="review-stars">★★★★★</span>
-                            <span class="review-date">• 3 hafta önce</span>
-                        </div>
-                        <p class="review-text">
-                            "Sarıkaya'da bu kalitede ve hijyende bir restoran bulmak çok sevindirici. Hem kebaplar hem de günlük taze balık reyonu çok başarılı. Masaya gelen ikramlar, fırından yeni çıkmış sıcacık lavaşlar ve personelin ilgisi 10 numara."
-                        </p>
-                        <span class="review-tag">✓ Günlük Taze Balık & Zengin İkramlar</span>
-                    </article>
-
-                    <!-- Yorum 4 -->
-                    <article class="review-card">
-                        <div class="review-card-header">
-                            <div class="review-user-info">
-                                <div class="review-avatar" style="background: #dcfce7; color: #15803d;">HÖ</div>
-                                <div>
-                                    <h4 class="review-user-name">Hasan Öztürk</h4>
-                                    <span class="review-user-badge">
-                                        📍 Doğrulanmış Müşteri
-                                    </span>
-                                </div>
-                            </div>
-                            <svg class="review-google-logo" viewBox="0 0 24 24">
-                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-                            </svg>
-                        </div>
-                        <div class="review-rating-row">
-                            <span class="review-stars">★★★★★</span>
-                            <span class="review-date">• 1 ay önce</span>
-                        </div>
-                        <p class="review-text">
-                            "Sabah 06:00'da sıcak mercimek ve paça çorbasıyla güne başlamak harika bir deneyim. Taş fırından yeni çıkmış çıtır lahmacun ve kuşbaşılı pideyi mutlaka deneyin. Hijyenik açık mutfak ve hızlı servis."
-                        </p>
-                        <span class="review-tag">✓ Taş Fırın Lahmacun & Paça Çorbası</span>
-                    </article>
-
-                    <!-- Yorum 5 -->
-                    <article class="review-card">
-                        <div class="review-card-header">
-                            <div class="review-user-info">
-                                <div class="review-avatar" style="background: #fef3c7; color: #b45309;">FŞ</div>
-                                <div>
-                                    <h4 class="review-user-name">Fatma Şahin</h4>
-                                    <span class="review-user-badge">
-                                        📍 Aile Ziyareti
-                                    </span>
-                                </div>
-                            </div>
-                            <svg class="review-google-logo" viewBox="0 0 24 24">
-                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-                            </svg>
-                        </div>
-                        <div class="review-rating-row">
-                            <span class="review-stars">★★★★★</span>
-                            <span class="review-date">• 2 ay önce</span>
-                        </div>
-                        <p class="review-text">
-                            "Özel aile davetimiz için önceden masa ayırtmıştık. Masamız tam vaktinde ve eksiksiz hazırlandı. Hakiki tereyağlı İskender ve toprak güveçte fırın sütlaç çok lezzetliydi. Emeği geçen tüm ustalara teşekkürler."
-                        </p>
-                        <span class="review-tag">✓ Tereyağlı İskender & Fırın Sütlaç</span>
-                    </article>
-
-                    <!-- Yorum 6 -->
-                    <article class="review-card">
-                        <div class="review-card-header">
-                            <div class="review-user-info">
-                                <div class="review-avatar" style="background: #e2e8f0; color: #334155;">EK</div>
-                                <div>
-                                    <h4 class="review-user-name">Emre Can Kılıç</h4>
-                                    <span class="review-user-badge">
-                                        📍 Yerel Rehber • 36 yorum
-                                    </span>
-                                </div>
-                            </div>
-                            <svg class="review-google-logo" viewBox="0 0 24 24">
-                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-                            </svg>
-                        </div>
-                        <div class="review-rating-row">
-                            <span class="review-stars">★★★★★</span>
-                            <span class="review-date">• 2 ay önce</span>
-                        </div>
-                        <p class="review-text">
-                            "2015'ten beri Sarıkaya'da kalitesinden ödün vermeyen köklü bir işletme. Etlerin lezzeti, porsiyonların doyuruculuğu ve samimi esnaflıkları takdire şayan. 4.3 Google puanını fazlasıyla hak ediyor."
-                        </p>
-                        <span class="review-tag">✓ Beyti Sarma & Özel Desti Kebabı</span>
-                    </article>
+                    <?php endforeach; ?>
 
                 </div>
             </div>
@@ -841,7 +717,7 @@ $whatsapp    = '905465033132';
         <!-- Google Haritalar Eylemleri -->
         <div class="text-center mt-10" style="display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap;">
             <a href="https://maps.app.goo.gl/q2icLBRX1FJNzVtY7" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark btn-md">
-                Google'da Tüm 448 Yorumu İncele →
+                Google'da Tüm <?php echo esc_html($google_stats['total_reviews']); ?> Yorumu İncele →
             </a>
             <a href="https://maps.app.goo.gl/q2icLBRX1FJNzVtY7" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-md">
                 ⭐ Google'da Siz de Yorum Yazın

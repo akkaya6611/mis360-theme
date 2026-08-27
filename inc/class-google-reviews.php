@@ -142,7 +142,7 @@ class MIS360_Google_Reviews {
                 'badge'         => 'Yerel Rehber • 36 yorum',
                 'rating'        => 5,
                 'time_text'     => '2 ay önce',
-                'text'          => '2015\'ten beri Sarıkaya\'da kalitesinden ödün vermeyen köklü bir işletme. Etlerin lezzeti, porsiyonların doyuruculuğu ve samimi esnaflıkları takdire şayan. 4.3 Google puanını fazlasıyla hak ediyor.',
+                'text'          => '2019\'dan beri Sarıkaya\'da kalitesinden ödün vermeyen köklü bir işletme. Etlerin lezzeti, porsiyonların doyuruculuğu ve samimi esnaflıkları takdire şayan. 4.3 Google puanını fazlasıyla hak ediyor.',
                 'tag'           => 'Beyti Sarma & Özel Desti Kebabı',
                 'avatar_bg'     => '#e2e8f0',
                 'avatar_color'  => '#334155',

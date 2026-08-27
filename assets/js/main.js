@@ -90,6 +90,16 @@
           this.close();
         }
       });
+
+      // Menü içindeki linke tıklandığında çekmeceyi kapat
+      if (this.drawer) {
+        const links = this.drawer.querySelectorAll('a');
+        links.forEach((link) => {
+          link.addEventListener('click', () => {
+            this.close();
+          });
+        });
+      }
     },
 
     open() {

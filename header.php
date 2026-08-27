@@ -15,10 +15,11 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$phone       = '0535 830 93 07';
-$clean_phone = '+905358309307';
-$whatsapp    = '905358309307';
-$logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/cropped-Basliksiz-1-1.png';
+$phone         = '0535 830 93 07';
+$clean_phone   = '+905358309307';
+$whatsapp      = '905358309307';
+$logo_url      = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/cropped-Basliksiz-1-1.png';
+$anchor_prefix = is_front_page() ? '' : home_url('/');
 ?><!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -87,57 +88,57 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
 
             <!-- Sadeleştirilmiş Masaüstü Navigasyon (Yemekler Menümüz Altında Dropdown) -->
             <nav class="header-nav" aria-label="<?php esc_attr_e('Ana Navigasyon', 'mis360'); ?>">
-                <a href="<?php echo esc_url(home_url('/')); ?>" class="nav-link active">
+                <a href="<?php echo esc_url(home_url('/')); ?>" class="nav-link <?php echo is_front_page() ? 'active' : ''; ?>">
                     <?php esc_html_e('Ana Sayfa', 'mis360'); ?>
                 </a>
 
                 <!-- Menümüz (Açılır Dropdown Menü) -->
                 <div class="nav-item">
-                    <a href="#menu" class="nav-link has-dropdown-toggle">
+                    <a href="<?php echo esc_url($anchor_prefix . '#menu'); ?>" class="nav-link has-dropdown-toggle">
                         <?php esc_html_e('Menümüz', 'mis360'); ?>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </a>
                     <div class="nav-dropdown">
-                        <a href="#kebaplar" class="nav-dropdown-link">
+                        <a href="<?php echo esc_url($anchor_prefix . '#kebaplar'); ?>" class="nav-dropdown-link">
                             <span class="nav-dropdown-icon">🥩</span>
                             <span>Kebap Çeşitlerimiz</span>
                         </a>
-                        <a href="#pideler" class="nav-dropdown-link">
+                        <a href="<?php echo esc_url($anchor_prefix . '#pideler'); ?>" class="nav-dropdown-link">
                             <span class="nav-dropdown-icon">🍕</span>
                             <span>Pide & Lahmacun</span>
                         </a>
-                        <a href="#donerler" class="nav-dropdown-link">
+                        <a href="<?php echo esc_url($anchor_prefix . '#donerler'); ?>" class="nav-dropdown-link">
                             <span class="nav-dropdown-icon">🥙</span>
                             <span>Döner & İskender</span>
                         </a>
-                        <a href="#tatlilar" class="nav-dropdown-link">
+                        <a href="<?php echo esc_url($anchor_prefix . '#tatlilar'); ?>" class="nav-dropdown-link">
                             <span class="nav-dropdown-icon">🍲</span>
                             <span>Sıcak Çorbalar</span>
                         </a>
-                        <a href="#tatlilar" class="nav-dropdown-link">
+                        <a href="<?php echo esc_url($anchor_prefix . '#tatlilar'); ?>" class="nav-dropdown-link">
                             <span class="nav-dropdown-icon">🍯</span>
                             <span>Tatlılarımız</span>
                         </a>
                         <div style="border-top: 1px solid var(--color-gray-100); margin: 6px 0;"></div>
-                        <a href="#menu" class="nav-dropdown-link" style="color: var(--color-primary);">
+                        <a href="<?php echo esc_url($anchor_prefix . '#menu'); ?>" class="nav-dropdown-link" style="color: var(--color-primary);">
                             <span class="nav-dropdown-icon">📋</span>
                             <span>Tüm Menüyü İncele →</span>
                         </a>
                     </div>
                 </div>
 
-                <a href="#about" class="nav-link">
+                <a href="<?php echo esc_url($anchor_prefix . '#about'); ?>" class="nav-link">
                     <?php esc_html_e('Hakkımızda', 'mis360'); ?>
                 </a>
-                <a href="<?php echo esc_url(home_url('/haberler-galeri/')); ?>" class="nav-link">
+                <a href="<?php echo esc_url(home_url('/haberler-galeri/')); ?>" class="nav-link <?php echo (is_page('haberler-galeri') || is_singular('post') || is_archive()) ? 'active' : ''; ?>">
                     <?php esc_html_e('Haberler & Galeri', 'mis360'); ?>
                 </a>
-                <a href="#reservation" class="nav-link">
+                <a href="<?php echo esc_url($anchor_prefix . '#reservation'); ?>" class="nav-link">
                     <?php esc_html_e('Masa Rezervasyonu', 'mis360'); ?>
                 </a>
-                <a href="#contact" class="nav-link">
+                <a href="<?php echo esc_url($anchor_prefix . '#contact'); ?>" class="nav-link">
                     <?php esc_html_e('İletişim & Konum', 'mis360'); ?>
                 </a>
             </nav>
@@ -181,26 +182,26 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
             </div>
 
             <div class="mobile-nav-body">
-                <a href="<?php echo esc_url(home_url('/')); ?>" class="mobile-nav-link active"><?php esc_html_e('Ana Sayfa', 'mis360'); ?></a>
+                <a href="<?php echo esc_url(home_url('/')); ?>" class="mobile-nav-link <?php echo is_front_page() ? 'active' : ''; ?>"><?php esc_html_e('Ana Sayfa', 'mis360'); ?></a>
                 
                 <!-- Mobil Menümüz ve Alt Yemek Başlıkları -->
                 <div style="margin-bottom: 6px;">
-                    <a href="#menu" class="mobile-nav-link" style="font-weight: 700; color: var(--color-black);">
+                    <a href="<?php echo esc_url($anchor_prefix . '#menu'); ?>" class="mobile-nav-link" style="font-weight: 700; color: var(--color-black);">
                         <?php esc_html_e('Menümüz', 'mis360'); ?>
                     </a>
                     <div class="mobile-nav-submenu">
-                        <a href="#kebaplar" class="mobile-nav-sublink">🥩 Kebap Çeşitlerimiz</a>
-                        <a href="#pideler" class="mobile-nav-sublink">🍕 Pide & Lahmacun</a>
-                        <a href="#donerler" class="mobile-nav-sublink">🥙 Döner & İskender</a>
-                        <a href="#tatlilar" class="mobile-nav-sublink">🍲 Sıcak Çorbalar</a>
-                        <a href="#tatlilar" class="mobile-nav-sublink">🍯 Tatlılarımız</a>
+                        <a href="<?php echo esc_url($anchor_prefix . '#kebaplar'); ?>" class="mobile-nav-sublink">🥩 Kebap Çeşitlerimiz</a>
+                        <a href="<?php echo esc_url($anchor_prefix . '#pideler'); ?>" class="mobile-nav-sublink">🍕 Pide & Lahmacun</a>
+                        <a href="<?php echo esc_url($anchor_prefix . '#donerler'); ?>" class="mobile-nav-sublink">🥙 Döner & İskender</a>
+                        <a href="<?php echo esc_url($anchor_prefix . '#tatlilar'); ?>" class="mobile-nav-sublink">🍲 Sıcak Çorbalar</a>
+                        <a href="<?php echo esc_url($anchor_prefix . '#tatlilar'); ?>" class="mobile-nav-sublink">🍯 Tatlılarımız</a>
                     </div>
                 </div>
 
-                <a href="#about" class="mobile-nav-link"><?php esc_html_e('Hakkımızda', 'mis360'); ?></a>
-                <a href="<?php echo esc_url(home_url('/haberler-galeri/')); ?>" class="mobile-nav-link"><?php esc_html_e('Haberler & Galeri', 'mis360'); ?></a>
-                <a href="#reservation" class="mobile-nav-link"><?php esc_html_e('Masa Rezervasyonu', 'mis360'); ?></a>
-                <a href="#contact" class="mobile-nav-link"><?php esc_html_e('İletişim & Konum', 'mis360'); ?></a>
+                <a href="<?php echo esc_url($anchor_prefix . '#about'); ?>" class="mobile-nav-link"><?php esc_html_e('Hakkımızda', 'mis360'); ?></a>
+                <a href="<?php echo esc_url(home_url('/haberler-galeri/')); ?>" class="mobile-nav-link <?php echo (is_page('haberler-galeri') || is_singular('post') || is_archive()) ? 'active' : ''; ?>"><?php esc_html_e('Haberler & Galeri', 'mis360'); ?></a>
+                <a href="<?php echo esc_url($anchor_prefix . '#reservation'); ?>" class="mobile-nav-link"><?php esc_html_e('Masa Rezervasyonu', 'mis360'); ?></a>
+                <a href="<?php echo esc_url($anchor_prefix . '#contact'); ?>" class="mobile-nav-link"><?php esc_html_e('İletişim & Konum', 'mis360'); ?></a>
 
                 <div class="mobile-nav-divider"></div>
 

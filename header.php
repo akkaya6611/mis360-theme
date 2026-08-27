@@ -1,7 +1,7 @@
 <?php
 /**
  * MİS360 Header Template
- * Modern Pill Floating Header & Luxury Mega Menu
+ * 1:1 Denfora Architecture (Sticky Header, Language Switcher, WhatsApp Button & Mobile Drawer)
  *
  * @package MİS360
  * @author  Serkan AKKAYA <https://misteknoloji360.com.tr/>
@@ -13,6 +13,10 @@ declare(strict_types=1);
 if (!defined('ABSPATH')) {
     exit;
 }
+
+$phone       = get_theme_mod('mis360_phone', '+90 555 123 4567');
+$clean_phone = preg_replace('/[^0-9+]/', '', $phone);
+$whatsapp    = get_theme_mod('mis360_whatsapp', '905551234567');
 ?><!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -21,7 +25,7 @@ if (!defined('ABSPATH')) {
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <?php wp_head(); ?>
 </head>
 
@@ -32,317 +36,163 @@ if (!defined('ABSPATH')) {
     <?php esc_html_e('İçeriğe Atla', 'mis360'); ?>
 </a>
 
-<div id="page" class="mis-site-wrapper base-template__wrapper">
+<div id="page" class="site-wrapper">
 
     <?php
     // Elementor Pro Theme Builder Header kontrolü
     if (!function_exists('elementor_theme_do_location') || !elementor_theme_do_location('header')) :
     ?>
-    <div class="wrapper header-wrapper-container" style="margin: 0 auto; padding: 20px 20px 0; width: 100%;">
-        <header id="masthead" class="header">
-            <div class="header__wrapper">
-                
-                <!-- Logo -->
-                <div class="header__logo">
-                    <?php
-                    if (has_custom_logo()) :
-                        the_custom_logo();
-                    else :
-                        ?>
-                        <a href="<?php echo esc_url(home_url('/')); ?>" class="header__logo-link">
-                            <span style="font-weight: 900; font-size: 22px; color: #fff; letter-spacing: -0.02em;">MİS<span style="color: var(--color-primary, #05f9ff);">360</span></span>
-                        </a>
-                    <?php endif; ?>
-                </div>
+    <header class="header" id="siteHeader">
+        <div class="header-inner">
+            
+            <!-- Logo -->
+            <a href="<?php echo esc_url(home_url('/')); ?>" class="header-logo" rel="home">
+                <?php
+                if (has_custom_logo()) :
+                    the_custom_logo();
+                else :
+                    ?>
+                    <span class="header-brand-text">MİS<span>360</span></span>
+                <?php endif; ?>
+            </a>
 
-                <!-- Navigasyon Sarmalayıcı -->
-                <div class="header__navigation-wrapper" id="headerNavigationWrapper">
-                    <nav class="header__navigation" aria-label="<?php esc_attr_e('Ana Menü', 'mis360'); ?>">
-                        <ul class="header__list">
-                            
-                            <li class="header__list-item">
-                                <a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('Ana Sayfa', 'mis360'); ?></a>
-                            </li>
-
-                            <!-- Lüks Mega Menü (Sektörel Çözümler & Demolar) -->
-                            <li class="header__list-item has-dropdown">
-                                <a href="#" class="header__link-dropdown">
-                                    <span><?php esc_html_e('Sektörel Çözümler', 'mis360'); ?></span>
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="6 9 12 15 18 9"></polyline>
-                                    </svg>
-                                </a>
-
-                                <!-- Submenu Wrapper (Mega Menü) -->
-                                <div class="submenu-wrapper">
-                                    <div class="submenu-list__wrapper">
-                                        <div class="submenu-list__title"><?php esc_html_e('Sektör Seçimi', 'mis360'); ?></div>
-                                        <ul class="submenu-list">
-                                            
-                                            <!-- Tab 1: Yol Yardım & Çekici -->
-                                            <li class="submenu-list__item has-submenu active" data-tab="emergency">
-                                                <div class="submenu-list__item-wrapper">
-                                                    <div class="submenu-list__item-icon" style="font-size: 20px;">🚨</div>
-                                                    <div class="submenu-list__item-link">
-                                                        <span class="submenu-list__item-title"><?php esc_html_e('Yol Yardım & Çekici', 'mis360'); ?></span>
-                                                        <span class="submenu-list__item-subtile"><?php esc_html_e('7/24 Acil Çağrı & Konum', 'mis360'); ?></span>
-                                                    </div>
-                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                        <polyline points="9 18 15 12 9 6"></polyline>
-                                                    </svg>
-                                                </div>
-
-                                                <div class="submenu-content">
-                                                    <div class="submenu-content__title"><?php esc_html_e('Acil Yol Yardım Hizmetleri', 'mis360'); ?></div>
-                                                    <div class="submenu-content__list">
-                                                        <div class="submenu-content__list-item">
-                                                            <div class="submenu-content__link">
-                                                                <div class="submenu-content__link-title"><?php esc_html_e('Oto Çekici & Kurtarıcı', 'mis360'); ?></div>
-                                                                <div class="submenu-content__link-text"><?php esc_html_e('15 dakikada en yakın çekici ekibi yanınızda.', 'mis360'); ?></div>
-                                                                <a href="<?php echo esc_url(home_url('/acil-yol-yardim-oto-cekici-demo/')); ?>" class="submenu-content__url">
-                                                                    <span><?php esc_html_e('Demoyu İncele', 'mis360'); ?></span>
-                                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="submenu-content__list-item">
-                                                            <div class="submenu-content__link">
-                                                                <div class="submenu-content__link-title"><?php esc_html_e('Akü Takviye & Servis', 'mis360'); ?></div>
-                                                                <div class="submenu-content__link-text"><?php esc_html_e('Yerinde akü ölçümü ve hızlı takviye desteği.', 'mis360'); ?></div>
-                                                                <a href="<?php echo esc_url(home_url('/acil-yol-yardim-oto-cekici-demo/')); ?>" class="submenu-content__url">
-                                                                    <span><?php esc_html_e('Hizmeti Gör', 'mis360'); ?></span>
-                                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="submenu-content__list-item">
-                                                            <div class="submenu-content__link">
-                                                                <div class="submenu-content__link-title"><?php esc_html_e('Ağır Vasıta & Vinç', 'mis360'); ?></div>
-                                                                <div class="submenu-content__link-text"><?php esc_html_e('Ahtapot ve vinçli özel kurtarma filosu.', 'mis360'); ?></div>
-                                                                <a href="<?php echo esc_url(home_url('/acil-yol-yardim-oto-cekici-demo/')); ?>" class="submenu-content__url">
-                                                                    <span><?php esc_html_e('Vinç Hizmeti', 'mis360'); ?></span>
-                                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <!-- Tab 2: Restoran & Gurme -->
-                                            <li class="submenu-list__item has-submenu" data-tab="restaurant">
-                                                <div class="submenu-list__item-wrapper">
-                                                    <div class="submenu-list__item-icon" style="font-size: 20px;">🍽️</div>
-                                                    <div class="submenu-list__item-link">
-                                                        <span class="submenu-list__item-title"><?php esc_html_e('Gourmet Restoran', 'mis360'); ?></span>
-                                                        <span class="submenu-list__item-subtile"><?php esc_html_e('Menü & WhatsApp Sipariş', 'mis360'); ?></span>
-                                                    </div>
-                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                        <polyline points="9 18 15 12 9 6"></polyline>
-                                                    </svg>
-                                                </div>
-
-                                                <div class="submenu-content">
-                                                    <div class="submenu-content__title"><?php esc_html_e('Gurme Restoran & Menü Kataloğu', 'mis360'); ?></div>
-                                                    <div class="submenu-content__list">
-                                                        <div class="submenu-content__list-item">
-                                                            <div class="submenu-content__link">
-                                                                <div class="submenu-content__link-title"><?php esc_html_e('Şefin Spesiyalleri', 'mis360'); ?></div>
-                                                                <div class="submenu-content__link-text"><?php esc_html_e('Odun ateşinde ağır pişen özel et ve tava lezzetleri.', 'mis360'); ?></div>
-                                                                <a href="<?php echo esc_url(home_url('/gourmet-bistro-restoran-menu-demo/')); ?>" class="submenu-content__url">
-                                                                    <span><?php esc_html_e('Menüyü İncele', 'mis360'); ?></span>
-                                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="submenu-content__list-item">
-                                                            <div class="submenu-content__link">
-                                                                <div class="submenu-content__link-title"><?php esc_html_e('WhatsApp Kolay Sipariş', 'mis360'); ?></div>
-                                                                <div class="submenu-content__link-text"><?php esc_html_e('Menüden tek tıkla doğrudan sipariş iletin.', 'mis360'); ?></div>
-                                                                <a href="<?php echo esc_url(home_url('/gourmet-bistro-restoran-menu-demo/')); ?>" class="submenu-content__url">
-                                                                    <span><?php esc_html_e('Sipariş Ver', 'mis360'); ?></span>
-                                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="submenu-content__list-item">
-                                                            <div class="submenu-content__link">
-                                                                <div class="submenu-content__link-title"><?php esc_html_e('Masa Rezervasyonu', 'mis360'); ?></div>
-                                                                <div class="submenu-content__link-text"><?php esc_html_e('Özel davet ve kutlamalarınız için masanızı ayırtın.', 'mis360'); ?></div>
-                                                                <a href="<?php echo esc_url(home_url('/gourmet-bistro-restoran-menu-demo/')); ?>" class="submenu-content__url">
-                                                                    <span><?php esc_html_e('Rezervasyon', 'mis360'); ?></span>
-                                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <!-- Tab 3: İlan & Emlak / Galeri -->
-                                            <li class="submenu-list__item has-submenu" data-tab="listing">
-                                                <div class="submenu-list__item-wrapper">
-                                                    <div class="submenu-list__item-icon" style="font-size: 20px;">🏷️</div>
-                                                    <div class="submenu-list__item-link">
-                                                        <span class="submenu-list__item-title"><?php esc_html_e('İlan & Emlak / Galeri', 'mis360'); ?></span>
-                                                        <span class="submenu-list__item-subtile"><?php esc_html_e('Fiyat, Konum & Portföy', 'mis360'); ?></span>
-                                                    </div>
-                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                        <polyline points="9 18 15 12 9 6"></polyline>
-                                                    </svg>
-                                                </div>
-
-                                                <div class="submenu-content">
-                                                    <div class="submenu-content__title"><?php esc_html_e('İlan & Portföy Seçenekleri', 'mis360'); ?></div>
-                                                    <div class="submenu-content__list">
-                                                        <div class="submenu-content__list-item">
-                                                            <div class="submenu-content__link">
-                                                                <div class="submenu-content__link-title"><?php esc_html_e('Konut & Rezidans', 'mis360'); ?></div>
-                                                                <div class="submenu-content__link-text"><?php esc_html_e('Boğaz manzaralı lüks daire ve villa seçenekleri.', 'mis360'); ?></div>
-                                                                <a href="<?php echo esc_url(home_url('/prestige-ilan-emlak-listeleme-demo/')); ?>" class="submenu-content__url">
-                                                                    <span><?php esc_html_e('İlanları Gör', 'mis360'); ?></span>
-                                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="submenu-content__list-item">
-                                                            <div class="submenu-content__link">
-                                                                <div class="submenu-content__link-title"><?php esc_html_e('Vasıta & Otomobil', 'mis360'); ?></div>
-                                                                <div class="submenu-content__link-text"><?php esc_html_e('Ekspertiz garantili hibrit ve prestij araçlar.', 'mis360'); ?></div>
-                                                                <a href="<?php echo esc_url(home_url('/prestige-ilan-emlak-listeleme-demo/')); ?>" class="submenu-content__url">
-                                                                    <span><?php esc_html_e('Araçları Gör', 'mis360'); ?></span>
-                                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="submenu-content__list-item">
-                                                            <div class="submenu-content__link">
-                                                                <div class="submenu-content__link-title"><?php esc_html_e('Danışman Randevusu', 'mis360'); ?></div>
-                                                                <div class="submenu-content__link-text"><?php esc_html_e('Portföy uzmanı ile doğrudan WhatsApp iletişimi.', 'mis360'); ?></div>
-                                                                <a href="<?php echo esc_url(home_url('/prestige-ilan-emlak-listeleme-demo/')); ?>" class="submenu-content__url">
-                                                                    <span><?php esc_html_e('İletişim', 'mis360'); ?></span>
-                                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <!-- Tab 4: Kurumsal & Ajans -->
-                                            <li class="submenu-list__item has-submenu" data-tab="corporate">
-                                                <div class="submenu-list__item-wrapper">
-                                                    <div class="submenu-list__item-icon" style="font-size: 20px;">🏢</div>
-                                                    <div class="submenu-list__item-link">
-                                                        <span class="submenu-list__item-title"><?php esc_html_e('Kurumsal & Ajans', 'mis360'); ?></span>
-                                                        <span class="submenu-list__item-subtile"><?php esc_html_e('360° Çözümler & Paketler', 'mis360'); ?></span>
-                                                    </div>
-                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                        <polyline points="9 18 15 12 9 6"></polyline>
-                                                    </svg>
-                                                </div>
-
-                                                <div class="submenu-content">
-                                                    <div class="submenu-content__title"><?php esc_html_e('Kurumsal Hizmet Paketleri', 'mis360'); ?></div>
-                                                    <div class="submenu-content__list">
-                                                        <div class="submenu-content__list-item">
-                                                            <div class="submenu-content__link">
-                                                                <div class="submenu-content__link-title"><?php esc_html_e('Özel Yazılım & Web', 'mis360'); ?></div>
-                                                                <div class="submenu-content__link-text"><?php esc_html_e('Yüksek hızlı, SEO uyumlu ve ölçeklenebilir altyapı.', 'mis360'); ?></div>
-                                                                <a href="<?php echo esc_url(home_url('/modern-kurumsal-ajans-360-demo/')); ?>" class="submenu-content__url">
-                                                                    <span><?php esc_html_e('İncele', 'mis360'); ?></span>
-                                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="submenu-content__list-item">
-                                                            <div class="submenu-content__link">
-                                                                <div class="submenu-content__link-title"><?php esc_html_e('Marka & UI/UX Tasarım', 'mis360'); ?></div>
-                                                                <div class="submenu-content__link-text"><?php esc_html_e('Kullanıcı odaklı modern ve minimalist arayüzler.', 'mis360'); ?></div>
-                                                                <a href="<?php echo esc_url(home_url('/modern-kurumsal-ajans-360-demo/')); ?>" class="submenu-content__url">
-                                                                    <span><?php esc_html_e('İncele', 'mis360'); ?></span>
-                                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="submenu-content__list-item">
-                                                            <div class="submenu-content__link">
-                                                                <div class="submenu-content__link-title"><?php esc_html_e('Şeffaf Paketler', 'mis360'); ?></div>
-                                                                <div class="submenu-content__link-text"><?php esc_html_e('İşletmenizin ölçeğine uygun esnek fiyatlandırma.', 'mis360'); ?></div>
-                                                                <a href="<?php echo esc_url(home_url('/modern-kurumsal-ajans-360-demo/')); ?>" class="submenu-content__url">
-                                                                    <span><?php esc_html_e('Paketler', 'mis360'); ?></span>
-                                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="header__list-item">
-                                <a href="<?php echo esc_url(home_url('/ilanlar/')); ?>"><?php esc_html_e('İlanlar', 'mis360'); ?></a>
-                            </li>
-
-                            <li class="header__list-item">
-                                <a href="<?php echo esc_url(home_url('/gourmet-bistro-restoran-menu-demo/')); ?>"><?php esc_html_e('Menü', 'mis360'); ?></a>
-                            </li>
-
-                            <li class="header__list-item">
-                                <a href="<?php echo esc_url(home_url('/acil-yol-yardim-oto-cekici-demo/')); ?>"><?php esc_html_e('Yol Yardım', 'mis360'); ?></a>
-                            </li>
-                        </ul>
-                    </nav>
-
-                    <!-- Sağ Butonlar -->
-                    <div class="header__buttons-wrapper">
-                        <?php
-                        // Yönetici Girişi Yapılmışsa ve Güncelleme Varsa Menüde Bildirim Göster
-                        if (current_user_can('manage_options')) {
-                            $remote_info = get_transient('mis360_remote_update_info');
-                            if ($remote_info && !empty($remote_info['version']) && version_compare(MIS360_VERSION, (string) $remote_info['version'], '<')) {
-                                ?>
-                                <a href="<?php echo esc_url(admin_url('themes.php?page=mis360-updater')); ?>" class="header__button" style="background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; color: #ff8888; font-size: 12px; font-weight: 800; text-decoration: none;" title="<?php esc_attr_e('Yeni güncelleme mevcut! Tek tıkla güncelleyin.', 'mis360'); ?>">
-                                    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 8px #ef4444;"></span>
-                                    <span><?php printf(esc_html__('Güncelleme: v%s', 'mis360'), esc_html($remote_info['version'])); ?></span>
-                                </a>
-                                <?php
+            <!-- Desktop Navigation -->
+            <nav class="header-nav" aria-label="<?php esc_attr_e('Ana Navigasyon', 'mis360'); ?>">
+                <?php
+                if (has_nav_menu('primary')) :
+                    wp_nav_menu([
+                        'theme_location' => 'primary',
+                        'container'      => false,
+                        'items_wrap'     => '%3$s',
+                        'fallback_cb'    => false,
+                        'walker'         => new class extends Walker_Nav_Menu {
+                            public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
+                                $classes = empty($item->classes) ? [] : (array) $item->classes;
+                                $is_active = in_array('current-menu-item', $classes) || in_array('current_page_item', $classes);
+                                $class_attr = 'nav-link' . ($is_active ? ' active' : '');
+                                $output .= sprintf(
+                                    '<a href="%s" class="%s">%s</a>',
+                                    esc_url($item->url),
+                                    esc_attr($class_attr),
+                                    esc_html($item->title)
+                                );
                             }
                         }
-                        ?>
+                    ]);
+                else :
+                    ?>
+                    <a href="<?php echo esc_url(home_url('/')); ?>" class="nav-link <?php echo is_front_page() ? 'active' : ''; ?>">
+                        <?php esc_html_e('Ana Sayfa', 'mis360'); ?>
+                    </a>
+                    <a href="<?php echo esc_url(home_url('/prestige-ilan-emlak-listeleme-demo/')); ?>" class="nav-link">
+                        <?php esc_html_e('İlan & Portföy', 'mis360'); ?>
+                    </a>
+                    <a href="<?php echo esc_url(home_url('/gourmet-bistro-restoran-menu-demo/')); ?>" class="nav-link">
+                        <?php esc_html_e('Restoran & Menü', 'mis360'); ?>
+                    </a>
+                    <a href="<?php echo esc_url(home_url('/acil-yol-yardim-oto-cekici-demo/')); ?>" class="nav-link">
+                        <?php esc_html_e('Yol Yardım', 'mis360'); ?>
+                    </a>
+                    <a href="<?php echo esc_url(home_url('/modern-kurumsal-ajans-360-demo/')); ?>" class="nav-link">
+                        <?php esc_html_e('Kurumsal', 'mis360'); ?>
+                    </a>
+                <?php endif; ?>
+            </nav>
 
-                        <!-- Karanlık / Aydınlık Mod Düğmesi -->
-                        <button id="mis-theme-toggle" class="header__button" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer;" aria-label="<?php esc_attr_e('Temayı Değiştir', 'mis360'); ?>" type="button">
-                            <span style="font-size: 16px;">🌓</span>
-                        </button>
-
-                        <?php
-                        $phone       = get_theme_mod('mis360_phone', '+90 555 123 4567');
-                        $clean_phone = preg_replace('/[^0-9+]/', '', $phone);
-                        ?>
-                        <a href="tel:<?php echo esc_attr($clean_phone); ?>" class="header__button" style="background: var(--color-primary); color: #0b0f19; font-weight: 700;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                            <span><?php esc_html_e('Hemen Ara', 'mis360'); ?></span>
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <!-- Dil Seçici (TR / EN / DE) -->
+                <div class="lang-switcher" id="langSwitcher">
+                    <button type="button" class="lang-switcher-toggle" aria-expanded="false" aria-haspopup="true">
+                        <svg class="flag-icon" viewBox="0 0 640 480" width="18" height="12">
+                            <path fill="#e30a17" d="M0 0h640v480H0z"/>
+                            <path fill="#fff" d="M407 243.2c0 68.4-55.5 123.9-123.9 123.9s-123.9-55.5-123.9-123.9 55.5-123.9 123.9-123.9 123.9 55.5 123.9 123.9z"/>
+                            <path fill="#e30a17" d="M413 243.2c0 53.6-43.5 97-97 97s-97-43.5-97-97 43.5-97 97-97 97 43.4 97 97z"/>
+                            <path fill="#fff" d="m430.7 191.5-1 44.3-41.3 11.2 40.8 14.5-1 40.7 26.5-31.8 40.2 14-23.2-34.1 28.3-33.9-42.4 12.8z"/>
+                        </svg>
+                        <span>TR</span>
+                        <svg class="lang-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="lang-switcher-dropdown">
+                        <a href="?lang=tr" class="lang-option active">
+                            <span>🇹🇷 Türkçe</span>
+                        </a>
+                        <a href="?lang=en" class="lang-option">
+                            <span>🇬🇧 English</span>
+                        </a>
+                        <a href="?lang=de" class="lang-option">
+                            <span>🇩🇪 Deutsch</span>
                         </a>
                     </div>
-
                 </div>
 
-                <!-- Mobil Hamburger İkonu -->
-                <div class="header__burger" id="headerBurger">
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                </div>
+                <!-- WhatsApp Butonu (Desktop) -->
+                <a href="https://wa.me/<?php echo esc_attr($whatsapp); ?>?text=<?php echo rawurlencode('Merhaba, web siteniz üzerinden ulaşıyorum:'); ?>" class="btn btn-whatsapp btn-sm header-whatsapp" target="_blank" rel="noopener noreferrer">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    <span>WhatsApp</span>
+                </a>
 
+                <!-- Mobil Menü Aç/Kapat Butonu -->
+                <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="<?php esc_attr_e('Menüyü Aç', 'mis360'); ?>" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
             </div>
-        </header>
+
+        </div>
+    </header>
+
+    <!-- Mobil Menü Çekmecesi (Denfora Mobile Nav) -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <nav class="mobile-nav" id="mobileNav">
+            <div class="mobile-nav-header">
+                <span class="header-brand-text">MİS<span>360</span></span>
+                <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="<?php esc_attr_e('Kapat', 'mis360'); ?>">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="mobile-nav-body">
+                <a href="<?php echo esc_url(home_url('/')); ?>" class="mobile-nav-link active"><?php esc_html_e('Ana Sayfa', 'mis360'); ?></a>
+                <a href="<?php echo esc_url(home_url('/prestige-ilan-emlak-listeleme-demo/')); ?>" class="mobile-nav-link"><?php esc_html_e('İlanlar & Portföy', 'mis360'); ?></a>
+                <a href="<?php echo esc_url(home_url('/gourmet-bistro-restoran-menu-demo/')); ?>" class="mobile-nav-link"><?php esc_html_e('Restoran & Menü', 'mis360'); ?></a>
+                <a href="<?php echo esc_url(home_url('/acil-yol-yardim-oto-cekici-demo/')); ?>" class="mobile-nav-link"><?php esc_html_e('Acil Yol Yardım', 'mis360'); ?></a>
+                <a href="<?php echo esc_url(home_url('/modern-kurumsal-ajans-360-demo/')); ?>" class="mobile-nav-link"><?php esc_html_e('Kurumsal & Paketler', 'mis360'); ?></a>
+
+                <div class="mobile-nav-divider"></div>
+
+                <div style="font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.1em; padding: 0 12px 6px;">
+                    <?php esc_html_e('Hızlı İletişim', 'mis360'); ?>
+                </div>
+                <a href="tel:<?php echo esc_attr($clean_phone); ?>" class="mobile-nav-link">📞 <?php echo esc_html($phone); ?></a>
+            </div>
+
+            <div class="mobile-nav-footer">
+                <div class="mobile-lang-list">
+                    <a href="?lang=de" class="mobile-lang-btn">DE</a>
+                    <a href="?lang=en" class="mobile-lang-btn">EN</a>
+                    <a href="?lang=tr" class="mobile-lang-btn active">TR</a>
+                </div>
+
+                <a href="https://wa.me/<?php echo esc_attr($whatsapp); ?>" class="btn btn-whatsapp btn-full" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                    </svg>
+                    <span>WhatsApp İletişim</span>
+                </a>
+            </div>
+        </nav>
     </div>
     <?php endif; // Elementor Header End ?>
 
-    <!-- Ana İçerik Başlangıcı -->
-    <div id="content" class="mis-site-content">
+    <main id="primary" class="main-content-area">

@@ -70,6 +70,7 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
                         <a href="#donerler" class="footer-link">Döner & İskender</a>
                         <a href="#tatlilar" class="footer-link">Tatlılar & Çorbalar</a>
                         <a href="#about" class="footer-link">Hakkımızda</a>
+                        <a href="#reviews" class="footer-link">Google Yorumları (4.3 ★)</a>
                         <a href="#reservation" class="footer-link">Masa Rezervasyonu</a>
                     </div>
                 </div>

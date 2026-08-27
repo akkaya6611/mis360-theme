@@ -300,6 +300,21 @@ if (!defined('ABSPATH')) {
 
                     <!-- Sağ Butonlar -->
                     <div class="header__buttons-wrapper">
+                        <?php
+                        // Yönetici Girişi Yapılmışsa ve Güncelleme Varsa Menüde Bildirim Göster
+                        if (current_user_can('manage_options')) {
+                            $remote_info = get_transient('mis360_remote_update_info');
+                            if ($remote_info && !empty($remote_info['version']) && version_compare(MIS360_VERSION, (string) $remote_info['version'], '<')) {
+                                ?>
+                                <a href="<?php echo esc_url(admin_url('themes.php?page=mis360-updater')); ?>" class="header__button" style="background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; color: #ff8888; font-size: 12px; font-weight: 800; text-decoration: none;" title="<?php esc_attr_e('Yeni güncelleme mevcut! Tek tıkla güncelleyin.', 'mis360'); ?>">
+                                    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 8px #ef4444;"></span>
+                                    <span><?php printf(esc_html__('Güncelleme: v%s', 'mis360'), esc_html($remote_info['version'])); ?></span>
+                                </a>
+                                <?php
+                            }
+                        }
+                        ?>
+
                         <!-- Karanlık / Aydınlık Mod Düğmesi -->
                         <button id="mis-theme-toggle" class="header__button" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer;" aria-label="<?php esc_attr_e('Temayı Değiştir', 'mis360'); ?>" type="button">
                             <span style="font-size: 16px;">🌓</span>

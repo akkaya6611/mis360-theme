@@ -44,30 +44,32 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
     // Elementor Pro Theme Builder Header kontrolü
     if (!function_exists('elementor_theme_do_location') || !elementor_theme_do_location('header')) :
     ?>
-    <!-- Üst Bilgi Barı (Denfora + Beyzade) -->
-    <div style="background: var(--color-black); color: #cbd5e1; font-size: 12px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.08);">
-        <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-            <div style="display: flex; align-items: center; gap: 16px;">
-                <a href="https://maps.app.goo.gl/q2icLBRX1FJNzVtY7" target="_blank" rel="noopener noreferrer" style="color: #94a3b8; display: inline-flex; align-items: center; gap: 5px;">
-                    📍 Bahçelievler Mah. 66650 Sarıkaya / Yozgat
-                </a>
-                <span style="color: #475569;">|</span>
-                <span style="color: #22c55e; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
-                    ● Şu An Açık (Kapanış: 23:45)
-                </span>
-            </div>
-            <div style="display: flex; align-items: center; gap: 16px;">
-                <span style="color: #f59e0b; font-weight: 700;">★ 4.3 (448 Doğrulanmış Google Yorumu)</span>
-                <span style="color: #475569;">|</span>
-                <a href="tel:<?php echo esc_attr($clean_phone); ?>" style="color: #ffffff; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
-                    📞 <?php echo esc_html($phone); ?>
-                </a>
+    <!-- Header Wrapper (Sticky) -->
+    <div class="site-header-wrapper" id="siteHeaderWrapper">
+        <!-- Üst Bilgi Barı (Denfora + Beyzade) -->
+        <div class="top-bar">
+            <div class="container top-bar-container">
+                <div class="top-bar-left">
+                    <a href="https://maps.app.goo.gl/q2icLBRX1FJNzVtY7" target="_blank" rel="noopener noreferrer" class="top-bar-address" style="color: #94a3b8; display: inline-flex; align-items: center; gap: 5px;">
+                        📍 Bahçelievler Mah. 66650 Sarıkaya / Yozgat
+                    </a>
+                    <span class="top-bar-sep">|</span>
+                    <span class="top-bar-status">
+                        ● Şu An Açık (Kapanış: 23:45)
+                    </span>
+                </div>
+                <div class="top-bar-right">
+                    <span class="top-bar-rating">★ 4.3 (448 Doğrulanmış Google Yorumu)</span>
+                    <span class="top-bar-sep">|</span>
+                    <a href="tel:<?php echo esc_attr($clean_phone); ?>" class="top-bar-phone">
+                        📞 <?php echo esc_html($phone); ?>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Yapışkan Beyaz Header (Denfora 1:1) -->
-    <header class="header" id="siteHeader">
+        <!-- Yapışkan Beyaz Header (Denfora 1:1) -->
+        <header class="header" id="siteHeader">
         <div class="header-inner">
             
             <!-- Beyzade Resmi Logo -->
@@ -159,6 +161,7 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
 
         </div>
     </header>
+    </div><!-- #siteHeaderWrapper -->
 
     <!-- Mobil Menü Çekmecesi -->
     <div class="mobile-nav-overlay" id="mobileNavOverlay">

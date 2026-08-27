@@ -1,0 +1,56 @@
+<?php
+/**
+ * MİS360 Theme Functions and Definitions
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package MİS360
+ * @since 1.0.0
+ */
+
+declare(strict_types=1);
+
+if (!defined('ABSPATH')) {
+    exit; // Doğrudan dosya erişimini engelle
+}
+
+/**
+ * Tema Sabitleri (Constants)
+ */
+define('MIS360_VERSION', '1.0.0');
+define('MIS360_DIR', get_template_directory());
+define('MIS360_URI', get_template_directory_uri());
+
+/**
+ * Modüler Dosya Yükleyici (Includes)
+ */
+$mis360_includes = [
+    '/inc/theme-setup.php',           // add_theme_support, menüler, özel görsel boyutları
+    '/inc/enqueue.php',               // Stil ve script kuyruk yönetimi (WP 6.3+ defer stratejisi)
+    '/inc/template-tags.php',         // Şablon yardımcı fonksiyonları (tarih, yazar, okuma süresi)
+    '/inc/security.php',              // Header temizliği ve temel güvenlik sıkılaştırmaları
+    '/inc/class-license-manager.php', // Serkan AKKAYA HMAC-SHA256 lisans ve aktivasyon sistemi
+    '/inc/class-theme-updater.php',   // GitHub otomatik tema güncelleme motoru
+    '/inc/customizer.php',            // Çok amaçlı sektör, telefon, WhatsApp ve renk ayarları
+    '/inc/custom-post-types.php',     // İlan, Menü ve Hizmet CPT & Taksonomi mimarisi
+    '/inc/meta-boxes.php',            // Fiyat, Rozet, Konum ve Buton meta alanları
+    '/inc/elementor.php',             // Elementor & Elementor Pro Theme Builder tam uyum katmanı
+    '/inc/demo-importer.php',         // Şık sektörel hazır demolar ve tek tıkla kurulum
+];
+
+foreach ($mis360_includes as $file) {
+    $filepath = MIS360_DIR . $file;
+    if (file_exists($filepath)) {
+        require_once $filepath;
+    }
+}
+
+/**
+ * İsteğe Bağlı Entegrasyonlar (WooCommerce vb.)
+ */
+if (class_exists('WooCommerce')) {
+    $wc_file = MIS360_DIR . '/inc/woocommerce.php';
+    if (file_exists($wc_file)) {
+        require_once $wc_file;
+    }
+}

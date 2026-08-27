@@ -34,7 +34,7 @@ $whatsapp    = '905358309307';
             </div>
             <h1 class="hero-title">
                 Beyzade Et & Balık Restaurant<br>
-                <span class="hero-highlight">2015'ten Beri Değişmeyen Lezzet Geleneği</span>
+                <span class="hero-highlight">2019'dan Beri Değişmeyen Lezzet Geleneği</span>
             </h1>
             <p class="hero-description">
                 Yozgat Sarıkaya'da meşe kömürü ateşinde usta ellerce hazırlanan kebaplar, günlük taze balık çeşitleri, taş fırın pideleri ve sıcacık aile ortamıyla unutulmaz sofralara ev sahipliği yapıyoruz.
@@ -141,7 +141,7 @@ $whatsapp    = '905358309307';
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">Neden Beyzade Restaurant?</h2>
-            <p class="section-subtitle">2015 yılından bu yana Sarıkaya'da lezzet, konfor ve aile atmosferini bir arada sunuyoruz.</p>
+            <p class="section-subtitle">2019 yılından bu yana Sarıkaya'da lezzet, konfor ve aile atmosferini bir arada sunuyoruz.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -152,8 +152,8 @@ $whatsapp    = '905358309307';
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                     </svg>
                 </div>
-                <h3 class="feature-card-title">10+ Yıllık Tecrübe</h3>
-                <p class="feature-card-description">2015'ten beri Yozgat Sarıkaya'da kaliteden ödün vermeden sunduğumuz güvenilir lezzet mirası.</p>
+                <h3 class="feature-card-title">Usta Mutfak Tecrübesi</h3>
+                <p class="feature-card-description">2019'dan beri Yozgat Sarıkaya'da kaliteden ödün vermeden sunduğumuz güvenilir lezzet mirası.</p>
             </div>
 
             <div class="feature-card">

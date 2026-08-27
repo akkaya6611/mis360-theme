@@ -2253,3 +2253,255 @@ select:focus {
     font-size: 12px;
   }
 }
+
+/* ==========================================================================
+   NEDEN BEYZADE? (LEZZET, KONFOR VE AİLE ATMOSFERİ)
+   ========================================================================== */
+.why-us-section {
+  padding: 80px 0;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.why-us-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.why-us-header-left {
+  max-width: 680px;
+}
+
+.why-us-main-title {
+  font-size: 2.35rem;
+  font-weight: 800;
+  color: var(--color-black);
+  margin-top: 8px;
+  line-height: 1.25;
+}
+
+.why-us-main-subtitle {
+  font-size: 15px;
+  color: var(--color-gray-600);
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+.why-us-experience-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--color-gray-50);
+  border: 1px solid var(--color-gray-200);
+  padding: 14px 22px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.experience-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.experience-number {
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.experience-plus {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.experience-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-text strong {
+  font-size: 14px;
+  color: var(--color-black);
+  font-weight: 800;
+}
+
+.experience-text span {
+  font-size: 12px;
+  color: var(--color-gray-500);
+  font-weight: 600;
+}
+
+.why-us-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.why-us-image-wrapper {
+  position: relative;
+}
+
+.why-us-image-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-gray-200);
+}
+
+.why-us-main-img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.why-us-image-card:hover .why-us-main-img {
+  transform: scale(1.03);
+}
+
+.why-us-image-overlay-badge {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 14px 18px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.why-us-image-overlay-badge .badge-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: #fef2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.why-us-image-overlay-badge .badge-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.why-us-image-overlay-badge .badge-content strong {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--color-black);
+}
+
+.why-us-image-overlay-badge .badge-content span {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-gray-500);
+}
+
+.why-us-lead-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-gray-700);
+  margin-bottom: 24px;
+}
+
+.why-us-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.why-feature-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--color-gray-50);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--color-gray-200);
+  transition: all 0.2s ease;
+}
+
+.why-feature-item:hover {
+  background: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.why-feature-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid var(--color-gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.why-feature-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--color-black);
+  margin: 0 0 4px;
+}
+
+.why-feature-desc {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-gray-600);
+  margin: 0;
+}
+
+.why-us-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 991px) {
+  .why-us-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .why-us-main-img {
+    height: 340px;
+  }
+  .why-us-main-title {
+    font-size: 1.85rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .why-us-features-grid {
+    grid-template-columns: 1fr;
+  }
+  .why-us-main-img {
+    height: 260px;
+  }
+  .why-us-experience-box {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -36,6 +36,7 @@ $mis360_includes = [
     '/inc/meta-boxes.php',            // Fiyat, Rozet, Konum ve Buton meta alanları
     '/inc/elementor.php',             // Elementor & Elementor Pro Theme Builder tam uyum katmanı
     '/inc/demo-importer.php',         // Şık sektörel hazır demolar ve tek tıkla kurulum
+    '/inc/class-google-reviews.php',  // Otomatik Google Yorumları & Canlı Senkronizasyon Motoru
 ];
 
 foreach ($mis360_includes as $file) {

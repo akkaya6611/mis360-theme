@@ -17,9 +17,9 @@ if (!defined('ABSPATH')) {
 
 get_header();
 
-$phone       = '(0354) 502 33 33';
-$clean_phone = '+903545023333';
-$whatsapp    = '905465033132';
+$phone       = '0535 830 93 07';
+$clean_phone = '+905358309307';
+$whatsapp    = '905358309307';
 ?>
 
 <!-- 1. Hero Section (Denfora 1:1 Architecture with Authentic Beyzade Ambience) -->
@@ -888,7 +888,7 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
 
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; max-width: 480px; height: 50px; font-size: 15px;">
-                        🟢 Rezervasyonu WhatsApp İle Onayla (0546 503 31 32) →
+                        🟢 Rezervasyonu WhatsApp İle Onayla (0535 830 93 07) →
                     </button>
                 </div>
             </form>

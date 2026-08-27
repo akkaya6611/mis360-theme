@@ -730,6 +730,105 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
     </div>
 </section>
 
+<!-- 6.5. Haberler, Blog & Galerimizden Seçmeler (Teaser Vitrini) -->
+<section class="section" id="news-gallery-teaser" style="background: var(--color-gray-50); border-top: 1px solid var(--color-gray-100);">
+    <div class="container">
+        
+        <div class="section-header text-center">
+            <span class="section-badge">BEYZADE GÜNCEL</span>
+            <h2 class="section-title">Haberler, Lezzet Rehberi & Galerimiz</h2>
+            <p class="section-subtitle">
+                Restoranımızdan en güncel duyurular, meşe kömüründe pişen lezzetlerimizin sırları ve mutfağımızdan özel kareler.
+            </p>
+        </div>
+
+        <div class="gallery-grid" style="margin-bottom: 36px;">
+            <!-- 1. Kart: Haber -->
+            <article class="gallery-card">
+                <div class="gallery-card-thumb">
+                    <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg" alt="Açık Hava Bahçe Bölümü" loading="lazy">
+                    <span class="gallery-card-badge badge-haber">Haber & Duyuru</span>
+                </div>
+                <div class="gallery-card-body">
+                    <div class="gallery-card-meta">
+                        <span>📅 15 Mayıs 2026</span>
+                        <span class="sep">•</span>
+                        <span>👤 Mutfak Ekibi</span>
+                    </div>
+                    <h3 class="gallery-card-title">
+                        Sarıkaya'da Bahar ve Yaz Sezonuna Özel Açık Hava Bahçe Bölümümüz Yenilendi
+                    </h3>
+                    <p class="gallery-card-excerpt">
+                        Aileler ve çocuklar için özel olarak hazırlanan ferah açık hava bahçe salonumuz, konforlu masaları ve mama sandalyesi desteğiyle hizmetinizde.
+                    </p>
+                    <div class="gallery-card-footer">
+                        <a href="<?php echo esc_url(home_url('/haberler-galeri/')); ?>" class="gallery-link">
+                            Haberin Detayları →
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 2. Kart: Blog -->
+            <article class="gallery-card">
+                <div class="gallery-card-thumb">
+                    <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/adana.jpg" alt="Meşe Kömüründe Kebap Sanatı" loading="lazy">
+                    <span class="gallery-card-badge badge-blog">Lezzet Rehberi</span>
+                </div>
+                <div class="gallery-card-body">
+                    <div class="gallery-card-meta">
+                        <span>📅 12 Mayıs 2026</span>
+                        <span class="sep">•</span>
+                        <span>👤 Selim Usta</span>
+                    </div>
+                    <h3 class="gallery-card-title">
+                        Hakiki Meşe Kömüründe Kebap Pişirmenin Püf Noktaları ve Et Dinlendirme
+                    </h3>
+                    <p class="gallery-card-excerpt">
+                        Zırhtan geçen etlerin meşe kömürü közünde lokum gibi pişirilmesinin püf noktalarını ve ustalarımızın özel terbiye sırlarını inceleyin.
+                    </p>
+                    <div class="gallery-card-footer">
+                        <a href="<?php echo esc_url(home_url('/haberler-galeri/')); ?>" class="gallery-link">
+                            Yazıyı Oku →
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 3. Kart: Galeri -->
+            <article class="gallery-card">
+                <div class="gallery-card-thumb">
+                    <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/pide.jpg" alt="Taş Fırın Pideleri" loading="lazy">
+                    <span class="gallery-card-badge badge-galeri">Fotoğraf Galerisi</span>
+                </div>
+                <div class="gallery-card-body">
+                    <div class="gallery-card-meta">
+                        <span>📸 Mutfaktan Kareler</span>
+                    </div>
+                    <h3 class="gallery-card-title">
+                        Taş Fırınımızdan Yeni Çıkan Çıtır Kıymalı & Kuşbaşılı Pidelerimiz
+                    </h3>
+                    <p class="gallery-card-excerpt">
+                        Hakiki taş fırın ateşinde incecik açılan hamur ve zengin iç harçla sofralarınıza gelen lezzet şöleni.
+                    </p>
+                    <div class="gallery-card-footer">
+                        <a href="<?php echo esc_url(home_url('/haberler-galeri/')); ?>" class="gallery-link">
+                            Tüm Galeriyi Gör →
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="text-center">
+            <a href="<?php echo esc_url(home_url('/haberler-galeri/')); ?>" class="btn btn-outline-dark btn-md">
+                Tüm Haberler, Blog Yazıları & Galeriyi İncele →
+            </a>
+        </div>
+
+    </div>
+</section>
+
 <!-- 7. Online Masa Rezervasyon Formu (Doğrudan WhatsApp'a Bilgi İletir) -->
 <section class="section" id="reservation" style="background: #ffffff;">
     <div class="container">

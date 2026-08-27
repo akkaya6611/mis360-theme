@@ -37,6 +37,7 @@ $mis360_includes = [
     '/inc/elementor.php',             // Elementor & Elementor Pro Theme Builder tam uyum katmanı
     '/inc/demo-importer.php',         // Şık sektörel hazır demolar ve tek tıkla kurulum
     '/inc/class-google-reviews.php',  // Otomatik Google Yorumları & Canlı Senkronizasyon Motoru
+    '/inc/seo-geo.php',               // Antigravity SEO & GEO (AI Search Engine & Schema.org) Motoru
 ];
 
 foreach ($mis360_includes as $file) {

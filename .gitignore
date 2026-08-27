@@ -1,0 +1,21 @@
+# İşletim Sistemi Dosyaları
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editör ve IDE Yapılandırmaları
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node & Build Dosyaları (Kullanılırsa)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Geçici ve Yerel Dosyalar
+*.log
+*.tmp
+*.bak

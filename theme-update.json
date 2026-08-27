@@ -1,0 +1,16 @@
+{
+  "name": "MİS360",
+  "slug": "mis360",
+  "version": "1.0.0",
+  "author": "<a href=\"https://misteknoloji360.com.tr/\">Serkan AKKAYA</a>",
+  "homepage": "https://misteknoloji360.com.tr/",
+  "download_url": "https://raw.githubusercontent.com/akkaya6611/mis360-theme/main/mis360.zip",
+  "requires": "6.3",
+  "tested": "6.7",
+  "requires_php": "8.2",
+  "last_updated": "2026-08-27",
+  "sections": {
+    "description": "MİS360; Serkan AKKAYA tarafından geliştirilen, modern web standartlarına tam uyumlu, ultra hızlı, Core Web Vitals ve SEO odaklı, Dark/Light mod destekli özel WordPress temasıdır.",
+    "changelog": "<h4>1.0.0 (İlk Kararlı Sürüm)</h4><ul><li>🚀 Modern PHP 8.2+ ve WordPress Core Standartları ile sıfırdan inşa edildi.</li><li>⚡ Pure Vanilla JS (Sıfır jQuery) ve WP 6.3+ defer stratejili asset yönetimi.</li><li>🎨 CSS Custom Properties ile sistem ve kullanıcı tercihlerine duyarlı Dark/Light mode.</li><li>🛡️ Serkan AKKAYA HMAC-SHA256 çevrimdışı & bulut lisans koruma mimarisi.</li><li>🔄 GitHub Releases ve RAW JSON tabanlı otomatik tema güncelleme desteği.</li><li>🛒 Gutenberg tam genişlik blokları ve WooCommerce e-ticaret hazır altyapısı.</li></ul>"
+  }
+}

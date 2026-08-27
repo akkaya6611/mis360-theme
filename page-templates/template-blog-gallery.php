@@ -15,9 +15,9 @@ if (!defined('ABSPATH')) {
 
 get_header();
 
-$phone       = '(0354) 502 33 33';
-$clean_phone = '+903545023333';
-$whatsapp    = '905465033132';
+$phone       = '0535 830 93 07';
+$clean_phone = '+905358309307';
+$whatsapp    = '905358309307';
 ?>
 
 <main id="primary" class="site-main blog-gallery-page">

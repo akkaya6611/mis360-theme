@@ -219,7 +219,7 @@ $whatsapp    = '905465033132';
                 
                 <!-- Adana Kebap -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/adana-kebap-beyzade-1024x819.png" alt="Adana Kebap" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -236,7 +236,7 @@ $whatsapp    = '905465033132';
 
                 <!-- Urfa Kebap -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/urfa-kebap-beyzade-1-1024x819.png" alt="Urfa Kebap" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -253,7 +253,7 @@ $whatsapp    = '905465033132';
 
                 <!-- Beyti Sarma -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/Beyti-Sarma-beyzade-1-1024x819.png" alt="Beyti Sarma" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -270,7 +270,7 @@ $whatsapp    = '905465033132';
 
                 <!-- Kuzu Şiş -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/Kuzu-Sis-beyzade-1-1024x819.png" alt="Kuzu Şiş" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -287,7 +287,7 @@ $whatsapp    = '905465033132';
 
                 <!-- Kuzu Tandır -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/kuzu-tandir-1024x819.png" alt="Kuzu Tandır" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -307,7 +307,7 @@ $whatsapp    = '905465033132';
 
                 <!-- Desti Kebabı -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzade-desti-kebabi-1024x819.png" alt="Desti Kebabı" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -327,7 +327,7 @@ $whatsapp    = '905465033132';
 
                 <!-- Kuzu Ciğer -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/Kuzu-Ciger-beyzade-1-1024x819.png" alt="Kuzu Ciğer" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -344,7 +344,7 @@ $whatsapp    = '905465033132';
 
                 <!-- Bonfile / Pirzola -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/Bonfile-pirzola-beyzade-1-1024x819.png" alt="Bonfile Pirzola" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -375,7 +375,7 @@ $whatsapp    = '905465033132';
                 
                 <!-- Kıymalı Pide -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/Kiymali-Pide-beyzade-1024x819.png" alt="Kıymalı Pide" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -392,7 +392,7 @@ $whatsapp    = '905465033132';
 
                 <!-- Kuşbaşılı Pide -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/kusbasi-Pide-beyzade-1024x819.png" alt="Kuşbaşılı Pide" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -409,7 +409,7 @@ $whatsapp    = '905465033132';
 
                 <!-- Karışık Pide -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/karisik-pide-beyzade-1024x819.png" alt="Karışık Pide" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -426,7 +426,7 @@ $whatsapp    = '905465033132';
 
                 <!-- Çıtır Lahmacun -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/lahmacun-beyzade-1024x819.png" alt="Lahmacun" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -457,7 +457,7 @@ $whatsapp    = '905465033132';
                 
                 <!-- İskender -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzade-iskender-1024x819.png" alt="İskender" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -474,7 +474,7 @@ $whatsapp    = '905465033132';
 
                 <!-- Et Döner -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzade-et-doner-1024x819.png" alt="Et Döner" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -491,7 +491,7 @@ $whatsapp    = '905465033132';
 
                 <!-- Tavuk Döner -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzade-tavuk-doner-1024x819.png" alt="Tavuk Döner" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -508,7 +508,7 @@ $whatsapp    = '905465033132';
 
                 <!-- Döner Dürüm -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzade-doner-durum-1024x819.png" alt="Döner Dürüm" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -539,7 +539,7 @@ $whatsapp    = '905465033132';
                 
                 <!-- Künefe -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzade-kunefe-1024x819.png" alt="Künefe" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -556,7 +556,7 @@ $whatsapp    = '905465033132';
 
                 <!-- Fırın Sütlaç -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/sutlac-beyzade-1-1024x819.png" alt="Sütlaç" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -573,7 +573,7 @@ $whatsapp    = '905465033132';
 
                 <!-- Sıcak Çikolatalı Sufle -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/sufle-beyzade-1-1024x819.png" alt="Sufle" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -590,7 +590,7 @@ $whatsapp    = '905465033132';
 
                 <!-- Mercimek / Paça Çorbası -->
                 <article class="product-card">
-                    <div class="product-card-image" style="background: #ffffff;">
+                    <div class="product-card-image food-card-image">
                         <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/mercimek-corbasi-beyzade-1024x819.png" alt="Çorba Çeşitleri" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
@@ -619,7 +619,7 @@ $whatsapp    = '905465033132';
 <!-- 6. Online Masa Rezervasyon Formu (Doğrudan WhatsApp'a Bilgi İletir) -->
 <section class="section" id="reservation" style="background: #ffffff;">
     <div class="container">
-        <div style="max-width: 860px; margin: 0 auto; background: var(--color-gray-50); border: 1px solid var(--color-gray-200); border-radius: 20px; padding: 40px 30px; box-shadow: var(--shadow-md);">
+        <div class="reservation-card">
             <div class="text-center" style="margin-bottom: 30px;">
                 <span style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-primary);">
                     BEYZADE ET & BALIK
@@ -657,9 +657,9 @@ $whatsapp    = '905465033132';
                     </div>
                     <div>
                         <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: #1e293b;">Tarih & Saat *</label>
-                        <div style="display: flex; gap: 8px;">
-                            <input type="date" id="bzDate" required style="width: 60%; padding: 12px 10px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 13px; background: #ffffff;">
-                            <select id="bzTime" style="width: 40%; padding: 12px 8px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 13px; background: #ffffff;">
+                        <div class="reservation-date-row">
+                            <input type="date" id="bzDate" required style="flex: 1; padding: 12px 10px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 13px; background: #ffffff;">
+                            <select id="bzTime" style="width: 110px; padding: 12px 8px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 13px; background: #ffffff;">
                                 <option value="12:30">12:30</option>
                                 <option value="14:00">14:00</option>
                                 <option value="18:00">18:00</option>

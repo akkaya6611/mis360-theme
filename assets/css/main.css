@@ -1211,3 +1211,15 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-primary);
   font-weight: var(--font-semibold);
 }
+
+/* ==========================================================================
+   Restaurant Form & Reservation Enhancements
+   ========================================================================== */
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="email"]:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px var(--color-primary-subtle);
+}

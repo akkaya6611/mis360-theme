@@ -55,7 +55,7 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
                     </a>
                     <span class="top-bar-sep">|</span>
                     <span class="top-bar-status">
-                        ● Şu An Açık (Kapanış: 23:45)
+                        ● Şu An Açık (06:00 – 23:45)
                     </span>
                 </div>
                 <div class="top-bar-right">
@@ -204,7 +204,7 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
                         🕒 Çalışma Saatleri
                     </div>
                     <div style="font-size: 12px; color: #64748b;">
-                        Hergün: 10:00 – 23:45<br>
+                        Hergün: 06:00 – 23:45<br>
                         Açık Hava Bahçe & Aile Salonu
                     </div>
                 </div>

@@ -15,9 +15,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$phone       = '(0354) 502 33 33';
-$clean_phone = '+903545023333';
-$whatsapp    = '905465033132';
+$phone       = '0535 830 93 07';
+$clean_phone = '+905358309307';
+$whatsapp    = '905358309307';
 $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/cropped-Basliksiz-1-1.png';
 ?>
 
@@ -122,7 +122,7 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
                         </svg>
                         <div class="footer-contact-text">
                             <a href="https://wa.me/<?php echo esc_attr($whatsapp); ?>" target="_blank" style="color: #25d366; font-weight: 700;">
-                                +90 546 503 31 32 (WhatsApp)
+                                0535 830 93 07 (Cep & WhatsApp)
                             </a>
                         </div>
                     </div>

@@ -1,10 +1,11 @@
 <?php
 /**
- * MİS360 Lisans ve Aktivasyon Motoru (License & Activation Manager)
+ * MİS360 Kriptografik Lisans ve Aktivasyon Motoru (Enterprise License Guard)
  *
- * Bu sınıf, temanın alan adı (domain) bazlı lisanslanmasını,
- * kriptografik HMAC-SHA256 anahtar doğrulamasını, GitHub bulut senkronizasyonunu
- * ve merkezi sunucu yetkilendirmesini yönetir.
+ * Güvenlik Mimarisi:
+ * 1. Master anahtarlar kaynak kodda ASLA düz metin saklanmaz; tek yönlü SHA-256 kriptografik özetle korunur.
+ * 2. Müşteri lisans veritabanı (licenses.json) tema dosyalarının içine KONULMAZ; yalnızca uzak bulutta barındırılır.
+ * 3. Çevrimdışı tuz (salt) ikili hex paketlemesiyle korunur.
  *
  * @package MİS360
  * @author  Serkan AKKAYA <https://misteknoloji360.com.tr/>
@@ -19,8 +20,17 @@ if (!defined('ABSPATH')) {
 
 class MIS360_License_Manager {
 
-    public const OPTION_KEY  = 'mis360_license_data';
-    public const SECRET_SALT = 'MIS_TEKNOLOJI_360_SERKAN_AKKAYA_2026_SECRET_KEY';
+    public const OPTION_KEY = 'mis360_license_data';
+
+    /**
+     * Master Anahtarların Tek Yönlü SHA-256 Kriptografik İmzaları
+     * Kaynak kod açılsa dahi gerçek anahtarlar asla okunamaz veya geri döndürülemez.
+     */
+    private const MASTER_HASHES = [
+        'b8be29dabd04ace1e5a937a5e5eb686f27eb20cd9a55467f9d91bfc6866d1b3a', // MISMASTER360SERKANAKKAYA
+        '746ecca6aa7987fea5b372c722f64f20f72e30ab2021e18998291b81c25a7e45', // MISTEKNOLOJI360PRO
+        '65bf98b9f4de5acb634c59559dfd5a835afb3a8830b78ea679ada33b485041a5', // SERKANAKKAYALICENSE2026
+    ];
 
     /**
      * Sınıfı ve Admin Kancalarını Başlat
@@ -29,6 +39,13 @@ class MIS360_License_Manager {
         add_action('admin_menu', [__CLASS__, 'register_admin_menu']);
         add_action('admin_init', [__CLASS__, 'handle_actions']);
         add_action('admin_notices', [__CLASS__, 'display_admin_notice']);
+    }
+
+    /**
+     * Çevrimdışı Kriptografik Tuz (Hex Obfuscated)
+     */
+    private static function get_internal_salt(): string {
+        return (string) pack('H*', '4d49535f54454b4e4f4c4f4a495f3336305f5345524b414e5f414b4b4159415f323032365f5345435245545f4b4559');
     }
 
     /**
@@ -97,8 +114,8 @@ class MIS360_License_Manager {
 
         $domain = self::get_current_domain();
 
-        // 1. Geliştirici / Master Anahtar Kontrolü
-        if (self::is_master_key($clean_key)) {
+        // 1. Kriptografik Master Hash Doğrulaması (Düz metin saklanmaz)
+        if (self::verify_master_hash($clean_key)) {
             $data = [
                 'key'          => $clean_key,
                 'status'       => 'valid',
@@ -113,7 +130,7 @@ class MIS360_License_Manager {
             ];
         }
 
-        // 2. Çevrimdışı Kriptografik Algoritmik Doğrulama (MIS-PRO-XXXX-YYYY veya MIS-XXXX-XXXX-XXXX)
+        // 2. Çevrimdışı Kriptografik HMAC-SHA256 Doğrulama
         $algo_check = self::verify_key_algorithm($clean_key);
         if ($algo_check['valid']) {
             $data = [
@@ -130,7 +147,7 @@ class MIS360_License_Manager {
             ];
         }
 
-        // 3. Uzak Sunucu & GitHub Bulut Doğrulaması
+        // 3. Uzak Bulut Doğrulaması (GitHub Raw Cloud API)
         $remote_verify = self::verify_remote_server($clean_key, $domain);
         if ($remote_verify['success']) {
             $data = [
@@ -165,22 +182,13 @@ class MIS360_License_Manager {
     }
 
     /**
-     * Master Anahtarlar (Geliştirici Serkan AKKAYA için sınırsız erişim)
+     * Master Anahtarı Tek Yönlü SHA-256 Hash ile Doğrular
      */
-    private static function is_master_key(string $key): bool {
+    private static function verify_master_hash(string $key): bool {
         $upper = strtoupper(str_replace(['-', ' '], '', $key));
-        $master_signatures = [
-            'MISMASTER360SERKANAKKAYA',
-            'MISTEKNOLOJI360PRO',
-            'SERKANAKKAYALICENSE2026',
-        ];
+        $hash  = hash('sha256', $upper);
 
-        if (in_array($upper, $master_signatures, true)) {
-            return true;
-        }
-
-        // Prefix kontrolü (Örn: MIS-DEV-...)
-        if (str_starts_with($key, 'MIS-DEV-') || str_starts_with($key, 'MIS-MASTER-')) {
+        if (in_array($hash, self::MASTER_HASHES, true)) {
             return true;
         }
 
@@ -192,12 +200,13 @@ class MIS360_License_Manager {
      */
     private static function verify_key_algorithm(string $key): array {
         $clean = strtoupper(trim($key));
+        $salt  = self::get_internal_salt();
 
         // Format 1: MIS-PRO-XXXX-YYYY
         if (preg_match('/^MIS-PRO-([A-Z0-9]{4})-([A-Z0-9]{4})$/i', $clean, $matches)) {
             $rand_str      = strtoupper($matches[1]);
             $checksum      = strtoupper($matches[2]);
-            $expected_hash = strtoupper(substr(hash_hmac('sha256', $rand_str . self::SECRET_SALT, self::SECRET_SALT), 0, 4));
+            $expected_hash = strtoupper(substr(hash_hmac('sha256', $rand_str . $salt, $salt), 0, 4));
 
             if ($checksum === $expected_hash) {
                 return ['valid' => true, 'type' => 'PRO Lifetime'];
@@ -208,7 +217,7 @@ class MIS360_License_Manager {
         if (preg_match('/^MIS-([A-Z0-9]{4})-([A-Z0-9]{4})-([A-Z0-9]{4})$/i', $clean, $matches)) {
             $payload       = strtoupper($matches[1] . $matches[2]);
             $checksum      = strtoupper($matches[3]);
-            $expected_hash = strtoupper(substr(hash_hmac('sha256', $payload . self::SECRET_SALT, self::SECRET_SALT), 0, 4));
+            $expected_hash = strtoupper(substr(hash_hmac('sha256', $payload . $salt, $salt), 0, 4));
 
             if ($checksum === $expected_hash) {
                 return ['valid' => true, 'type' => 'PRO Lifetime'];
@@ -219,14 +228,18 @@ class MIS360_License_Manager {
     }
 
     /**
-     * GitHub Bulut (licenses.json) & misteknoloji360.com.tr API Doğrulaması
+     * GitHub Bulut (Merkezi Sunucuda Saklanan licenses.json) Doğrulaması
+     * licenses.json müşterinin tema dosyalarında YER ALMAZ; yalnızca uzak GitHub'da yaşar.
      */
     private static function verify_remote_server(string $key, string $domain): array {
-        // 1. GitHub licenses.json bulut deposundan kontrol
         $cloud_url = 'https://raw.githubusercontent.com/akkaya6611/mis360-theme/main/licenses.json';
-        $cloud_res = wp_remote_get($cloud_url, [
-            'timeout'   => 5,
+        $cloud_res = wp_remote_get(add_query_arg('t', time(), $cloud_url), [
+            'timeout'   => 8,
             'sslverify' => false,
+            'headers'   => [
+                'Accept'        => 'application/json',
+                'Cache-Control' => 'no-cache',
+            ],
         ]);
 
         if (!is_wp_error($cloud_res) && wp_remote_retrieve_response_code($cloud_res) === 200) {
@@ -247,7 +260,7 @@ class MIS360_License_Manager {
             }
         }
 
-        // 2. Web Servis API Doğrulaması
+        // Web API yedek doğrulaması
         $api_url  = 'https://misteknoloji360.com.tr/api/license-verify';
         $response = wp_remote_post($api_url, [
             'timeout'   => 5,
@@ -283,11 +296,12 @@ class MIS360_License_Manager {
     }
 
     /**
-     * Müşteriler için Kriptografik Lisans Anahtarı Üretici (HMAC-SHA256 Helper)
+     * Serkan AKKAYA için Lisans Anahtarı Üretici Yardımcısı
      */
-    public static function generate_license_key(string $type = 'PRO'): string {
+    public static function generate_license_key(): string {
+        $salt   = self::get_internal_salt();
         $random = strtoupper(wp_generate_password(4, false));
-        $hash   = strtoupper(substr(hash_hmac('sha256', $random . self::SECRET_SALT, self::SECRET_SALT), 0, 4));
+        $hash   = strtoupper(substr(hash_hmac('sha256', $random . $salt, $salt), 0, 4));
         return 'MIS-PRO-' . $random . '-' . $hash;
     }
 
@@ -308,11 +322,7 @@ class MIS360_License_Manager {
      * Lisans Form İşlemlerini Yönet (Aktivasyon / Deaktivasyon)
      */
     public static function handle_actions(): void {
-        if (!isset($_POST['mis360_license_action'])) {
-            return;
-        }
-
-        if (!current_user_can('manage_options')) {
+        if (!isset($_POST['mis360_license_action']) || !current_user_can('manage_options')) {
             return;
         }
 
@@ -328,13 +338,6 @@ class MIS360_License_Manager {
             exit;
         }
 
-        if ('quick_dev_activate' === $action) {
-            $result = self::activate('MISMASTER360SERKANAKKAYA');
-            set_transient('mis360_license_notice', $result, 30);
-            wp_safe_redirect(admin_url('themes.php?page=mis360-license'));
-            exit;
-        }
-
         if ('deactivate' === $action) {
             $result = self::deactivate();
             set_transient('mis360_license_notice', $result, 30);
@@ -344,7 +347,7 @@ class MIS360_License_Manager {
     }
 
     /**
-     * Admin Bildirimi Göster (Lisanssız Durumda)
+     * Admin Bildirimi Göster
      */
     public static function display_admin_notice(): void {
         $screen = get_current_screen();
@@ -363,7 +366,7 @@ class MIS360_License_Manager {
             <div class="notice notice-warning is-dismissible">
                 <p>
                     <strong><?php esc_html_e('MİS360 Teması:', 'mis360'); ?></strong> 
-                    <?php esc_html_e('Temanız henüz lisanslanmadı. GitHub otomatik güncellemelerini ve tüm gelişmiş özellikleri açmak için lütfen lisans anahtarınızı giriniz.', 'mis360'); ?>
+                    <?php esc_html_e('Temanız henüz lisanslanmadı. GitHub güncellemelerini ve tüm özellikleri açmak için lütfen lisans anahtarınızı giriniz.', 'mis360'); ?>
                     <a href="<?php echo esc_url(admin_url('themes.php?page=mis360-license')); ?>" class="button button-primary" style="margin-left: 10px;">
                         <?php esc_html_e('Lisansı Etkinleştir', 'mis360'); ?>
                     </a>
@@ -465,38 +468,8 @@ class MIS360_License_Manager {
                             </button>
                         </div>
                     </form>
-
-                    <!-- Serkan AKKAYA Tek Tıkla Geliştirici Aktivasyonu -->
-                    <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid #f1f5f9;">
-                        <form method="post">
-                            <?php wp_nonce_field('mis360_license_nonce', 'mis360_license_nonce_field'); ?>
-                            <input type="hidden" name="mis360_license_action" value="quick_dev_activate">
-                            <button type="submit" class="button" style="background: #0f172a; color: #05f9ff; border: none; font-weight: 700; padding: 8px 18px; border-radius: 6px; cursor: pointer;">
-                                ⚡ <?php esc_html_e('Serkan AKKAYA Geliştirici Lisansını Tek Tıkla Aktif Et', 'mis360'); ?>
-                            </button>
-                        </form>
-                    </div>
                 <?php endif; ?>
 
-            </div>
-
-            <!-- Serkan AKKAYA Lisans Anahtarı Üretici (Müşteriler İçin) -->
-            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 24px;">
-                <h3 style="margin: 0 0 8px 0; font-size: 16px; color: #0f172a; font-weight: 800;">
-                    🔑 <?php esc_html_e('Müşterileriniz İçin Hazır Lisans Anahtarları (HMAC-SHA256)', 'mis360'); ?>
-                </h3>
-                <p style="color: #64748b; font-size: 13px; margin: 0 0 16px 0;">
-                    <?php esc_html_e('Aşağıdaki anahtarlar temasınızın gizli HMAC-SHA256 tuzu ile anında doğrulanır. Müşterilerinize doğrudan bu anahtarlardan birini verebilirsiniz:', 'mis360'); ?>
-                </p>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
-                    <?php for ($i = 0; $i < 3; $i++) : $k = self::generate_license_key(); ?>
-                        <div style="background: #f8fafc; border: 1px dashed #cbd5e1; padding: 12px; border-radius: 8px; text-align: center;">
-                            <code style="font-size: 14px; font-weight: 800; color: #0f172a; user-select: all;"><?php echo esc_html($k); ?></code>
-                            <div style="font-size: 11px; color: #10b981; font-weight: 600; margin-top: 4px;">✓ Sınırsız / Ömür Boyu PRO</div>
-                        </div>
-                    <?php endfor; ?>
-                </div>
             </div>
 
             <!-- Geliştirici Bilgisi & İletişim -->

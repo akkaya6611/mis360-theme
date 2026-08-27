@@ -15,10 +15,11 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$phone       = '0535 830 93 07';
-$clean_phone = '+905358309307';
-$whatsapp    = '905358309307';
-$logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/cropped-Basliksiz-1-1.png';
+$phone         = '0535 830 93 07';
+$clean_phone   = '+905358309307';
+$whatsapp      = '905358309307';
+$logo_url      = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/cropped-Basliksiz-1-1.png';
+$anchor_prefix = is_front_page() ? '' : home_url('/');
 ?>
 
     </main><!-- #primary -->
@@ -65,14 +66,14 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
                 <div class="footer-column">
                     <h4 class="footer-column-title">Menü Kategorileri</h4>
                     <div class="footer-links">
-                        <a href="#kebaplar" class="footer-link">Kebap Çeşitlerimiz</a>
-                        <a href="#pideler" class="footer-link">Pide & Lahmacun</a>
-                        <a href="#donerler" class="footer-link">Döner & İskender</a>
-                        <a href="#tatlilar" class="footer-link">Tatlılar & Çorbalar</a>
-                        <a href="#about" class="footer-link">Hakkımızda</a>
+                        <a href="<?php echo esc_url($anchor_prefix . '#kebaplar'); ?>" class="footer-link">Kebap Çeşitlerimiz</a>
+                        <a href="<?php echo esc_url($anchor_prefix . '#pideler'); ?>" class="footer-link">Pide & Lahmacun</a>
+                        <a href="<?php echo esc_url($anchor_prefix . '#donerler'); ?>" class="footer-link">Döner & İskender</a>
+                        <a href="<?php echo esc_url($anchor_prefix . '#tatlilar'); ?>" class="footer-link">Tatlılar & Çorbalar</a>
+                        <a href="<?php echo esc_url($anchor_prefix . '#about'); ?>" class="footer-link">Hakkımızda</a>
                         <a href="<?php echo esc_url(home_url('/haberler-galeri/')); ?>" class="footer-link">Haberler & Galeri</a>
-                        <a href="#reviews" class="footer-link">Google Yorumları (4.3 ★)</a>
-                        <a href="#reservation" class="footer-link">Masa Rezervasyonu</a>
+                        <a href="<?php echo esc_url($anchor_prefix . '#reviews'); ?>" class="footer-link">Google Yorumları (4.3 ★)</a>
+                        <a href="<?php echo esc_url($anchor_prefix . '#reservation'); ?>" class="footer-link">Masa Rezervasyonu</a>
                     </div>
                 </div>
 

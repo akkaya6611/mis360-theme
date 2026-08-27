@@ -1,1519 +1,1213 @@
 /* ==========================================================================
-   MİS360 - Main Theme Stylesheet (Modern CSS & Components)
+   MİS360 - DENFORA PREMIUM DESIGN SYSTEM & THEME
+   Inspired by & 1:1 Theme Aesthetic Match of denfora.com
+   Author: Serkan AKKAYA <https://misteknoloji360.com.tr/>
    ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   Düzen ve Konteynerler (Containers)
-   -------------------------------------------------------------------------- */
-.mis-container {
+:root {
+  /* Brand Colors (Denfora Exact Palette) */
+  --color-primary: #ef5027;
+  --color-primary-dark: #d4451f;
+  --color-primary-light: #ff6b42;
+  --color-primary-subtle: rgba(239, 80, 39, 0.1);
+  --color-primary-rgb: 239, 80, 39;
+
+  /* Neutrals */
+  --color-black: #1a1a1a;
+  --color-gray-900: #2d2d2d;
+  --color-gray-800: #3d3d3d;
+  --color-gray-700: #4a4a4a;
+  --color-gray-600: #5a5a5a;
+  --color-gray-500: #6b6b6b;
+  --color-gray-400: #8a8a8a;
+  --color-gray-300: #a0a0a0;
+  --color-gray-200: #d0d0d0;
+  --color-gray-100: #f5f5f5;
+  --color-gray-50: #fafafa;
+  --color-white: #ffffff;
+
+  /* Semantic & Social */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #128c7e;
+
+  /* Spacing Scale (4px Base) */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+  --space-20: 5rem;    /* 80px */
+  --space-24: 6rem;    /* 96px */
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  /* Layout & Radii */
+  --header-height: 80px;
+  --header-height-scrolled: 72px;
+  --container-max: 1320px;
+  --container-2xl: 1440px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows & Transitions */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 12px 28px -4px rgba(0, 0, 0, 0.12), 0 4px 8px -2px rgba(0, 0, 0, 0.06);
+  --shadow-primary: 0 8px 20px -4px rgba(239, 80, 39, 0.35);
+
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --z-sticky: 1000;
+}
+
+/* ==========================================================================
+   Reset & Base Styles
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--color-gray-700);
+  background-color: var(--color-white);
+  overflow-x: hidden;
+  padding-top: var(--header-height);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
   width: 100%;
-  max-width: var(--mis-container-max);
+  max-width: var(--container-max);
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--mis-space-md);
-  padding-right: var(--mis-space-md);
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
 }
 
-.mis-container-narrow {
-  max-width: 840px;
+@media (min-width: 768px) {
+  .container {
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+  }
 }
 
-.mis-site-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+@media (min-width: 1200px) {
+  .container {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
 }
 
-.mis-site-content {
-  flex: 1 0 auto;
-  padding-top: var(--mis-space-lg);
-  padding-bottom: var(--mis-space-xl);
+/* ==========================================================================
+   Typography & Helpers
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-black);
+  font-weight: var(--font-bold);
+  line-height: 1.25;
 }
 
-/* --------------------------------------------------------------------------
-   Glassmorphism Üst Başlık (Header & Navbar)
-   -------------------------------------------------------------------------- */
-.mis-site-header {
-  position: sticky;
+.section {
+  padding: var(--space-16) 0;
+}
+
+.section-gray {
+  background-color: var(--color-gray-50);
+}
+
+.section-dark {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto var(--space-12);
+}
+
+.section-title {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-extrabold);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: var(--text-4xl);
+  }
+}
+
+.section-subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-gray-500);
+  line-height: 1.6;
+}
+
+.section-dark .section-subtitle {
+  color: var(--color-gray-400);
+}
+
+.text-center { text-align: center; }
+.mt-8 { margin-top: var(--space-8); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.flex { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
+.justify-center { justify-content: center; }
+.items-center { align-items: center; }
+
+/* Grid System */
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+@media (min-width: 768px) {
+  .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .md\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .lg\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ==========================================================================
+   BUTTONS (Denfora Exact Match)
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+}
+
+.btn-sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  border-radius: var(--radius-md);
+}
+
+.btn-lg {
+  padding: 0.85rem var(--space-8);
+  font-size: var(--text-base);
+  border-radius: var(--radius-lg);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white) !important;
+  border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-primary);
+  transform: translateY(-2px);
+}
+
+.btn-outline-light {
+  background-color: transparent;
+  color: var(--color-white) !important;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-outline-light:hover {
+  background-color: var(--color-white);
+  color: var(--color-black) !important;
+  border-color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.btn-outline-dark {
+  background-color: transparent;
+  color: var(--color-gray-900);
+  border-color: var(--color-gray-300);
+}
+
+.btn-outline-dark:hover {
+  background-color: var(--color-gray-900);
+  color: var(--color-white);
+  border-color: var(--color-gray-900);
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+  background-color: var(--color-whatsapp);
+  color: var(--color-white) !important;
+  border-radius: var(--radius-full);
+}
+
+.btn-whatsapp:hover {
+  background-color: var(--color-whatsapp-dark);
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-full { width: 100%; }
+
+/* ==========================================================================
+   HEADER (Denfora Exact Sticky Navigation)
+   ========================================================================== */
+.header {
+  position: fixed;
   top: 0;
-  z-index: 1000;
-  background-color: var(--mis-bg-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--mis-border-color);
-  transition: background-color var(--mis-transition-base), border-color var(--mis-transition-base);
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-100);
+  z-index: var(--z-sticky);
+  transition: all var(--transition-base);
 }
 
-.mis-header-inner {
+.header.scrolled {
+  height: var(--header-height-scrolled);
+  box-shadow: var(--shadow-md);
+}
+
+.header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 76px;
+  height: 100%;
+  padding: 0 var(--space-4);
+  max-width: var(--container-2xl);
+  margin: 0 auto;
 }
 
-.mis-site-branding {
+@media (min-width: 768px) {
+  .header-inner { padding: 0 var(--space-6); }
+}
+
+@media (min-width: 1024px) {
+  .header-inner { padding: 0 var(--space-8); }
+}
+
+.header-logo {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-}
-
-.mis-site-title {
-  font-size: var(--mis-text-xl);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--mis-text-primary);
   text-decoration: none;
 }
 
-.mis-gradient-text {
-  background: linear-gradient(135deg, var(--mis-primary), var(--mis-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.header-logo img {
+  height: 42px;
+  width: auto;
 }
 
-.mis-site-description {
-  font-size: var(--mis-text-xs);
-  color: var(--mis-text-muted);
+.header-brand-text {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--color-black);
+  letter-spacing: -0.03em;
 }
 
-/* --------------------------------------------------------------------------
-   Masaüstü Navigasyon (Desktop Menu)
-   -------------------------------------------------------------------------- */
-.mis-main-navigation {
+.header-brand-text span {
+  color: var(--color-primary);
+}
+
+/* Desktop Navigation */
+.header-nav {
   display: none;
 }
 
 @media (min-width: 1024px) {
-  .mis-main-navigation {
+  .header-nav {
     display: flex;
     align-items: center;
-  }
-
-  .mis-nav-menu {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 1.75rem;
-  }
-
-  .mis-nav-menu li {
-    position: relative;
-  }
-
-  .mis-nav-menu a {
-    color: var(--mis-text-secondary);
-    font-size: var(--mis-text-sm);
-    font-weight: 500;
-    padding: 0.5rem 0.25rem;
-    transition: color var(--mis-transition-fast);
-  }
-
-  .mis-nav-menu a:hover,
-  .mis-nav-menu .current-menu-item > a {
-    color: var(--mis-primary);
+    gap: var(--space-1);
   }
 }
 
-/* --------------------------------------------------------------------------
-   Butonlar & İkon Butonları
-   -------------------------------------------------------------------------- */
-.mis-header-actions {
+.nav-link {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-gray-700);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-primary);
+  background-color: var(--color-primary-subtle);
+}
+
+/* Header Actions */
+.header-actions {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--space-3);
 }
 
-.mis-icon-btn {
-  display: inline-flex;
+/* Language Switcher */
+.lang-switcher {
+  position: relative;
+}
+
+.lang-switcher-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  color: var(--color-gray-700);
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.lang-switcher-toggle:hover {
+  background-color: var(--color-gray-100);
+  border-color: var(--color-gray-300);
+}
+
+.flag-icon {
+  width: 18px;
+  height: 12px;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.lang-arrow {
+  transition: transform var(--transition-fast);
+}
+
+.lang-switcher.open .lang-arrow {
+  transform: rotate(180deg);
+}
+
+.lang-switcher-dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  min-width: 130px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-2);
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 100;
+}
+
+.lang-switcher.open .lang-switcher-dropdown {
+  display: flex;
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  color: var(--color-gray-700);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+
+.lang-option:hover,
+.lang-option.active {
+  background-color: var(--color-gray-50);
+  color: var(--color-primary);
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 42px;
   height: 42px;
-  border-radius: var(--mis-radius-md);
-  border: 1px solid var(--mis-border-color);
-  background-color: var(--mis-bg-surface);
-  color: var(--mis-text-primary);
+  background: none;
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  color: var(--color-gray-900);
   cursor: pointer;
-  transition: all var(--mis-transition-fast);
-}
-
-.mis-icon-btn:hover {
-  border-color: var(--mis-primary);
-  color: var(--mis-primary);
-  transform: translateY(-1px);
-  box-shadow: var(--mis-shadow-sm);
-}
-
-/* Dark Mode Icon Switcher */
-.mis-icon-sun {
-  display: none;
-}
-.mis-icon-moon {
-  display: block;
-}
-
-:root[data-theme="dark"] .mis-icon-sun {
-  display: block;
-}
-:root[data-theme="dark"] .mis-icon-moon {
-  display: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .mis-icon-sun {
-    display: block;
-  }
-  :root:not([data-theme="light"]) .mis-icon-moon {
-    display: none;
-  }
-}
-
-/* Hamburger Icon */
-.mis-mobile-toggle {
-  display: flex;
 }
 
 @media (min-width: 1024px) {
-  .mis-mobile-toggle {
-    display: none;
-  }
+  .mobile-menu-toggle { display: none; }
 }
 
-.mis-hamburger-box {
-  width: 20px;
-  height: 14px;
-  position: relative;
+.mobile-menu-toggle svg {
+  width: 22px;
+  height: 22px;
 }
 
-.mis-hamburger-inner,
-.mis-hamburger-inner::before,
-.mis-hamburger-inner::after {
-  width: 20px;
-  height: 2px;
-  background-color: currentColor;
-  position: absolute;
-  border-radius: 2px;
-  transition: transform var(--mis-transition-fast), top var(--mis-transition-fast);
-}
-
-.mis-hamburger-inner {
-  top: 6px;
-}
-
-.mis-hamburger-inner::before {
-  content: '';
-  top: -6px;
-}
-
-.mis-hamburger-inner::after {
-  content: '';
-  top: 6px;
-}
-
-/* --------------------------------------------------------------------------
-   Mobil Off-Canvas Menü Çekmecesi
-   -------------------------------------------------------------------------- */
-.mis-mobile-drawer {
+/* Mobile Nav Drawer */
+.mobile-nav-overlay {
   position: fixed;
-  inset: 0;
-  z-index: 2000;
-  visibility: hidden;
-  transition: visibility var(--mis-transition-base);
-}
-
-.mis-mobile-drawer.is-active {
-  visibility: visible;
-}
-
-.mis-mobile-drawer-backdrop {
-  position: absolute;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
+  z-index: 1100;
   opacity: 0;
-  transition: opacity var(--mis-transition-base);
+  visibility: hidden;
+  transition: all var(--transition-base);
 }
 
-.mis-mobile-drawer.is-active .mis-mobile-drawer-backdrop {
+.mobile-nav-overlay.open {
   opacity: 1;
+  visibility: visible;
 }
 
-.mis-mobile-drawer-content {
-  position: absolute;
+.mobile-nav {
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
-  width: min(85vw, 360px);
-  background-color: var(--mis-bg-surface);
-  border-left: 1px solid var(--mis-border-color);
-  padding: var(--mis-space-md);
-  transform: translateX(100%);
-  transition: transform var(--mis-transition-smooth);
+  width: 320px;
+  max-width: 85vw;
+  background-color: var(--color-white);
+  padding: var(--space-6);
   display: flex;
   flex-direction: column;
-  box-shadow: var(--mis-shadow-lg);
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform var(--transition-slow);
+  z-index: 1101;
 }
 
-.mis-mobile-drawer.is-active .mis-mobile-drawer-content {
+.mobile-nav-overlay.open .mobile-nav {
   transform: translateX(0);
 }
 
-.mis-drawer-header {
+.mobile-nav-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: var(--mis-space-sm);
-  border-bottom: 1px solid var(--mis-border-color);
-  margin-bottom: var(--mis-space-md);
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-gray-100);
 }
 
-.mis-drawer-title {
-  font-weight: 700;
-  font-size: var(--mis-text-lg);
-  color: var(--mis-text-primary);
+.mobile-nav-close {
+  background: none;
+  border: none;
+  color: var(--color-gray-500);
+  cursor: pointer;
 }
 
-.mis-mobile-nav-list {
-  list-style: none;
+.mobile-nav-body {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-2);
+  margin-bottom: auto;
 }
 
-.mis-mobile-nav-list a {
-  display: block;
-  padding: 0.75rem 1rem;
-  border-radius: var(--mis-radius-sm);
-  color: var(--mis-text-primary);
-  font-weight: 600;
-  transition: background-color var(--mis-transition-fast);
+.mobile-nav-link {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  color: var(--color-gray-800);
+  border-radius: var(--radius-md);
+  text-decoration: none;
 }
 
-.mis-mobile-nav-list a:hover {
-  background-color: var(--mis-bg-surface-elevated);
-  color: var(--mis-primary);
+.mobile-nav-link.active,
+.mobile-nav-link:hover {
+  color: var(--color-primary);
+  background-color: var(--color-primary-subtle);
 }
 
-/* --------------------------------------------------------------------------
-   Blog / İçerik Izgarası (Grid & Cards)
-   -------------------------------------------------------------------------- */
-.mis-content-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--mis-space-lg);
+.mobile-nav-divider {
+  height: 1px;
+  background-color: var(--color-gray-100);
+  margin: var(--space-4) 0;
 }
 
-@media (min-width: 1024px) {
-  .mis-content-layout {
-    grid-template-columns: 1fr 320px;
-  }
-}
-
-.mis-cards-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--mis-space-md);
-}
-
-@media (min-width: 640px) {
-  .mis-cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.mis-card {
-  background-color: var(--mis-bg-surface);
-  border: 1px solid var(--mis-border-color);
-  border-radius: var(--mis-radius-lg);
-  overflow: hidden;
+.mobile-nav-footer {
+  margin-top: var(--space-8);
   display: flex;
   flex-direction: column;
-  transition: transform var(--mis-transition-base), box-shadow var(--mis-transition-base), border-color var(--mis-transition-base);
+  gap: var(--space-4);
 }
 
-.mis-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--mis-shadow-md);
-  border-color: rgba(var(--mis-primary-rgb), 0.3);
+.mobile-lang-list {
+  display: flex;
+  gap: var(--space-2);
 }
 
-.mis-post-thumbnail {
+.mobile-lang-btn {
+  flex: 1;
+  text-align: center;
+  padding: var(--space-2);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  color: var(--color-gray-600);
+}
+
+.mobile-lang-btn.active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* ==========================================================================
+   HERO SECTION (Denfora Exact Architecture)
+   ========================================================================== */
+.hero {
   position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-gray-900);
+  color: var(--color-white);
+  padding: 100px 0 60px;
   overflow: hidden;
-  aspect-ratio: 16 / 9;
-  background-color: var(--mis-bg-surface-elevated);
 }
 
-.mis-card-img,
-.mis-featured-img {
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--mis-transition-smooth);
+  object-position: center;
 }
 
-.mis-card:hover .mis-card-img {
-  transform: scale(1.04);
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0.3) 100%);
+  z-index: 2;
 }
 
-.mis-card-body {
-  padding: var(--mis-space-md);
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.mis-card-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: var(--mis-text-xs);
-  color: var(--mis-text-muted);
-  margin-bottom: 0.75rem;
-}
-
-.mis-meta-sep {
-  opacity: 0.5;
-}
-
-.mis-card-title {
-  font-size: var(--mis-text-xl);
-  font-weight: 700;
-  line-height: 1.35;
-  margin-bottom: 0.75rem;
-}
-
-.mis-card-title a {
-  color: var(--mis-text-primary);
-  transition: color var(--mis-transition-fast);
-}
-
-.mis-card-title a:hover {
-  color: var(--mis-primary);
-}
-
-.mis-card-excerpt {
-  font-size: var(--mis-text-sm);
-  color: var(--mis-text-secondary);
-  line-height: 1.6;
-  margin-bottom: var(--mis-space-md);
-  flex: 1;
-}
-
-.mis-card-footer {
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-}
-
-.mis-read-more-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: var(--mis-text-sm);
-  font-weight: 600;
-  color: var(--mis-primary);
-}
-
-.mis-read-more-link .mis-arrow-icon {
-  transition: transform var(--mis-transition-fast);
-}
-
-.mis-read-more-link:hover .mis-arrow-icon {
-  transform: translateX(4px);
-}
-
-/* --------------------------------------------------------------------------
-   Sayfalama (Pagination)
-   -------------------------------------------------------------------------- */
-.mis-pagination-wrapper {
-  margin-top: var(--mis-space-lg);
-  display: flex;
-  justify-content: center;
-}
-
-.mis-pagination-wrapper .nav-links {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background-color: var(--mis-bg-surface);
-  border: 1px solid var(--mis-border-color);
-  padding: 0.4rem;
-  border-radius: var(--mis-radius-full);
-}
-
-.mis-pagination-wrapper .page-numbers {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 38px;
-  height: 38px;
-  padding: 0 0.75rem;
-  border-radius: var(--mis-radius-full);
-  font-size: var(--mis-text-sm);
-  font-weight: 600;
-  color: var(--mis-text-secondary);
-  transition: all var(--mis-transition-fast);
-}
-
-.mis-pagination-wrapper .page-numbers.current {
-  background-color: var(--mis-primary);
-  color: #ffffff;
-}
-
-.mis-pagination-wrapper a.page-numbers:hover {
-  background-color: var(--mis-bg-surface-elevated);
-  color: var(--mis-primary);
-}
-
-/* --------------------------------------------------------------------------
-   Tekil Sayfa ve Yazı (Single Post & Page)
-   -------------------------------------------------------------------------- */
-.mis-single-header {
-  margin-bottom: var(--mis-space-md);
-  text-align: center;
-}
-
-.mis-single-header .mis-entry-meta {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-size: var(--mis-text-sm);
-  color: var(--mis-text-muted);
-  margin-bottom: 1rem;
-}
-
-.mis-single-title {
-  font-size: var(--mis-text-3xl);
-  font-weight: 800;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-}
-
-.mis-post-thumbnail-single {
-  border-radius: var(--mis-radius-lg);
-  margin-bottom: var(--mis-space-lg);
-  overflow: hidden;
-  max-height: 520px;
-}
-
-.mis-entry-content {
-  font-size: var(--mis-text-lg);
-  line-height: 1.8;
-  color: var(--mis-text-secondary);
-}
-
-.mis-entry-content p {
-  margin-bottom: 1.5rem;
-}
-
-.mis-entry-content h2,
-.mis-entry-content h3,
-.mis-entry-content h4 {
-  color: var(--mis-text-primary);
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  line-height: 1.3;
-}
-
-.mis-entry-content blockquote {
-  border-left: 4px solid var(--mis-primary);
-  padding-left: 1.5rem;
-  margin: 2rem 0;
-  font-style: italic;
-  color: var(--mis-text-primary);
-}
-
-/* Yazar Kutusu (Author Box) */
-.mis-author-box {
-  display: flex;
-  align-items: center;
-  gap: var(--mis-space-md);
-  padding: var(--mis-space-md);
-  margin-top: var(--mis-space-lg);
-  border-radius: var(--mis-radius-md);
-}
-
-.mis-avatar-img {
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.mis-author-name {
-  font-size: var(--mis-text-base);
-  font-weight: 700;
-  margin-bottom: 0.25rem;
-}
-
-.mis-author-bio {
-  font-size: var(--mis-text-sm);
-  color: var(--mis-text-secondary);
-}
-
-/* --------------------------------------------------------------------------
-   Kenar Çubuğu & Bileşenler (Sidebar & Widgets)
-   -------------------------------------------------------------------------- */
-.mis-sidebar-area {
-  display: flex;
-  flex-direction: column;
-  gap: var(--mis-space-md);
-}
-
-.mis-widget {
-  background-color: var(--mis-bg-surface);
-  border: 1px solid var(--mis-border-color);
-  border-radius: var(--mis-radius-md);
-  padding: var(--mis-space-md);
-}
-
-.mis-widget-title {
-  font-size: var(--mis-text-base);
-  font-weight: 700;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--mis-primary);
-  display: inline-block;
-}
-
-.mis-widget ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.mis-widget a {
-  color: var(--mis-text-secondary);
-  font-size: var(--mis-text-sm);
-}
-
-.mis-widget a:hover {
-  color: var(--mis-primary);
-}
-
-/* --------------------------------------------------------------------------
-   Alt Bilgi (Footer)
-   -------------------------------------------------------------------------- */
-.mis-site-footer {
-  background-color: var(--mis-bg-surface);
-  border-top: 1px solid var(--mis-border-color);
-  padding-top: var(--mis-space-xl);
-  padding-bottom: var(--mis-space-lg);
-  margin-top: auto;
-}
-
-.mis-footer-bottom {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-top: var(--mis-space-md);
-  border-top: 1px solid var(--mis-border-subtle);
-  font-size: var(--mis-text-sm);
-  color: var(--mis-text-muted);
-}
-
-@media (min-width: 768px) {
-  .mis-footer-bottom {
-    flex-direction: row;
-  }
-}
-
-.mis-footer-menu {
-  display: flex;
-  list-style: none;
-  gap: 1.5rem;
-}
-
-.mis-footer-menu a {
-  color: var(--mis-text-muted);
-}
-
-.mis-footer-menu a:hover {
-  color: var(--mis-primary);
-}
-
-/* ==========================================================================
-   Çok Amaçlı (Multipurpose) Sektörel Bileşenler (Yol Yardım, Restoran, İlan)
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   1. Mobil Yapışkan Acil Arama / WhatsApp Barı (Sticky Call Bar)
-   -------------------------------------------------------------------------- */
-.mis-sticky-call-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  background-color: var(--mis-bg-surface);
-  border-top: 1px solid var(--mis-border-color);
-  padding: 0.6rem var(--mis-space-sm);
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
-  display: block;
-}
-
-@media (max-width: 1023px) {
-  body {
-    padding-bottom: 72px;
-  }
-  .mis-sticky-call-bar {
-    display: block;
-  }
-}
-
-@media (min-width: 1024px) {
-  .mis-sticky-call-bar {
-    display: none; /* Masaüstünde gizle veya header arama butonu devralır */
-  }
-}
-
-.mis-sticky-call-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.6rem;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.mis-sticky-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 0.5rem;
-  border-radius: var(--mis-radius-md);
-  font-weight: 700;
-  font-size: var(--mis-text-sm);
-  text-decoration: none;
-  color: #ffffff;
-  transition: transform var(--mis-transition-fast), filter var(--mis-transition-fast);
-}
-
-.mis-sticky-btn:active {
-  transform: scale(0.97);
-}
-
-.mis-btn-call {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
-}
-
-.mis-btn-whatsapp {
-  background: linear-gradient(135deg, #25d366, #128c7e);
-  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.4);
-}
-
-/* --------------------------------------------------------------------------
-   2. İlan, Restoran & Yol Yardım Kartları (Listing Card)
-   -------------------------------------------------------------------------- */
-.mis-listing-thumb-wrap {
+.hero-content {
   position: relative;
-  overflow: hidden;
-  aspect-ratio: 16 / 10;
-  background-color: var(--mis-bg-surface-elevated);
+  z-index: 3;
+  max-width: 720px;
 }
 
-.mis-listing-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: #ffffff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: var(--mis-radius-full);
-  letter-spacing: 0.02em;
-  z-index: 2;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.mis-listing-price-tag {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  background: var(--mis-primary);
-  color: #ffffff;
-  font-size: var(--mis-text-base);
-  font-weight: 800;
-  padding: 4px 12px;
-  border-radius: var(--mis-radius-sm);
-  box-shadow: var(--mis-shadow-md);
-  z-index: 2;
-}
-
-.mis-listing-location {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: var(--mis-text-xs);
-  color: var(--mis-text-muted);
-  margin-bottom: 0.5rem;
-}
-
-.mis-btn-action {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  width: 100%;
-  padding: 0.65rem 1rem;
-  border-radius: var(--mis-radius-md);
-  background-color: var(--mis-bg-surface-elevated);
-  border: 1px solid var(--mis-border-color);
-  color: var(--mis-text-primary);
-  font-size: var(--mis-text-sm);
-  font-weight: 600;
-  transition: all var(--mis-transition-fast);
-  text-decoration: none;
-}
-
-.mis-btn-action:hover {
-  background-color: var(--mis-primary);
-  color: #ffffff;
-  border-color: var(--mis-primary);
-}
-
-/* --------------------------------------------------------------------------
-   3. Acil Yol Yardım Landing Page Stilleri
-   -------------------------------------------------------------------------- */
-.mis-emergency-hero {
-  padding: var(--mis-space-xl) var(--mis-space-md);
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(59, 130, 246, 0.05));
-  border: 1px solid var(--mis-border-color);
-  border-radius: var(--mis-radius-lg);
-  text-align: center;
-  margin-bottom: var(--mis-space-xl);
-}
-
-.mis-emergency-live-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #fee2e2;
-  color: #dc2626;
-  font-weight: 700;
-  font-size: var(--mis-text-xs);
-  padding: 6px 14px;
-  border-radius: var(--mis-radius-full);
-  margin-bottom: 1.5rem;
-  border: 1px solid #fca5a5;
-}
-
-:root[data-theme="dark"] .mis-emergency-live-badge {
-  background-color: rgba(220, 38, 38, 0.2);
-  color: #f87171;
-  border-color: rgba(220, 38, 38, 0.4);
-}
-
-.mis-pulse-dot {
-  width: 8px;
-  height: 8px;
-  background-color: #ef4444;
-  border-radius: 50%;
-  animation: mis-pulse 1.5s infinite;
-}
-
-@keyframes mis-pulse {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
-}
-
-.mis-emergency-title {
-  font-size: var(--mis-text-hero);
-  font-weight: 900;
+.hero-title {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-extrabold);
   line-height: 1.15;
-  margin-bottom: 1rem;
-}
-
-.mis-emergency-desc {
-  font-size: var(--mis-text-lg);
-  color: var(--mis-text-secondary);
-  max-width: 680px;
-  margin: 0 auto 2rem;
-}
-
-.mis-emergency-cta-group {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.mis-btn-emergency-call {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-  color: #ffffff !important;
-  font-weight: 800;
-  font-size: var(--mis-text-base);
-  padding: 0.85rem 1.75rem;
-  border-radius: var(--mis-radius-md);
-  box-shadow: 0 10px 20px -5px rgba(239, 68, 68, 0.4);
-  text-decoration: none;
-  transition: transform var(--mis-transition-fast);
-}
-
-.mis-btn-emergency-call small {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 500;
-  opacity: 0.9;
-}
-
-.mis-btn-emergency-call:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.05);
-}
-
-.mis-btn-emergency-wa {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: linear-gradient(135deg, #25d366, #128c7e);
-  color: #ffffff !important;
-  font-weight: 800;
-  font-size: var(--mis-text-base);
-  padding: 0.85rem 1.75rem;
-  border-radius: var(--mis-radius-md);
-  box-shadow: 0 10px 20px -5px rgba(37, 211, 102, 0.4);
-  text-decoration: none;
-  transition: transform var(--mis-transition-fast);
-}
-
-.mis-btn-emergency-wa:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.05);
-}
-
-/* 3 Adımda Hizmet */
-.mis-steps-section {
-  margin-bottom: var(--mis-space-xl);
-  text-align: center;
-}
-
-.mis-section-title {
-  font-size: var(--mis-text-2xl);
-  font-weight: 800;
-  margin-bottom: var(--mis-space-lg);
-}
-
-.mis-steps-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--mis-space-md);
+  letter-spacing: -0.03em;
+  color: var(--color-white);
+  margin-bottom: var(--space-5);
 }
 
 @media (min-width: 768px) {
-  .mis-steps-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .hero-title { font-size: 3.5rem; }
+}
+
+.hero-highlight {
+  color: var(--color-primary);
+}
+
+.hero-description {
+  font-size: var(--text-lg);
+  line-height: 1.6;
+  color: var(--color-gray-300);
+  margin-bottom: var(--space-8);
+  max-width: 600px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+/* ==========================================================================
+   PARTNERS / BRANDS MARQUEE SLIDER (Denfora Exact Architecture)
+   ========================================================================== */
+.section-partners {
+  background: linear-gradient(180deg, var(--color-white) 0%, var(--color-gray-50) 100%);
+  padding: var(--space-8) 0;
+  border-bottom: 1px solid var(--color-gray-100);
+  overflow: hidden;
+}
+
+.partners-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.partners-label {
+  display: inline-block;
+  font-size: var(--text-xs);
+  color: var(--color-gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-6);
+}
+
+.partners-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.partners-track {
+  display: flex;
+  gap: var(--space-10);
+  animation: partnersScroll 25s linear infinite;
+  width: max-content;
+}
+
+.partners-slider:hover .partners-track {
+  animation-play-state: paused;
+}
+
+@keyframes partnersScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.partner-logo {
+  flex-shrink: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--color-gray-400);
+  letter-spacing: 0.05em;
+  padding: var(--space-3) var(--space-5);
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.partner-logo:hover {
+  color: var(--color-gray-800);
+  transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  .partner-logo {
+    font-size: 20px;
+    padding: var(--space-4) var(--space-6);
+  }
+  .partners-track {
+    gap: var(--space-12);
   }
 }
 
-.mis-step-card {
-  padding: var(--mis-space-lg) var(--mis-space-md);
-  text-align: center;
-  position: relative;
-}
-
-.mis-step-num {
-  width: 48px;
-  height: 48px;
-  line-height: 48px;
-  border-radius: 50%;
-  background: var(--mis-primary);
-  color: #ffffff;
-  font-weight: 800;
-  font-size: 1.25rem;
-  margin: 0 auto 1rem;
-}
-
 /* ==========================================================================
-   Elementor & Elementor Pro Tam Uyumluluk Kuralları
+   CATEGORY CARDS (Denfora Exact Architecture)
    ========================================================================== */
-
-/* Elementor Sayfalarında İçerik Sarmalayıcı Sıfırlaması */
-.elementor-page .mis-site-content {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.mis-fullwidth-area {
-  width: 100%;
-  max-width: 100%;
-  padding: 0;
-  margin: 0;
-}
-
-.mis-fullwidth-area .entry-content {
-  max-width: 100%;
-}
-
-/* Yatay Taşmaları Önleme (Animasyonlar ve Stretch Section İçin) */
-.mis-site-wrapper {
-  overflow-x: hidden;
-  width: 100%;
-}
-
-/* Elementor Editör ve Önizleme Modunda Düzeltmeler */
-.elementor-editor-active .mis-site-header {
-  position: relative !important; /* Editör çubuğu ile çakışmayı önle */
-}
-
-.elementor-editor-active .mis-sticky-call-bar {
-  display: none !important; /* Editör sırasında yapışkan barı gizle */
-}
-
-/* ==========================================================================
-   MİS360 Özel Yüzen Hap Menü & Lüks Mega Menü Tasarımı (User Custom Nav)
-   ========================================================================== */
-:root {
-  --color-primary: rgba(5, 249, 255, 1);
-  --transition: 0.4s;
-}
-
-.base-template__wrapper {
-  min-height: calc(100dvh - 300px);
-  justify-content: flex-start;
-}
-
-.wrapper {
-  max-width: 1445px;
-}
-
-.header {
-  display: flex;
-  align-items: center;
+.category-card {
   position: relative;
-  padding: 0 20px 0 40px;
-  border-radius: 60px;
-  min-height: 82px;
-  background-color: rgba(25, 27, 36, 1);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.35);
-  z-index: 999;
-}
-
-.header__logo {
-  max-width: 120px;
-  display: flex;
-  align-items: center;
-}
-
-.header__logo a,
-.header__logo-link {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-}
-
-.header__wrapper {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.header__navigation-wrapper {
-  display: flex;
-  width: 100%;
-  padding-left: 50px;
-  align-items: center;
-}
-
-.header__list {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.header__list-item {
-  display: flex;
-  padding: 30px 0 50px;
-  margin-bottom: -20px;
-  gap: 8px;
-  font-size: 16px;
-  position: relative;
-}
-
-.header__list-item > a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: var(--transition);
-}
-
-.header__list-item > a svg path,
-.header__list-item > a svg polyline {
-  transition: var(--transition);
-}
-
-.header__list-item .submenu-wrapper {
-  position: absolute;
-  width: 100%;
-  top: 110%;
-  left: 0;
-  border-radius: 33px;
-  padding: 30px 30px 50px 30px;
-  background-color: rgba(25, 27, 36, 1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: var(--transition);
-  z-index: 1000;
-}
-
-.header__buttons-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-left: auto;
-}
-
-.header__button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 42px;
-  width: max-content;
-  padding: 6px 20px;
-  border-radius: 100px;
-  gap: 8px;
-  font-size: 15px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-.submenu-list__title {
-  width: max-content;
-  margin-bottom: 25px;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: rgba(160, 161, 165, 1);
-}
-
-.submenu-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 295px;
-  padding-left: 0;
-  list-style: none;
-  margin: 0;
-}
-
-.submenu-list__item {
-  display: flex;
-  padding-right: 100px;
-  margin-right: -100px;
-  cursor: pointer;
-}
-
-.submenu-list__item-wrapper {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 8px 16px 8px 10px;
-  gap: 14px;
-  border-radius: 14px;
-  transition: var(--transition);
-}
-
-.submenu-list__item-wrapper > svg {
-  margin-left: auto;
-  opacity: 0;
-  visibility: hidden;
-  transition: var(--transition);
-}
-
-.submenu-list__wrapper {
-  position: relative;
-}
-
-.submenu-content {
-  position: absolute;
-  right: 0;
-  top: 0;
-  max-width: calc(100% - 365px);
-  width: calc(100% - 365px);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: var(--transition);
-}
-
-.submenu-list__item.has-submenu.active .submenu-content {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.submenu-list__item.has-submenu.active .submenu-list__item-wrapper {
-  background-color: rgba(255, 255, 255, 0.06);
-}
-
-.submenu-list__item.has-submenu.active .submenu-list__item-wrapper > svg {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.submenu-list__item-link {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.submenu-list__item-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: #fff;
-}
-
-.submenu-list__item-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.submenu-list__item-subtile {
-  font-size: 12px;
-  font-weight: 400;
-  color: rgba(160, 161, 165, 1);
-}
-
-.submenu-content__title {
-  width: max-content;
-  margin-bottom: 25px;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: rgba(160, 161, 165, 1);
-}
-
-.submenu-content__list:not(.events) {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 0;
-  list-style: none;
-  margin: 0;
-}
-
-.submenu-content__list.events {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  padding: 0;
-  list-style: none;
-  margin: 0;
-}
-
-.submenu-content__list-item {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
   display: block;
-  border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.05);
-  cursor: auto;
+  text-decoration: none;
+  background-color: var(--color-gray-100);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
 }
 
-.submenu-content__link {
-  display: flex;
-  flex-direction: column;
-  border-radius: 20px;
-  padding: 16px;
-  border: 1px solid transparent;
-  text-decoration: none;
-  transition: var(--transition);
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.category-card-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
   height: 100%;
 }
 
-.submenu-content__link-title {
-  padding: 0;
-  font-size: 15px;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 8px;
+.category-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
 }
 
-.submenu-content__link-text {
-  padding: 0;
-  font-size: 13px;
-  line-height: 1.5;
-  color: rgba(160, 161, 165, 1);
-  margin-bottom: 16px;
+.category-card:hover .category-card-image img {
+  transform: scale(1.08);
 }
 
-.submenu-content__url {
+.category-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.25) 50%, transparent 100%);
+  z-index: 2;
+}
+
+.category-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-5);
+  z-index: 3;
+  color: var(--color-white);
+}
+
+.category-card-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--color-white);
+  margin-bottom: 2px;
+}
+
+.category-card-count {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: var(--font-medium);
+}
+
+/* ==========================================================================
+   FEATURE CARDS (Denfora Exact "Neden Denfora" Boxes)
+   ========================================================================== */
+.feature-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-100);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8) var(--space-6);
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary-subtle);
+  box-shadow: var(--shadow-md);
+}
+
+.feature-card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-lg);
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: auto;
-  color: rgba(255, 255, 255, 1);
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
+  justify-content: center;
+  margin: 0 auto var(--space-5);
 }
 
-.submenu-content__url svg,
-.submenu-content__url svg path,
-.submenu-content__url svg line,
-.submenu-content__url svg polyline {
-  transition: var(--transition);
-}
-
-.header__burger {
-  display: none;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 5px;
+.feature-card-icon svg {
   width: 28px;
-  margin-left: auto;
-  cursor: pointer;
-  padding: 4px;
+  height: 28px;
 }
 
-.header__burger i {
-  width: 100%;
-  height: 2px;
-  background-color: #fff;
-  border-radius: 13px;
-  transition: var(--transition);
+.feature-card-title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-2);
+  color: var(--color-black);
 }
 
-.header__burger.active i:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+.feature-card-description {
+  font-size: var(--text-sm);
+  color: var(--color-gray-500);
+  line-height: 1.6;
 }
 
-.header__burger.active i:nth-child(2) {
-  opacity: 0;
+/* ==========================================================================
+   PRODUCT / LISTING CARDS (Denfora Exact Architecture)
+   ========================================================================== */
+.product-card {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-gray-100);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-base);
 }
 
-.header__burger.active i:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-gray-200);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .header__list-item:hover .submenu-wrapper {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
+.product-card-image {
+  aspect-ratio: 1;
+  background: var(--color-gray-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  position: relative;
+  overflow: hidden;
+}
 
-  .header__list-item:hover > a,
-  .header__list-item:hover > a svg,
-  .header__list-item:hover > a svg path,
-  .header__list-item:hover > a svg polyline {
-    color: var(--color-primary);
-    stroke: var(--color-primary);
-  }
+.product-card-image img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+  transition: transform var(--transition-slow);
+}
 
-  .header__button:hover {
-    background-color: rgba(255, 255, 255, 0.12);
-  }
+.product-card:hover .product-card-image img {
+  transform: scale(1.05);
+}
 
-  .submenu-list__item.has-submenu:hover .submenu-list__item-wrapper {
-    background-color: rgba(255, 255, 255, 0.06);
-  }
+.product-card-content {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
-  .submenu-list__item.has-submenu:hover .submenu-content,
-  .submenu-list__item.has-submenu:hover .submenu-list__item-wrapper > svg {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
+.product-card-category {
+  font-size: var(--text-xs);
+  color: var(--color-primary);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
 
-  .submenu-content__list-item:hover .submenu-content__link {
-    border-color: rgba(255, 255, 255, 0.25);
-    background-color: rgba(255, 255, 255, 0.07);
-  }
+.product-card-title {
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: var(--color-black);
+  margin-bottom: var(--space-2);
+  line-height: 1.35;
+}
 
-  .submenu-content__url:hover,
-  .submenu-content__url:hover svg,
-  .submenu-content__url:hover svg path,
-  .submenu-content__url:hover svg line,
-  .submenu-content__url:hover svg polyline {
-    color: var(--color-primary);
-    stroke: var(--color-primary);
-  }
+.product-card-sku {
+  font-size: var(--text-xs);
+  color: var(--color-gray-400);
+  font-family: var(--font-mono, monospace);
+  margin-top: auto;
+}
 
-  .submenu-content__url:hover svg {
-    transform: translateX(5px);
+/* ==========================================================================
+   FOOTER (Denfora Exact 4-Column Architecture)
+   ========================================================================== */
+.footer {
+  background-color: var(--color-black);
+  color: var(--color-gray-400);
+  padding: var(--space-16) 0 var(--space-8);
+  border-top: 1px solid var(--color-gray-800);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--space-10);
+  margin-bottom: var(--space-16);
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
   }
 }
 
-@media screen and (max-width: 1280px) {
-  .header__navigation-wrapper {
-    padding-left: 25px;
-  }
-
-  .submenu-list {
-    max-width: 250px;
-  }
-
-  .submenu-content {
-    max-width: calc(100% - 270px);
-    width: calc(100% - 270px);
-  }
+.footer-brand {
+  display: flex;
+  flex-direction: column;
 }
 
-@media screen and (max-width: 1024px) {
-  .header {
-    min-height: 64px;
-    padding: 0 20px;
-    border-radius: 24px;
-  }
+.footer-logo {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--color-white);
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-3);
+}
 
-  .header__burger {
-    display: flex;
-  }
+.footer-logo span {
+  color: var(--color-primary);
+}
 
-  .header__navigation-wrapper {
-    flex-direction: column;
-    align-items: flex-start;
-    position: absolute;
-    top: calc(100% + 12px);
-    left: 0;
-    right: 0;
-    width: 100%;
-    padding: 24px 20px;
-    background-color: rgba(25, 27, 36, 0.98);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: var(--transition);
-    z-index: 1000;
-  }
+.footer-tagline {
+  font-size: var(--text-sm);
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-6);
+}
 
-  .header__navigation-wrapper.open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
+.footer-social {
+  display: flex;
+  gap: var(--space-3);
+}
 
-  .header__list {
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-    align-items: flex-start;
-  }
+.footer-social-link {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-gray-900);
+  color: var(--color-gray-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
 
-  .header__buttons-wrapper {
+.footer-social-link:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.footer-social-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.footer-column-title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-5);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footer-link {
+  font-size: var(--text-sm);
+  color: var(--color-gray-400);
+  transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: var(--color-white);
+}
+
+.footer-contact-item {
+  display: flex;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-4);
+  line-height: 1.5;
+}
+
+.footer-contact-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Footer Newsletter */
+.footer-newsletter {
+  background: var(--color-gray-900);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+@media (min-width: 768px) {
+  .footer-newsletter {
     flex-direction: row;
-    margin-left: unset;
-    margin-top: 24px;
-    gap: 12px;
-    width: 100%;
+    align-items: center;
     justify-content: space-between;
   }
+}
 
-  .header__navigation,
-  .header__list {
-    width: 100%;
-  }
+.footer-newsletter-title {
+  font-size: var(--text-xl);
+  color: var(--color-white);
+  margin-bottom: 4px;
+}
 
-  .header__list-item {
-    flex-direction: column;
-    width: 100%;
-    padding: 0;
-    gap: 0;
-    margin: 0;
-  }
+.footer-newsletter-text {
+  font-size: var(--text-sm);
+  color: var(--color-gray-400);
+}
 
-  .header__list-item.active > a,
-  .header__list-item.active > a svg path {
-    color: var(--color-primary);
-    stroke: var(--color-primary);
-  }
+.footer-newsletter-form {
+  display: flex;
+  gap: var(--space-2);
+  width: 100%;
+  max-width: 440px;
+}
 
-  .header__list-item .submenu-wrapper {
-    position: static;
-    padding: 0;
-    max-height: 0;
-    border-radius: 0;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: all;
-    overflow: hidden;
-    border: none;
-    box-shadow: none;
-    background: transparent;
-    transition: max-height var(--transition);
-  }
+.footer-newsletter-input {
+  flex: 1;
+  background: var(--color-gray-800);
+  border: 1px solid var(--color-gray-700);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem var(--space-4);
+  color: var(--color-white);
+  font-size: var(--text-sm);
+  outline: none;
+}
 
-  .header__list-item.active .submenu-wrapper {
-    max-height: 800px;
-    padding: 16px 0;
-  }
+.footer-newsletter-input:focus {
+  border-color: var(--color-primary);
+}
 
-  .submenu-list {
-    width: 100%;
-    max-width: 100%;
-    gap: 8px;
-  }
+/* Footer Trust Badges */
+.footer-trust {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  padding: var(--space-8) 0;
+  border-top: 1px solid var(--color-gray-900);
+  border-bottom: 1px solid var(--color-gray-900);
+  margin-bottom: var(--space-8);
+}
 
-  .submenu-list__wrapper {
-    margin-top: 10px;
-  }
-
-  .submenu-list__item {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-  }
-
-  .submenu-list__item:active .submenu-list__item-wrapper,
-  .submenu-list__item.active .submenu-list__item-wrapper {
-    background-color: rgba(255, 255, 255, 0.08);
-  }
-
-  .submenu-list__item:active .submenu-list__item-wrapper > svg,
-  .submenu-list__item.active .submenu-list__item-wrapper > svg {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .submenu-list__title {
-    display: none;
-  }
-
-  .submenu-content {
-    display: none;
-  }
-
-  .header__button {
-    border: 1px solid rgba(255, 255, 255, 0.2);
+@media (min-width: 768px) {
+  .footer-trust {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media screen and (max-width: 767.9px) {
-  .header__buttons-wrapper,
-  .header__button {
-    width: 100%;
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-gray-300);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+}
+
+.trust-badge svg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* Footer Bottom & Agency Credit */
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  font-size: var(--text-xs);
+  color: var(--color-gray-500);
+}
+
+.footer-bottom-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .footer-bottom-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
+.footer-bottom-links {
+  display: flex;
+  gap: var(--space-6);
+}
 
+.footer-bottom-link {
+  color: var(--color-gray-500);
+}
 
+.footer-bottom-link:hover {
+  color: var(--color-white);
+}
+
+.footer-agency {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-gray-900);
+}
+
+.footer-agency a {
+  color: var(--color-primary);
+  font-weight: var(--font-semibold);
+}

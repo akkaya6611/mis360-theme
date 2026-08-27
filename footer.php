@@ -42,7 +42,7 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
                         </div>
                     </div>
                     <p class="footer-tagline">
-                        2015 yılından bu yana Yozgat Sarıkaya'da et, balık, kebap ve yöresel lezzetlerimizi sıcak aile ortamıyla misafirlerimizle buluşturuyoruz.
+                        2019 yılından bu yana Yozgat Sarıkaya'da et, balık, kebap ve yöresel lezzetlerimizi sıcak aile ortamıyla misafirlerimizle buluşturuyoruz.
                     </p>
                     <div class="footer-social">
                         <a href="https://www.instagram.com/beyzadeetbalik/" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">

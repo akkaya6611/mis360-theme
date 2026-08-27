@@ -1,0 +1,980 @@
+/* ==========================================================================
+   MİS360 - Main Theme Stylesheet (Modern CSS & Components)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Düzen ve Konteynerler (Containers)
+   -------------------------------------------------------------------------- */
+.mis-container {
+  width: 100%;
+  max-width: var(--mis-container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--mis-space-md);
+  padding-right: var(--mis-space-md);
+}
+
+.mis-container-narrow {
+  max-width: 840px;
+}
+
+.mis-site-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mis-site-content {
+  flex: 1 0 auto;
+  padding-top: var(--mis-space-lg);
+  padding-bottom: var(--mis-space-xl);
+}
+
+/* --------------------------------------------------------------------------
+   Glassmorphism Üst Başlık (Header & Navbar)
+   -------------------------------------------------------------------------- */
+.mis-site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--mis-bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--mis-border-color);
+  transition: background-color var(--mis-transition-base), border-color var(--mis-transition-base);
+}
+
+.mis-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+}
+
+.mis-site-branding {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mis-site-title {
+  font-size: var(--mis-text-xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--mis-text-primary);
+  text-decoration: none;
+}
+
+.mis-gradient-text {
+  background: linear-gradient(135deg, var(--mis-primary), var(--mis-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mis-site-description {
+  font-size: var(--mis-text-xs);
+  color: var(--mis-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Masaüstü Navigasyon (Desktop Menu)
+   -------------------------------------------------------------------------- */
+.mis-main-navigation {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .mis-main-navigation {
+    display: flex;
+    align-items: center;
+  }
+
+  .mis-nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 1.75rem;
+  }
+
+  .mis-nav-menu li {
+    position: relative;
+  }
+
+  .mis-nav-menu a {
+    color: var(--mis-text-secondary);
+    font-size: var(--mis-text-sm);
+    font-weight: 500;
+    padding: 0.5rem 0.25rem;
+    transition: color var(--mis-transition-fast);
+  }
+
+  .mis-nav-menu a:hover,
+  .mis-nav-menu .current-menu-item > a {
+    color: var(--mis-primary);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Butonlar & İkon Butonları
+   -------------------------------------------------------------------------- */
+.mis-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mis-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--mis-radius-md);
+  border: 1px solid var(--mis-border-color);
+  background-color: var(--mis-bg-surface);
+  color: var(--mis-text-primary);
+  cursor: pointer;
+  transition: all var(--mis-transition-fast);
+}
+
+.mis-icon-btn:hover {
+  border-color: var(--mis-primary);
+  color: var(--mis-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--mis-shadow-sm);
+}
+
+/* Dark Mode Icon Switcher */
+.mis-icon-sun {
+  display: none;
+}
+.mis-icon-moon {
+  display: block;
+}
+
+:root[data-theme="dark"] .mis-icon-sun {
+  display: block;
+}
+:root[data-theme="dark"] .mis-icon-moon {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .mis-icon-sun {
+    display: block;
+  }
+  :root:not([data-theme="light"]) .mis-icon-moon {
+    display: none;
+  }
+}
+
+/* Hamburger Icon */
+.mis-mobile-toggle {
+  display: flex;
+}
+
+@media (min-width: 1024px) {
+  .mis-mobile-toggle {
+    display: none;
+  }
+}
+
+.mis-hamburger-box {
+  width: 20px;
+  height: 14px;
+  position: relative;
+}
+
+.mis-hamburger-inner,
+.mis-hamburger-inner::before,
+.mis-hamburger-inner::after {
+  width: 20px;
+  height: 2px;
+  background-color: currentColor;
+  position: absolute;
+  border-radius: 2px;
+  transition: transform var(--mis-transition-fast), top var(--mis-transition-fast);
+}
+
+.mis-hamburger-inner {
+  top: 6px;
+}
+
+.mis-hamburger-inner::before {
+  content: '';
+  top: -6px;
+}
+
+.mis-hamburger-inner::after {
+  content: '';
+  top: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   Mobil Off-Canvas Menü Çekmecesi
+   -------------------------------------------------------------------------- */
+.mis-mobile-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  visibility: hidden;
+  transition: visibility var(--mis-transition-base);
+}
+
+.mis-mobile-drawer.is-active {
+  visibility: visible;
+}
+
+.mis-mobile-drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity var(--mis-transition-base);
+}
+
+.mis-mobile-drawer.is-active .mis-mobile-drawer-backdrop {
+  opacity: 1;
+}
+
+.mis-mobile-drawer-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(85vw, 360px);
+  background-color: var(--mis-bg-surface);
+  border-left: 1px solid var(--mis-border-color);
+  padding: var(--mis-space-md);
+  transform: translateX(100%);
+  transition: transform var(--mis-transition-smooth);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--mis-shadow-lg);
+}
+
+.mis-mobile-drawer.is-active .mis-mobile-drawer-content {
+  transform: translateX(0);
+}
+
+.mis-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--mis-space-sm);
+  border-bottom: 1px solid var(--mis-border-color);
+  margin-bottom: var(--mis-space-md);
+}
+
+.mis-drawer-title {
+  font-weight: 700;
+  font-size: var(--mis-text-lg);
+  color: var(--mis-text-primary);
+}
+
+.mis-mobile-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mis-mobile-nav-list a {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: var(--mis-radius-sm);
+  color: var(--mis-text-primary);
+  font-weight: 600;
+  transition: background-color var(--mis-transition-fast);
+}
+
+.mis-mobile-nav-list a:hover {
+  background-color: var(--mis-bg-surface-elevated);
+  color: var(--mis-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Blog / İçerik Izgarası (Grid & Cards)
+   -------------------------------------------------------------------------- */
+.mis-content-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--mis-space-lg);
+}
+
+@media (min-width: 1024px) {
+  .mis-content-layout {
+    grid-template-columns: 1fr 320px;
+  }
+}
+
+.mis-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--mis-space-md);
+}
+
+@media (min-width: 640px) {
+  .mis-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.mis-card {
+  background-color: var(--mis-bg-surface);
+  border: 1px solid var(--mis-border-color);
+  border-radius: var(--mis-radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--mis-transition-base), box-shadow var(--mis-transition-base), border-color var(--mis-transition-base);
+}
+
+.mis-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--mis-shadow-md);
+  border-color: rgba(var(--mis-primary-rgb), 0.3);
+}
+
+.mis-post-thumbnail {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background-color: var(--mis-bg-surface-elevated);
+}
+
+.mis-card-img,
+.mis-featured-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--mis-transition-smooth);
+}
+
+.mis-card:hover .mis-card-img {
+  transform: scale(1.04);
+}
+
+.mis-card-body {
+  padding: var(--mis-space-md);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.mis-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--mis-text-xs);
+  color: var(--mis-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.mis-meta-sep {
+  opacity: 0.5;
+}
+
+.mis-card-title {
+  font-size: var(--mis-text-xl);
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 0.75rem;
+}
+
+.mis-card-title a {
+  color: var(--mis-text-primary);
+  transition: color var(--mis-transition-fast);
+}
+
+.mis-card-title a:hover {
+  color: var(--mis-primary);
+}
+
+.mis-card-excerpt {
+  font-size: var(--mis-text-sm);
+  color: var(--mis-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--mis-space-md);
+  flex: 1;
+}
+
+.mis-card-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+}
+
+.mis-read-more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: var(--mis-text-sm);
+  font-weight: 600;
+  color: var(--mis-primary);
+}
+
+.mis-read-more-link .mis-arrow-icon {
+  transition: transform var(--mis-transition-fast);
+}
+
+.mis-read-more-link:hover .mis-arrow-icon {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   Sayfalama (Pagination)
+   -------------------------------------------------------------------------- */
+.mis-pagination-wrapper {
+  margin-top: var(--mis-space-lg);
+  display: flex;
+  justify-content: center;
+}
+
+.mis-pagination-wrapper .nav-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--mis-bg-surface);
+  border: 1px solid var(--mis-border-color);
+  padding: 0.4rem;
+  border-radius: var(--mis-radius-full);
+}
+
+.mis-pagination-wrapper .page-numbers {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 38px;
+  padding: 0 0.75rem;
+  border-radius: var(--mis-radius-full);
+  font-size: var(--mis-text-sm);
+  font-weight: 600;
+  color: var(--mis-text-secondary);
+  transition: all var(--mis-transition-fast);
+}
+
+.mis-pagination-wrapper .page-numbers.current {
+  background-color: var(--mis-primary);
+  color: #ffffff;
+}
+
+.mis-pagination-wrapper a.page-numbers:hover {
+  background-color: var(--mis-bg-surface-elevated);
+  color: var(--mis-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Tekil Sayfa ve Yazı (Single Post & Page)
+   -------------------------------------------------------------------------- */
+.mis-single-header {
+  margin-bottom: var(--mis-space-md);
+  text-align: center;
+}
+
+.mis-single-header .mis-entry-meta {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: var(--mis-text-sm);
+  color: var(--mis-text-muted);
+  margin-bottom: 1rem;
+}
+
+.mis-single-title {
+  font-size: var(--mis-text-3xl);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.mis-post-thumbnail-single {
+  border-radius: var(--mis-radius-lg);
+  margin-bottom: var(--mis-space-lg);
+  overflow: hidden;
+  max-height: 520px;
+}
+
+.mis-entry-content {
+  font-size: var(--mis-text-lg);
+  line-height: 1.8;
+  color: var(--mis-text-secondary);
+}
+
+.mis-entry-content p {
+  margin-bottom: 1.5rem;
+}
+
+.mis-entry-content h2,
+.mis-entry-content h3,
+.mis-entry-content h4 {
+  color: var(--mis-text-primary);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.mis-entry-content blockquote {
+  border-left: 4px solid var(--mis-primary);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--mis-text-primary);
+}
+
+/* Yazar Kutusu (Author Box) */
+.mis-author-box {
+  display: flex;
+  align-items: center;
+  gap: var(--mis-space-md);
+  padding: var(--mis-space-md);
+  margin-top: var(--mis-space-lg);
+  border-radius: var(--mis-radius-md);
+}
+
+.mis-avatar-img {
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mis-author-name {
+  font-size: var(--mis-text-base);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.mis-author-bio {
+  font-size: var(--mis-text-sm);
+  color: var(--mis-text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Kenar Çubuğu & Bileşenler (Sidebar & Widgets)
+   -------------------------------------------------------------------------- */
+.mis-sidebar-area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mis-space-md);
+}
+
+.mis-widget {
+  background-color: var(--mis-bg-surface);
+  border: 1px solid var(--mis-border-color);
+  border-radius: var(--mis-radius-md);
+  padding: var(--mis-space-md);
+}
+
+.mis-widget-title {
+  font-size: var(--mis-text-base);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--mis-primary);
+  display: inline-block;
+}
+
+.mis-widget ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mis-widget a {
+  color: var(--mis-text-secondary);
+  font-size: var(--mis-text-sm);
+}
+
+.mis-widget a:hover {
+  color: var(--mis-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Alt Bilgi (Footer)
+   -------------------------------------------------------------------------- */
+.mis-site-footer {
+  background-color: var(--mis-bg-surface);
+  border-top: 1px solid var(--mis-border-color);
+  padding-top: var(--mis-space-xl);
+  padding-bottom: var(--mis-space-lg);
+  margin-top: auto;
+}
+
+.mis-footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: var(--mis-space-md);
+  border-top: 1px solid var(--mis-border-subtle);
+  font-size: var(--mis-text-sm);
+  color: var(--mis-text-muted);
+}
+
+@media (min-width: 768px) {
+  .mis-footer-bottom {
+    flex-direction: row;
+  }
+}
+
+.mis-footer-menu {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.mis-footer-menu a {
+  color: var(--mis-text-muted);
+}
+
+.mis-footer-menu a:hover {
+  color: var(--mis-primary);
+}
+
+/* ==========================================================================
+   Çok Amaçlı (Multipurpose) Sektörel Bileşenler (Yol Yardım, Restoran, İlan)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Mobil Yapışkan Acil Arama / WhatsApp Barı (Sticky Call Bar)
+   -------------------------------------------------------------------------- */
+.mis-sticky-call-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: var(--mis-bg-surface);
+  border-top: 1px solid var(--mis-border-color);
+  padding: 0.6rem var(--mis-space-sm);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  display: block;
+}
+
+@media (max-width: 1023px) {
+  body {
+    padding-bottom: 72px;
+  }
+  .mis-sticky-call-bar {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mis-sticky-call-bar {
+    display: none; /* Masaüstünde gizle veya header arama butonu devralır */
+  }
+}
+
+.mis-sticky-call-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.mis-sticky-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0.5rem;
+  border-radius: var(--mis-radius-md);
+  font-weight: 700;
+  font-size: var(--mis-text-sm);
+  text-decoration: none;
+  color: #ffffff;
+  transition: transform var(--mis-transition-fast), filter var(--mis-transition-fast);
+}
+
+.mis-sticky-btn:active {
+  transform: scale(0.97);
+}
+
+.mis-btn-call {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+}
+
+.mis-btn-whatsapp {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   2. İlan, Restoran & Yol Yardım Kartları (Listing Card)
+   -------------------------------------------------------------------------- */
+.mis-listing-thumb-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background-color: var(--mis-bg-surface-elevated);
+}
+
+.mis-listing-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--mis-radius-full);
+  letter-spacing: 0.02em;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.mis-listing-price-tag {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: var(--mis-primary);
+  color: #ffffff;
+  font-size: var(--mis-text-base);
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: var(--mis-radius-sm);
+  box-shadow: var(--mis-shadow-md);
+  z-index: 2;
+}
+
+.mis-listing-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: var(--mis-text-xs);
+  color: var(--mis-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.mis-btn-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border-radius: var(--mis-radius-md);
+  background-color: var(--mis-bg-surface-elevated);
+  border: 1px solid var(--mis-border-color);
+  color: var(--mis-text-primary);
+  font-size: var(--mis-text-sm);
+  font-weight: 600;
+  transition: all var(--mis-transition-fast);
+  text-decoration: none;
+}
+
+.mis-btn-action:hover {
+  background-color: var(--mis-primary);
+  color: #ffffff;
+  border-color: var(--mis-primary);
+}
+
+/* --------------------------------------------------------------------------
+   3. Acil Yol Yardım Landing Page Stilleri
+   -------------------------------------------------------------------------- */
+.mis-emergency-hero {
+  padding: var(--mis-space-xl) var(--mis-space-md);
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(59, 130, 246, 0.05));
+  border: 1px solid var(--mis-border-color);
+  border-radius: var(--mis-radius-lg);
+  text-align: center;
+  margin-bottom: var(--mis-space-xl);
+}
+
+.mis-emergency-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #fee2e2;
+  color: #dc2626;
+  font-weight: 700;
+  font-size: var(--mis-text-xs);
+  padding: 6px 14px;
+  border-radius: var(--mis-radius-full);
+  margin-bottom: 1.5rem;
+  border: 1px solid #fca5a5;
+}
+
+:root[data-theme="dark"] .mis-emergency-live-badge {
+  background-color: rgba(220, 38, 38, 0.2);
+  color: #f87171;
+  border-color: rgba(220, 38, 38, 0.4);
+}
+
+.mis-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ef4444;
+  border-radius: 50%;
+  animation: mis-pulse 1.5s infinite;
+}
+
+@keyframes mis-pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.mis-emergency-title {
+  font-size: var(--mis-text-hero);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.mis-emergency-desc {
+  font-size: var(--mis-text-lg);
+  color: var(--mis-text-secondary);
+  max-width: 680px;
+  margin: 0 auto 2rem;
+}
+
+.mis-emergency-cta-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.mis-btn-emergency-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff !important;
+  font-weight: 800;
+  font-size: var(--mis-text-base);
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--mis-radius-md);
+  box-shadow: 0 10px 20px -5px rgba(239, 68, 68, 0.4);
+  text-decoration: none;
+  transition: transform var(--mis-transition-fast);
+}
+
+.mis-btn-emergency-call small {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.mis-btn-emergency-call:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.mis-btn-emergency-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #ffffff !important;
+  font-weight: 800;
+  font-size: var(--mis-text-base);
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--mis-radius-md);
+  box-shadow: 0 10px 20px -5px rgba(37, 211, 102, 0.4);
+  text-decoration: none;
+  transition: transform var(--mis-transition-fast);
+}
+
+.mis-btn-emergency-wa:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+/* 3 Adımda Hizmet */
+.mis-steps-section {
+  margin-bottom: var(--mis-space-xl);
+  text-align: center;
+}
+
+.mis-section-title {
+  font-size: var(--mis-text-2xl);
+  font-weight: 800;
+  margin-bottom: var(--mis-space-lg);
+}
+
+.mis-steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--mis-space-md);
+}
+
+@media (min-width: 768px) {
+  .mis-steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.mis-step-card {
+  padding: var(--mis-space-lg) var(--mis-space-md);
+  text-align: center;
+  position: relative;
+}
+
+.mis-step-num {
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  border-radius: 50%;
+  background: var(--mis-primary);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.25rem;
+  margin: 0 auto 1rem;
+}
+
+/* ==========================================================================
+   Elementor & Elementor Pro Tam Uyumluluk Kuralları
+   ========================================================================== */
+
+/* Elementor Sayfalarında İçerik Sarmalayıcı Sıfırlaması */
+.elementor-page .mis-site-content {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.mis-fullwidth-area {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.mis-fullwidth-area .entry-content {
+  max-width: 100%;
+}
+
+/* Yatay Taşmaları Önleme (Animasyonlar ve Stretch Section İçin) */
+.mis-site-wrapper {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Elementor Editör ve Önizleme Modunda Düzeltmeler */
+.elementor-editor-active .mis-site-header {
+  position: relative !important; /* Editör çubuğu ile çakışmayı önle */
+}
+
+.elementor-editor-active .mis-sticky-call-bar {
+  display: none !important; /* Editör sırasında yapışkan barı gizle */
+}
+
+/* Elementor Grid ve Flex Konteyner Uyumları */
+.elementor-section.elementor-section-boxed > .elementor-container {
+  max-width: var(--mis-container-max);
+}
+
+

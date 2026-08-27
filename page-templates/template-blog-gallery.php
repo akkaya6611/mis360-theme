@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Haberler, Blog & Galeri
- * Description: Beyzade Et & Balık Restaurant için Haberler, Duyurular, Lezzet Blogu ve Fotoğraf Galerisi Şablonu.
+ * Description: WordPress Yazılar (Posts) blog altyapısını kullanan dinamik Haber, Blog ve Galeri şablonu.
  *
  * @package MİS360
  * @since 1.0.0
@@ -18,6 +18,23 @@ get_header();
 $phone       = '0535 830 93 07';
 $clean_phone = '+905358309307';
 $whatsapp    = '905358309307';
+
+// Aktif Kategori Filtresi & Sayfalama
+$current_cat = isset($_GET['kategori']) ? sanitize_key($_GET['kategori']) : 'all';
+$paged       = (get_query_var('paged')) ? get_query_var('paged') : ((get_query_var('page')) ? get_query_var('page') : 1);
+
+$query_args = [
+    'post_type'      => 'post',
+    'post_status'    => 'publish',
+    'posts_per_page' => 12,
+    'paged'          => $paged,
+];
+
+if ($current_cat !== 'all' && !empty($current_cat)) {
+    $query_args['category_name'] = $current_cat;
+}
+
+$blog_query = new WP_Query($query_args);
 ?>
 
 <main id="primary" class="site-main blog-gallery-page">
@@ -43,344 +60,269 @@ $whatsapp    = '905358309307';
                 <p class="page-hero-subtitle">
                     Sarıkaya'daki lezzet durağımızdan en güncel duyurular, meşe kömüründe pişen etlerimizin sırları, etkinliklerimiz ve restoranımızdan en özel kareler.
                 </p>
+
+                <?php if (current_user_can('edit_posts')) : ?>
+                    <div style="margin-top: 20px;">
+                        <a href="<?php echo esc_url(admin_url('post-new.php')); ?>" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">
+                            ✍️ Yeni Yazı / Galeri Ekle (WP-Admin)
+                        </a>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </header>
 
-    <!-- 2. Filtreleme Sekmeleri & İçerik Izgarası -->
+    <!-- 2. Dinamik Blog ve Galeri Altyapısı -->
     <section class="section" style="background: var(--color-gray-50); padding: 50px 0 80px;">
         <div class="container">
 
-            <!-- Filtre Sekmeleri -->
+            <!-- Dinamik Kategori Filtreleme Sekmeleri -->
             <div class="gallery-filter-wrapper text-center mb-10">
                 <div class="gallery-filter-tabs" id="galleryFilterTabs">
-                    <button type="button" class="gallery-tab-btn active" data-filter="all">
+                    <a href="<?php echo esc_url(remove_query_arg('kategori')); ?>" class="gallery-tab-btn <?php echo ($current_cat === 'all') ? 'active' : ''; ?>" data-filter="all">
                         ✨ Tümü (Hepsi)
-                    </button>
-                    <button type="button" class="gallery-tab-btn" data-filter="haber">
+                    </a>
+                    <a href="<?php echo esc_url(add_query_arg('kategori', 'haberler')); ?>" class="gallery-tab-btn <?php echo ($current_cat === 'haberler') ? 'active' : ''; ?>" data-filter="haberler">
                         📰 Haberler & Duyurular
-                    </button>
-                    <button type="button" class="gallery-tab-btn" data-filter="blog">
+                    </a>
+                    <a href="<?php echo esc_url(add_query_arg('kategori', 'blog')); ?>" class="gallery-tab-btn <?php echo ($current_cat === 'blog') ? 'active' : ''; ?>" data-filter="blog">
                         🥩 Lezzet Blogu
-                    </button>
-                    <button type="button" class="gallery-tab-btn" data-filter="galeri">
+                    </a>
+                    <a href="<?php echo esc_url(add_query_arg('kategori', 'galeri')); ?>" class="gallery-tab-btn <?php echo ($current_cat === 'galeri') ? 'active' : ''; ?>" data-filter="galeri">
                         📸 Fotoğraf Galerisi
-                    </button>
+                    </a>
                 </div>
             </div>
 
-            <!-- Kartlar Izgarası -->
-            <div class="gallery-grid" id="galleryGrid">
+            <!-- WordPress Yazı Döngüsü (WP_Query Loop) -->
+            <?php if ($blog_query->have_posts()) : ?>
+                <div class="gallery-grid" id="galleryGrid">
+                    <?php
+                    while ($blog_query->have_posts()) :
+                        $blog_query->the_post();
 
-                <!-- 1. İçerik (Haber): Bahçe Yenilendi -->
-                <article class="gallery-card" data-category="haber">
-                    <div class="gallery-card-thumb">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg" alt="Açık Hava Bahçe Bölümü" loading="lazy">
-                        <span class="gallery-card-badge badge-haber">Haber & Duyuru</span>
-                    </div>
-                    <div class="gallery-card-body">
-                        <div class="gallery-card-meta">
-                            <span>📅 15 Mayıs 2026</span>
-                            <span class="sep">•</span>
-                            <span>👤 Beyzade Mutfak Ekibi</span>
-                        </div>
-                        <h3 class="gallery-card-title">
-                            Sarıkaya'da Bahar ve Yaz Sezonuna Özel Açık Hava Bahçe Bölümümüz Hizmetinizde
-                        </h3>
-                        <p class="gallery-card-excerpt">
-                            Aileler, misafirler ve çocuklar için özel olarak hazırlanan ferah açık hava bahçe salonumuz, konforlu masaları ve mama sandalyesi desteğiyle yeniden düzenlendi.
-                        </p>
-                        <div class="gallery-card-footer">
-                            <span class="gallery-link">Detayları İncele →</span>
-                        </div>
-                    </div>
-                </article>
+                        // Kategori Tespiti
+                        $post_cats   = get_the_category();
+                        $first_cat   = !empty($post_cats) ? $post_cats[0] : null;
+                        $cat_slug    = $first_cat ? $first_cat->slug : 'genel';
+                        $cat_name    = $first_cat ? $first_cat->name : 'Genel';
 
-                <!-- 2. İçerik (Blog): Meşe Kömüründe Kebap Sırları -->
-                <article class="gallery-card" data-category="blog">
-                    <div class="gallery-card-thumb">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/adana.jpg" alt="Meşe Kömüründe Kebap Sanatı" loading="lazy">
-                        <span class="gallery-card-badge badge-blog">Lezzet Rehberi</span>
-                    </div>
-                    <div class="gallery-card-body">
-                        <div class="gallery-card-meta">
-                            <span>📅 12 Mayıs 2026</span>
-                            <span class="sep">•</span>
-                            <span>👤 Usta Başı Selim Usta</span>
-                        </div>
-                        <h3 class="gallery-card-title">
-                            Hakiki Meşe Kömüründe Kebap Pişirmenin Püf Noktaları ve Et Dinlendirme Sanatı
-                        </h3>
-                        <p class="gallery-card-excerpt">
-                            Usta ellerin zırhtan geçirdiği etlerin meşe kömürü közünde suyunu kaybetmeden lokum gibi pişirilmesinin püf noktalarını derledik.
-                        </p>
-                        <div class="gallery-card-footer">
-                            <span class="gallery-link">Yazıyı Oku →</span>
-                        </div>
-                    </div>
-                </article>
+                        // Rozet ve Filtre Grubu Sınıfı
+                        $badge_class  = 'badge-blog';
+                        $filter_group = 'blog';
 
-                <!-- 3. İçerik (Galeri): Taş Fırın Pideleri -->
-                <article class="gallery-card gallery-item-clickable" data-category="galeri" data-full-image="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/pide.jpg" data-caption="Taş Fırından Yeni Çıkan Çıtır Kıymalı & Kuşbaşılı Pide Sunumu">
-                    <div class="gallery-card-thumb">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/pide.jpg" alt="Taş Fırın Pide" loading="lazy">
-                        <span class="gallery-card-badge badge-galeri">📸 Fotoğraf</span>
-                        <div class="gallery-overlay-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <line x1="11" y1="8" x2="11" y2="14"></line>
-                                <line x1="8" y1="11" x2="14" y2="11"></line>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="gallery-card-body">
-                        <div class="gallery-card-meta">
-                            <span>📸 Fırından Sıcak Kareler</span>
-                        </div>
-                        <h3 class="gallery-card-title">
-                            Taş Fırınımızdan Yeni Çıkan Çıtır Kıymalı & Kuşbaşılı Pide
-                        </h3>
-                        <p class="gallery-card-excerpt">
-                            Hakiki taş fırın ateşinde incecik açılan hamur ve bol harçla hazırlanan özel pidelerimiz.
-                        </p>
-                    </div>
-                </article>
+                        if (strpos($cat_slug, 'haber') !== false) {
+                            $badge_class  = 'badge-haber';
+                            $filter_group = 'haberler';
+                        } elseif (strpos($cat_slug, 'galeri') !== false) {
+                            $badge_class  = 'badge-galeri';
+                            $filter_group = 'galeri';
+                        }
 
-                <!-- 4. İçerik (Haber): Sabah 06:00 Sıcak Çorbalar -->
-                <article class="gallery-card" data-category="haber">
-                    <div class="gallery-card-thumb">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/corba.jpg" alt="Sabah Sıcak Çorbaları" loading="lazy">
-                        <span class="gallery-card-badge badge-haber">Haber & Duyuru</span>
-                    </div>
-                    <div class="gallery-card-body">
-                        <div class="gallery-card-meta">
-                            <span>📅 08 Mayıs 2026</span>
-                            <span class="sep">•</span>
-                            <span>👤 Beyzade Ekibi</span>
-                        </div>
-                        <h3 class="gallery-card-title">
-                            Sabah 06:00'da Açılan Kapılarımız: Sarıkaya'nın Güne Başlama Geleneği
-                        </h3>
-                        <p class="gallery-card-excerpt">
-                            Sarıkaya'da sabahın ilk ışıklarıyla birlikte kaynayan mercimek, kuzu kelle paça ve beyran çorbalarımız sıcacık lavaşlarla güne enerji katıyor.
-                        </p>
-                        <div class="gallery-card-footer">
-                            <span class="gallery-link">Detayları İncele →</span>
-                        </div>
-                    </div>
-                </article>
+                        // Görsel Belirleme (Öne çıkan görsel > Harici meta > Varsayılan)
+                        $thumb_url = '';
+                        if (has_post_thumbnail()) {
+                            $thumb_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                        } else {
+                            $meta_thumb = get_post_meta(get_the_ID(), '_mis360_external_thumb', true);
+                            if ($meta_thumb) {
+                                $thumb_url = $meta_thumb;
+                            } else {
+                                if ($filter_group === 'galeri') {
+                                    $thumb_url = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg';
+                                } elseif ($filter_group === 'haberler') {
+                                    $thumb_url = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg';
+                                } else {
+                                    $thumb_url = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/adana.jpg';
+                                }
+                            }
+                        }
+                        ?>
+                        <article class="gallery-card filter-item" data-category="<?php echo esc_attr($filter_group); ?>" id="post-<?php the_ID(); ?>">
+                            
+                            <div class="gallery-card-thumb">
+                                <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy">
+                                <span class="gallery-card-badge <?php echo esc_attr($badge_class); ?>">
+                                    <?php echo esc_html($cat_name); ?>
+                                </span>
+                                <button type="button" class="gallery-thumb-overlay" aria-label="<?php esc_attr_e('Fotoğrafı Büyüt', 'mis360'); ?>" onclick="openLightbox('<?php echo esc_url($thumb_url); ?>', '<?php echo esc_attr(get_the_title()); ?>')">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                                    </svg>
+                                </button>
+                            </div>
 
-                <!-- 5. İçerik (Blog): Toprak Güveçte Kuzu Tandır -->
-                <article class="gallery-card" data-category="blog">
-                    <div class="gallery-card-thumb">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/tandir.jpg" alt="Toprak Güveçte Kuzu Tandır" loading="lazy">
-                        <span class="gallery-card-badge badge-blog">Lezzet Rehberi</span>
-                    </div>
-                    <div class="gallery-card-body">
-                        <div class="gallery-card-meta">
-                            <span>📅 02 Mayıs 2026</span>
-                            <span class="sep">•</span>
-                            <span>👤 Mutfak Şefi</span>
-                        </div>
-                        <h3 class="gallery-card-title">
-                            Toprak Güveçte Kuzu Tandır ve Ağır Ateşte Kendi Yağında Pişen Lezzetler
-                        </h3>
-                        <p class="gallery-card-excerpt">
-                            Yerli kuzu etlerinin taş fırında saatlerce dinlendirilerek kemiğinden ayrılacak yumuşaklığa ulaşmasının aşamalarını inceledik.
-                        </p>
-                        <div class="gallery-card-footer">
-                            <span class="gallery-link">Yazıyı Oku →</span>
-                        </div>
-                    </div>
-                </article>
+                            <div class="gallery-card-body">
+                                <div class="gallery-card-meta">
+                                    <span>📅 <?php echo esc_html(get_the_date('j F Y')); ?></span>
+                                    <span class="sep">•</span>
+                                    <span>👤 <?php echo esc_html(get_the_author()); ?></span>
+                                </div>
 
-                <!-- 6. İçerik (Galeri): Günlük Taze Balık Reyonu -->
-                <article class="gallery-card gallery-item-clickable" data-category="galeri" data-full-image="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/balik.jpg" data-caption="Günlük Taze Balık Reyonu - Çipura, Levrek ve Mevsim Balıkları">
-                    <div class="gallery-card-thumb">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/balik.jpg" alt="Taze Balık Reyonu" loading="lazy">
-                        <span class="gallery-card-badge badge-galeri">📸 Fotoğraf</span>
-                        <div class="gallery-overlay-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <line x1="11" y1="8" x2="11" y2="14"></line>
-                                <line x1="8" y1="11" x2="14" y2="11"></line>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="gallery-card-body">
-                        <div class="gallery-card-meta">
-                            <span>📸 Taze Balık Reyonu</span>
-                        </div>
-                        <h3 class="gallery-card-title">
-                            Mevsimin En Taze Çipura, Levrek ve Balık Çeşitleri
-                        </h3>
-                        <p class="gallery-card-excerpt">
-                            Izgara ve tava seçenekleriyle günlük taze deniz ürünleri menümüz Sarıkaya'da balık severleri bekliyor.
-                        </p>
-                    </div>
-                </article>
+                                <h3 class="gallery-card-title">
+                                    <a href="<?php the_permalink(); ?>" style="color: inherit; text-decoration: none;">
+                                        <?php the_title(); ?>
+                                    </a>
+                                </h3>
 
-                <!-- 7. İçerik (Galeri): Özel Ziyafet Masaları -->
-                <article class="gallery-card gallery-item-clickable" data-category="galeri" data-full-image="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/masalar.jpg" data-caption="Geniş Aile Yemekleri ve Özel Toplantılar İçin Hazırlanan Masalarımız">
-                    <div class="gallery-card-thumb">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/masalar.jpg" alt="Ziyafet Masası" loading="lazy">
-                        <span class="gallery-card-badge badge-galeri">📸 Fotoğraf</span>
-                        <div class="gallery-overlay-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <line x1="11" y1="8" x2="11" y2="14"></line>
-                                <line x1="8" y1="11" x2="14" y2="11"></line>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="gallery-card-body">
-                        <div class="gallery-card-meta">
-                            <span>📸 Restoran Atmosferi</span>
-                        </div>
-                        <h3 class="gallery-card-title">
-                            Geniş Aile Yemekleri ve Toplu Davet Masalarımız
-                        </h3>
-                        <p class="gallery-card-excerpt">
-                            Özel gün ve kutlamalarınız için özenle hazırlanan zengin ikramlı sofralarımız.
-                        </p>
-                    </div>
-                </article>
+                                <div class="gallery-card-excerpt">
+                                    <p><?php echo esc_html(wp_trim_words(get_the_excerpt(), 20, '...')); ?></p>
+                                </div>
 
-                <!-- 8. İçerik (Blog): Közde Sıcak Künefe -->
-                <article class="gallery-card" data-category="blog">
-                    <div class="gallery-card-thumb">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/kunefe.jpg" alt="Közde Sıcak Künefe" loading="lazy">
-                        <span class="gallery-card-badge badge-blog">Lezzet Rehberi</span>
-                    </div>
-                    <div class="gallery-card-body">
-                        <div class="gallery-card-meta">
-                            <span>📅 28 Nisan 2026</span>
-                            <span class="sep">•</span>
-                            <span>👤 Tatlı Ustası</span>
-                        </div>
-                        <h3 class="gallery-card-title">
-                            Hakiki Hatay Peyniriyle Közde Ağır Ağır Pişen Sıcak Künefe Ziyafeti
-                        </h3>
-                        <p class="gallery-card-excerpt">
-                            Çıtır kadayıf telleri arasında eriyen peynir ve tam kıvamında sıcak şerbet... Yemeğinizi taçlandıran özel tatlılarımızın hazırlanış serüveni.
-                        </p>
-                        <div class="gallery-card-footer">
-                            <span class="gallery-link">Yazıyı Oku →</span>
-                        </div>
-                    </div>
-                </article>
+                                <div class="gallery-card-footer">
+                                    <a href="<?php the_permalink(); ?>" class="gallery-link">
+                                        Yazıyı Oku & Detaylar →
+                                    </a>
+                                </div>
+                            </div>
 
-            </div>
+                        </article>
+                    <?php endwhile; ?>
+                </div>
 
-            <!-- Rezervasyon & İletişim Davet Kutusu (CTA) -->
-            <div class="gallery-cta-box text-center mt-12">
-                <div class="cta-inner">
-                    <span class="cta-tag">BEYZADE AİLESİ</span>
-                    <h2 class="cta-title">Lezzetlerimizi Canlı Deneyimleyin</h2>
-                    <p class="cta-desc">
-                        Sarıkaya'da meşe kömürü ateşi ve samimi aile ortamıyla sizleri ağırlamaktan mutluluk duyuyoruz. Masanızı şimdiden ayırtın!
+                <!-- Sayfalama (Pagination) -->
+                <?php if ($blog_query->max_num_pages > 1) : ?>
+                    <div class="mis-pagination-wrapper text-center mt-10">
+                        <?php
+                        echo paginate_links([
+                            'total'        => $blog_query->max_num_pages,
+                            'current'      => $paged,
+                            'prev_text'    => '← Önceki',
+                            'next_text'    => 'Sonraki →',
+                            'type'         => 'list',
+                        ]);
+                        ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php wp_reset_postdata(); ?>
+
+            <?php else : ?>
+                <!-- Yazı Bulunamadı Durumu -->
+                <div class="text-center py-12" style="background: #ffffff; padding: 48px 24px; border-radius: 16px; border: 1px solid var(--color-gray-200); max-width: 600px; margin: 0 auto;">
+                    <span style="font-size: 40px; display: block; margin-bottom: 12px;">📋</span>
+                    <h3 style="font-size: 20px; font-weight: 800; color: #1a1a1a; margin-bottom: 8px;">
+                        Bu Kategoride Henüz Yazı Yayınlanmadı
+                    </h3>
+                    <p style="color: var(--color-gray-500); font-size: 14px; margin-bottom: 20px;">
+                        WordPress yönetim panelinden "Yazılar > Yeni Ekle" adımıyla bu kategoriye kolayca yeni haber, lezzet yazısı veya fotoğraf ekleyebilirsiniz.
                     </p>
-                    <div class="cta-actions">
-                        <a href="tel:<?php echo esc_attr($clean_phone); ?>" class="btn btn-dark btn-md">
-                            📞 <?php echo esc_html($phone); ?> (Hemen Ara)
+                    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                        <a href="<?php echo esc_url(remove_query_arg('kategori')); ?>" class="btn btn-outline-dark btn-sm">
+                            Tüm Yazıları Göster
                         </a>
-                        <a href="https://wa.me/<?php echo esc_attr($whatsapp); ?>?text=<?php echo rawurlencode('Merhaba Beyzade Restaurant, masa ayırtmak istiyorum:'); ?>" class="btn btn-whatsapp btn-md" target="_blank" rel="noopener noreferrer">
-                            🟢 WhatsApp İle Masa Ayırt
-                        </a>
+                        <?php if (current_user_can('edit_posts')) : ?>
+                            <a href="<?php echo esc_url(admin_url('post-new.php')); ?>" class="btn btn-primary btn-sm">
+                                ✍️ Yeni Yazı Ekle
+                            </a>
+                        <?php endif; ?>
                     </div>
+                </div>
+            <?php endif; ?>
+
+            <!-- Alt CTA: Rezervasyon ve İletişim -->
+            <div class="blog-gallery-cta mt-16 text-center" style="background: #ffffff; border: 1px solid var(--color-gray-200); border-radius: 16px; padding: 36px 24px; max-width: 780px; margin: 60px auto 0;">
+                <span style="font-size: 12px; font-weight: 800; color: var(--color-primary); letter-spacing: 0.15em; text-transform: uppercase;">
+                    BEYZADE ET & BALIK RESTAURANT
+                </span>
+                <h3 style="font-size: 24px; font-weight: 800; color: var(--color-black); margin: 6px 0 10px;">
+                    Bu Eşsiz Lezzetleri Yerinde Tatmak İster Misiniz?
+                </h3>
+                <p style="color: var(--color-gray-600); font-size: 14px; margin-bottom: 24px;">
+                    Sarıkaya'da meşe kömürü ateşi ve usta ellerce hazırlanan özel menümüz için masanızı şimdiden ayırtın.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+                    <a href="<?php echo esc_url(home_url('/#reservation')); ?>" class="btn btn-primary btn-md">
+                        Masa Rezervasyonu Yap →
+                    </a>
+                    <a href="https://wa.me/<?php echo esc_attr($whatsapp); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-md">
+                        💬 WhatsApp İle Rezervasyon
+                    </a>
+                    <a href="tel:<?php echo esc_attr($clean_phone); ?>" class="btn btn-outline-dark btn-md">
+                        📞 <?php echo esc_html($phone); ?>
+                    </a>
                 </div>
             </div>
 
         </div>
     </section>
 
+    <!-- 3. Fotoğraf Büyütme Modalı (Lightbox) -->
+    <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-hidden="true" onclick="if(event.target === this) closeLightbox();">
+        <div class="lightbox-content">
+            <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Kapat">✕</button>
+            <img src="" alt="" id="lightboxImg" class="lightbox-image">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
 </main>
 
-<!-- Lightbox Modal (Fotoğrafları Büyütme) -->
-<div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true" role="dialog">
-    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
-    <div class="lightbox-container">
-        <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Kapat">✕</button>
-        <div class="lightbox-media-wrapper">
-            <img src="" alt="" class="lightbox-img" id="lightboxImg">
-        </div>
-        <p class="lightbox-caption" id="lightboxCaption"></p>
-    </div>
-</div>
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // 1. Kategori Filtreleme
-    const filterButtons = document.querySelectorAll('.gallery-tab-btn');
-    const cards = document.querySelectorAll('.gallery-card');
+// Işık Kutusu (Lightbox) Fonksiyonları
+function openLightbox(imgSrc, caption) {
+    const lb = document.getElementById('galleryLightbox');
+    const img = document.getElementById('lightboxImg');
+    const cap = document.getElementById('lightboxCaption');
+    if (!lb || !img) return;
 
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            filterButtons.forEach(b => b.classList.remove('active'));
+    img.src = imgSrc;
+    img.alt = caption || 'Beyzade Restaurant';
+    if (cap) cap.textContent = caption || '';
+
+    lb.classList.add('active');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const lb = document.getElementById('galleryLightbox');
+    if (!lb) return;
+    lb.classList.remove('active');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeLightbox();
+    }
+});
+
+// İstemci Tarafı Anlık Kategori Filtreleme
+document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.gallery-tab-btn');
+    const items = document.querySelectorAll('.filter-item');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function(e) {
+            const filter = this.getAttribute('data-filter');
+            if (!filter) return;
+
+            e.preventDefault();
+
+            tabs.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
 
-            const filter = this.getAttribute('data-filter');
+            const newUrl = filter === 'all' 
+                ? window.location.pathname 
+                : window.location.pathname + '?kategori=' + encodeURIComponent(filter);
+            window.history.pushState({ filter: filter }, '', newUrl);
 
-            cards.forEach(card => {
-                const cardCat = card.getAttribute('data-category');
-                if (filter === 'all' || cardCat === filter) {
-                    card.style.display = 'flex';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 50);
+            items.forEach(item => {
+                const cat = item.getAttribute('data-category');
+                if (filter === 'all' || cat === filter) {
+                    item.style.display = '';
+                    item.style.opacity = '0';
+                    setTimeout(() => item.style.opacity = '1', 50);
                 } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(10px)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 200);
+                    item.style.display = 'none';
                 }
             });
         });
-    });
-
-    // 2. Fotoğraf Lightbox
-    const lightbox = document.getElementById('galleryLightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxCaption = document.getElementById('lightboxCaption');
-    const lightboxClose = document.getElementById('lightboxClose');
-    const lightboxBackdrop = document.getElementById('lightboxBackdrop');
-    const clickableItems = document.querySelectorAll('.gallery-item-clickable');
-
-    clickableItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const fullImg = this.getAttribute('data-full-image');
-            const caption = this.getAttribute('data-caption');
-
-            lightboxImg.src = fullImg;
-            lightboxImg.alt = caption;
-            lightboxCaption.textContent = caption;
-
-            lightbox.classList.add('open');
-            lightbox.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-        });
-    });
-
-    function closeLightbox() {
-        lightbox.classList.remove('open');
-        lightbox.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-        setTimeout(() => {
-            lightboxImg.src = '';
-        }, 300);
-    }
-
-    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-    if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && lightbox.classList.contains('open')) {
-            closeLightbox();
-        }
     });
 });
 </script>

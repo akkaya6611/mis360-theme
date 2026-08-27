@@ -288,8 +288,8 @@ class MIS360_Theme_Updater {
      * Güncelleme Yönetim Ekranı
      */
     public function render_updater_page(): void {
-        $force_check = isset($_GET['check_now']) && check_admin_referer('mis360_check_now');
-        $remote_info = $this->get_remote_version_info($force_check);
+        $force_check = isset($_GET['check_now']) && isset($_GET['_wpnonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['_wpnonce'])), 'mis360_check_now');
+        $remote_info = $this->get_remote_version_info((bool) $force_check);
         $has_update  = $this->is_update_available();
         $remote_ver  = $remote_info['version'] ?? $this->current_version;
         ?>

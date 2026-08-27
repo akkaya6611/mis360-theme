@@ -119,3 +119,28 @@ function mis360_widgets_init(): void {
     ]);
 }
 add_action('widgets_init', 'mis360_widgets_init');
+
+/**
+ * Haberler & Galeri Sayfasını Otomatik Oluştur / Eşle
+ */
+function mis360_ensure_blog_gallery_page(): void {
+    if (!get_option('mis360_blog_gallery_page_created')) {
+        $existing = get_page_by_path('haberler-galeri');
+        if (!$existing) {
+            $page_id = wp_insert_post([
+                'post_title'     => 'Haberler & Galeri',
+                'post_name'      => 'haberler-galeri',
+                'post_status'    => 'publish',
+                'post_type'      => 'page',
+                'comment_status' => 'closed',
+            ]);
+            if ($page_id && !is_wp_error($page_id)) {
+                update_post_meta($page_id, '_wp_page_template', 'page-templates/template-blog-gallery.php');
+            }
+        } else {
+            update_post_meta($existing->ID, '_wp_page_template', 'page-templates/template-blog-gallery.php');
+        }
+        update_option('mis360_blog_gallery_page_created', 1);
+    }
+}
+add_action('init', 'mis360_ensure_blog_gallery_page');

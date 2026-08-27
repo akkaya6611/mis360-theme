@@ -2,6 +2,7 @@
 /**
  * Beyzade Et & Balık Restaurant - Header Template
  * 1:1 Denfora Architecture with Authentic Beyzade Restaurant Assets & Data
+ * Menü sadeleştirilmiş, yemek kategorileri "Menümüz" dropdown altına toplanmıştır.
  *
  * @package MİS360
  * @author  Serkan AKKAYA <https://misteknoloji360.com.tr/>
@@ -82,23 +83,49 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
                 </div>
             </a>
 
-            <!-- Desktop Navigation (Beyzade Menü Yapısı) -->
+            <!-- Sadeleştirilmiş Masaüstü Navigasyon (Yemekler Menümüz Altında Dropdown) -->
             <nav class="header-nav" aria-label="<?php esc_attr_e('Ana Navigasyon', 'mis360'); ?>">
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="nav-link active">
                     <?php esc_html_e('Ana Sayfa', 'mis360'); ?>
                 </a>
-                <a href="#menu" class="nav-link">
-                    <?php esc_html_e('Menümüz', 'mis360'); ?>
-                </a>
-                <a href="#kebaplar" class="nav-link">
-                    <?php esc_html_e('Kebaplar & Et', 'mis360'); ?>
-                </a>
-                <a href="#pideler" class="nav-link">
-                    <?php esc_html_e('Pideler', 'mis360'); ?>
-                </a>
-                <a href="#donerler" class="nav-link">
-                    <?php esc_html_e('Döner & İskender', 'mis360'); ?>
-                </a>
+
+                <!-- Menümüz (Açılır Dropdown Menü) -->
+                <div class="nav-item">
+                    <a href="#menu" class="nav-link has-dropdown-toggle">
+                        <?php esc_html_e('Menümüz', 'mis360'); ?>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <div class="nav-dropdown">
+                        <a href="#kebaplar" class="nav-dropdown-link">
+                            <span class="nav-dropdown-icon">🥩</span>
+                            <span>Kebap Çeşitlerimiz</span>
+                        </a>
+                        <a href="#pideler" class="nav-dropdown-link">
+                            <span class="nav-dropdown-icon">🍕</span>
+                            <span>Pide & Lahmacun</span>
+                        </a>
+                        <a href="#donerler" class="nav-dropdown-link">
+                            <span class="nav-dropdown-icon">🥙</span>
+                            <span>Döner & İskender</span>
+                        </a>
+                        <a href="#tatlilar" class="nav-dropdown-link">
+                            <span class="nav-dropdown-icon">🍲</span>
+                            <span>Sıcak Çorbalar</span>
+                        </a>
+                        <a href="#tatlilar" class="nav-dropdown-link">
+                            <span class="nav-dropdown-icon">🍯</span>
+                            <span>Tatlılarımız</span>
+                        </a>
+                        <div style="border-top: 1px solid var(--color-gray-100); margin: 6px 0;"></div>
+                        <a href="#menu" class="nav-dropdown-link" style="color: var(--color-primary);">
+                            <span class="nav-dropdown-icon">📋</span>
+                            <span>Tüm Menüyü İncele →</span>
+                        </a>
+                    </div>
+                </div>
+
                 <a href="#about" class="nav-link">
                     <?php esc_html_e('Hakkımızda', 'mis360'); ?>
                 </a>
@@ -148,12 +175,21 @@ $logo_url    = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/
 
             <div class="mobile-nav-body">
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="mobile-nav-link active"><?php esc_html_e('Ana Sayfa', 'mis360'); ?></a>
-                <a href="#menu" class="mobile-nav-link"><?php esc_html_e('Menümüz', 'mis360'); ?></a>
-                <a href="#kebaplar" class="mobile-nav-link"><?php esc_html_e('Kebaplar & Et', 'mis360'); ?></a>
-                <a href="#pideler" class="mobile-nav-link"><?php esc_html_e('Pide & Lahmacun', 'mis360'); ?></a>
-                <a href="#donerler" class="mobile-nav-link"><?php esc_html_e('Döner & İskender', 'mis360'); ?></a>
-                <a href="#corbalar" class="mobile-nav-link"><?php esc_html_e('Çorbalar', 'mis360'); ?></a>
-                <a href="#tatlilar" class="mobile-nav-link"><?php esc_html_e('Tatlılar', 'mis360'); ?></a>
+                
+                <!-- Mobil Menümüz ve Alt Yemek Başlıkları -->
+                <div style="margin-bottom: 6px;">
+                    <a href="#menu" class="mobile-nav-link" style="font-weight: 700; color: var(--color-black);">
+                        <?php esc_html_e('Menümüz', 'mis360'); ?>
+                    </a>
+                    <div class="mobile-nav-submenu">
+                        <a href="#kebaplar" class="mobile-nav-sublink">🥩 Kebap Çeşitlerimiz</a>
+                        <a href="#pideler" class="mobile-nav-sublink">🍕 Pide & Lahmacun</a>
+                        <a href="#donerler" class="mobile-nav-sublink">🥙 Döner & İskender</a>
+                        <a href="#tatlilar" class="mobile-nav-sublink">🍲 Sıcak Çorbalar</a>
+                        <a href="#tatlilar" class="mobile-nav-sublink">🍯 Tatlılarımız</a>
+                    </div>
+                </div>
+
                 <a href="#about" class="mobile-nav-link"><?php esc_html_e('Hakkımızda', 'mis360'); ?></a>
                 <a href="#reservation" class="mobile-nav-link"><?php esc_html_e('Masa Rezervasyonu', 'mis360'); ?></a>
                 <a href="#contact" class="mobile-nav-link"><?php esc_html_e('İletişim & Konum', 'mis360'); ?></a>

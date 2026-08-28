@@ -40,7 +40,8 @@ $whatsapp    = '905358309307';
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+// Sayfanın tüm görsel ve materyalleri tamamen yüklendikten sonra çalışsın (load event)
+window.addEventListener("load", function() {
     var introPopup = document.getElementById('beyzade-intro-popup');
     var introVideo = document.getElementById('intro-video');
     var closeBtn = document.getElementById('intro-close-btn');
@@ -49,35 +50,45 @@ document.addEventListener("DOMContentLoaded", function() {
     var introSeen = sessionStorage.getItem('beyzade_intro_seen');
 
     if (!introSeen) {
-        // Pop-up'ı göster
-        introPopup.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Arkadaki sayfa kaydırmasını kilitle
-
-        // Videoyu oynat
-        var playPromise = introVideo.play();
-        if (playPromise !== undefined) {
-            playPromise.catch(function(error) {
-                // Tarayıcı otomatik oynatmaya (sesli) izin vermezse sessiz oynatmayı dene
-                introVideo.muted = true;
-                introVideo.play();
-            });
-        }
-
-        // 5 Saniye (5000ms) sonra Kapat butonunu göster
+        // Sayfa yüklendikten tam 1 saniye (1000ms) sonra videoyu çıkart (Önce siteyi görsünler)
         setTimeout(function() {
-            closeBtn.style.display = 'flex';
-        }, 5000);
+            // Pop-up'ı display flex yap ama opacity 0
+            introPopup.style.display = 'flex';
+            
+            // Küçük bir gecikme ile opacity'yi 1 yapmak için class ekle (CSS transition çalışması için)
+            setTimeout(function() {
+                introPopup.classList.add('show-intro');
+            }, 50);
+
+            document.body.style.overflow = 'hidden'; // Arkadaki sayfa kaydırmasını kilitle
+
+            // Videoyu oynat
+            var playPromise = introVideo.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(function(error) {
+                    // Tarayıcı otomatik oynatmaya (sesli) izin vermezse sessiz oynatmayı dene
+                    introVideo.muted = true;
+                    introVideo.play();
+                });
+            }
+
+            // Video ekranda belirdikten 5 Saniye (5000ms) sonra Kapat butonunu göster
+            setTimeout(function() {
+                closeBtn.style.display = 'flex';
+            }, 5000);
+
+        }, 1000); // <-- Site açıldıktan 1 saniye sonra
 
         // Kapatma Fonksiyonu
         function closeIntro() {
-            introPopup.style.opacity = '0';
+            introPopup.classList.remove('show-intro'); // Opacity 0 yap
             setTimeout(function() {
                 introPopup.style.display = 'none';
                 introVideo.pause();
                 introVideo.currentTime = 0;
                 document.body.style.overflow = ''; // Kaydırmayı geri aç
                 sessionStorage.setItem('beyzade_intro_seen', 'true'); // Tekrar gösterme
-            }, 500); // 0.5s fade out efekti
+            }, 800); // 0.8s fade out efekti beklemesi
         }
 
         // Butona basılınca kapat

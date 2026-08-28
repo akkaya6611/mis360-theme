@@ -6,9 +6,9 @@
 
 :root {
   /* Brand Colors (Denfora Exact Palette) */
-  --color-primary: #ef5027;
-  --color-primary-dark: #d4451f;
-  --color-primary-light: #ff6b42;
+  --color-primary: #a03010;
+  --color-primary-dark: #81250b;
+  --color-primary-light: #c2410c;
   --color-primary-subtle: rgba(239, 80, 39, 0.1);
   --color-primary-rgb: 239, 80, 39;
 
@@ -30,7 +30,7 @@
   --color-success: #22c55e;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
-  --color-whatsapp: #128c7e;
+  --color-whatsapp: #065f46;
   --color-whatsapp-dark: #075e54;
 
   /* Spacing Scale (4px Base) */
@@ -3613,3 +3613,6 @@ select:focus {
 .mis360-dot.active { background: #fff; }
 .mis360-dot::after, .reviews-dot::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 44px; height: 44px; border-radius: 50%; }
 .reviews-dot { position: relative; border: none; padding: 0; }
+
+
+

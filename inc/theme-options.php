@@ -35,7 +35,17 @@ function mis360_theme_options_menu(): void {
         'mis360_settings_page_popup'
     );
 
-    // Alt Menü 2: Görünüm Ayarlarını Buraya Taşı (Menüler)
+    // Alt Menü 2: Slider Ayarları
+    add_submenu_page(
+        'mis360-settings',
+        'Slider Ayarları',
+        'Slider Ayarları',
+        'manage_options',
+        'mis360-slider',
+        'mis360_settings_page_slider'
+    );
+
+    // Alt Menü 3: Görünüm Ayarlarını Buraya Taşı (Menüler)
     add_submenu_page(
         'mis360-settings',
         'Menü Ayarları',
@@ -44,7 +54,7 @@ function mis360_theme_options_menu(): void {
         'nav-menus.php'
     );
 
-    // Alt Menü 3: Görünüm Ayarlarını Buraya Taşı (Bileşenler/Widget)
+    // Alt Menü 4: Görünüm Ayarlarını Buraya Taşı (Bileşenler/Widget)
     add_submenu_page(
         'mis360-settings',
         'Bileşenler',
@@ -53,7 +63,7 @@ function mis360_theme_options_menu(): void {
         'widgets.php'
     );
 
-    // Alt Menü 4: Görünüm Ayarlarını Buraya Taşı (Canlı Özelleştirici)
+    // Alt Menü 5: Görünüm Ayarlarını Buraya Taşı (Canlı Özelleştirici)
     add_submenu_page(
         'mis360-settings',
         'Tema Özelleştirici',
@@ -62,7 +72,7 @@ function mis360_theme_options_menu(): void {
         'customize.php'
     );
 
-    // Alt Menü 5: Lisans Ayarları
+    // Alt Menü 6: Lisans Ayarları
     add_submenu_page(
         'mis360-settings',
         'Lisans Ayarları',
@@ -80,6 +90,12 @@ function mis360_register_settings(): void {
     register_setting('mis360_popup_group', 'mis360_intro_enabled');
     register_setting('mis360_popup_group', 'mis360_intro_video_url');
     
+    // Slider ayarları
+    register_setting('mis360_slider_group', 'mis360_slider_enabled');
+    for ($i = 1; $i <= 5; $i++) {
+        register_setting('mis360_slider_group', 'mis360_slider_img_' . $i);
+    }
+
     // Lisans ayarları
     register_setting('mis360_license_group', 'mis360_license_key');
 }
@@ -130,7 +146,60 @@ function mis360_settings_page_popup(): void {
     <?php
 }
 
-// 3B. Lisans Ayarları Sayfası (HTML)
+// 3B. Slider Ayarları Sayfası (HTML)
+function mis360_settings_page_slider(): void {
+    if (!current_user_can('manage_options')) return;
+
+    $slider_enabled = get_option('mis360_slider_enabled', '1');
+    ?>
+    <div class="wrap">
+        <h1>📸 MİS360 - Slider Ayarları</h1>
+        <hr style="margin-bottom: 20px;">
+        
+        <form method="post" action="options.php">
+            <?php settings_fields('mis360_slider_group'); ?>
+            
+            <div style="background: #fff; padding: 20px; border: 1px solid #ccd0d4; border-radius: 8px; max-width: 800px; box-shadow: 0 1px 1px rgba(0,0,0,.04);">
+                <h2 style="margin-top: 0; color: #1e293b;">Ana Sayfa Restoran Galerisi (Slider)</h2>
+                <p style="color: #64748b; font-size: 14px;">Ana sayfada ziyaretçilere gösterilecek olan kayan fotoğraf galerisini buradan yönetebilirsiniz. <strong>Ortam > Yeni Ekle</strong> kısmından yüklediğiniz fotoğrafların URL'lerini kopyalayıp aşağıdaki kutulara yapıştırın.</p>
+                
+                <table class="form-table" role="presentation">
+                    <tr>
+                        <th scope="row">Slider Görünsün mü?</th>
+                        <td>
+                            <label>
+                                <input type="checkbox" name="mis360_slider_enabled" value="1" <?php checked('1', $slider_enabled); ?>>
+                                <strong style="color: #16a34a;">Açık:</strong> Ana sayfada fotoğraf galerisi gösterilsin
+                            </label>
+                        </td>
+                    </tr>
+                    
+                    <?php for ($i = 1; $i <= 5; $i++) : 
+                        $img_val = get_option('mis360_slider_img_' . $i, '');
+                    ?>
+                    <tr>
+                        <th scope="row"><label for="mis360_slider_img_<?php echo $i; ?>">Görsel <?php echo $i; ?> URL</label></th>
+                        <td>
+                            <input name="mis360_slider_img_<?php echo $i; ?>" type="url" id="mis360_slider_img_<?php echo $i; ?>" value="<?php echo esc_attr($img_val); ?>" class="regular-text ltr" style="width: 100%; max-width: 500px;">
+                            <?php if ($img_val) : ?>
+                                <div style="margin-top: 10px;">
+                                    <img src="<?php echo esc_url($img_val); ?>" style="max-height: 80px; border-radius: 4px; border: 1px solid #ccc;">
+                                </div>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                    <?php endfor; ?>
+                    
+                </table>
+            </div>
+            
+            <?php submit_button('Slider Ayarlarını Kaydet', 'primary', 'submit', true, ['style' => 'font-size: 15px; padding: 5px 25px;']); ?>
+        </form>
+    </div>
+    <?php
+}
+
+// 3C. Lisans Ayarları Sayfası (HTML)
 function mis360_settings_page_license(): void {
     if (!current_user_can('manage_options')) return;
     

@@ -30,8 +30,8 @@
   --color-success: #22c55e;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
-  --color-whatsapp: #25d366;
-  --color-whatsapp-dark: #128c7e;
+  --color-whatsapp: #128c7e;
+  --color-whatsapp-dark: #075e54;
 
   /* Spacing Scale (4px Base) */
   --space-1: 0.25rem;  /* 4px */
@@ -1435,8 +1435,7 @@ h1, h2, h3, h4, h5, h6 {
   gap: var(--space-6);
 }
 
-.footer-bottom-link {
-  color: var(--color-gray-500);
+.footer-bottom-link { color: var(--color-gray-600);
 }
 
 .footer-bottom-link:hover {
@@ -3608,3 +3607,5 @@ select:focus {
   width: 1px;
   word-wrap: normal !important;
 }
+
+

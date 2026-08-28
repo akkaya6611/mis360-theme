@@ -92,12 +92,26 @@ function mis360_register_settings(): void {
     
     // Slider ayarları
     register_setting('mis360_slider_group', 'mis360_slider_enabled');
-    for ($i = 1; $i <= 5; $i++) {
-        register_setting('mis360_slider_group', 'mis360_slider_img_' . $i);
-    }
+    register_setting('mis360_slider_group', 'mis360_slider_images', [
+        'type' => 'array',
+        'sanitize_callback' => 'mis360_sanitize_url_array'
+    ]);
 
     // Lisans ayarları
     register_setting('mis360_license_group', 'mis360_license_key');
+}
+
+// Güvenli URL Array Temizleyicisi
+function mis360_sanitize_url_array($input) {
+    $clean = [];
+    if (is_array($input)) {
+        foreach ($input as $url) {
+            if (!empty(trim($url))) {
+                $clean[] = esc_url_raw($url);
+            }
+        }
+    }
+    return $clean;
 }
 
 // 3A. Popup Ayarları Sayfası (HTML)
@@ -151,6 +165,10 @@ function mis360_settings_page_slider(): void {
     if (!current_user_can('manage_options')) return;
 
     $slider_enabled = get_option('mis360_slider_enabled', '1');
+    $slider_images = get_option('mis360_slider_images', []);
+    if (!is_array($slider_images) || empty($slider_images)) {
+        $slider_images = ['']; // En az 1 boş alan
+    }
     ?>
     <div class="wrap">
         <h1>📸 MİS360 - Slider Ayarları</h1>
@@ -159,9 +177,9 @@ function mis360_settings_page_slider(): void {
         <form method="post" action="options.php">
             <?php settings_fields('mis360_slider_group'); ?>
             
-            <div style="background: #fff; padding: 20px; border: 1px solid #ccd0d4; border-radius: 8px; max-width: 800px; box-shadow: 0 1px 1px rgba(0,0,0,.04);">
-                <h2 style="margin-top: 0; color: #1e293b;">Ana Sayfa Restoran Galerisi (Slider)</h2>
-                <p style="color: #64748b; font-size: 14px;">Ana sayfada ziyaretçilere gösterilecek olan kayan fotoğraf galerisini buradan yönetebilirsiniz. <strong>Ortam > Yeni Ekle</strong> kısmından yüklediğiniz fotoğrafların URL'lerini kopyalayıp aşağıdaki kutulara yapıştırın.</p>
+            <div style="background: #fff; padding: 20px; border: 1px solid #ccd0d4; border-radius: 8px; max-width: 900px; box-shadow: 0 1px 1px rgba(0,0,0,.04);">
+                <h2 style="margin-top: 0; color: #1e293b;">Ana Sayfa Restoran Galerisi (Sınırsız)</h2>
+                <p style="color: #64748b; font-size: 14px;">Ziyaretçilere gösterilecek kayan fotoğrafları buradan ekleyin. Sınır yoktur, istediğiniz kadar <strong>Yeni Görsel Ekle</strong> diyebilirsiniz.</p>
                 
                 <table class="form-table" role="presentation">
                     <tr>
@@ -173,29 +191,69 @@ function mis360_settings_page_slider(): void {
                             </label>
                         </td>
                     </tr>
-                    
-                    <?php for ($i = 1; $i <= 5; $i++) : 
-                        $img_val = get_option('mis360_slider_img_' . $i, '');
-                    ?>
-                    <tr>
-                        <th scope="row"><label for="mis360_slider_img_<?php echo $i; ?>">Görsel <?php echo $i; ?> URL</label></th>
-                        <td>
-                            <input name="mis360_slider_img_<?php echo $i; ?>" type="url" id="mis360_slider_img_<?php echo $i; ?>" value="<?php echo esc_attr($img_val); ?>" class="regular-text ltr" style="width: 100%; max-width: 500px;">
-                            <?php if ($img_val) : ?>
-                                <div style="margin-top: 10px;">
-                                    <img src="<?php echo esc_url($img_val); ?>" style="max-height: 80px; border-radius: 4px; border: 1px solid #ccc;">
-                                </div>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                    <?php endfor; ?>
-                    
                 </table>
+
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+                <table class="form-table" role="presentation" id="slider-images-table">
+                    <tbody id="slider-images-tbody">
+                        <?php foreach ($slider_images as $index => $img_val) : ?>
+                        <tr class="slider-image-row">
+                            <th scope="row" style="width: 120px;">Görsel URL</th>
+                            <td>
+                                <input name="mis360_slider_images[]" type="url" value="<?php echo esc_attr($img_val); ?>" class="regular-text ltr" style="width: 70%; max-width: 500px;" placeholder="https://...">
+                                <button type="button" class="button remove-image-btn" style="color: #dc3232; border-color: #dc3232;">Sil</button>
+                                <?php if ($img_val) : ?>
+                                    <div style="margin-top: 10px;">
+                                        <img src="<?php echo esc_url($img_val); ?>" style="max-height: 80px; border-radius: 4px; border: 1px solid #ccc;">
+                                    </div>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <p>
+                    <button type="button" id="add-slider-image" class="button button-secondary" style="margin-left: 130px; font-weight: 600; color: #2271b1;">➕ Yeni Görsel Ekle</button>
+                </p>
             </div>
             
             <?php submit_button('Slider Ayarlarını Kaydet', 'primary', 'submit', true, ['style' => 'font-size: 15px; padding: 5px 25px;']); ?>
         </form>
     </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tbody = document.getElementById('slider-images-tbody');
+        const addBtn = document.getElementById('add-slider-image');
+        
+        // Yeni Alan Ekle
+        addBtn.addEventListener('click', function() {
+            const tr = document.createElement('tr');
+            tr.className = 'slider-image-row';
+            tr.innerHTML = `
+                <th scope="row" style="width: 120px;">Görsel URL</th>
+                <td>
+                    <input name="mis360_slider_images[]" type="url" value="" class="regular-text ltr" style="width: 70%; max-width: 500px;" placeholder="https://...">
+                    <button type="button" class="button remove-image-btn" style="color: #dc3232; border-color: #dc3232;">Sil</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        // Alan Sil
+        tbody.addEventListener('click', function(e) {
+            if (e.target.classList.contains('remove-image-btn')) {
+                const rows = tbody.querySelectorAll('.slider-image-row');
+                if (rows.length > 1) {
+                    e.target.closest('tr').remove();
+                } else {
+                    e.target.previousElementSibling.value = ''; // Sonuncusuysa içini temizle
+                }
+            }
+        });
+    });
+    </script>
     <?php
 }
 

@@ -3504,3 +3504,107 @@ select:focus {
     height: 300px !important;
   }
 }
+
+/* ==========================================================================
+   SAYFALAMA (PAGINATION) TASARIMI
+   ========================================================================== */
+.mis-pagination-wrapper {
+  margin: 60px 0 40px;
+  text-align: center;
+  width: 100%;
+}
+.mis-pagination-wrapper .navigation {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.mis-pagination-wrapper .nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* Eğer WP ul/li üretiyorsa listeyi temizle */
+.mis-pagination-wrapper ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.mis-pagination-wrapper li {
+  margin: 0;
+  padding: 0;
+}
+.mis-pagination-wrapper .page-numbers {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 15px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color-gray-600);
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: var(--font-primary);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+.mis-pagination-wrapper .page-numbers:hover,
+.mis-pagination-wrapper .page-numbers:focus {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+}
+.mis-pagination-wrapper .page-numbers.current {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  cursor: default;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+}
+.mis-pagination-wrapper .page-numbers.dots {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--color-gray-400);
+  min-width: auto;
+  padding: 0 5px;
+}
+.mis-pagination-wrapper .page-numbers svg {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+}
+.mis-pagination-wrapper .prev.page-numbers svg {
+  margin-right: 6px;
+}
+.mis-pagination-wrapper .next.page-numbers svg {
+  margin-left: 6px;
+}
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}

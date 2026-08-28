@@ -3483,7 +3483,7 @@ select:focus {
 }
 
 /* ==========================================================================
-   UTILITY CLASSES
+   UTILITY CLASSES & SLIDER
    ========================================================================== */
 /* SEO ve Ekran Okuyucular İçin (Görsel Olarak Gizli ama Kodda Var) */
 .sr-only {
@@ -3496,4 +3496,11 @@ select:focus {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* Dinamik Slider Mobil Uyum (Responsive) */
+@media (max-width: 768px) {
+  .mis360-slider-track {
+    height: 300px !important;
+  }
 }

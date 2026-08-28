@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
 $phone         = '0535 830 93 07';
 $clean_phone   = '+905358309307';
 $whatsapp      = '905358309307';
-$logo_url      = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/cropped-Basliksiz-1-1.png';
+$logo_url      = '<?php echo get_template_directory_uri(); ?>/assets/img/demo/cropped-Basliksiz-1-1.png';
 $anchor_prefix = is_front_page() ? '' : home_url('/');
 ?><!doctype html>
 <html <?php language_attributes(); ?>>

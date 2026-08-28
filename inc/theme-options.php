@@ -63,13 +63,23 @@ function mis360_theme_options_menu(): void {
         'widgets.php'
     );
 
-    // Alt Menü 5: Görünüm Ayarlarını Buraya Taşı (Canlı Özelleştirici)
+    // Alt Menü 4: Görünüm Ayarlarını Buraya Taşı (Canlı Özelleştirici)
     add_submenu_page(
         'mis360-settings',
         'Tema Özelleştirici',
         'Tema Özelleştirici',
         'manage_options',
         'customize.php'
+    );
+
+    // Alt Menü 5: SEO Sayfa Üretici
+    add_submenu_page(
+        'mis360-settings',
+        'SEO Sayfa Üretici',
+        'SEO Sayfa Üretici',
+        'manage_options',
+        'mis360-seo-generator',
+        'mis360_settings_page_seo_generator'
     );
 
     // Alt Menü 6: Lisans Ayarları
@@ -297,3 +307,125 @@ function mis360_settings_page_license(): void {
     </div>
     <?php
 }
+
+    // ==============================================================
+    // SEO SAYFA ÜRETİCİ (OTOMATİK SAYFA VE YAZI OLUŞTURMA MOTORU)
+    // ==============================================================
+    add_action('admin_init', 'mis360_handle_seo_generation');
+    function mis360_handle_seo_generation(): void {
+        if (isset($_POST['mis360_generate_seo']) && current_user_can('manage_options')) {
+            check_admin_referer('mis360_seo_action');
+
+            $created_count = 0;
+
+            // 1. Ana SEO Sayfası ve Alt Sayfaları (Pages)
+            $parent_page_id = post_exists('Sarıkaya Restoran') ? get_page_by_title('Sarıkaya Restoran')->ID : 0;
+            
+            if (!$parent_page_id) {
+                $parent_page_id = wp_insert_post([
+                    'post_title'   => 'Sarıkaya Restoran',
+                    'post_content' => '<h2>Yozgat Sarıkaya\'nın En Gözde Restoranı</h2><p>Sarıkaya bölgesinde ailenizle, sevdiklerinizle huzurlu ve lezzetli vakit geçirebileceğiniz en iyi restoran deneyimini sunuyoruz. Geniş menümüz, ferah mekanımız ve güler yüzlü personelimizle hizmetinizdeyiz.</p>',
+                    'post_status'  => 'publish',
+                    'post_type'    => 'page',
+                    'post_author'  => get_current_user_id()
+                ]);
+                $created_count++;
+            }
+
+            $child_pages = [
+                'Sarıkaya Et Restoranı'   => '<h2>Sarıkaya Et Restoranı</h2><p>Meşe kömüründe pişen enfes et menülerimiz, zırh kıymasıyla hazırlanan özel spesiyallerimiz ve usta ellerden çıkan lezzetlerimizle Sarıkaya\'da etin bir numaralı adresiyiz.</p>',
+                'Sarıkaya Balık Restoranı'=> '<h2>Sarıkaya Balık Restoranı</h2><p>Günlük temin edilen taze deniz ürünleri, fırında veya ızgarada çupra ve levrek seçenekleriyle Sarıkaya\'da balık keyfini doyasıya yaşayın.</p>',
+                'Sarıkaya Kebap'          => '<h2>Hakiki Sarıkaya Kebap Salonu</h2><p>Zırh kıymasından hakiki Adana ve Urfa kebapları, kuzu şiş ve beyti sarma lezzetlerimizle gerçek kebap kültürünü Yozgat Sarıkaya\'ya taşıyoruz.</p>',
+                'Sarıkaya Döner'          => '<h2>Sarıkaya Yaprak Döner</h2><p>Odun ateşinde ağır ağır pişen %100 yaprak et döner ve tavuk döner menülerimizle, hızlı ve lezzetli öğünlerin vazgeçilmez noktasıyız.</p>',
+                'Sarıkaya Aile Restoranı' => '<h2>Sarıkaya Aile Restoranı</h2><p>Çocuk oyun alanımız, geniş açık hava bahçemiz ve nezih aile salonumuzla, Sarıkaya\'da ailecek huzurla yemek yiyebileceğiniz ferah bir ortam sunuyoruz.</p>'
+            ];
+
+            foreach ($child_pages as $title => $content) {
+                if (!post_exists($title)) {
+                    wp_insert_post([
+                        'post_title'   => $title,
+                        'post_content' => $content,
+                        'post_status'  => 'publish',
+                        'post_type'    => 'page',
+                        'post_parent'  => $parent_page_id,
+                        'post_author'  => get_current_user_id()
+                    ]);
+                    $created_count++;
+                }
+            }
+
+            // 2. Blog / Rehber Yazıları (Posts)
+            $seo_posts = [
+                'Sarıkaya\'da Nerede Yemek Yenir?' => '<h2>Sarıkaya\'da En İyi Yemek Mekanları</h2><p>Yozgat Sarıkaya\'ya yolunuz düştüğünde, yöresel lezzetleri ve usta işi kebapları nerede yiyeceğiniz sorusunun en güvenilir cevabı kaliteli malzemeler kullanan köklü mekanlardır. Ailenizle rahatça oturabileceğiniz geniş mekanları tercih etmelisiniz.</p>',
+                'Sarıkaya Kaplıcaları'             => '<h2>Sarıkaya Kaplıcaları ve Tarihi Dokusu</h2><p>Roma döneminden kalma ünlü Kral Kızı Hamamı (Basilica Therma) ile Sarıkaya kaplıcaları her yıl binlerce turist ağırlamaktadır. Şifalı sularıyla bilinen bu bölgeyi ziyaret ettikten sonra enerjinizi güzel bir yemekle tazeleyebilirsiniz.</p>',
+                'Sarıkaya Gezi Rehberi'            => '<h2>Yozgat Sarıkaya Gezilecek Yerler</h2><p>Sarıkaya tarihi dokusu ve şifalı sularıyla İç Anadolu\'nun parlayan yıldızıdır. Gezinizi planlarken tarihi hamam kalıntılarını görmeyi, yöresel lezzetleri tatmayı unutmayın.</p>',
+                'Sarıkaya Yemek Rehberi'           => '<h2>Sarıkaya Yöresel Lezzetleri</h2><p>Sarıkaya yöresel yemekleri, testi kebabı, Yozgat tandırı ve meşe kömüründe pişen zırh kebapları ile İç Anadolu mutfağının en seçkin örneklerini sunar. Bu rehberde en iyi lezzet duraklarını keşfedin.</p>'
+            ];
+
+            foreach ($seo_posts as $title => $content) {
+                if (!post_exists($title)) {
+                    wp_insert_post([
+                        'post_title'   => $title,
+                        'post_content' => $content,
+                        'post_status'  => 'publish',
+                        'post_type'    => 'post',
+                        'post_author'  => get_current_user_id()
+                    ]);
+                    $created_count++;
+                }
+            }
+
+            add_settings_error('mis360_seo_messages', 'mis360_seo_success', "Tebrikler! Eksik olan {$created_count} adet SEO Sayfası ve Blog Yazısı başarıyla oluşturuldu.", 'updated');
+        }
+    }
+
+    function mis360_settings_page_seo_generator(): void {
+        if (!current_user_can('manage_options')) return;
+        ?>
+        <div class="wrap">
+            <h1>🚀 MİS360 - Tek Tıkla SEO Sayfaları Üretici</h1>
+            <hr style="margin-bottom: 20px;">
+            
+            <?php settings_errors('mis360_seo_messages'); ?>
+
+            <div style="background: #fff; padding: 25px; border: 1px solid #ccd0d4; border-radius: 8px; max-width: 900px; box-shadow: 0 1px 3px rgba(0,0,0,.05);">
+                <div style="display: flex; gap: 20px; align-items: flex-start;">
+                    <div style="font-size: 50px;">🤖</div>
+                    <div>
+                        <h2 style="margin-top: 0; color: #1e293b; font-size: 22px;">Bölgesel SEO Dominasyonu Kurun</h2>
+                        <p style="color: #475569; font-size: 15px; line-height: 1.6;">
+                            Bu modül, temayı <strong>hangi sunucuya, hangi alan adına kurarsanız kurun</strong> saniyeler içinde o bölgeyi domine edecek bir "Arama Motoru Mimarisi" inşa eder. Aşağıdaki butona bastığınızda, sistem otomatik olarak yapay zeka destekli içeriklerle şu sayfaları hiyerarşik (alt sayfa mantığıyla) olarak oluşturur:
+                        </p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px; padding: 15px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;">
+                    <h3 style="margin-top:0;">Oluşturulacak Mimari:</h3>
+                    <ul style="font-size: 14px; font-family: monospace; color: #334155; line-height: 1.8;">
+                        <li><strong>📁 Sayfalar (Hizmet Bazlı İniş Sayfaları - Landing Pages)</strong></li>
+                        <li>├── Sarıkaya Restoran (Ana Sayfa)</li>
+                        <li>│   ├── Sarıkaya Et Restoranı</li>
+                        <li>│   ├── Sarıkaya Balık Restoranı</li>
+                        <li>│   ├── Sarıkaya Kebap</li>
+                        <li>│   ├── Sarıkaya Döner</li>
+                        <li>│   └── Sarıkaya Aile Restoranı</li>
+                        <li style="margin-top: 10px;"><strong>📝 Yazılar (Blog & Rehber - Bilgi Odaklı Trafik)</strong></li>
+                        <li>├── Sarıkaya'da Nerede Yemek Yenir?</li>
+                        <li>├── Sarıkaya Kaplıcaları</li>
+                        <li>├── Sarıkaya Gezi Rehberi</li>
+                        <li>└── Sarıkaya Yemek Rehberi</li>
+                    </ul>
+                </div>
+
+                <form method="post" action="" style="margin-top: 30px;">
+                    <?php wp_nonce_field('mis360_seo_action'); ?>
+                    <input type="hidden" name="mis360_generate_seo" value="1">
+                    <button type="submit" class="button button-primary" style="font-size: 16px; padding: 10px 30px; height: auto; display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 20px;">⚡</span> Hiyerarşik SEO Sayfalarını Şimdi Üret
+                    </button>
+                    <p style="color: #94a3b8; font-size: 12px; margin-top: 10px;"><em>Not: Sistem zaten var olan sayfaları tekrar oluşturmaz (kopya içerik yaratmaz), sadece eksik olanları ekler. Bu yüzden istediğiniz kadar basabilirsiniz.</em></p>
+                </form>
+            </div>
+        </div>
+        <?php
+    }

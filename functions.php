@@ -40,6 +40,11 @@ $mis360_includes = [
     '/inc/seo-geo.php',               // Antigravity SEO & GEO (AI Search Engine & Schema.org) Motoru
 ];
 
+// Beyzade Blog Importer - sadece admin panelinde yükle
+if (is_admin() && file_exists(MIS360_DIR . '/inc/beyzade-importer.php')) {
+    require_once MIS360_DIR . '/inc/beyzade-importer.php';
+}
+
 foreach ($mis360_includes as $file) {
     $filepath = MIS360_DIR . $file;
     if (file_exists($filepath)) {

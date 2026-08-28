@@ -35,7 +35,34 @@ function mis360_theme_options_menu(): void {
         'mis360_settings_page_popup'
     );
 
-    // Alt Menü 2: Lisans Ayarları
+    // Alt Menü 2: Görünüm Ayarlarını Buraya Taşı (Menüler)
+    add_submenu_page(
+        'mis360-settings',
+        'Menü Ayarları',
+        'Menü Ayarları',
+        'manage_options',
+        'nav-menus.php'
+    );
+
+    // Alt Menü 3: Görünüm Ayarlarını Buraya Taşı (Bileşenler/Widget)
+    add_submenu_page(
+        'mis360-settings',
+        'Bileşenler',
+        'Bileşenler',
+        'manage_options',
+        'widgets.php'
+    );
+
+    // Alt Menü 4: Görünüm Ayarlarını Buraya Taşı (Canlı Özelleştirici)
+    add_submenu_page(
+        'mis360-settings',
+        'Tema Özelleştirici',
+        'Tema Özelleştirici',
+        'manage_options',
+        'customize.php'
+    );
+
+    // Alt Menü 5: Lisans Ayarları
     add_submenu_page(
         'mis360-settings',
         'Lisans Ayarları',

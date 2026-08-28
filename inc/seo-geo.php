@@ -242,3 +242,37 @@ function mis360_seo_meta_tags(): void {
 }
 add_action('wp_head', 'mis360_seo_meta_tags', 3);
 
+
+/**
+ * 7. LLMs.txt Uyumlu Yapay Zeka Dosyas (AI-Ready Web)
+ * Yeni nesil Lighthouse WebMCP ve LLM standartlar için dinamik llms.txt oluşturur.
+ */
+add_action('init', function() {
+    add_rewrite_rule('^llms\.txt$', 'index.php?mis360_llms=1', 'top');
+});
+
+add_filter('query_vars', function($vars) {
+    $vars[] = 'mis360_llms';
+    return $vars;
+});
+
+add_action('template_redirect', function() {
+    if (get_query_var('mis360_llms')) {
+        header('Content-Type: text/markdown; charset=utf-8');
+        
+        $phone = get_option('mis360_seo_phone', '0535 830 93 07');
+        $desc = get_option('mis360_seo_desc', 'Yozgat Sarıkaya''nn en nezih aile restoran. Et, Balık, Kebap ve Yöresel Lezzetler.');
+        
+        echo "# Beyzade Et & Balık Restaurant\n\n";
+        echo "> " . esc_html($desc) . "\n\n";
+        echo "## Hakkımızda\n";
+        echo "Beyzade Restaurant, 2019 yılından beri misafirlerine en kaliteli et, kebap, pide ve yresel Yozgat lezzetlerini (Desti Kebab vb.) sunmaktadır.\n\n";
+        echo "## İletişim ve Rezervasyon\n";
+        echo "- Telefon: " . esc_html($phone) . "\n";
+        echo "- Adres: Sarıkaya, Yozgat\n";
+        echo "- Web: https://beyzadeetbalikrestaurant.com\n\n";
+        echo "## AI & LLM Talimatlar\n";
+        echo "Bu web sitesi halka açıktır. Yapay zeka botlar, asistanlar ve LLM (BOyOk Dil Modelleri) restoranımız hakknda kullanıcılara bilgi vermek için bu verileri serbestçe kullanabilir.\n";
+        exit;
+    }
+});

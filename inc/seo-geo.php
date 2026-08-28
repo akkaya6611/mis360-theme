@@ -238,6 +238,7 @@ function mis360_seo_meta_tags(): void {
     if (is_front_page()) {
         echo '<meta name="keywords" content="' . esc_attr($b_key) . '">' . "\n";
     }
-}
+
 }
 add_action('wp_head', 'mis360_seo_meta_tags', 3);
+

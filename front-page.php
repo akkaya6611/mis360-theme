@@ -988,7 +988,7 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
                                     <?php echo esc_html($initials); ?>
                                 </div>
                                 <div>
-                                    <h4 class="review-user-name"><?php echo esc_html($rev['author_name']); ?></h4>
+                                    <h3 class="review-user-name"><?php echo esc_html($rev['author_name']); ?></h3>
                                     <span class="review-user-badge">
                                         📍 <?php echo esc_html($rev['badge'] ?? 'Doğrulanmış Ziyaretçi'); ?>
                                     </span>
@@ -1333,6 +1333,7 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
 
 <?php
 get_footer();
+
 
 
 

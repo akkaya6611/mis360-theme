@@ -978,7 +978,7 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
                         $t_url = $meta_t;
                     } else {
                         $t_url = (strpos($cat_slug, 'haber') !== false || strpos($cat_slug, 'galeri') !== false)
-                            ? '<?php echo get_template_directory_uri(); ?>/assets/img/demo/restaurant.jpg'
+                            ? get_template_directory_uri() . '/assets/img/demo/restaurant.jpg'
                             : 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/adana.jpg';
                     }
                 }

@@ -160,7 +160,7 @@ function mis360_ensure_blog_gallery_page(): void {
                 'content'  => '2019 yılından bu yana Yozgat Sarıkaya\'da lezzet ve konforu bir arada sunan Beyzade Et & Balık Restaurant olarak, bahar ve yaz aylarının keyfini çıkarmanız için açık hava bahçe salonumuzu yeniledik.<br><br>Ferah masalarımız, çocuklar için özel mama sandalyesi imkanı, serinletici çevre düzenlemesi ve akşam serinliğinde ailenizle huzurla yemek yiyebileceğiniz özel alanlarımız hazır. Günlük taze balıklarımız ve meşe kömüründe pişen kebaplarımızla sizleri açık havada lezzet şölenine davet ediyoruz.<br><br>Masa rezervasyonu için 0535 830 93 07 numaralı hattımızdan veya doğrudan WhatsApp üzerinden bizimle iletişime geçebilirsiniz.',
                 'excerpt'  => 'Aileler ve çocuklar için özel olarak hazırlanan ferah açık hava bahçe salonumuz, konforlu masaları ve mama sandalyesi desteğiyle hizmetinizde.',
                 'cats'     => [$cat_haber_id],
-                'img'      => '<?php echo get_template_directory_uri(); ?>/assets/img/demo/restaurant.jpg',
+                'img'      => get_template_directory_uri() . '/assets/img/demo/restaurant.jpg',
             ],
             [
                 'title'    => 'Hakiki Meşe Kömüründe Kebap Pişirmenin Püf Noktaları ve Dinlendirilmiş Et Sanatı',
@@ -181,21 +181,21 @@ function mis360_ensure_blog_gallery_page(): void {
                 'content'  => 'Sarıkaya\'da güne dinç ve sıcacık başlamak isteyenler için her sabah tam saat 06:00\'da çorba kazanlarımız kaynıyor. Kemik suyunda saatlerce ağır ağır demlenen kelle paça, terbiyeli ayak paça, süzme mercimek ve yayla çorbamız taze tandır ekmeği ve sarımsaklı sos eşliğinde servis edilmektedir.',
                 'excerpt'  => 'Güne dinç ve sıcacık başlamak isteyenler için her sabah tam saat 06:00\'da başlayan geleneksel sıcak çorba kazanlarımız kaynıyor.',
                 'cats'     => [$cat_haber_id],
-                'img'      => '<?php echo get_template_directory_uri(); ?>/assets/img/demo/restaurant.jpg',
+                'img'      => get_template_directory_uri() . '/assets/img/demo/restaurant.jpg',
             ],
             [
                 'title'    => 'Özel Toprak Güveçte Ağır Ateşte Pişen Kuzu Tandırın Hikayesi',
                 'content'  => 'Geleneksel lezzetlerin başında gelen kuzu tandır, Beyzade mutfağında özel toprak güveç kaplarında ve taş fırının dinlenmiş közünde tam 4 saat boyunca pişirilir. Lokum gibi kemiğinden ayrılan et, yanında tereyağlı pirinç pilavı ve közlenmiş biberlerle ziyafet masalarının baş tacı olur.',
                 'excerpt'  => 'Geleneksel toprak güveç kaplarında taş fırının dinlenmiş közünde 4 saat ağır ateşte lokum gibi pişen kuzu tandır.',
                 'cats'     => [$cat_blog_id],
-                'img'      => '<?php echo get_template_directory_uri(); ?>/assets/img/demo/restaurant.jpg',
+                'img'      => get_template_directory_uri() . '/assets/img/demo/restaurant.jpg',
             ],
             [
                 'title'    => 'Mevsimin En Taze Balıkları Beyzade Tezgahında: Çupra, Levrek ve Somon',
                 'content'  => 'Sarıkaya\'da taze deniz lezzeti arayan misafirlerimiz için günlük olarak temin ettiğimiz çupra, levrek ve somon çeşitlerimiz özel ızgara tekniğimizle nar gibi kızartılıyor. Taze yeşilliklerle bezenmiş Akdeniz salatası ve fırında helva eşliğinde hafif ve sağlıklı bir akşam yemeği sizleri bekliyor.',
                 'excerpt'  => 'Günlük temin edilen deniz çuprası, kaya levreği ve Karadeniz somonu ustalarımızın ızgarasında nar gibi pişiyor.',
                 'cats'     => [$cat_galeri_id],
-                'img'      => '<?php echo get_template_directory_uri(); ?>/assets/img/demo/restaurant.jpg',
+                'img'      => get_template_directory_uri() . '/assets/img/demo/restaurant.jpg',
             ],
         ];
 

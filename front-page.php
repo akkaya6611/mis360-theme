@@ -20,6 +20,12 @@ get_header();
 $phone       = '0535 830 93 07';
 $clean_phone = '+905358309307';
 $whatsapp    = '905358309307';
+
+// Tema ayarlarından verileri çek
+$intro_enabled = get_option('mis360_intro_enabled', '1');
+$intro_video_url = get_option('mis360_intro_video_url', 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/intro.mp4');
+
+if ($intro_enabled === '1' && !empty($intro_video_url)) :
 ?>
 
 <!-- ==========================================
@@ -30,10 +36,9 @@ $whatsapp    = '905358309307';
         <!-- 5. saniyede görünecek kapat butonu -->
         <button id="intro-close-btn" class="intro-close-btn" style="display: none;">Geç ⏭</button>
         
-        <!-- Intro Videosu (Sesi açık başlar, otomatik oynar) -->
+        <!-- Intro Videosu -->
         <video id="intro-video" class="intro-video-element" playsinline preload="auto">
-            <!-- LÜTFEN AŞAĞIDAKİ VİDEO URL'SİNİ KENDİ VİDEONUZUN LİNKİ İLE DEĞİŞTİRİN -->
-            <source src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/intro.mp4" type="video/mp4">
+            <source src="<?php echo esc_url($intro_video_url); ?>" type="video/mp4">
             Tarayıcınız video etiketini desteklemiyor.
         </video>
     </div>
@@ -100,8 +105,10 @@ window.addEventListener("load", function() {
 });
 </script>
 <!-- ========================================== -->
+<?php endif; ?>
 
 <!-- 1. Hero Section (Denfora 1:1 Architecture with Authentic Beyzade Ambience) -->
+
 <section class="hero" style="background: linear-gradient(rgba(17, 24, 39, 0.55), rgba(17, 24, 39, 0.72)), url('https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/banner-4-BEYZADE.png') center/cover no-repeat;">
     <div class="hero-overlay"></div>
     <div class="container">

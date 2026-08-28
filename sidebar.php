@@ -22,7 +22,7 @@ $whatsapp    = '905358309307';
     <!-- 1. Bileşen: Restoran Bilgi & Hızlı Rezervasyon -->
     <div class="sidebar-widget widget-restaurant-card">
         <div class="widget-restaurant-header">
-            <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzadelogo1-66.png" alt="Beyzade Logo" class="widget-restaurant-logo">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzadelogo1-66.png" alt="Beyzade Logo" class="widget-restaurant-logo">
             <div>
                 <span class="widget-restaurant-badge">2019'dan Beri</span>
                 <h3 class="widget-restaurant-name">Beyzade Et & Balık</h3>
@@ -81,7 +81,7 @@ $whatsapp    = '905358309307';
                         $r_thumb = get_the_post_thumbnail_url($rp->ID, 'thumbnail');
                     } else {
                         $meta_t = get_post_meta($rp->ID, '_mis360_external_thumb', true);
-                        $r_thumb = $meta_t ?: 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg';
+                        $r_thumb = $meta_t ?: '<?php echo get_template_directory_uri(); ?>/assets/img/demo/restaurant.jpg';
                     }
                 ?>
                     <article class="sidebar-post-item">

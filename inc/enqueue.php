@@ -31,7 +31,7 @@ function mis360_scripts(): void {
     wp_enqueue_style(
         'mis360-main',
         MIS360_URI . '/assets/css/main.css',
-        ['mis360-style'],
+        [],
         $main_css_ver
     );
 
@@ -79,3 +79,4 @@ function mis360_defer_scripts(string $tag, string $handle, string $src): string 
     return $tag;
 }
 add_filter('script_loader_tag', 'mis360_defer_scripts', 10, 3);
+

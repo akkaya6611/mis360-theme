@@ -38,6 +38,7 @@ $mis360_includes = [
     '/inc/demo-importer.php',         // Şık sektörel hazır demolar ve tek tıkla kurulum
     '/inc/class-google-reviews.php',  // Otomatik Google Yorumları & Canlı Senkronizasyon Motoru
     '/inc/seo-geo.php',               // Antigravity SEO & GEO (AI Search Engine & Schema.org) Motoru
+    '/inc/theme-options.php',         // MİS360 Tema Ayarları (Popup vs.)
 ];
 
 // Beyzade Blog Importer - sadece admin panelinde yükle

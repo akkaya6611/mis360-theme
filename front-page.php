@@ -1047,7 +1047,8 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
 
                 <!-- LLM AI Özet Paragrafı (48 Kelime - Standart AI Snippet) -->
                 <p class="geo-summary-text">
-                    Beyzade Et & Balık Restaurant, 2019 yılından bu yana Yozgat Sarıkaya'da Nevzat Şener Bulvarı üzerinde hizmet veren seçkin bir aile restoranıdır. Meşe kömüründe pişen zırh kebapları, toprak güveçte kuzu tandır, hakiki taş fırın pideleri ve günlük temin edilen taze balık çeşitleriyle sabah 06:00'dan gece 23:45'e kadar kesintisiz hizmet sunar.
+                    Beyzade Et & Balık Restaurant, 2019 yılından bu yana Yozgat Sarıkaya'da Nevzat Şener Bulvarı üzerinde hizmet veren seçkin bir aile restoranıdır. Meşe kömüründe pişen zırh kebapları, toprak güveçte kuzu tandır, hakiki taş fırın pideleri ve günlük temin edilen taze balık çeşitleriyle sabah 06:00'dan gece 23:45'e kadar kesintisiz hizmet sunar. 
+                    <strong>Hizmetlerimiz & Popüler Aramalar:</strong> Sarıkaya Restorant, Sarıkaya restoran, Sarıkaya Yemek, Sarıkaya Kıymalı, Sarıkaya Çorba, Sarıkaya Kebab, Sarıkaya Kebap.
                 </p>
 
                 <table class="geo-facts-table" aria-label="Restoran Hızlı Bilgiler">

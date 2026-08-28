@@ -73,6 +73,7 @@ window.addEventListener("load", function() {
     var timerBox = document.getElementById('intro-timer-box');
     var secSpan = document.getElementById('intro-sec');
     var introSeen = sessionStorage.getItem('beyzade_intro_seen');
+    if (window.innerWidth <= 768) { document.getElementById('beyzade-intro-popup').style.display = 'none'; return; }
     var isYouTube = <?php echo $is_youtube ? 'true' : 'false'; ?>;
     
     if (!introSeen) {
@@ -1332,3 +1333,5 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
 
 <?php
 get_footer();
+
+

@@ -81,7 +81,7 @@ $whatsapp    = '905358309307';
                         $r_thumb = get_the_post_thumbnail_url($rp->ID, 'thumbnail');
                     } else {
                         $meta_t = get_post_meta($rp->ID, '_mis360_external_thumb', true);
-                        $r_thumb = $meta_t ?: '<?php echo get_template_directory_uri(); ?>/assets/img/demo/restaurant.jpg';
+                        $r_thumb = $meta_t ?: get_template_directory_uri() . '/assets/img/demo/restaurant.jpg';
                     }
                 ?>
                     <article class="sidebar-post-item">

@@ -78,18 +78,3 @@ remove_action('wp_head', 'wp_shortlink_wp_head');
 
 // 3. GÜVENLİK: XML-RPC Kapat (DDoS ve Brute Force saldırılarını engeller)
 add_filter('xmlrpc_enabled', '__return_false');
-
-// 4. HIZ: JavaScript dosyalarını DEFER (Gecikmeli) olarak yükle (Render-blocking engeller)
-function mis360_defer_scripts($tag, $handle, $src) {
-    // Admin panelini bozmamak için sadece önyüzde çalıştır
-    if (is_admin()) return $tag;
-    
-    // jQuery çekirdeğini defer yapma (inline JS'leri bozabilir)
-    if (strpos($handle, 'jquery') !== false) return $tag;
-    
-    // Zaten defer veya async varsa dokunma
-    if (strpos($tag, 'defer') !== false || strpos($tag, 'async') !== false) return $tag;
-    
-    return str_replace(' src', ' defer src', $tag);
-}
-add_filter('script_loader_tag', 'mis360_defer_scripts', 10, 3);

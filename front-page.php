@@ -191,7 +191,7 @@ window.addEventListener("load", function() {
 
 <!-- 1. Hero Section (Denfora 1:1 Architecture with Authentic Beyzade Ambience) -->
 
-<section class="hero" style="background: linear-gradient(rgba(17, 24, 39, 0.55), rgba(17, 24, 39, 0.72)), url('https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/banner-4-BEYZADE.png') center/cover no-repeat;">
+<section class="hero" style="background: linear-gradient(rgba(17, 24, 39, 0.55), rgba(17, 24, 39, 0.72)), url('<?php echo get_template_directory_uri(); ?>/assets/img/demo/banner-4-BEYZADE.png') center/cover no-repeat;">
     <div class="hero-overlay"></div>
     <div class="container">
         <div class="hero-content">
@@ -262,7 +262,7 @@ window.addEventListener("load", function() {
             
             <!-- Kategori 1: Kebaplar -->
             <a href="#kebaplar" class="category-card">
-                <div class="category-card-image" style="background-image: url('https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/adana-kebap-beyzade-1024x819.png'); background-size: cover; background-position: center;"></div>
+                <div class="category-card-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/demo/adana-kebap-beyzade-1024x819.png'); background-size: cover; background-position: center;"></div>
                 <div class="category-card-overlay"></div>
                 <div class="category-card-content">
                     <h3 class="category-card-title">Kebap Çeşitlerimiz</h3>
@@ -272,7 +272,7 @@ window.addEventListener("load", function() {
 
             <!-- Kategori 2: Pideler & Lahmacun -->
             <a href="#pideler" class="category-card">
-                <div class="category-card-image" style="background-image: url('https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/karisik-pide-beyzade-1024x819.png'); background-size: cover; background-position: center;"></div>
+                <div class="category-card-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/demo/karisik-pide-beyzade-1024x819.png'); background-size: cover; background-position: center;"></div>
                 <div class="category-card-overlay"></div>
                 <div class="category-card-content">
                     <h3 class="category-card-title">Pide & Lahmacun</h3>
@@ -282,7 +282,7 @@ window.addEventListener("load", function() {
 
             <!-- Kategori 3: Döner & İskender -->
             <a href="#donerler" class="category-card">
-                <div class="category-card-image" style="background-image: url('https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzade-iskender-1024x819.png'); background-size: cover; background-position: center;"></div>
+                <div class="category-card-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-iskender-1024x819.png'); background-size: cover; background-position: center;"></div>
                 <div class="category-card-overlay"></div>
                 <div class="category-card-content">
                     <h3 class="category-card-title">Döner & İskender</h3>
@@ -292,7 +292,7 @@ window.addEventListener("load", function() {
 
             <!-- Kategori 4: Tatlılar -->
             <a href="#tatlilar" class="category-card">
-                <div class="category-card-image" style="background-image: url('https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzade-kunefe-1024x819.png'); background-size: cover; background-position: center;"></div>
+                <div class="category-card-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-kunefe-1024x819.png'); background-size: cover; background-position: center;"></div>
                 <div class="category-card-overlay"></div>
                 <div class="category-card-content">
                     <h3 class="category-card-title">Tatlılarımız</h3>
@@ -320,7 +320,7 @@ window.addEventListener("load", function() {
             <div class="chooseUs__image-col">
                 <div class="chooseUs__image-wrap">
                     <img
-                        src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg"
+                        src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/restaurant.jpg"
                         alt="Beyzade Restaurant - Aile Yemek Salonu ve Masa Düzeni, Sarıkaya Yozgat"
                         class="chooseUs__main-image"
                         width="540" height="480"
@@ -364,7 +364,7 @@ window.addEventListener("load", function() {
 
                     <div class="chooseUs__feature-item">
                         <div class="chooseUs__feature-icon">
-                            <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzadelogo1-66.png" alt="Beyzade Logo" width="40" height="40" loading="lazy">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzadelogo1-66.png" alt="Beyzade Logo" width="40" height="40" loading="lazy">
                         </div>
                         <div class="chooseUs__feature-text">
                             <h3>Özenli Hizmet Anlayışı</h3>
@@ -374,7 +374,7 @@ window.addEventListener("load", function() {
 
                     <div class="chooseUs__feature-item">
                         <div class="chooseUs__feature-icon">
-                            <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzadelogo1-66.png" alt="Beyzade Logo" width="40" height="40" loading="lazy">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzadelogo1-66.png" alt="Beyzade Logo" width="40" height="40" loading="lazy">
                         </div>
                         <div class="chooseUs__feature-text">
                             <h3>Zengin Menü Seçenekleri</h3>
@@ -384,7 +384,7 @@ window.addEventListener("load", function() {
 
                     <div class="chooseUs__feature-item">
                         <div class="chooseUs__feature-icon">
-                            <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzadelogo1-66.png" alt="Beyzade Logo" width="40" height="40" loading="lazy">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzadelogo1-66.png" alt="Beyzade Logo" width="40" height="40" loading="lazy">
                         </div>
                         <div class="chooseUs__feature-text">
                             <h3>Aile ve Grup Ortamı</h3>
@@ -429,7 +429,7 @@ window.addEventListener("load", function() {
                 <!-- Adana Kebap -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/adana-kebap-beyzade-1024x819.png" alt="Adana Kebap" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/adana-kebap-beyzade-1024x819.png" alt="Adana Kebap" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">KÖMÜRDE IZGARA</span>
@@ -446,7 +446,7 @@ window.addEventListener("load", function() {
                 <!-- Urfa Kebap -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/urfa-kebap-beyzade-1-1024x819.png" alt="Urfa Kebap" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/urfa-kebap-beyzade-1-1024x819.png" alt="Urfa Kebap" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">KÖMÜRDE IZGARA</span>
@@ -463,7 +463,7 @@ window.addEventListener("load", function() {
                 <!-- Beyti Sarma -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/Beyti-Sarma-beyzade-1-1024x819.png" alt="Beyti Sarma" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/Beyti-Sarma-beyzade-1-1024x819.png" alt="Beyti Sarma" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">BEYZADE İMZA</span>
@@ -480,7 +480,7 @@ window.addEventListener("load", function() {
                 <!-- Kuzu Şiş -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/Kuzu-Sis-beyzade-1-1024x819.png" alt="Kuzu Şiş" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/Kuzu-Sis-beyzade-1-1024x819.png" alt="Kuzu Şiş" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">KÖMÜRDE IZGARA</span>
@@ -497,7 +497,7 @@ window.addEventListener("load", function() {
                 <!-- Kuzu Tandır -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/kuzu-tandir-1024x819.png" alt="Kuzu Tandır" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/kuzu-tandir-1024x819.png" alt="Kuzu Tandır" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">ÖZEL SİPARİŞ</span>
@@ -517,7 +517,7 @@ window.addEventListener("load", function() {
                 <!-- Desti Kebabı -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzade-desti-kebabi-1024x819.png" alt="Desti Kebabı" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-desti-kebabi-1024x819.png" alt="Desti Kebabı" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">YÖRESEL İMZA</span>
@@ -537,7 +537,7 @@ window.addEventListener("load", function() {
                 <!-- Kuzu Ciğer -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/Kuzu-Ciger-beyzade-1-1024x819.png" alt="Kuzu Ciğer" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/Kuzu-Ciger-beyzade-1-1024x819.png" alt="Kuzu Ciğer" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">KÖMÜRDE IZGARA</span>
@@ -554,7 +554,7 @@ window.addEventListener("load", function() {
                 <!-- Bonfile / Pirzola -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/Bonfile-pirzola-beyzade-1-1024x819.png" alt="Bonfile Pirzola" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/Bonfile-pirzola-beyzade-1-1024x819.png" alt="Bonfile Pirzola" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">GURME ET</span>
@@ -585,7 +585,7 @@ window.addEventListener("load", function() {
                 <!-- Kıymalı Pide -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/Kiymali-Pide-beyzade-1024x819.png" alt="Kıymalı Pide" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/Kiymali-Pide-beyzade-1024x819.png" alt="Kıymalı Pide" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">ODUN ATEŞİNDE</span>
@@ -602,7 +602,7 @@ window.addEventListener("load", function() {
                 <!-- Kuşbaşılı Pide -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/kusbasi-Pide-beyzade-1024x819.png" alt="Kuşbaşılı Pide" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/kusbasi-Pide-beyzade-1024x819.png" alt="Kuşbaşılı Pide" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">ODUN ATEŞİNDE</span>
@@ -619,7 +619,7 @@ window.addEventListener("load", function() {
                 <!-- Karışık Pide -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/karisik-pide-beyzade-1024x819.png" alt="Karışık Pide" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/karisik-pide-beyzade-1024x819.png" alt="Karışık Pide" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">BEYZADE SPESİYAL</span>
@@ -636,7 +636,7 @@ window.addEventListener("load", function() {
                 <!-- Çıtır Lahmacun -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/lahmacun-beyzade-1024x819.png" alt="Lahmacun" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/lahmacun-beyzade-1024x819.png" alt="Lahmacun" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">ODUN ATEŞİNDE</span>
@@ -667,7 +667,7 @@ window.addEventListener("load", function() {
                 <!-- İskender -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzade-iskender-1024x819.png" alt="İskender" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-iskender-1024x819.png" alt="İskender" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">TEREYAĞLI</span>
@@ -684,7 +684,7 @@ window.addEventListener("load", function() {
                 <!-- Et Döner -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzade-et-doner-1024x819.png" alt="Et Döner" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-et-doner-1024x819.png" alt="Et Döner" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">KLASİK LEZZET</span>
@@ -701,7 +701,7 @@ window.addEventListener("load", function() {
                 <!-- Tavuk Döner -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzade-tavuk-doner-1024x819.png" alt="Tavuk Döner" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-tavuk-doner-1024x819.png" alt="Tavuk Döner" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">KLASİK LEZZET</span>
@@ -718,7 +718,7 @@ window.addEventListener("load", function() {
                 <!-- Döner Dürüm -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzade-doner-durum-1024x819.png" alt="Döner Dürüm" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-doner-durum-1024x819.png" alt="Döner Dürüm" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">HIZLI SERVİS</span>
@@ -749,7 +749,7 @@ window.addEventListener("load", function() {
                 <!-- Künefe -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzade-kunefe-1024x819.png" alt="Künefe" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-kunefe-1024x819.png" alt="Künefe" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">SICAK TATLI</span>
@@ -766,7 +766,7 @@ window.addEventListener("load", function() {
                 <!-- Fırın Sütlaç -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/sutlac-beyzade-1-1024x819.png" alt="Sütlaç" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/sutlac-beyzade-1-1024x819.png" alt="Sütlaç" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">GELENEKSEL</span>
@@ -783,7 +783,7 @@ window.addEventListener("load", function() {
                 <!-- Sıcak Çikolatalı Sufle -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/sufle-beyzade-1-1024x819.png" alt="Sufle" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/sufle-beyzade-1-1024x819.png" alt="Sufle" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">SICAK TATLI</span>
@@ -800,7 +800,7 @@ window.addEventListener("load", function() {
                 <!-- Mercimek / Paça Çorbası -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/mercimek-corbasi-beyzade-1024x819.png" alt="Çorba Çeşitleri" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/mercimek-corbasi-beyzade-1024x819.png" alt="Çorba Çeşitleri" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">SICAK BAŞLANGIÇ</span>
@@ -978,7 +978,7 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
                         $t_url = $meta_t;
                     } else {
                         $t_url = (strpos($cat_slug, 'haber') !== false || strpos($cat_slug, 'galeri') !== false)
-                            ? 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg'
+                            ? '<?php echo get_template_directory_uri(); ?>/assets/img/demo/restaurant.jpg'
                             : 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/adana.jpg';
                     }
                 }

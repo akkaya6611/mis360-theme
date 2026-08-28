@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 /**
  * Tema Sabitleri (Constants)
  */
-define('MIS360_VERSION', '1.0.8');
+define('MIS360_VERSION', '1.0.9');
 define('MIS360_DIR', get_template_directory());
 define('MIS360_URI', get_template_directory_uri());
 
@@ -79,3 +79,36 @@ remove_action('wp_head', 'wp_shortlink_wp_head');
 
 // 3. GÜVENLİK: XML-RPC Kapat (DDoS ve Brute Force saldırılarını engeller)
 add_filter('xmlrpc_enabled', '__return_false');
+
+/**
+ * 6. Lighthouse Önbellek Optimizasyonu (Browser Caching TTL 1 Yıl)
+ * Sunucunun .htaccess dosyasına müdahale ederek statik dosyaların 1 yıl önbellekte kalmasını sağlar.
+ */
+function mis360_add_browser_caching_rules($rules) {
+    $caching_rules = "\n# BEGIN MİS360 Browser Caching (Lighthouse 100/100)\n";
+    $caching_rules .= "<IfModule mod_expires.c>\n";
+    $caching_rules .= "ExpiresActive On\n";
+    $caching_rules .= "ExpiresByType image/jpg \"access plus 1 year\"\n";
+    $caching_rules .= "ExpiresByType image/jpeg \"access plus 1 year\"\n";
+    $caching_rules .= "ExpiresByType image/gif \"access plus 1 year\"\n";
+    $caching_rules .= "ExpiresByType image/png \"access plus 1 year\"\n";
+    $caching_rules .= "ExpiresByType image/webp \"access plus 1 year\"\n";
+    $caching_rules .= "ExpiresByType image/avif \"access plus 1 year\"\n";
+    $caching_rules .= "ExpiresByType image/svg+xml \"access plus 1 year\"\n";
+    $caching_rules .= "ExpiresByType text/css \"access plus 1 year\"\n";
+    $caching_rules .= "ExpiresByType application/javascript \"access plus 1 year\"\n";
+    $caching_rules .= "ExpiresByType font/woff2 \"access plus 1 year\"\n";
+    $caching_rules .= "ExpiresByType image/x-icon \"access plus 1 year\"\n";
+    $caching_rules .= "ExpiresDefault \"access plus 2 days\"\n";
+    $caching_rules .= "</IfModule>\n";
+    
+    $caching_rules .= "<IfModule mod_headers.c>\n";
+    $caching_rules .= "<filesMatch \"\.(ico|jpe?g|png|gif|webp|avif|svg|css|js|woff2)$\">\n";
+    $caching_rules .= "Header set Cache-Control \"max-age=31536000, public\"\n";
+    $caching_rules .= "</filesMatch>\n";
+    $caching_rules .= "</IfModule>\n";
+    $caching_rules .= "# END MİS360 Browser Caching\n\n";
+
+    return $caching_rules . $rules;
+}
+add_filter('mod_rewrite_rules', 'mis360_add_browser_caching_rules');

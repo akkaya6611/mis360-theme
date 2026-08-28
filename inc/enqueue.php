@@ -25,12 +25,12 @@ function mis360_scripts(): void {
     );
 
     // 2. Çekirdek Bileşen ve Düzen Stilleri (assets/css/main.css)
-    $main_css_path = MIS360_DIR . '/assets/css/main.css';
+    $main_css_path = MIS360_DIR . '/assets/css/main.min.css';
     $main_css_ver  = file_exists($main_css_path) ? (string) filemtime($main_css_path) : MIS360_VERSION;
 
     wp_enqueue_style(
         'mis360-main',
-        MIS360_URI . '/assets/css/main.css',
+        MIS360_URI . '/assets/css/main.min.css',
         [],
         $main_css_ver
     );

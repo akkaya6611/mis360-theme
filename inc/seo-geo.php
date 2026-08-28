@@ -38,11 +38,11 @@ function mis360_render_schema_jsonld(): void {
         'menu'                   => esc_url(home_url('/#menu')),
         'hasMap'                 => 'https://maps.app.goo.gl/q2icLBRX1FJNzVtY7',
         'image'                  => [
-            'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/banner-4-BEYZADE.png',
-            'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg',
+            '<?php echo get_template_directory_uri(); ?>/assets/img/demo/banner-4-BEYZADE.png',
+            '<?php echo get_template_directory_uri(); ?>/assets/img/demo/restaurant.jpg',
             'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/adana.jpg'
         ],
-        'logo'                   => 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/cropped-Basliksiz-1-1.png',
+        'logo'                   => '<?php echo get_template_directory_uri(); ?>/assets/img/demo/cropped-Basliksiz-1-1.png',
         'address'                => [
             '@type'           => 'PostalAddress',
             'streetAddress'   => 'Bahçelievler Mah., Nevzat Şener Bulvarı',
@@ -89,7 +89,7 @@ function mis360_render_schema_jsonld(): void {
             ],
             'headline'         => wp_strip_all_tags(get_the_title($post_id)),
             'description'      => wp_strip_all_tags(get_the_excerpt($post_id)),
-            'image'            => $thumb ?: 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg',
+            'image'            => $thumb ?: '<?php echo get_template_directory_uri(); ?>/assets/img/demo/restaurant.jpg',
             'datePublished'    => get_the_date(DATE_W3C, $post_id),
             'dateModified'     => get_the_modified_date(DATE_W3C, $post_id),
             'author'           => [
@@ -101,7 +101,7 @@ function mis360_render_schema_jsonld(): void {
                 'name'  => 'Beyzade Et & Balık Restaurant',
                 'logo'  => [
                     '@type' => 'ImageObject',
-                    'url'   => 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/cropped-Basliksiz-1-1.png'
+                    'url'   => '<?php echo get_template_directory_uri(); ?>/assets/img/demo/cropped-Basliksiz-1-1.png'
                 ]
             ]
         ];
@@ -204,7 +204,7 @@ add_action('wp_head', 'mis360_render_schema_jsonld', 1);
 function mis360_seo_resource_hints(): void {
     if (is_front_page()) {
         // Hero görselini en yüksek öncelikle (fetchpriority="high") önyükle
-        echo '<link rel="preload" as="image" href="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/banner-4-BEYZADE.png" fetchpriority="high">' . "\n";
+        echo '<link rel="preload" as="image" href="<?php echo get_template_directory_uri(); ?>/assets/img/demo/banner-4-BEYZADE.png" fetchpriority="high">' . "\n";
     }
 }
 add_action('wp_head', 'mis360_seo_resource_hints', 2);

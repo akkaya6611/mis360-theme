@@ -176,7 +176,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
                 </div>
 
                 <div class="footer-agency">
-                    <span style="color: var(--color-gray-600); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;">
+                    <span style="color: var(--color-gray-300); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;">
                         Web Tasarım & Geliştirici:
                     </span>
                     <a href="https://misteknoloji360.com.tr/" target="_blank" rel="noopener noreferrer" style="font-weight: 700; color: var(--color-primary);">
@@ -209,6 +209,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
 <?php wp_footer(); ?>
 </body>
 </html>
+
 
 
 

@@ -19,6 +19,24 @@ if (!defined('ABSPATH')) {
  * (Restaurant, LocalBusiness, Article/BlogPosting, FAQPage, BreadcrumbList)
  */
 function mis360_render_schema_jsonld(): void {
+    
+    // Ayarlardan Dinamik SEO Verilerini Çek
+    $def_name = 'Beyzade Et & Balık Restaurant';
+    $def_desc = "2019 yılından beri Yozgat Sarıkaya'da hakiki meşe kömüründe kebap, özel kuzu tandır, taş fırın pideleri, lahmacun ve günlük taze balık çeşitleri sunan seçkin aile restoranı.";
+    $def_key  = 'Sarıkaya Restorant, Sarıkaya restoran, Sarıkaya Yemek, Sarıkaya Kıymalı, Sarıkaya Çorba, Sarıkaya Kebab, Sarıkaya Kebap';
+    $def_phone= '0535 830 93 07';
+    $def_addr = 'Bahçelievler Mah. Nevzat Şener Bulvarı, Sarıkaya / Yozgat';
+    $def_rating = '4.3';
+    $def_count = '448';
+
+    $b_name  = get_option('mis360_seo_business_name', $def_name) ?: $def_name;
+    $b_desc  = get_option('mis360_seo_description', $def_desc) ?: $def_desc;
+    $b_key   = get_option('mis360_seo_keywords', $def_key) ?: $def_key;
+    $b_phone = get_option('mis360_seo_phone', $def_phone) ?: $def_phone;
+    $b_addr  = get_option('mis360_seo_address', $def_addr) ?: $def_addr;
+    $b_rating = get_option('mis360_seo_rating', $def_rating) ?: $def_rating;
+    $b_count = get_option('mis360_seo_review_count', $def_count) ?: $def_count;
+
     $schemas = [];
 
     // Genel İşletme Bilgileri
@@ -29,9 +47,9 @@ function mis360_render_schema_jsonld(): void {
         'name'                   => 'Beyzade Et & Balık Restaurant',
         'alternateName'          => 'Beyzade Restoran Sarıkaya',
         'legalName'              => 'Beyzade Et ve Balık Restaurant',
-        'description'            => '2019 yılından beri Yozgat Sarıkaya\'da hakiki meşe kömüründe kebap, özel kuzu tandır, taş fırın pideleri, lahmacun ve günlük taze balık çeşitleri sunan seçkin aile restoranı.',
+        'description'      => $b_desc,
         'url'                    => esc_url(home_url('/')),
-        'telephone'              => '+905358309307',
+        'telephone'      => $b_phone,
         'priceRange'             => '₺₺',
         'servesCuisine'          => ['Türk Mutfağı', 'Kebap', 'Balık ve Deniz Ürünleri', 'Taş Fırın Pide', 'Kahvaltı & Sıcak Çorbalar'],
         'acceptsReservations'    => 'True',
@@ -45,7 +63,7 @@ function mis360_render_schema_jsonld(): void {
         'logo'                   => get_template_directory_uri() . '/assets/img/demo/cropped-Basliksiz-1-1.png',
         'address'                => [
             '@type'           => 'PostalAddress',
-            'streetAddress'   => 'Bahçelievler Mah., Nevzat Şener Bulvarı',
+            'streetAddress'   => $b_addr,
             'addressLocality' => 'Sarıkaya',
             'addressRegion'   => 'Yozgat',
             'postalCode'      => '66650',
@@ -66,12 +84,12 @@ function mis360_render_schema_jsonld(): void {
         ],
         'aggregateRating'        => [
             '@type'       => 'AggregateRating',
-            'ratingValue' => '4.3',
-            'reviewCount' => '448',
+            'ratingValue' => $b_rating,
+            'reviewCount' => $b_count,
             'bestRating'  => '5',
             'worstRating' => '1'
         ],
-        'keywords'               => 'Sarıkaya Restorant, Sarıkaya restoran, Sarıkaya Yemek, Sarıkaya Kıymalı, Sarıkaya Çorba, Sarıkaya Kebab, Sarıkaya Kebap'
+        'keywords'               => $b_key
     ];
     $schemas[] = $restaurant_schema;
 
@@ -214,8 +232,12 @@ add_action('wp_head', 'mis360_seo_resource_hints', 2);
  * 3. Ekstra Meta Etiketler (Keywords & Description)
  */
 function mis360_seo_meta_tags(): void {
+    $def_key  = 'Sarıkaya Restorant, Sarıkaya restoran, Sarıkaya Yemek, Sarıkaya Kıymalı, Sarıkaya Çorba, Sarıkaya Kebab, Sarıkaya Kebap';
+    $b_key   = get_option('mis360_seo_keywords', $def_key) ?: $def_key;
+    
     if (is_front_page()) {
-        echo '<meta name="keywords" content="Sarıkaya Restorant, Sarıkaya restoran, Sarıkaya Yemek, Sarıkaya Kıymalı, Sarıkaya Çorba, Sarıkaya Kebab, Sarıkaya Kebap">' . "\n";
+        echo '<meta name="keywords" content="' . esc_attr($b_key) . '">' . "\n";
     }
+}
 }
 add_action('wp_head', 'mis360_seo_meta_tags', 3);

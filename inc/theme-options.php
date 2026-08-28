@@ -471,6 +471,68 @@ function mis360_settings_page_license(): void {
                 
                 <?php submit_button('SEO Verilerini Kaydet', 'primary', 'submit', true, ['style' => 'font-size: 15px; padding: 5px 25px;']); ?>
             </form>
+
+            <div style="margin-top: 35px; background: #fff; padding: 25px; border: 1px solid #ccd0d4; border-radius: 8px; max-width: 900px; box-shadow: 0 1px 3px rgba(0,0,0,.05);">
+                <h2 style="margin-top: 0; color: #1e293b; font-size: 20px;">🗺️ Dinamik Sitemap ve İçerik Logu</h2>
+                <p style="color: #475569; font-size: 14px; margin-bottom: 20px;">
+                    Sitenizin sitemap (site haritası) dosyası canlı olarak saniyede bir güncellenmektedir. Google Search Console paneline aşağıdaki linki gönderebilirsiniz.
+                </p>
+                
+                <div style="background: #f8fafc; padding: 15px; border: 1px solid #e2e8f0; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
+                    <code style="font-size: 15px; color: #0284c7; background: transparent; padding: 0;">
+                        <?php echo esc_url(home_url('/sitemap.xml')); ?>
+                    </code>
+                    <a href="<?php echo esc_url(home_url('/sitemap.xml')); ?>" target="_blank" class="button button-secondary" style="font-weight: 600;">
+                        Sitemap'i Görüntüle ↗
+                    </a>
+                </div>
+
+                <h3 style="margin-top: 0; font-size: 16px; color: #334155;">📋 Sitemap'e Eklenen Son İçerikler (Canlı Log)</h3>
+                <table class="wp-list-table widefat fixed striped" style="margin-top: 15px; border: 1px solid #e2e8f0;">
+                    <thead>
+                        <tr>
+                            <th style="width: 50%;">İçerik Başlığı</th>
+                            <th>Tür</th>
+                            <th>Son Güncelleme</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $log_query = new WP_Query([
+                            'post_type'      => ['page', 'post'],
+                            'post_status'    => 'publish',
+                            'posts_per_page' => 8,
+                            'orderby'        => 'modified',
+                            'order'          => 'DESC'
+                        ]);
+
+                        if ($log_query->have_posts()) :
+                            while ($log_query->have_posts()) : $log_query->the_post();
+                                $p_type = get_post_type() === 'page' ? 'Sayfa' : 'Yazı';
+                                $p_date = get_the_modified_date('d M Y - H:i');
+                                ?>
+                                <tr>
+                                    <td>
+                                        <strong><a href="<?php echo esc_url(get_permalink()); ?>" target="_blank" style="text-decoration: none; color: #2563eb;"><?php echo esc_html(get_the_title()); ?></a></strong>
+                                    </td>
+                                    <td><span style="background: #e2e8f0; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; color: #475569;"><?php echo $p_type; ?></span></td>
+                                    <td><?php echo $p_date; ?></td>
+                                    <td><span style="color: #16a34a; font-weight: 600; font-size: 13px;">✓ Aktif</span></td>
+                                </tr>
+                                <?php
+                            endwhile;
+                            wp_reset_postdata();
+                        else :
+                            ?>
+                            <tr><td colspan="4">Henüz içerik bulunamadı.</td></tr>
+                            <?php
+                        endif;
+                        ?>
+                    </tbody>
+                </table>
+                <p style="font-size: 12px; color: #94a3b8; margin-top: 12px;">* Bu tablo sitenizdeki hareketliliği (son güncellenen 8 içeriği) gösterir. Sitemap dosyanız tüm içeriklerinizi otomatik olarak kapsar.</p>
+            </div>
         </div>
         <?php
     }

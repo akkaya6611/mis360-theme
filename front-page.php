@@ -140,59 +140,38 @@ $whatsapp    = '905358309307';
 <section class="chooseUs__area section" id="about">
     <div class="container">
         
-        <div class="chooseUs__header">
-            <div class="chooseUs__header-left">
-                <span class="chooseUs__subtitle">NEDEN BEYZADE?</span>
-                <h2 class="chooseUs__title">Lezzet, Konfor ve Aile Atmosferi Bir Arada</h2>
-            </div>
-            <div class="chooseUs__header-right">
-                <div class="chooseUs__counter">
-                    <span class="chooseUs__counter-number">7+</span>
-                    <span class="chooseUs__counter-label">Yıllık Lezzet Deneyimi</span>
-                </div>
-            </div>
+        <!-- Bölüm Üst Etiket -->
+        <div class="chooseUs__top-label">
+            <span class="chooseUs__subtitle">NEDEN BEYZADE?</span>
         </div>
 
-        <div class="chooseUs__row">
-            
-            <!-- Sol Kolon: Restoran Masa ve Aile Salonu Doğal Görseli -->
+        <!-- 3 Sütunlu Ana Izgara: Görsel | Başlık + Metin + Butonlar | Sayaç + Özellikler -->
+        <div class="chooseUs__grid">
+
+            <!-- SÜTUN 1: Restoran Görseli -->
             <div class="chooseUs__image-col">
                 <div class="chooseUs__image-wrap">
-                    <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg" alt="Beyzade Restaurant Masa ve Salon Düzeni" class="chooseUs__main-image" loading="lazy">
+                    <img
+                        src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg"
+                        alt="Beyzade Restaurant - Aile Yemek Salonu ve Masa Düzeni, Sarıkaya Yozgat"
+                        class="chooseUs__main-image"
+                        width="540" height="480"
+                        loading="lazy"
+                    >
+                    <!-- Görsel Üstü Yıl Rozeti -->
+                    <div class="chooseUs__image-badge">
+                        <span class="badge-number">2019</span>
+                        <span class="badge-text">yılından beri</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Sağ Kolon: Restoran Açıklaması ve Beyzade Logolu Nitelikler -->
-            <div class="chooseUs__content-col">
-                
+            <!-- SÜTUN 2: Başlık, Açıklama, Butonlar -->
+            <div class="chooseUs__center-col">
+                <h2 class="chooseUs__title">Lezzet, Konfor ve Aile Atmosferi Bir Arada</h2>
                 <p class="chooseUs__description">
-                    2019 yılından bu yana Yozgat Sarıkaya'da hizmet veren Beyzade Et & Balık Restaurant olarak; et, balık, kebap ve yöresel lezzetlerimizi misafirlerimizle buluşturuyoruz. Kaliteli malzemeler, hijyenik üretim anlayışı ve güler yüzlü hizmetimizle ailelerin ve lezzet tutkunlarının vazgeçilmez adresi olmaya devam ediyoruz. Sizleri de sıcak ve samimi ortamımızda ağırlamaktan mutluluk duyuyoruz.
+                    2019 yılından bu yana Yozgat Sarıkaya'da hizmet veren <strong>Beyzade Et &amp; Balık Restaurant</strong> olarak; et, balık, kebap ve yöresel lezzetlerimizi misafirlerimizle buluşturuyoruz. Kaliteli malzemeler, hijyenik üretim anlayışı ve güler yüzlü hizmetimizle ailelerin ve lezzet tutkunlarının vazgeçilmez adresi olmaya devam ediyoruz.
                 </p>
-
-                <div class="chooseUs__features">
-                    
-                    <div class="chooseUs__feature-item">
-                        <div class="chooseUs__feature-icon">
-                            <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzadelogo1-66.png" alt="Beyzade Logo">
-                        </div>
-                        <div class="chooseUs__feature-text">
-                            <h4>Özenli Hizmet Anlayışı</h4>
-                            <p>Misafir memnuniyetini ön planda tutan profesyonel ekibimizle, sıcak ve kaliteli bir restoran deneyimi sunuyoruz.</p>
-                        </div>
-                    </div>
-
-                    <div class="chooseUs__feature-item">
-                        <div class="chooseUs__feature-icon">
-                            <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzadelogo1-66.png" alt="Beyzade Logo">
-                        </div>
-                        <div class="chooseUs__feature-text">
-                            <h4>Zengin Menü Seçenekleri</h4>
-                            <p>Et, balık, kebap ve özel lezzetlerden oluşan menümüz ile her damak tadına hitap eden unutulmaz sofralar hazırlıyoruz.</p>
-                        </div>
-                    </div>
-
-                </div>
-
                 <div class="chooseUs__actions">
                     <a href="#reservation" class="btn btn-primary btn-md">
                         Masa Rezervasyonu Yap →
@@ -200,6 +179,51 @@ $whatsapp    = '905358309307';
                     <a href="tel:<?php echo esc_attr($clean_phone); ?>" class="btn btn-outline-dark btn-md">
                         📞 <?php echo esc_html($phone); ?>
                     </a>
+                </div>
+            </div>
+
+            <!-- SÜTUN 3: Sayaç + Özellikler -->
+            <div class="chooseUs__right-col">
+
+                <!-- Yıllık Lezzet Sayacı -->
+                <div class="chooseUs__counter">
+                    <span class="chooseUs__counter-number">7+</span>
+                    <span class="chooseUs__counter-label">Yıllık Lezzet Deneyimi</span>
+                </div>
+
+                <!-- Özellik Kartları -->
+                <div class="chooseUs__features">
+
+                    <div class="chooseUs__feature-item">
+                        <div class="chooseUs__feature-icon">
+                            <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzadelogo1-66.png" alt="Beyzade Logo" width="40" height="40" loading="lazy">
+                        </div>
+                        <div class="chooseUs__feature-text">
+                            <h3>Özenli Hizmet Anlayışı</h3>
+                            <p>Misafir memnuniyetini ön planda tutan profesyonel ekibimizle, sıcak ve kaliteli bir restoran deneyimi sunuyoruz.</p>
+                        </div>
+                    </div>
+
+                    <div class="chooseUs__feature-item">
+                        <div class="chooseUs__feature-icon">
+                            <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzadelogo1-66.png" alt="Beyzade Logo" width="40" height="40" loading="lazy">
+                        </div>
+                        <div class="chooseUs__feature-text">
+                            <h3>Zengin Menü Seçenekleri</h3>
+                            <p>Et, balık, kebap ve özel lezzetlerden oluşan menümüz ile her damak tadına hitap eden unutulmaz sofralar hazırlıyoruz.</p>
+                        </div>
+                    </div>
+
+                    <div class="chooseUs__feature-item">
+                        <div class="chooseUs__feature-icon">
+                            <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzadelogo1-66.png" alt="Beyzade Logo" width="40" height="40" loading="lazy">
+                        </div>
+                        <div class="chooseUs__feature-text">
+                            <h3>Aile ve Grup Ortamı</h3>
+                            <p>Açık hava bahçe, klimalı iç salon ve özel davet masalarıyla her türlü organizasyona hazır geniş mekânımız.</p>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>

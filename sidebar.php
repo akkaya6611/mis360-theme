@@ -140,11 +140,4 @@ $whatsapp    = '905358309307';
         </a>
     </div>
 
-    <!-- 5. WordPress Dinamik Bileşen Alanı (Varsa) -->
-    <?php if (is_active_sidebar('sidebar-1')) : ?>
-        <div class="sidebar-dynamic-widgets">
-            <?php dynamic_sidebar('sidebar-1'); ?>
-        </div>
-    <?php endif; ?>
-
 </aside>

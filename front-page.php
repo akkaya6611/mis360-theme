@@ -22,6 +22,74 @@ $clean_phone = '+905358309307';
 $whatsapp    = '905358309307';
 ?>
 
+<!-- ==========================================
+     VİDEO INTRO POPUP (Sadece Ana Sayfada)
+=========================================== -->
+<div id="beyzade-intro-popup" class="intro-popup-overlay" style="display: none;">
+    <div class="intro-popup-content">
+        <!-- 5. saniyede görünecek kapat butonu -->
+        <button id="intro-close-btn" class="intro-close-btn" style="display: none;">Geç ⏭</button>
+        
+        <!-- Intro Videosu (Sesi açık başlar, otomatik oynar) -->
+        <video id="intro-video" class="intro-video-element" playsinline preload="auto">
+            <!-- LÜTFEN AŞAĞIDAKİ VİDEO URL'SİNİ KENDİ VİDEONUZUN LİNKİ İLE DEĞİŞTİRİN -->
+            <source src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/intro.mp4" type="video/mp4">
+            Tarayıcınız video etiketini desteklemiyor.
+        </video>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var introPopup = document.getElementById('beyzade-intro-popup');
+    var introVideo = document.getElementById('intro-video');
+    var closeBtn = document.getElementById('intro-close-btn');
+
+    // Kullanıcı bu oturumda videoyu izledi mi?
+    var introSeen = sessionStorage.getItem('beyzade_intro_seen');
+
+    if (!introSeen) {
+        // Pop-up'ı göster
+        introPopup.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Arkadaki sayfa kaydırmasını kilitle
+
+        // Videoyu oynat
+        var playPromise = introVideo.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(function(error) {
+                // Tarayıcı otomatik oynatmaya (sesli) izin vermezse sessiz oynatmayı dene
+                introVideo.muted = true;
+                introVideo.play();
+            });
+        }
+
+        // 5 Saniye (5000ms) sonra Kapat butonunu göster
+        setTimeout(function() {
+            closeBtn.style.display = 'flex';
+        }, 5000);
+
+        // Kapatma Fonksiyonu
+        function closeIntro() {
+            introPopup.style.opacity = '0';
+            setTimeout(function() {
+                introPopup.style.display = 'none';
+                introVideo.pause();
+                introVideo.currentTime = 0;
+                document.body.style.overflow = ''; // Kaydırmayı geri aç
+                sessionStorage.setItem('beyzade_intro_seen', 'true'); // Tekrar gösterme
+            }, 500); // 0.5s fade out efekti
+        }
+
+        // Butona basılınca kapat
+        closeBtn.addEventListener('click', closeIntro);
+
+        // Video bitince otomatik kapat
+        introVideo.addEventListener('ended', closeIntro);
+    }
+});
+</script>
+<!-- ========================================== -->
+
 <!-- 1. Hero Section (Denfora 1:1 Architecture with Authentic Beyzade Ambience) -->
 <section class="hero" style="background: linear-gradient(rgba(17, 24, 39, 0.55), rgba(17, 24, 39, 0.72)), url('https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/banner-4-BEYZADE.png') center/cover no-repeat;">
     <div class="hero-overlay"></div>

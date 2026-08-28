@@ -117,7 +117,7 @@ function mis360_settings_page_popup(): void {
                         <td>
                             <input name="mis360_intro_video_url" type="url" id="mis360_intro_video_url" value="<?php echo esc_attr($intro_video_url); ?>" class="regular-text ltr" style="width: 100%; max-width: 500px;">
                             <p class="description">
-                                Videonuzu önce <strong>Ortam &gt; Yeni Ekle</strong> bölümünden sitenize yükleyin. Ardından dosya URL'sini kopyalayıp buraya yapıştırın.
+                                <strong>Hibrit Sistem:</strong> Buraya doğrudan bir <strong>YouTube linki</strong> (Örn: <code>https://www.youtube.com/watch?v=...</code>) veya kendi yüklediğiniz bir <strong>MP4 linki</strong> yapıştırabilirsiniz. Sistem linki otomatik algılayıp en uygun oynatıcıyla başlatacaktır.
                             </p>
                         </td>
                     </tr>

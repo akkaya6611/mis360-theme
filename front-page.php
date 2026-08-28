@@ -192,7 +192,7 @@ window.addEventListener("load", function() {
 
 <!-- 1. Hero Section (Denfora 1:1 Architecture with Authentic Beyzade Ambience) -->
 
-<section class="hero" style="background: linear-gradient(rgba(17, 24, 39, 0.55), rgba(17, 24, 39, 0.72)), url('<?php echo get_template_directory_uri(); ?>/assets/img/demo/banner-4-BEYZADE.png') center/cover no-repeat;">
+<section class="hero" style="background: linear-gradient(rgba(17, 24, 39, 0.55), rgba(17, 24, 39, 0.72)), url('<?php echo get_template_directory_uri(); ?>/assets/img/demo/banner-4-BEYZADE.webp') center/cover no-repeat;">
     <div class="hero-overlay"></div>
     <div class="container">
         <div class="hero-content">
@@ -263,7 +263,7 @@ window.addEventListener("load", function() {
             
             <!-- Kategori 1: Kebaplar -->
             <a href="#kebaplar" class="category-card">
-                <div class="category-card-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/demo/adana-kebap-beyzade-1024x819.png'); background-size: cover; background-position: center;"></div>
+                <div class="category-card-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/demo/adana-kebap-beyzade-1024x819.webp'); background-size: cover; background-position: center;"></div>
                 <div class="category-card-overlay"></div>
                 <div class="category-card-content">
                     <h3 class="category-card-title">Kebap Çeşitlerimiz</h3>
@@ -273,7 +273,7 @@ window.addEventListener("load", function() {
 
             <!-- Kategori 2: Pideler & Lahmacun -->
             <a href="#pideler" class="category-card">
-                <div class="category-card-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/demo/karisik-pide-beyzade-1024x819.png'); background-size: cover; background-position: center;"></div>
+                <div class="category-card-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/demo/karisik-pide-beyzade-1024x819.webp'); background-size: cover; background-position: center;"></div>
                 <div class="category-card-overlay"></div>
                 <div class="category-card-content">
                     <h3 class="category-card-title">Pide & Lahmacun</h3>
@@ -283,7 +283,7 @@ window.addEventListener("load", function() {
 
             <!-- Kategori 3: Döner & İskender -->
             <a href="#donerler" class="category-card">
-                <div class="category-card-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-iskender-1024x819.png'); background-size: cover; background-position: center;"></div>
+                <div class="category-card-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-iskender-1024x819.webp'); background-size: cover; background-position: center;"></div>
                 <div class="category-card-overlay"></div>
                 <div class="category-card-content">
                     <h3 class="category-card-title">Döner & İskender</h3>
@@ -293,7 +293,7 @@ window.addEventListener("load", function() {
 
             <!-- Kategori 4: Tatlılar -->
             <a href="#tatlilar" class="category-card">
-                <div class="category-card-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-kunefe-1024x819.png'); background-size: cover; background-position: center;"></div>
+                <div class="category-card-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-kunefe-1024x819.webp'); background-size: cover; background-position: center;"></div>
                 <div class="category-card-overlay"></div>
                 <div class="category-card-content">
                     <h3 class="category-card-title">Tatlılarımız</h3>
@@ -430,7 +430,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
             <div class="chooseUs__image-col">
                 <div class="chooseUs__image-wrap">
                     <img
-                        src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/restaurant.jpg"
+                        src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/restaurant.webp"
                         alt="Beyzade Restaurant - Aile Yemek Salonu ve Masa Düzeni, Sarıkaya Yozgat"
                         class="chooseUs__main-image"
                         width="540" height="480"
@@ -474,7 +474,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
 
                     <div class="chooseUs__feature-item">
                         <div class="chooseUs__feature-icon">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzadelogo1-66.png" alt="Beyzade Logo" width="40" height="40" loading="lazy">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzadelogo1-66.webp" alt="Beyzade Logo" width="40" height="40" loading="lazy">
                         </div>
                         <div class="chooseUs__feature-text">
                             <h3>Özenli Hizmet Anlayışı</h3>
@@ -484,7 +484,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
 
                     <div class="chooseUs__feature-item">
                         <div class="chooseUs__feature-icon">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzadelogo1-66.png" alt="Beyzade Logo" width="40" height="40" loading="lazy">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzadelogo1-66.webp" alt="Beyzade Logo" width="40" height="40" loading="lazy">
                         </div>
                         <div class="chooseUs__feature-text">
                             <h3>Zengin Menü Seçenekleri</h3>
@@ -494,7 +494,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
 
                     <div class="chooseUs__feature-item">
                         <div class="chooseUs__feature-icon">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzadelogo1-66.png" alt="Beyzade Logo" width="40" height="40" loading="lazy">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzadelogo1-66.webp" alt="Beyzade Logo" width="40" height="40" loading="lazy">
                         </div>
                         <div class="chooseUs__feature-text">
                             <h3>Aile ve Grup Ortamı</h3>
@@ -539,7 +539,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Adana Kebap -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/adana-kebap-beyzade-1024x819.png" alt="Adana Kebap" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/adana-kebap-beyzade-1024x819.webp" alt="Adana Kebap" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">KÖMÜRDE IZGARA</span>
@@ -556,7 +556,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Urfa Kebap -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/urfa-kebap-beyzade-1-1024x819.png" alt="Urfa Kebap" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/urfa-kebap-beyzade-1-1024x819.webp" alt="Urfa Kebap" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">KÖMÜRDE IZGARA</span>
@@ -573,7 +573,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Beyti Sarma -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/Beyti-Sarma-beyzade-1-1024x819.png" alt="Beyti Sarma" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/Beyti-Sarma-beyzade-1-1024x819.webp" alt="Beyti Sarma" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">BEYZADE İMZA</span>
@@ -590,7 +590,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Kuzu Şiş -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/Kuzu-Sis-beyzade-1-1024x819.png" alt="Kuzu Şiş" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/Kuzu-Sis-beyzade-1-1024x819.webp" alt="Kuzu Şiş" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">KÖMÜRDE IZGARA</span>
@@ -607,7 +607,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Kuzu Tandır -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/kuzu-tandir-1024x819.png" alt="Kuzu Tandır" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/kuzu-tandir-1024x819.webp" alt="Kuzu Tandır" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">ÖZEL SİPARİŞ</span>
@@ -627,7 +627,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Desti Kebabı -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-desti-kebabi-1024x819.png" alt="Desti Kebabı" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-desti-kebabi-1024x819.webp" alt="Desti Kebabı" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">YÖRESEL İMZA</span>
@@ -647,7 +647,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Kuzu Ciğer -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/Kuzu-Ciger-beyzade-1-1024x819.png" alt="Kuzu Ciğer" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/Kuzu-Ciger-beyzade-1-1024x819.webp" alt="Kuzu Ciğer" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">KÖMÜRDE IZGARA</span>
@@ -664,7 +664,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Bonfile / Pirzola -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/Bonfile-pirzola-beyzade-1-1024x819.png" alt="Bonfile Pirzola" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/Bonfile-pirzola-beyzade-1-1024x819.webp" alt="Bonfile Pirzola" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">GURME ET</span>
@@ -695,7 +695,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Kıymalı Pide -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/Kiymali-Pide-beyzade-1024x819.png" alt="Kıymalı Pide" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/Kiymali-Pide-beyzade-1024x819.webp" alt="Kıymalı Pide" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">ODUN ATEŞİNDE</span>
@@ -712,7 +712,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Kuşbaşılı Pide -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/kusbasi-Pide-beyzade-1024x819.png" alt="Kuşbaşılı Pide" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/kusbasi-Pide-beyzade-1024x819.webp" alt="Kuşbaşılı Pide" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">ODUN ATEŞİNDE</span>
@@ -729,7 +729,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Karışık Pide -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/karisik-pide-beyzade-1024x819.png" alt="Karışık Pide" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/karisik-pide-beyzade-1024x819.webp" alt="Karışık Pide" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">BEYZADE SPESİYAL</span>
@@ -746,7 +746,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Çıtır Lahmacun -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/lahmacun-beyzade-1024x819.png" alt="Lahmacun" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/lahmacun-beyzade-1024x819.webp" alt="Lahmacun" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">ODUN ATEŞİNDE</span>
@@ -777,7 +777,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- İskender -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-iskender-1024x819.png" alt="İskender" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-iskender-1024x819.webp" alt="İskender" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">TEREYAĞLI</span>
@@ -794,7 +794,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Et Döner -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-et-doner-1024x819.png" alt="Et Döner" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-et-doner-1024x819.webp" alt="Et Döner" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">KLASİK LEZZET</span>
@@ -811,7 +811,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Tavuk Döner -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-tavuk-doner-1024x819.png" alt="Tavuk Döner" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-tavuk-doner-1024x819.webp" alt="Tavuk Döner" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">KLASİK LEZZET</span>
@@ -828,7 +828,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Döner Dürüm -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-doner-durum-1024x819.png" alt="Döner Dürüm" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-doner-durum-1024x819.webp" alt="Döner Dürüm" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">HIZLI SERVİS</span>
@@ -859,7 +859,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Künefe -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-kunefe-1024x819.png" alt="Künefe" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzade-kunefe-1024x819.webp" alt="Künefe" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">SICAK TATLI</span>
@@ -876,7 +876,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Fırın Sütlaç -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/sutlac-beyzade-1-1024x819.png" alt="Sütlaç" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/sutlac-beyzade-1-1024x819.webp" alt="Sütlaç" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">GELENEKSEL</span>
@@ -893,7 +893,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Sıcak Çikolatalı Sufle -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/sufle-beyzade-1-1024x819.png" alt="Sufle" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/sufle-beyzade-1-1024x819.webp" alt="Sufle" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">SICAK TATLI</span>
@@ -910,7 +910,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
                 <!-- Mercimek / Paça Çorbası -->
                 <article class="product-card">
                     <div class="product-card-image food-card-image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/mercimek-corbasi-beyzade-1024x819.png" alt="Çorba Çeşitleri" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/mercimek-corbasi-beyzade-1024x819.webp" alt="Çorba Çeşitleri" loading="lazy" style="width: 100%; height: 200px; object-fit: cover;">
                     </div>
                     <div class="product-card-content">
                         <span class="product-card-category">SICAK BAŞLANGIÇ</span>
@@ -1088,7 +1088,7 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
                         $t_url = $meta_t;
                     } else {
                         $t_url = (strpos($cat_slug, 'haber') !== false || strpos($cat_slug, 'galeri') !== false)
-                            ? get_template_directory_uri() . '/assets/img/demo/restaurant.jpg'
+                            ? get_template_directory_uri() . '/assets/img/demo/restaurant.webp'
                             : 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/adana.jpg';
                     }
                 }

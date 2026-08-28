@@ -1028,16 +1028,16 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
         
         <div class="section-header text-center">
             <span class="section-badge">BEYZADE REHBERİ & SSS</span>
-            <h2 class="section-title">Sıkça Sorulan Sorular & Restoran Künyesi</h2>
+            <h2 class="section-title">Sıkça Sorulan Sorular</h2>
             <p class="section-subtitle">
-                Yapay zeka arama motorları (Google AI Overview, Perplexity, ChatGPT) ve değerli misafirlerimiz için Beyzade Et & Balık Restaurant hakkında temel bilgiler.
+                Değerli misafirlerimiz için Beyzade Et & Balık Restaurant hakkında en çok merak edilenler.
             </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div class="grid grid-cols-1 gap-8 items-start">
             
-            <!-- Sol: LLM & AI Crawler İçin Yapılandırılmış Hızlı Bilgi Tablosu -->
-            <div class="geo-table-wrap">
+            <!-- Sol (GİZLİ): LLM & AI Crawler İçin Yapılandırılmış Hızlı Bilgi Tablosu -->
+            <div class="geo-table-wrap sr-only">
                 <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
                     <span style="font-size: 20px;">📋</span>
                     <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin: 0;">

@@ -39,7 +39,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
                     <div class="footer-logo">
                         <img src="<?php echo esc_url($logo_url); ?>" alt="Beyzade Logo" width="175" height="48" style="height: 48px; width: auto; object-fit: contain; margin-bottom: 8px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display: none;">
-                            BEYZADE <span style="font-size: 14px; font-weight: 700; color: var(--color-primary); display: block; letter-spacing: 0.15em;">ET & BALIK RESTAURANT</span>
+                            BEYZADE <span style="font-size: 14px; font-weight: 700; color: #ffedd5; display: block; letter-spacing: 0.15em;">ET & BALIK RESTAURANT</span>
                         </div>
                     </div>
                     <p class="footer-tagline">
@@ -89,7 +89,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
                             <strong style="color: var(--color-white);">Mutfak Hizmeti:</strong><br>
                             Sabah Çorbası, Öğle & Akşam Kebap-Balık & Paket Servis
                         </p>
-                        <p style="color: var(--color-primary); font-size: 12px; font-weight: 700;">
+                        <p style="color: #ffedd5; font-size: 12px; font-weight: 700;">
                             ✓ Açık Hava Bahçe & Mama Sandalyesi Mevcut
                         </p>
                     </div>
@@ -179,7 +179,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
                     <span style="color: var(--color-gray-300); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;">
                         Web Tasarım & Geliştirici:
                     </span>
-                    <a href="https://misteknoloji360.com.tr/" target="_blank" rel="noopener noreferrer" style="font-weight: 700; color: var(--color-primary);">
+                    <a href="https://misteknoloji360.com.tr/" target="_blank" rel="noopener noreferrer" style="font-weight: 700; color: #ffedd5;">
                         Serkan AKKAYA — MİS Teknoloji 360
                     </a>
                 </div>
@@ -209,6 +209,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
 <?php wp_footer(); ?>
 </body>
 </html>
+
 
 
 

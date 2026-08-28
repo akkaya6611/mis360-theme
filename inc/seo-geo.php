@@ -261,7 +261,7 @@ add_action('template_redirect', function() {
         header('Content-Type: text/markdown; charset=utf-8');
         
         $phone = get_option('mis360_seo_phone', '0535 830 93 07');
-        $desc = get_option('mis360_seo_desc', 'Yozgat Sarıkaya''nn en nezih aile restoran. Et, Balık, Kebap ve Yöresel Lezzetler.');
+        $desc = get_option('mis360_seo_desc', 'Yozgat Sarıkaya\'nın en nezih aile restoranı. Et, Balık, Kebap ve Yöresel Lezzetler.');
         
         echo "# Beyzade Et & Balık Restaurant\n\n";
         echo "> " . esc_html($desc) . "\n\n";
@@ -276,3 +276,4 @@ add_action('template_redirect', function() {
         exit;
     }
 });
+

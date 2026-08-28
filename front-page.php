@@ -1266,7 +1266,7 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
                     </div>
                     <div>
                         <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: #1e293b;">Bölüm Tercihi *</label>
-                        <select id="bzArea" style="width: 100%; padding: 12px 16px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 14px; background: #ffffff;">
+                        <select id="bzArea" aria-label="Oturma Alanı Seçimi" style="width: 100%; padding: 12px 16px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 14px; background: #ffffff;">
                             <option value="Açık Hava Bahçe Bölümü">Açık Hava Bahçe Bölümü</option>
                             <option value="İç Aile Salonu (Klimalı)">İç Aile Salonu (Klimalı)</option>
                             <option value="Grup & Özel Davet Masası">Grup & Özel Davet Masası</option>
@@ -1274,7 +1274,7 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
                     </div>
                     <div>
                         <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: #1e293b;">Kişi Sayısı *</label>
-                        <select id="bzGuests" style="width: 100%; padding: 12px 16px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 14px; background: #ffffff;">
+                        <select id="bzGuests" aria-label="Kişi Sayısı Seçimi" style="width: 100%; padding: 12px 16px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 14px; background: #ffffff;">
                             <option value="2 Kişi">2 Kişilik Masa</option>
                             <option value="4 Kişi (Mama Sandalyesi Talepli)">4 Kişi (Aile Masası + Mama Sandalyesi)</option>
                             <option value="6-8 Kişi">6-8 Kişilik Masa</option>
@@ -1284,8 +1284,8 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
                     <div>
                         <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: #1e293b;">Tarih & Saat *</label>
                         <div class="reservation-date-row">
-                            <input type="date" id="bzDate" required style="flex: 1; padding: 12px 10px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 13px; background: #ffffff;">
-                            <select id="bzTime" style="width: 110px; padding: 12px 8px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 13px; background: #ffffff;">
+                            <input type="date" id="bzDate" required aria-label="Rezervasyon Tarihi" style="flex: 1; padding: 12px 10px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 13px; background: #ffffff;">
+                            <select id="bzTime" aria-label="Rezervasyon Saati" style="width: 110px; padding: 12px 8px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 13px; background: #ffffff;">
                                 <option value="07:30">07:30 (Sabah)</option>
                                 <option value="09:00">09:00</option>
                                 <option value="12:30">12:30</option>
@@ -1333,5 +1333,6 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
 
 <?php
 get_footer();
+
 
 

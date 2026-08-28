@@ -72,6 +72,16 @@ function mis360_theme_options_menu(): void {
         'customize.php'
     );
 
+    // Alt Menü 4.5: SEO & GEO Ayarları
+    add_submenu_page(
+        'mis360-settings',
+        'SEO & GEO Ayarları',
+        'SEO & GEO Ayarları',
+        'manage_options',
+        'mis360-seo-settings',
+        'mis360_settings_page_seo_data'
+    );
+
     // Alt Menü 5: SEO Sayfa Üretici
     add_submenu_page(
         'mis360-settings',
@@ -106,6 +116,12 @@ function mis360_register_settings(): void {
         'type' => 'array',
         'sanitize_callback' => 'mis360_sanitize_url_array'
     ]);
+
+    // SEO & GEO Verileri
+    $seo_fields = ['business_name', 'description', 'keywords', 'phone', 'address', 'rating', 'review_count'];
+    foreach ($seo_fields as $field) {
+        register_setting('mis360_seo_data_group', 'mis360_seo_' . $field);
+    }
 
     // Lisans ayarları
     register_setting('mis360_license_group', 'mis360_license_key');
@@ -377,6 +393,86 @@ function mis360_settings_page_license(): void {
 
             add_settings_error('mis360_seo_messages', 'mis360_seo_success', "Tebrikler! Eksik olan {$created_count} adet SEO Sayfası ve Blog Yazısı başarıyla oluşturuldu.", 'updated');
         }
+    }
+
+    
+    // ==============================================================
+    // SEO & GEO VERİLERİ (SCHEMA VE META) AYARLARI
+    // ==============================================================
+    function mis360_settings_page_seo_data(): void {
+        if (!current_user_can('manage_options')) return;
+        
+        // Varsayılan değerler (Beyzade verileri)
+        $def_name = 'Beyzade Et & Balık Restaurant';
+        $def_desc = "2019 yılından beri Yozgat Sarıkaya'da hakiki meşe kömüründe kebap, özel kuzu tandır, taş fırın pideleri, lahmacun ve günlük taze balık çeşitleri sunan seçkin aile restoranı.";
+        $def_key  = 'Sarıkaya Restorant, Sarıkaya restoran, Sarıkaya Yemek, Sarıkaya Kıymalı, Sarıkaya Çorba, Sarıkaya Kebab, Sarıkaya Kebap';
+        $def_phone= '0535 830 93 07';
+        $def_addr = 'Bahçelievler Mah. Nevzat Şener Bulvarı, Sarıkaya / Yozgat';
+        
+        ?>
+        <div class="wrap">
+            <h1>🔍 MİS360 - SEO & GEO Verileri</h1>
+            <hr style="margin-bottom: 20px;">
+            
+            <form method="post" action="options.php">
+                <?php settings_fields('mis360_seo_data_group'); ?>
+                
+                <div style="background: #fff; padding: 25px; border: 1px solid #ccd0d4; border-radius: 8px; max-width: 900px; box-shadow: 0 1px 3px rgba(0,0,0,.05);">
+                    <h2 style="margin-top: 0; color: #1e293b; font-size: 20px;">Yapay Zeka ve Google (Schema.org) Kimliği</h2>
+                    <p style="color: #475569; font-size: 14px; margin-bottom: 25px;">
+                        Buraya girdiğiniz veriler temanın arka planındaki <strong>JSON-LD LocalBusiness</strong> veri yapısına ve gizli <strong>AI özet tablolarına</strong> işlenir. Temayı başka bir restorana kurduğunuzda sadece buradaki bilgileri değiştirmeniz yeterlidir.
+                    </p>
+                    
+                    <table class="form-table" role="presentation">
+                        <tr>
+                            <th scope="row"><label for="mis360_seo_business_name">Restoran/İşletme Adı</label></th>
+                            <td>
+                                <input name="mis360_seo_business_name" type="text" id="mis360_seo_business_name" value="<?php echo esc_attr(get_option('mis360_seo_business_name', $def_name)); ?>" class="regular-text" style="width: 100%;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="mis360_seo_description">SEO Açıklaması (Meta Description)</label></th>
+                            <td>
+                                <textarea name="mis360_seo_description" id="mis360_seo_description" rows="4" style="width: 100%;"><?php echo esc_textarea(get_option('mis360_seo_description', $def_desc)); ?></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="mis360_seo_keywords">Anahtar Kelimeler (Virgülle ayırın)</label></th>
+                            <td>
+                                <textarea name="mis360_seo_keywords" id="mis360_seo_keywords" rows="3" style="width: 100%;"><?php echo esc_textarea(get_option('mis360_seo_keywords', $def_key)); ?></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="mis360_seo_phone">Telefon Numarası</label></th>
+                            <td>
+                                <input name="mis360_seo_phone" type="text" id="mis360_seo_phone" value="<?php echo esc_attr(get_option('mis360_seo_phone', $def_phone)); ?>" class="regular-text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="mis360_seo_address">Tam Adres</label></th>
+                            <td>
+                                <input name="mis360_seo_address" type="text" id="mis360_seo_address" value="<?php echo esc_attr(get_option('mis360_seo_address', $def_addr)); ?>" class="regular-text" style="width: 100%;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="mis360_seo_rating">Google Puanı (Örn: 4.3)</label></th>
+                            <td>
+                                <input name="mis360_seo_rating" type="text" id="mis360_seo_rating" value="<?php echo esc_attr(get_option('mis360_seo_rating', '4.3')); ?>" class="regular-text" style="width: 100px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="mis360_seo_review_count">Değerlendirme Sayısı (Örn: 448)</label></th>
+                            <td>
+                                <input name="mis360_seo_review_count" type="number" id="mis360_seo_review_count" value="<?php echo esc_attr(get_option('mis360_seo_review_count', '448')); ?>" class="regular-text" style="width: 100px;">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <?php submit_button('SEO Verilerini Kaydet', 'primary', 'submit', true, ['style' => 'font-size: 15px; padding: 5px 25px;']); ?>
+            </form>
+        </div>
+        <?php
     }
 
     function mis360_settings_page_seo_generator(): void {

@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
 $phone         = '0535 830 93 07';
 $clean_phone   = '+905358309307';
 $whatsapp      = '905358309307';
-$logo_url      = get_template_directory_uri() . '/assets/img/demo/cropped-Basliksiz-1-1.png';
+$logo_url      = get_template_directory_uri() . '/assets/img/demo/cropped-Basliksiz-1-1.webp';
 $anchor_prefix = is_front_page() ? '' : home_url('/');
 ?>
 
@@ -37,7 +37,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
                 <!-- 1. Sütun: Marka & Sosyal Medya -->
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="<?php echo esc_url($logo_url); ?>" alt="Beyzade Logo" style="height: 48px; width: auto; object-fit: contain; margin-bottom: 8px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="<?php echo esc_url($logo_url); ?>" alt="Beyzade Logo" width="175" height="48" style="height: 48px; width: auto; object-fit: contain; margin-bottom: 8px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div style="display: none;">
                             BEYZADE <span style="font-size: 14px; font-weight: 700; color: var(--color-primary); display: block; letter-spacing: 0.15em;">ET & BALIK RESTAURANT</span>
                         </div>
@@ -209,3 +209,5 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
 <?php wp_footer(); ?>
 </body>
 </html>
+
+

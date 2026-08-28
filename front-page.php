@@ -350,7 +350,7 @@ if ($slider_enabled == '1' && !empty($slider_images)) :
             <!-- Slider Noktaları -->
             <div class="mis360-slider-dots" style="position: absolute; bottom: 20px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; z-index: 10;">
                 <?php foreach ($slider_images as $index => $img_url) : ?>
-                    <button class="mis360-dot <?php echo $index === 0 ? 'active' : ''; ?>" data-index="<?php echo $index; ?>" aria-label="Görsel <?php echo $index + 1; ?>" style="width: 10px; height: 10px; border-radius: 50%; background: <?php echo $index === 0 ? '#fff' : 'rgba(255,255,255,0.5)'; ?>; border: none; cursor: pointer; padding: 0; transition: background 0.3s;"></button>
+                    <button class="mis360-dot <?php echo $index === 0 ? 'active' : ''; ?>" data-index="<?php echo $index; ?>" aria-label="Görsel <?php echo $index + 1; ?>" ></button>
                 <?php endforeach; ?>
             </div>
             
@@ -1333,6 +1333,7 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
 
 <?php
 get_footer();
+
 
 
 

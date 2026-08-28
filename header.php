@@ -79,7 +79,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
             
             <!-- Beyzade Resmi Logo -->
             <a href="<?php echo esc_url(home_url('/')); ?>" class="header-logo" rel="home">
-                <img src="<?php echo esc_url($logo_url); ?>" alt="Beyzade Et Balık Restaurant" style="height: 48px; width: auto; object-fit: contain; display: block;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <img src="<?php echo esc_url($logo_url); ?>" alt="Beyzade Et Balık Restaurant" width="175" height="48" style="height: 48px; width: auto; object-fit: contain; display: block;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <div style="display: none;">
                     <span style="font-size: 22px; font-weight: 900; letter-spacing: -0.02em; color: var(--color-black); line-height: 1.1;">
                         BEYZADE
@@ -176,7 +176,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
     <div class="mobile-nav-overlay" id="mobileNavOverlay">
         <nav class="mobile-nav" id="mobileNav">
             <div class="mobile-nav-header">
-                <img src="<?php echo esc_url($logo_url); ?>" alt="Beyzade Logo" style="height: 40px; width: auto; object-fit: contain;">
+                <img src="<?php echo esc_url($logo_url); ?>" alt="Beyzade Logo" width="146" height="40" style="height: 40px; width: auto; object-fit: contain;">
                 <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="<?php esc_attr_e('Kapat', 'mis360'); ?>">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -237,4 +237,6 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
     <?php endif; // Elementor Header End ?>
 
     <main id="primary" class="main-content-area">
+
+
 

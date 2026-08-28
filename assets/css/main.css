@@ -3378,11 +3378,15 @@ select:focus {
   height: 100vh;
   background: #000000; /* Tam siyah arkaplan */
   z-index: 999999;
-  display: flex;
+  display: none; /* JS ile flex yapılacak */
   align-items: center;
   justify-content: center;
-  opacity: 1;
-  transition: opacity 0.5s ease-out;
+  opacity: 0; /* Başlangıçta görünmez */
+  transition: opacity 0.8s ease-out;
+}
+
+.intro-popup-overlay.show-intro {
+  opacity: 1; /* JS ile class eklendiğinde yavaşça kararacak */
 }
 
 .intro-popup-content {

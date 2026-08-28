@@ -3481,3 +3481,19 @@ select:focus {
     padding: 10px 20px;
   }
 }
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+/* SEO ve Ekran Okuyucular İçin (Görsel Olarak Gizli ama Kodda Var) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

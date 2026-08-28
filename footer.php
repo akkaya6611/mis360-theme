@@ -64,7 +64,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
 
                 <!-- 2. Sütun: Menü & Sayfa Linkleri -->
                 <div class="footer-column">
-                    <h4 class="footer-column-title">Menü Kategorileri</h4>
+                    <h3 class="footer-column-title">Menü Kategorileri</h3>
                     <div class="footer-links">
                         <a href="<?php echo esc_url($anchor_prefix . '#kebaplar'); ?>" class="footer-link">Kebap Çeşitlerimiz</a>
                         <a href="<?php echo esc_url($anchor_prefix . '#pideler'); ?>" class="footer-link">Pide & Lahmacun</a>
@@ -79,7 +79,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
 
                 <!-- 3. Sütun: Çalışma Saatleri -->
                 <div class="footer-column">
-                    <h4 class="footer-column-title">Çalışma Saatleri</h4>
+                    <h3 class="footer-column-title">Çalışma Saatleri</h3>
                     <div style="font-size: 13px; color: var(--color-gray-400); line-height: 1.8;">
                         <p style="margin-bottom: 8px;">
                             <strong style="color: var(--color-white);">Pazartesi – Pazar:</strong><br>
@@ -97,7 +97,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
 
                 <!-- 4. Sütun: İletişim & Konum -->
                 <div class="footer-column">
-                    <h4 class="footer-column-title">İletişim & Konum</h4>
+                    <h3 class="footer-column-title">İletişim & Konum</h3>
                     <div class="footer-contact-item">
                         <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
@@ -209,6 +209,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
 <?php wp_footer(); ?>
 </body>
 </html>
+
 
 
 

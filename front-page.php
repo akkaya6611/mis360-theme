@@ -307,11 +307,14 @@ window.addEventListener("load", function() {
 <?php
 // Slider Ayarlarını Çek
 $slider_enabled = get_option('mis360_slider_enabled', '1');
+$raw_images = get_option('mis360_slider_images', []);
 $slider_images = [];
-for ($i = 1; $i <= 5; $i++) {
-    $img = get_option('mis360_slider_img_' . $i, '');
-    if (!empty($img)) {
-        $slider_images[] = $img;
+
+if (is_array($raw_images)) {
+    foreach ($raw_images as $img) {
+        if (!empty(trim($img))) {
+            $slider_images[] = $img;
+        }
     }
 }
 

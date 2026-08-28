@@ -304,6 +304,112 @@ window.addEventListener("load", function() {
     </div>
 </section>
 
+<?php
+// Slider Ayarlarını Çek
+$slider_enabled = get_option('mis360_slider_enabled', '1');
+$slider_images = [];
+for ($i = 1; $i <= 5; $i++) {
+    $img = get_option('mis360_slider_img_' . $i, '');
+    if (!empty($img)) {
+        $slider_images[] = $img;
+    }
+}
+
+if ($slider_enabled == '1' && !empty($slider_images)) :
+?>
+<!-- RESTORANIMIZDAN KARELER (Dinamik Slider) -->
+<section class="restaurant-gallery-slider section" style="background: #f8fafc; padding: 60px 0; overflow: hidden;">
+    <div class="container">
+        <div class="section-header text-center" style="margin-bottom: 40px;">
+            <span class="section-badge">GALERİ</span>
+            <h2 class="section-title">Restoranımızdan Kareler</h2>
+        </div>
+        
+        <div class="mis360-slider-container" style="position: relative; max-width: 1000px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <div class="mis360-slider-track" style="display: flex; transition: transform 0.5s ease-in-out; height: 500px;">
+                <?php foreach ($slider_images as $index => $img_url) : ?>
+                    <div class="mis360-slide" style="min-width: 100%; height: 100%;">
+                        <img src="<?php echo esc_url($img_url); ?>" alt="Beyzade Restaurant Galeri <?php echo $index + 1; ?>" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            
+            <?php if (count($slider_images) > 1) : ?>
+            <!-- Slider Butonları -->
+            <button class="mis360-slider-btn prev-btn" aria-label="Önceki Görsel" style="position: absolute; top: 50%; left: 20px; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: #fff; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="mis360-slider-btn next-btn" aria-label="Sonraki Görsel" style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: #fff; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+            
+            <!-- Slider Noktaları -->
+            <div class="mis360-slider-dots" style="position: absolute; bottom: 20px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; z-index: 10;">
+                <?php foreach ($slider_images as $index => $img_url) : ?>
+                    <button class="mis360-dot <?php echo $index === 0 ? 'active' : ''; ?>" data-index="<?php echo $index; ?>" aria-label="Görsel <?php echo $index + 1; ?>" style="width: 10px; height: 10px; border-radius: 50%; background: <?php echo $index === 0 ? '#fff' : 'rgba(255,255,255,0.5)'; ?>; border: none; cursor: pointer; padding: 0; transition: background 0.3s;"></button>
+                <?php endforeach; ?>
+            </div>
+            
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const track = document.querySelector('.mis360-slider-track');
+                const slides = document.querySelectorAll('.mis360-slide');
+                const dots = document.querySelectorAll('.mis360-dot');
+                const prevBtn = document.querySelector('.prev-btn');
+                const nextBtn = document.querySelector('.next-btn');
+                
+                let currentIndex = 0;
+                const slideCount = slides.length;
+                let autoPlayInterval;
+                
+                function updateSlider() {
+                    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    dots.forEach((dot, idx) => {
+                        dot.style.background = idx === currentIndex ? '#fff' : 'rgba(255,255,255,0.5)';
+                    });
+                }
+                
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % slideCount;
+                    updateSlider();
+                }
+                
+                function prevSlide() {
+                    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                    updateSlider();
+                }
+                
+                function startAutoPlay() {
+                    autoPlayInterval = setInterval(nextSlide, 5000);
+                }
+                
+                function stopAutoPlay() {
+                    clearInterval(autoPlayInterval);
+                }
+                
+                if(nextBtn && prevBtn) {
+                    nextBtn.addEventListener('click', () => { nextSlide(); stopAutoPlay(); startAutoPlay(); });
+                    prevBtn.addEventListener('click', () => { prevSlide(); stopAutoPlay(); startAutoPlay(); });
+                    
+                    dots.forEach(dot => {
+                        dot.addEventListener('click', (e) => {
+                            currentIndex = parseInt(e.target.getAttribute('data-index'));
+                            updateSlider();
+                            stopAutoPlay();
+                            startAutoPlay();
+                        });
+                    });
+                    
+                    startAutoPlay();
+                }
+            });
+            </script>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
 <!-- 4. NEDEN BEYZADE? (Orijinal Doğal Restoran Mimarisi) -->
 <section class="chooseUs__area section" id="about">
     <div class="container">

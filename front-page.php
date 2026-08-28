@@ -40,19 +40,29 @@ if ($intro_enabled === '1' && !empty($intro_video_url)) :
 =========================================== -->
 <div id="beyzade-intro-popup" class="intro-popup-overlay" style="display: none;">
     <div class="intro-popup-content">
-        <!-- 5. saniyede görünecek kapat butonu -->
-        <button id="intro-close-btn" class="intro-close-btn" style="display: none;">Geç ⏭</button>
         
-        <?php if ($is_youtube) : ?>
-            <!-- YouTube Video -->
-            <div id="youtube-player-container" class="intro-video-element" style="pointer-events: none;"></div>
-        <?php else : ?>
-            <!-- MP4 Video -->
-            <video id="intro-video" class="intro-video-element" playsinline preload="auto">
-                <source src="<?php echo esc_url($intro_video_url); ?>" type="video/mp4">
-                Tarayıcınız video etiketini desteklemiyor.
-            </video>
-        <?php endif; ?>
+        <!-- Video Çerçevesi -->
+        <div class="intro-video-frame">
+            <?php if ($is_youtube) : ?>
+                <!-- YouTube Video -->
+                <div id="youtube-player-container" class="intro-video-element" style="pointer-events: none;"></div>
+            <?php else : ?>
+                <!-- MP4 Video -->
+                <video id="intro-video" class="intro-video-element" playsinline preload="auto">
+                    <source src="<?php echo esc_url($intro_video_url); ?>" type="video/mp4">
+                    Tarayıcınız video etiketini desteklemiyor.
+                </video>
+            <?php endif; ?>
+        </div>
+
+        <!-- Alt Kontrol Alanı (Sayaç ve Buton) -->
+        <div class="intro-controls">
+            <div id="intro-timer-box" class="intro-timer">
+                Reklamı geçmek için: <span id="intro-sec">0</span> saniye
+            </div>
+            <button id="intro-close-btn" class="intro-close-btn">Geç ⏭</button>
+        </div>
+
     </div>
 </div>
 
@@ -60,6 +70,8 @@ if ($intro_enabled === '1' && !empty($intro_video_url)) :
 window.addEventListener("load", function() {
     var introPopup = document.getElementById('beyzade-intro-popup');
     var closeBtn = document.getElementById('intro-close-btn');
+    var timerBox = document.getElementById('intro-timer-box');
+    var secSpan = document.getElementById('intro-sec');
     var introSeen = sessionStorage.getItem('beyzade_intro_seen');
     var isYouTube = <?php echo $is_youtube ? 'true' : 'false'; ?>;
     
@@ -83,6 +95,22 @@ window.addEventListener("load", function() {
 
         closeBtn.addEventListener('click', closeIntro);
 
+        // 0'dan 5'e Sayaç Başlatma Fonksiyonu
+        function startIntroTimer() {
+            var currentSec = 0;
+            var timerInterval = setInterval(function() {
+                currentSec++;
+                if (currentSec <= 5) {
+                    if (secSpan) secSpan.innerText = currentSec;
+                }
+                if (currentSec >= 5) {
+                    clearInterval(timerInterval);
+                    if (timerBox) timerBox.style.display = 'none';
+                    if (closeBtn) closeBtn.style.display = 'inline-flex';
+                }
+            }, 1000);
+        }
+
         // Site açıldıktan 1 saniye sonra Intro'yu başlat
         setTimeout(function() {
             introPopup.style.display = 'flex';
@@ -105,8 +133,8 @@ window.addEventListener("load", function() {
                 }
                 introVideo.addEventListener('ended', closeIntro);
                 
-                // 5 Saniye Sonra Buton Çıksın
-                setTimeout(function() { closeBtn.style.display = 'flex'; }, 5000);
+                // Videonun başladığı varsayımıyla sayacı başlat
+                startIntroTimer();
 
             } else {
                 // ---- YOUTUBE API İŞLEMLERİ ----
@@ -131,7 +159,6 @@ window.addEventListener("load", function() {
                         events: {
                             'onReady': function(event) {
                                 event.target.playVideo();
-                                // Tarayıcı engellerse sesi kapat ve oynat
                                 setTimeout(function() {
                                     if(event.target.getPlayerState() !== 1) { // 1 = playing
                                         event.target.mute();
@@ -141,10 +168,10 @@ window.addEventListener("load", function() {
                             },
                             'onStateChange': function(event) {
                                 if (event.data === YT.PlayerState.PLAYING) {
-                                    // Video oynamaya başladığı andan itibaren 5sn say
+                                    // YouTube videosu oynadığında sayacı başlat
                                     if (!window.ytTimerStarted) {
                                         window.ytTimerStarted = true;
-                                        setTimeout(function() { closeBtn.style.display = 'flex'; }, 5000);
+                                        startIntroTimer();
                                     }
                                 }
                                 if (event.data === YT.PlayerState.ENDED) {

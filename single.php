@@ -36,7 +36,7 @@ $whatsapp    = '905358309307';
             if ($meta_thumb) {
                 $hero_img = $meta_thumb;
             } else {
-                $hero_img = '<?php echo get_template_directory_uri(); ?>/assets/img/demo/restaurant.jpg';
+                $hero_img = get_template_directory_uri() . '/assets/img/demo/restaurant.jpg';
             }
         }
 

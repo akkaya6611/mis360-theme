@@ -36,7 +36,7 @@ $whatsapp    = '905358309307';
             if ($meta_thumb) {
                 $hero_img = $meta_thumb;
             } else {
-                $hero_img = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg';
+                $hero_img = '<?php echo get_template_directory_uri(); ?>/assets/img/demo/restaurant.jpg';
             }
         }
 
@@ -136,7 +136,7 @@ $whatsapp    = '905358309307';
                     <!-- Yazar Bilgi Kutusu -->
                     <div class="single-author-card">
                         <div class="author-avatar-wrap">
-                            <img src="https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/beyzadelogo1-66.png" alt="Beyzade Restaurant" class="author-logo-img">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/demo/beyzadelogo1-66.png" alt="Beyzade Restaurant" class="author-logo-img">
                         </div>
                         <div class="author-details">
                             <span class="author-role">Restoran Yazarı & Şef Ekibi</span>

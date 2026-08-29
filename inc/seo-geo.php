@@ -58,7 +58,7 @@ function mis360_render_schema_jsonld(): void {
         'image'                  => [
             get_template_directory_uri() . '/assets/img/demo/banner-4-BEYZADE.webp',
             get_template_directory_uri() . '/assets/img/demo/restaurant.webp',
-            'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/adana.jpg'
+            'https://beyzadeetbalikrestaurant.com/wp-content/uploads/2026/05/adana.jpg'
         ],
         'logo'                   => get_template_directory_uri() . '/assets/img/demo/cropped-Basliksiz-1-1.webp',
         'address'                => [
@@ -319,7 +319,7 @@ add_filter('robots_txt', function($output, $public) {
     
     // Referanslar (Sitemap ve llms.txt)
     $custom_robots .= "Sitemap: {$site_url}/sitemap.xml\n";
-    $custom_robots .= "LLMs: {$site_url}/llms.txt\n";
+    $custom_robots .= "# LLMs: {$site_url}/llms.txt\n";
     
     return $custom_robots;
 }, 10, 2);

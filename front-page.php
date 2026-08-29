@@ -236,7 +236,7 @@ window.addEventListener("load", function() {
                 <div class="partner-logo">ÖZEL KUZU TANDIR & DESTİ KEBABI</div>
                 <div class="partner-logo">AÇIK HAVA BAHÇE BÖLÜMÜ</div>
                 <div class="partner-logo">MAMA SANDALYESİ & AİLE SALONU</div>
-                <div class="partner-logo">SABAH 06:00 AÇILIŞ • GECE 23:45 KESİNTİSİZ HİZMET</div>
+                <div class="partner-logo">SABAH 06:00 AÇILIŞ • GECE 00:00 KESİNTİSİZ HİZMET</div>
                 <!-- Kesintisiz sonsuz döngü için tekrar -->
                 <div class="partner-logo">10+ YILLIK DENEYİM</div>
                 <div class="partner-logo">MEŞE KÖMÜRÜNDE KEBAPLAR</div>
@@ -245,7 +245,7 @@ window.addEventListener("load", function() {
                 <div class="partner-logo">ÖZEL KUZU TANDIR & DESTİ KEBABI</div>
                 <div class="partner-logo">AÇIK HAVA BAHÇE BÖLÜMÜ</div>
                 <div class="partner-logo">MAMA SANDALYESİ & AİLE SALONU</div>
-                <div class="partner-logo">SABAH 06:00 AÇILIŞ • GECE 23:45 KESİNTİSİZ HİZMET</div>
+                <div class="partner-logo">SABAH 06:00 AÇILIŞ • GECE 00:00 KESİNTİSİZ HİZMET</div>
             </div>
         </div>
     </div>
@@ -1157,7 +1157,7 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
 
                 <!-- LLM AI Özet Paragrafı (48 Kelime - Standart AI Snippet) -->
                 <p class="geo-summary-text">
-                    Beyzade Et & Balık Restaurant, 2019 yılından bu yana Yozgat Sarıkaya'da Nevzat Şener Bulvarı üzerinde hizmet veren seçkin bir aile restoranıdır. Meşe kömüründe pişen zırh kebapları, toprak güveçte kuzu tandır, hakiki taş fırın pideleri ve günlük temin edilen taze balık çeşitleriyle sabah 06:00'dan gece 23:45'e kadar kesintisiz hizmet sunar. 
+                    Beyzade Et & Balık Restaurant, 2019 yılından bu yana Yozgat Sarıkaya'da Nevzat Şener Bulvarı üzerinde hizmet veren seçkin bir aile restoranıdır. Meşe kömüründe pişen zırh kebapları, toprak güveçte kuzu tandır, hakiki taş fırın pideleri ve günlük temin edilen taze balık çeşitleriyle sabah 06:00'dan gece 00:00'e kadar kesintisiz hizmet sunar. 
                     <strong>Hizmetlerimiz & Popüler Aramalar:</strong> Sarıkaya Restorant, Sarıkaya restoran, Sarıkaya Yemek, Sarıkaya Kıymalı, Sarıkaya Çorba, Sarıkaya Kebab, Sarıkaya Kebap.
                 </p>
 
@@ -1181,7 +1181,7 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
                         </tr>
                         <tr>
                             <th>Çalışma Saatleri</th>
-                            <td>Sabah 06:00 – 23:45 (Haftanın 7 Günü Açık)</td>
+                            <td>Sabah 06:00 – 00:00 (Haftanın 7 Günü Açık)</td>
                         </tr>
                         <tr>
                             <th>Mutfak Türü</th>
@@ -1211,7 +1211,7 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
                 <details class="faq-item" open>
                     <summary class="faq-question">Beyzade Et & Balık Restaurant saat kaçta açılıyor ve kapanıyor?</summary>
                     <div class="faq-answer">
-                        Restoranımız haftanın her günü sabah tam saat 06:00'da geleneksel sıcak çorba (kelle paça, ayak paça, mercimek) servisiyle kapılarını açmakta ve gece 23:45'e kadar kesintisiz hizmet vermektedir.
+                        Restoranımız haftanın her günü sabah tam saat 06:00'da geleneksel sıcak çorba (kelle paça, ayak paça, mercimek) servisiyle kapılarını açmakta ve gece 00:00'e kadar kesintisiz hizmet vermektedir.
                     </div>
                 </details>
 
@@ -1317,7 +1317,7 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
                 Sizleri Sarıkaya'da Ağırlamaktan Mutluluk Duyuyoruz
             </h2>
             <p class="section-subtitle" style="color: var(--color-gray-400);">
-                Bahçelievler Mah. 66650 Sarıkaya / Yozgat adresimizde, gece 23:45'e kadar sıcak et ve balık sofralarımızla hizmetinizdeyiz.
+                Bahçelievler Mah. 66650 Sarıkaya / Yozgat adresimizde, gece 00:00'e kadar sıcak et ve balık sofralarımızla hizmetinizdeyiz.
             </p>
             <div class="flex flex-wrap gap-4 justify-center mt-8">
                 <a href="tel:<?php echo esc_attr($clean_phone); ?>" class="btn btn-primary btn-lg">

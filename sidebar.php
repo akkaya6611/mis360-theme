@@ -77,11 +77,9 @@ $whatsapp    = '905358309307';
                     $r_cats  = get_the_category($rp->ID);
                     $r_cat   = !empty($r_cats) ? $r_cats[0]->name : 'Blog';
                     $r_thumb = '';
-                    if (has_post_thumbnail($rp->ID)) {
-                        $r_thumb = get_the_post_thumbnail_url($rp->ID, 'thumbnail');
-                    } else {
+                    if (has_post_thumbnail($rp->ID)) { $r_thumb = get_the_post_thumbnail_url($rp->ID, 'thumbnail'); } else {
                         $meta_t = get_post_meta($rp->ID, '_mis360_external_thumb', true);
-                        $r_thumb = $meta_t ?: get_template_directory_uri() . '/assets/img/demo/restaurant.jpg';
+                        $r_thumb = $meta_t ?: get_template_directory_uri() . '/assets/img/demo/restaurant.webp';
                     }
                 ?>
                     <article class="sidebar-post-item">

@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 /**
  * Tema Sabitleri (Constants)
  */
-define('MIS360_VERSION', '1.1.13');
+define('MIS360_VERSION', '1.1.14');
 define('MIS360_DIR', get_template_directory());
 define('MIS360_URI', get_template_directory_uri());
 

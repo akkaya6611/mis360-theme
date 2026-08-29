@@ -40,7 +40,7 @@ $blog_query = new WP_Query($query_args);
 <main id="primary" class="site-main blog-gallery-page">
 
     <!-- 1. Sayfa Başlığı ve Hero Alanı (Denfora 1:1 Architecture) -->
-    <header class="page-hero-banner" style="background: linear-gradient(135deg, rgba(17, 24, 39, 0.95) 0%, rgba(17, 24, 39, 0.88) 100%), url('https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg') center/cover no-repeat;">
+    <header class="page-hero-banner" style="background: linear-gradient(135deg, rgba(17, 24, 39, 0.95) 0%, rgba(17, 24, 39, 0.88) 100%), url('<?php echo get_template_directory_uri(); ?>/assets/img/demo/restaurant.jpg') center/cover no-repeat;">
         <div class="container">
             <div class="page-hero-content text-center">
                 <nav class="page-breadcrumbs" aria-label="Sayfa Yolu">
@@ -121,22 +121,7 @@ $blog_query = new WP_Query($query_args);
 
                         // Görsel Belirleme (Öne çıkan görsel > Harici meta > Varsayılan)
                         $thumb_url = '';
-                        if (has_post_thumbnail()) {
-                            $thumb_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
-                        } else {
-                            $meta_thumb = get_post_meta(get_the_ID(), '_mis360_external_thumb', true);
-                            if ($meta_thumb) {
-                                $thumb_url = $meta_thumb;
-                            } else {
-                                if ($filter_group === 'galeri') {
-                                    $thumb_url = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg';
-                                } elseif ($filter_group === 'haberler') {
-                                    $thumb_url = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/restaurant.jpg';
-                                } else {
-                                    $thumb_url = 'https://beyzadeetbalikrestaurant.com.tr/wp-content/uploads/2026/05/adana.jpg';
-                                }
-                            }
-                        }
+                        if (has_post_thumbnail()) { $thumb_url = get_the_post_thumbnail_url(get_the_ID(), 'large'); } else { $thumb_url = get_template_directory_uri() . '/assets/img/demo/restaurant.webp'; }
                         ?>
                         <article class="gallery-card filter-item" data-category="<?php echo esc_attr($filter_group); ?>" id="post-<?php the_ID(); ?>">
                             

@@ -60,8 +60,16 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
                     </a>
                     <span class="top-bar-sep">|</span>
                     <span class="top-bar-status">
-                        ● Şu An Açık (06:00 – 23:45)
-                    </span>
+    <?php
+    $current_time = wp_date('H:i', null, new DateTimeZone('Europe/Istanbul'));
+    $is_open = ($current_time >= '06:00');
+    if ($is_open) {
+        echo '<span style="color: var(--color-whatsapp); font-weight: 700;">&#9679; Şu An Açık</span> <span style="opacity: 0.8;">(06:00 - 00:00)</span>';
+    } else {
+        echo '<span style="color: var(--color-error); font-weight: 700;">&#9679; Şu An Kapalı</span> <span style="opacity: 0.8;">(06:00 - 00:00)</span>';
+    }
+    ?>
+</span>
                 </div>
                 <div class="top-bar-right">
                     <a href="#reviews" class="top-bar-rating">★ 4.3 (448 Doğrulanmış Google Yorumu)</a>
@@ -214,7 +222,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
                         🕒 Çalışma Saatleri
                     </div>
                     <div style="font-size: 12px; color: #64748b;">
-                        Hergün: 06:00 – 23:45<br>
+                        Hergün: 06:00 – 00:00<br>
                         Açık Hava Bahçe & Aile Salonu
                     </div>
                 </div>

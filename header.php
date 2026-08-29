@@ -24,6 +24,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
+    <meta name="google-site-verification" content="-F2-TiJojBndJqVJ7oSTJPI46-_42LOYbyK4Kse70W0" />
     <meta name="description" content="<?php echo esc_attr(get_option('mis360_seo_description', '2019 yılından beri Yozgat Sarıkaya\'da hakiki meşe kömüründe kebap, özel kuzu tandır ve günlük taze balık çeşitleri sunan seçkin aile restoranı.')); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="profile" href="https://gmpg.org/xfn/11">

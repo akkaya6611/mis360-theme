@@ -29,14 +29,12 @@ $whatsapp    = '905358309307';
 
         // Görsel Belirleme
         $hero_img = '';
-        if (has_post_thumbnail()) {
-            $hero_img = get_the_post_thumbnail_url(get_the_ID(), 'full');
-        } else {
+        if (has_post_thumbnail()) { $hero_img = get_the_post_thumbnail_url(get_the_ID(), 'full'); } else {
             $meta_thumb = get_post_meta(get_the_ID(), '_mis360_external_thumb', true);
             if ($meta_thumb) {
                 $hero_img = $meta_thumb;
             } else {
-                $hero_img = get_template_directory_uri() . '/assets/img/demo/restaurant.jpg';
+                $hero_img = get_template_directory_uri() . '/assets/img/demo/restaurant.webp';
             }
         }
 

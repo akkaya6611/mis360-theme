@@ -83,7 +83,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
                     <div style="font-size: 13px; color: var(--color-gray-400); line-height: 1.8;">
                         <p style="margin-bottom: 8px;">
                             <strong style="color: var(--color-white);">Pazartesi – Pazar:</strong><br>
-                            06:00 – 23:45 (Sabah Çorbasından Geceye)
+                            06:00 – 00:00 (Sabah Çorbasından Geceye)
                         </p>
                         <p style="margin-bottom: 8px;">
                             <strong style="color: var(--color-white);">Mutfak Hizmeti:</strong><br>
@@ -158,7 +158,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
-                    <span>Sabah 06:00 – 23:45 Açık</span>
+                    <span>Sabah 06:00 – 00:00 Açık</span>
                 </div>
             </div>
 

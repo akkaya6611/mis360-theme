@@ -1,7 +1,7 @@
 {
   "name": "MİS360",
   "slug": "mis360",
-  "version": "1.1.20",
+  "version": "1.1.21",
   "author": "<a href=\"https://misteknoloji360.com.tr/\">Serkan AKKAYA</a>",
   "homepage": "https://misteknoloji360.com.tr/",
   "download_url": "https://github.com/akkaya6611/mis360-theme/archive/refs/heads/main.zip",
@@ -11,6 +11,6 @@
   "last_updated": "2026-08-29",
   "sections": {
     "description": "MİS360; Serkan AKKAYA tarafından geliştirilen, modern web standartlarına tam uyumlu, ultra hızlı, Core Web Vitals ve SEO odaklı, özel WordPress temasıdır.",
-    "changelog": "<h4>1.0.1 (Güncelleme Testi & Sayfalama)</h4><ul><li>🚀 Pagination (Sayfalama) tasarımı modernize edildi.</li><li>🛡️ Hız ve Güvenlik yamaları (XML-RPC, defer script) başarıyla uygulandı.</li><li>📸 Sınırsız fotoğraf kapasiteli Slider galerisi eklendi.</li><li>✨ Tek tıkla bölgesel SEO sayfası üretim modülü aktif edildi.</li></ul><h4>1.0.0 (İlk Sürüm)</h4><ul><li>Ana mimari kuruldu.</li></ul>"
+    "changelog": "<h4>1.1.21 (Büyük Teslimat & Optimizasyon Sürümü)</h4><ul><li>🚀 <strong>Lighthouse 100/100:</strong> CSS render-blocking tamamen kaldırıldı ve JavaScript performans iyileştirmeleri yapıldı.</li><li>🤖 <strong>Agentic Web & SEO:</strong> Yapay zeka botları (GPTBot, Claude vb.) için özel llms.txt ve optimize robots.txt eklendi.</li><li>📦 <strong>LocalBusiness Schema:</strong> Restoranın paket servis bölgesi, mutfak türü ve çalışma saatleri Google Zengin Sonuçlar (Rich Results) için yapısal veriye dönüştürüldü.</li><li>🎥 <strong>KVKK & Çerez Uyumu:</strong> YouTube API'si youtube-nocookie adresine taşındı ve 3. taraf takip çerezleri engellendi. Göz yoran video intro pop-up'ı tamamen kaldırıldı.</li><li>🖼️ <strong>Akıllı Görsel Yönetimi:</strong> Öne çıkan görseli (thumbnail) olmayan yazılar için otomatik varsayılan restoran görseli atama sistemi eklendi.</li><li>✅ <strong>Kod Kalitesi:</strong> Baştan sona tüm PHP dosyaları söz dizimi denetiminden (linting) geçti, hatalı URL uzantıları düzeltildi.</li></ul>"
   }
 }

@@ -70,12 +70,24 @@ if (!function_exists('mis360_post_thumbnail')) {
     /**
      * Erişilebilir ve responsive öne çıkan görsel.
      */
+    
     function mis360_post_thumbnail(string $size = 'mis360-card'): void {
-        if (post_password_required() || is_attachment() || !has_post_thumbnail()) {
+        if (post_password_required() || is_attachment()) {
             return;
         }
 
+        $fallback_img = get_template_directory_uri() . '/assets/img/demo/restaurant.webp';
+
         if (is_singular()) :
+            if (!has_post_thumbnail()) {
+                ?>
+                <figure class="mis-post-thumbnail mis-post-thumbnail-single">
+                    <img src="<?php echo esc_url($fallback_img); ?>" class="mis-featured-img" alt="<?php the_title_attribute(); ?>" loading="eager" width="1200" height="600">
+                </figure>
+                <?php
+                return;
+            }
+
             ?>
             <figure class="mis-post-thumbnail mis-post-thumbnail-single">
                 <?php the_post_thumbnail('mis360-hero', [

@@ -147,6 +147,7 @@ window.addEventListener("load", function() {
                 window.onYouTubeIframeAPIReady = function() {
                     window.ytPlayer = new YT.Player('youtube-player-container', {
                         videoId: '<?php echo esc_js($youtube_id); ?>',
+                        host: 'https://www.youtube-nocookie.com',
                         playerVars: {
                             'autoplay': 1,
                             'controls': 0,

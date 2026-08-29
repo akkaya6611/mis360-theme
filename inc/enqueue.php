@@ -15,26 +15,19 @@ if (!defined('ABSPATH')) {
 /**
  * Tema Stillerini ve JavaScript Dosyalarını Kuyruğa Ekle
  */
+    // CSS inline edilerek kritik istek zinciri (Critical Request Chain) kırılarak 100/100 LCP hedeflenir.
+    add_action('wp_head', function() {
+        $style_css = file_get_contents(MIS360_DIR . '/style.css');
+        $main_css = file_get_contents(MIS360_DIR . '/assets/css/main.min.css');
+        echo '<style id="mis360-critical-css">';
+        echo $style_css;
+        echo $main_css;
+        echo '</style>';
+    }, 5);
+
 function mis360_scripts(): void {
     // 1. Ana Tema Bilgi ve Reset Stili (style.css)
-    wp_enqueue_style(
-        'mis360-style',
-        get_stylesheet_uri(),
-        [],
-        MIS360_VERSION
-    );
-
     // 2. Çekirdek Bileşen ve Düzen Stilleri (assets/css/main.css)
-    $main_css_path = MIS360_DIR . '/assets/css/main.min.css';
-    $main_css_ver  = file_exists($main_css_path) ? (string) filemtime($main_css_path) : MIS360_VERSION;
-
-    wp_enqueue_style(
-        'mis360-main',
-        MIS360_URI . '/assets/css/main.min.css',
-        [],
-        $main_css_ver
-    );
-
     // 3. Pure Vanilla JS (ES6+) - jQuery Bağımsız
     $main_js_path = MIS360_DIR . '/assets/js/main.js';
     $main_js_ver  = file_exists($main_js_path) ? (string) filemtime($main_js_path) : MIS360_VERSION;

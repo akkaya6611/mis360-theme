@@ -74,12 +74,28 @@ function mis360_render_schema_jsonld(): void {
             'latitude'  => 39.4975,
             'longitude' => 35.3789
         ],
+        'areaServed'             => [
+            [
+                '@type' => 'City',
+                'name'  => 'Sarıkaya',
+                'sameAs'=> 'https://tr.wikipedia.org/wiki/Sar%C4%B1kaya,_Yozgat'
+            ],
+            [
+                '@type'       => 'GeoCircle',
+                'geoMidpoint' => [
+                    '@type'     => 'GeoCoordinates',
+                    'latitude'  => 39.4975,
+                    'longitude' => 35.3789
+                ],
+                'geoRadius'   => '15000' // 15 km delivery radius
+            ]
+        ],
         'openingHoursSpecification' => [
             [
                 '@type'     => 'OpeningHoursSpecification',
                 'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
                 'opens'     => '06:00',
-                'closes'    => '23:45'
+                'closes'    => '00:00'
             ]
         ],
         'aggregateRating'        => [

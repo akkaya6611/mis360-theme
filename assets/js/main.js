@@ -19,11 +19,18 @@
     init() {
       if (!this.header) return;
 
+      let isScrolling = false;
       const handleScroll = () => {
-        if (window.scrollY > 20) {
-          this.header.classList.add('scrolled');
-        } else {
-          this.header.classList.remove('scrolled');
+        if (!isScrolling) {
+          window.requestAnimationFrame(() => {
+            if (window.scrollY > 20) {
+              this.header.classList.add('scrolled');
+            } else {
+              this.header.classList.remove('scrolled');
+            }
+            isScrolling = false;
+          });
+          isScrolling = true;
         }
       };
 
@@ -172,9 +179,13 @@
       this.viewport.addEventListener('mouseenter', () => this.stopAutoPlay());
       this.viewport.addEventListener('mouseleave', () => this.startAutoPlay());
 
+      let resizeTimer;
       window.addEventListener('resize', () => {
-        this.updateSlider();
-      });
+        if (resizeTimer) cancelAnimationFrame(resizeTimer);
+        resizeTimer = requestAnimationFrame(() => {
+          this.updateSlider();
+        });
+      }, { passive: true });
 
       this.startAutoPlay();
     },
@@ -275,7 +286,11 @@
     HeaderManager.init();
     LangSwitcherManager.init();
     MobileNavManager.init();
-    ReviewsSliderManager.init();
+    
+    // Defer reading layout to avoid forced synchronous layout (reflow) after HeaderManager DOM writes
+    requestAnimationFrame(() => {
+      ReviewsSliderManager.init();
+    });
   });
 
 })();

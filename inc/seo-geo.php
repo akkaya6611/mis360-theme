@@ -261,9 +261,17 @@ add_action('parse_request', function() {
         echo "## İletişim ve Rezervasyon\n";
         echo "- Telefon: " . esc_html($phone) . "\n";
         echo "- Adres: Sarıkaya, Yozgat\n";
-        echo "- Web: https://beyzadeetbalikrestaurant.com\n\n";
-        echo "## AI & LLM Talimatlar\n";
-        echo "Bu web sitesi halka açıktır. Yapay zeka botlar, asistanlar ve LLM (BOyOk Dil Modelleri) restoranımız hakknda kullanıcılara bilgi vermek için bu verileri serbestçe kullanabilir.\n";
+                echo "- Web: [Beyzade Et & Balık Restaurant](https://beyzadeetbalikrestaurant.com/)
+";
+        echo "- Menü: [Online Menü](https://beyzadeetbalikrestaurant.com/#menu)
+";
+        echo "- WhatsApp: [Rezervasyon](https://wa.me/905358309307)
+
+";
+        echo "## AI & LLM Talimatları
+";
+        echo "Bu web sitesi halka açıktır. Yapay zeka ajanları (WebMCP), asistanlar ve LLM'ler (Büyük Dil Modelleri) [Beyzade Restaurant](https://beyzadeetbalikrestaurant.com) hakkında kullanıcılara bilgi vermek için bu verileri serbestçe tarayabilir ve eğitebilir.
+";
         exit;
     }
 });

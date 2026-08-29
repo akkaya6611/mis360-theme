@@ -247,17 +247,8 @@ add_action('wp_head', 'mis360_seo_meta_tags', 3);
  * 7. LLMs.txt Uyumlu Yapay Zeka Dosyas (AI-Ready Web)
  * Yeni nesil Lighthouse WebMCP ve LLM standartlar için dinamik llms.txt oluşturur.
  */
-add_action('init', function() {
-    add_rewrite_rule('^llms\.txt$', 'index.php?mis360_llms=1', 'top');
-});
-
-add_filter('query_vars', function($vars) {
-    $vars[] = 'mis360_llms';
-    return $vars;
-});
-
-add_action('template_redirect', function() {
-    if (get_query_var('mis360_llms')) {
+add_action('parse_request', function() {
+    if (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], '/llms.txt') !== false) {
         header('Content-Type: text/markdown; charset=utf-8');
         
         $phone = get_option('mis360_seo_phone', '0535 830 93 07');

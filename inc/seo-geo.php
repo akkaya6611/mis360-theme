@@ -276,3 +276,34 @@ add_action('parse_request', function() {
     }
 });
 
+
+
+/**
+ * 8. Dinamik ve AI Optimize robots.txt (WebMCP & LLM)
+ * Google botlarina ve OpenAI, Perplexity, Claude gibi LLM ajanlarina siteyi tarama izni verir.
+ */
+add_filter('robots_txt', function($output, $public) {
+    if ('0' == $public) {
+        return $output;
+    }
+
+    $site_url = home_url();
+    
+    $custom_robots = "User-agent: *\n";
+    $custom_robots .= "Disallow: /wp-admin/\n";
+    $custom_robots .= "Disallow: /wp-includes/\n";
+    $custom_robots .= "Allow: /wp-admin/admin-ajax.php\n";
+    $custom_robots .= "Allow: /wp-content/uploads/\n\n";
+    
+    // AI ve LLM Tarayicilari Icin Ozel Izinler (Agentic Web)
+    $custom_robots .= "User-agent: GPTBot\nAllow: /\n\n";
+    $custom_robots .= "User-agent: ChatGPT-User\nAllow: /\n\n";
+    $custom_robots .= "User-agent: Claude-Web\nAllow: /\n\n";
+    $custom_robots .= "User-agent: PerplexityBot\nAllow: /\n\n";
+    
+    // Referanslar (Sitemap ve llms.txt)
+    $custom_robots .= "Sitemap: {$site_url}/sitemap.xml\n";
+    $custom_robots .= "LLMs: {$site_url}/llms.txt\n";
+    
+    return $custom_robots;
+}, 10, 2);

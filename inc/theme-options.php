@@ -118,7 +118,7 @@ function mis360_register_settings(): void {
     ]);
 
     // SEO & GEO Verileri
-    $seo_fields = ['business_name', 'description', 'keywords', 'phone', 'address', 'rating', 'review_count'];
+    $seo_fields = ['business_name', 'description', 'keywords', 'phone', 'address', 'rating', 'review_count', 'google_api_key', 'google_place_id'];
     foreach ($seo_fields as $field) {
         register_setting('mis360_seo_data_group', 'mis360_seo_' . $field);
     }
@@ -177,7 +177,25 @@ function mis360_settings_page_popup(): void {
                             </p>
                         </td>
                     </tr>
-                </table>
+                                        <tr>
+                            <th scope="row" colspan="2"><hr></th>
+                        </tr>
+                        <tr>
+                            <th scope="row" colspan="2"><h3 style="margin: 0; color: #1e293b;">Google Haritalar Canlı Yorum Entegrasyonu</h3><p style="font-weight:normal; font-size: 13px; color: #64748b;">Buraya Google API Anahtarı (Places API) ve Place ID (Yer Kimliği) eklerseniz, Anasayfadaki yorumlar statik metinler yerine canlı olarak Google'dan çekilir (Lighthouse puanınızı bozmamak için otomatik önbelleğe alınır).</p></th>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="mis360_seo_google_api_key">Google Places API Anahtarı</label></th>
+                            <td>
+                                <input name="mis360_seo_google_api_key" type="text" id="mis360_seo_google_api_key" value="<?php echo esc_attr(get_option('mis360_seo_google_api_key', '')); ?>" class="regular-text" style="width: 100%;" placeholder="AIzaSyA...">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="mis360_seo_google_place_id">Google Place ID (Yer Kimliği)</label></th>
+                            <td>
+                                <input name="mis360_seo_google_place_id" type="text" id="mis360_seo_google_place_id" value="<?php echo esc_attr(get_option('mis360_seo_google_place_id', '')); ?>" class="regular-text" style="width: 100%;" placeholder="ChIJXw0x2C...">
+                            </td>
+                        </tr>
+                    </table>
             </div>
             
             <?php submit_button('Ayarları Kaydet', 'primary', 'submit', true, ['style' => 'font-size: 15px; padding: 5px 25px;']); ?>

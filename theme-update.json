@@ -1,16 +1,16 @@
 {
   "name": "MİS360",
   "slug": "mis360",
-  "version": "1.1.22",
+  "version": "1.1.23",
   "author": "<a href=\"https://misteknoloji360.com.tr/\">Serkan AKKAYA</a>",
   "homepage": "https://misteknoloji360.com.tr/",
   "download_url": "https://github.com/akkaya6611/mis360-theme/archive/refs/heads/main.zip",
   "requires": "6.3",
   "tested": "6.7",
   "requires_php": "8.2",
-  "last_updated": "2026-08-29",
+  "last_updated": "2026-09-11",
   "sections": {
     "description": "MİS360; Serkan AKKAYA tarafından geliştirilen, modern web standartlarına tam uyumlu, ultra hızlı, Core Web Vitals ve SEO odaklı, özel WordPress temasıdır.",
-    "changelog": "<h4>1.1.22 (Lighthouse SEO Yaması)</h4><ul><li>🐛 <strong>Lighthouse SEO:</strong> Google Lighthouse'un katı robots.txt ayrıştırıcısına takılan yeni nesil 'LLMs:' direktifi, skorun %100'den düşmemesi için yorum (comment) satırına dönüştürüldü.</li></ul>"
+    "changelog": "<h4>1.1.23 (Teknik İnceleme & Güvenlik Güncellemesi)</h4><ul><li>🔒 <strong>Güvenlik Başlıkları:</strong> HSTS (Strict-Transport-Security) ve Temel CSP (Content-Security-Policy) başlıkları eklendi.</li><li>🔄 <strong>HTTP > HTTPS:</strong> Tüm HTTP istekleri otomatik 301 yönlendirmesiyle HTTPS'ye zorlandı.</li><li>📝 <strong>Rezervasyon Formu:</strong> Tarih seçimine (geçmiş tarihler engellendi) min kuralı eklendi. Buton metni dar ekranlara (390px) uyumlu hale getirilerek WhatsApp süreci açıkça belirtildi. 1 Kişi ve 3 Kişi seçenekleri eklendi. Etiket (label) erişilebilirliği düzeltildi.</li><li>🚀 <strong>Görsel & Hız:</strong> Ana sayfadaki galeri görsellerine native lazy-loading eklendi.</li><li>🤖 <strong>SEO & OG Verileri:</strong> Ana sayfa için eksik Open Graph (og) meta verileri ve Canonical adresi tamamlandı. FAQ Şemasındaki çalışma saati hatası giderildi. Kırık şema görseli onarıldı.</li><li>📄 <strong>Gizlilik Bağlantıları:</strong> Footer alanındaki # linkleri Gizlilik Politikası ve Çerez Politikası sayfalarına bağlandı.</li></ul>"
   }
 }

@@ -58,7 +58,7 @@ function mis360_render_schema_jsonld(): void {
         'image'                  => [
             get_template_directory_uri() . '/assets/img/demo/banner-4-BEYZADE.webp',
             get_template_directory_uri() . '/assets/img/demo/restaurant.webp',
-            'https://beyzadeetbalikrestaurant.com/wp-content/uploads/2026/05/adana.jpg'
+            'https://beyzadeetbalikrestaurant.com/wp-content/uploads/mis360/mis360-theme-main/assets/img/demo/restaurant.webp'
         ],
         'logo'                   => get_template_directory_uri() . '/assets/img/demo/cropped-Basliksiz-1-1.webp',
         'address'                => [
@@ -323,3 +323,18 @@ add_filter('robots_txt', function($output, $public) {
     
     return $custom_robots;
 }, 10, 2);
+
+
+/**
+ * 9. Canonical ve Open Graph (OG) Etiketleri
+ */
+add_action('wp_head', function() {
+    if (is_front_page()) {
+        $url = esc_url(home_url('/'));
+        echo '<link rel="canonical" href="' . $url . '" />' . "\n";
+        echo '<meta property="og:title" content="Beyzade Et &amp; Balık Restaurant | Sarıkaya/Yozgat" />' . "\n";
+        echo '<meta property="og:url" content="' . $url . '" />' . "\n";
+        echo '<meta property="og:type" content="restaurant" />' . "\n";
+        echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
+    }
+});

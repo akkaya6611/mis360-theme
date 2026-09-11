@@ -170,8 +170,8 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
                     </p>
                     <div class="footer-bottom-links">
                         <a href="https://beyzadeetbalikrestaurant.com.tr/" class="footer-bottom-link" target="_blank">beyzadeetbalikrestaurant.com.tr</a>
-                        <a href="#" class="footer-bottom-link">Gizlilik Politikası</a>
-                        <a href="#" class="footer-bottom-link">Çerez Ayarları</a>
+                        <a href="/cerez-politikasi/" class="footer-bottom-link">Gizlilik Politikası</a>
+                        <a href="/gizlilik-politikasi/" class="footer-bottom-link">Çerez Politikası</a>
                     </div>
                 </div>
 

@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 /**
  * Tema Sabitleri (Constants)
  */
-define('MIS360_VERSION', '1.1.22');
+define('MIS360_VERSION', '1.1.23');
 define('MIS360_DIR', get_template_directory());
 define('MIS360_URI', get_template_directory_uri());
 
@@ -112,3 +112,19 @@ function mis360_add_browser_caching_rules($rules) {
     return $caching_rules . $rules;
 }
 add_filter('mod_rewrite_rules', 'mis360_add_browser_caching_rules');
+/**
+ * 7. GÜVENLİK: HTTP -> HTTPS Zorlaması, HSTS ve CSP Başlıkları
+ */
+add_action('template_redirect', function() {
+    if (!is_ssl() && (!defined('WP_CLI') || !WP_CLI)) {
+        wp_redirect('https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], 301);
+        exit();
+    }
+});
+
+add_action('send_headers', function() {
+    if (!headers_sent()) {
+        header('Strict-Transport-Security: max-age=31536000; includeSubDomains; preload');
+        header("Content-Security-Policy: default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval'; frame-ancestors 'self';");
+    }
+});

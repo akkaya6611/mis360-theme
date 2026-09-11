@@ -1114,7 +1114,7 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
                     <div>
                         <label style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: #1e293b;">Tarih & Saat *</label>
                         <div class="reservation-date-row">
-                            <input type="date" id="bzDate" data-webmcp-field="date" required aria-label="Rezervasyon Tarihi" style="flex: 1; padding: 12px 10px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 13px; background: #ffffff;">
+                            <input type="date" min="<?php echo date('Y-m-d'); ?>" id="bzDate" data-webmcp-field="date" required aria-label="Rezervasyon Tarihi" style="flex: 1; padding: 12px 10px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 13px; background: #ffffff;">
                             <select id="bzTime" data-webmcp-field="time" aria-label="Rezervasyon Saati" style="width: 110px; padding: 12px 8px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 13px; background: #ffffff;">
                                 <option value="07:30">07:30 (Sabah)</option>
                                 <option value="09:00">09:00</option>
@@ -1130,9 +1130,12 @@ $google_reviews = function_exists('mis360_get_google_reviews') ? mis360_get_goog
                 </div>
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; max-width: 480px; height: 50px; font-size: 15px;">
-                        🟢 Rezervasyonu WhatsApp İle Onayla (0535 830 93 07) →
-                    </button>
+                    <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; max-width: 480px; height: 50px; font-size: 15px;">🚀 WhatsApp'tan Talep Gönder 💬</button>
+<p style="text-align: center; font-size: 13px; color: #666; margin-top: 10px;">
+    <span style="font-weight: 600; color: #333;">0535 830 93 07</span><br>
+    Rezervasyonunuz restoranın WhatsApp yanıtıyla kesinleşir.<br>
+    (Yönlendirildiğinizde mesajı göndermeyi unutmayın.)
+</p>
                 </div>
             </form>
         </div>

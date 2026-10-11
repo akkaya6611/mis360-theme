@@ -180,7 +180,7 @@ $anchor_prefix = is_front_page() ? '' : home_url('/');
                         Web Tasarım & Geliştirici:
                     </span>
                     <a href="https://misteknoloji360.com.tr/" target="_blank" rel="noopener noreferrer" style="font-weight: 700; color: #ffedd5;">
-                        Serkan AKKAYA — MİS Teknoloji 360
+                        MİS Teknoloji 360
                     </a>
                 </div>
             </div>

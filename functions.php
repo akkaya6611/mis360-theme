@@ -128,3 +128,33 @@ add_action('send_headers', function() {
         header("Content-Security-Policy: default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval'; frame-ancestors 'self';");
     }
 });
+
+
+// Otomatik Gizlilik ve Çerez Politikası Oluşturucu (Bir Kere Çalışır)
+add_action('admin_init', 'mis360_create_legal_pages');
+function mis360_create_legal_pages() {
+    if (!get_option('mis360_legal_pages_created_v2')) {
+        
+        if (!get_page_by_path('gizlilik-politikasi')) {
+            wp_insert_post([
+                'post_title' => 'Gizlilik Politikası',
+                'post_name' => 'gizlilik-politikasi',
+                'post_content' => '<h3>Gizlilik Politikası ve KVKK Aydınlatma Metni</h3><p><strong>Beyzade Et & Balık Restaurant</strong> olarak misafirlerimizin ve web sitesi ziyaretçilerimizin kişisel verilerinin güvenliğine büyük önem veriyoruz. 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca veri sorumlusu sıfatıyla, kişisel verileriniz aşağıda açıklanan çerçevede kaydedilecek, saklanacak, güncellenecek ve mevzuatın izin verdiği durumlarda 3. kişilere açıklanabilecektir.</p><h4>1. Kişisel Verilerin Toplanması ve İşlenmesi</h4><p>Web sitemiz üzerinden rezervasyon yapmanız, iletişim formunu doldurmanız veya hizmetlerimiz hakkında bilgi almanız sırasında adınız, soyadınız, telefon numaranız ve e-posta adresiniz gibi kişisel verileriniz toplanabilmektedir. Bu veriler sadece; rezervasyon süreçlerinin yürütülmesi, müşteri memnuniyetinin sağlanması ve sizlerle iletişim kurulabilmesi amacıyla işlenmektedir.</p><h4>2. Verilerin Aktarılması</h4><p>Toplanan kişisel verileriniz, yasal zorunluluklar haricinde hiçbir şekilde üçüncü şahıslarla, kurum veya kuruluşlarla paylaşılmamaktadır. Verileriniz, sadece restoranımızın hizmet standartlarını artırmak amacıyla kendi bünyemizde saklanmaktadır.</p><h4>3. Veri Güvenliği</h4><p>Beyzade Et & Balık Restaurant, kişisel verilerinizin yetkisiz erişim, kayıp veya ifşa riskine karşı korunması için gerekli tüm teknik ve idari tedbirleri almaktadır.</p><h4>4. Haklarınız</h4><p>KVKK\'nın 11. maddesi gereğince, bizimle iletişime geçerek kişisel verilerinizin işlenip işlenmediğini öğrenme, silinmesini veya yok edilmesini talep etme hakkına sahipsiniz. Talepleriniz için iletişim sayfamızdaki telefon numaralarımızdan bize ulaşabilirsiniz.</p>',
+                'post_status' => 'publish',
+                'post_type' => 'page'
+            ]);
+        }
+        
+        if (!get_page_by_path('cerez-politikasi')) {
+            wp_insert_post([
+                'post_title' => 'Çerez Politikası',
+                'post_name' => 'cerez-politikasi',
+                'post_content' => '<h3>Çerez (Cookie) Politikası</h3><p><strong>Beyzade Et & Balık Restaurant</strong> (beyzadeetbalikrestaurant.com) olarak, web sitemizi ziyaret eden kullanıcılarımızın deneyimini iyileştirmek ve sitenin verimli çalışmasını sağlamak amacıyla çerezler (cookies) kullanmaktayız.</p><h4>Çerez Nedir?</h4><p>Çerezler, ziyaret ettiğiniz web siteleri tarafından tarayıcınız aracılığıyla bilgisayarınıza veya mobil cihazınıza kaydedilen küçük metin dosyalarıdır.</p><h4>Hangi Çerezleri Kullanıyoruz?</h4><ul><li><strong>Zorunlu Çerezler:</strong> Web sitemizin düzgün çalışması ve güvenlik özelliklerinin aktif olması için kesinlikle gerekli olan çerezlerdir.</li><li><strong>Performans ve Analiz Çerezleri:</strong> Sitemizi nasıl kullandığınızı anonim olarak analiz edip, sitemizi size daha iyi hizmet verecek şekilde optimize etmemizi sağlayan araçlardır (Örn: Google Analytics). Sizi kişisel olarak tanımlamaz.</li></ul><h4>Çerez Yönetimi</h4><p>Tarayıcınızın ayarlarını değiştirerek çerezlere ilişkin tercihlerinizi kişiselleştirme imkanına sahipsiniz. Çerezleri engellemeniz durumunda web sitemizin bazı özellikleri düzgün çalışmayabilir.</p><p>Web sitemizi kullanmaya devam ederek, bu politikada belirtilen çerez kullanımımızı kabul etmiş sayılırsınız.</p>',
+                'post_status' => 'publish',
+                'post_type' => 'page'
+            ]);
+        }
+        
+        update_option('mis360_legal_pages_created_v2', true);
+    }
+}

@@ -1,14 +1,14 @@
 {
     "name":  "MÝS360",
     "slug":  "mis360",
-    "version":  "1.1.25",
+    "version":  "1.1.26",
     "author":  "\u003ca href=\"https://misteknoloji360.com.tr/\"\u003eSerkan AKKAYA\u003c/a\u003e",
     "homepage":  "https://misteknoloji360.com.tr/",
     "download_url":  "https://github.com/akkaya6611/mis360-theme/archive/refs/heads/main.zip",
     "requires":  "6.3",
     "tested":  "6.7",
     "requires_php":  "8.2",
-    "last_updated":  "2026-10-11",
+    "last_updated":  "2026-10-20",
     "sections":  {
                      "description":  "MÝS360; Serkan AKKAYA tarafýndan geliþtirilen, modern web standartlarýna tam uyumlu, ultra hýzlý, Core Web Vitals ve SEO odaklý, özel WordPress temasýdýr.",
                      "changelog":  "\u003ch4\u003e1.1.23 (Teknik Ýnceleme \u0026 Güvenlik Güncellemesi)\u003c/h4\u003e\u003cul\u003e\u003cli\u003e?? \u003cstrong\u003eGüvenlik Baþlýklarý:\u003c/strong\u003e HSTS (Strict-Transport-Security) ve Temel CSP (Content-Security-Policy) baþlýklarý eklendi.\u003c/li\u003e\u003cli\u003e?? \u003cstrong\u003eHTTP \u003e HTTPS:\u003c/strong\u003e Tüm HTTP istekleri otomatik 301 yönlendirmesiyle HTTPS\u0027ye zorlandý.\u003c/li\u003e\u003cli\u003e?? \u003cstrong\u003eRezervasyon Formu:\u003c/strong\u003e Tarih seçimine (geçmiþ tarihler engellendi) min kuralý eklendi. Buton metni dar ekranlara (390px) uyumlu hale getirilerek WhatsApp süreci açýkça belirtildi. 1 Kiþi ve 3 Kiþi seçenekleri eklendi. Etiket (label) eriþilebilirliði düzeltildi.\u003c/li\u003e\u003cli\u003e?? \u003cstrong\u003eGörsel \u0026 Hýz:\u003c/strong\u003e Ana sayfadaki galeri görsellerine native lazy-loading eklendi.\u003c/li\u003e\u003cli\u003e?? \u003cstrong\u003eSEO \u0026 OG Verileri:\u003c/strong\u003e Ana sayfa için eksik Open Graph (og) meta verileri ve Canonical adresi tamamlandý. FAQ Þemasýndaki çalýþma saati hatasý giderildi. Kýrýk þema görseli onarýldý.\u003c/li\u003e\u003cli\u003e?? \u003cstrong\u003eGizlilik Baðlantýlarý:\u003c/strong\u003e Footer alanýndaki # linkleri Gizlilik Politikasý ve Çerez Politikasý sayfalarýna baðlandý.\u003c/li\u003e\u003c/ul\u003e"

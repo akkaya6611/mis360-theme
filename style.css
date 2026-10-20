@@ -4,7 +4,7 @@ Theme URI: https://misteknoloji360.com.tr/
 Author: Serkan AKKAYA
 Author URI: https://misteknoloji360.com.tr/
 Description: MİS360; Serkan AKKAYA tarafından geliştirilmiş, ultra hızlı, modern web standartlarına tam uyumlu, Core Web Vitals ve SEO odaklı, Dark/Light mod destekli özel WordPress temasıdır.
-Version: 1.1.25
+Version: 1.1.26
 Requires at least: 6.3
 Requires PHP: 8.2
 License: GNU General Public License v2 or later
@@ -229,3 +229,60 @@ a:hover {
   z-index: 100000;
 }
 
+
+/* ==========================================================================
+   Page Template - Full Width Layout (v1.1.26)
+   ========================================================================== */
+.single-layout-grid--fullwidth {
+  grid-template-columns: 1fr !important;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Reservation CTA Card - Sayfa Altı */
+.single-reservation-cta {
+  text-align: center;
+  padding: 40px 30px;
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  color: #ffffff;
+  border-radius: 16px;
+  margin-top: 32px;
+}
+
+.single-reservation-cta .cta-subtitle {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--color-primary, #ef5027);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.single-reservation-cta .cta-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 12px;
+}
+
+.single-reservation-cta .cta-desc {
+  font-size: 15px;
+  color: #cbd5e1;
+  max-width: 580px;
+  margin: 0 auto 24px;
+  line-height: 1.6;
+}
+
+.single-reservation-cta .cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-md {
+  padding: 10px 22px;
+  font-size: 14px;
+  border-radius: 10px;
+}
